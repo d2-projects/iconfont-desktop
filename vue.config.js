@@ -7,6 +7,7 @@ module.exports = {
       chunkNamePrefix: 'page-'
     },
     electronBuilder: {
+      nodeIntegration: true,
       chainWebpackMainProcess: config => {
         config.module
           .rule('babel')

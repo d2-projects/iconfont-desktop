@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 
-class Iconfont {
+export default class Iconfont {
   ctoken = ''
   request = null
 
@@ -73,7 +73,7 @@ class Iconfont {
   async search ({
     keyword = '',
     pageNo = 1,
-    pageSize = 1,
+    pageSize = 10,
     sortType = 'updated_at',
     collection = -1,
     fills = '',
@@ -90,16 +90,7 @@ class Iconfont {
     if (style) {
       data[style] = 1
     }
+    console.log(data)
     return this.request.post('api/icon/search.json', data)
   }
 }
-
-;(async () => {
-  const iconfont = new Iconfont()
-  await iconfont.init()
-  const searchResult = await iconfont.search({
-    keyword: 'left',
-    style: 'hand'
-  })
-  console.log(searchResult)
-})()

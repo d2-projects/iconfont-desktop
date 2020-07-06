@@ -9,7 +9,8 @@ import {
 import log from 'electron-log'
 
 
-import './lib/iconfont-sdk'
+import Iconfont from './lib/iconfont-sdk'
+global.Iconfont = Iconfont
 
 Object.assign(console, log.functions)
 
