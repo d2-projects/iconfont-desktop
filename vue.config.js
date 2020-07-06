@@ -1,4 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
+const path = require('path')
 
 module.exports = {
   pluginOptions: {
@@ -6,6 +7,20 @@ module.exports = {
       chunkNamePrefix: 'page-'
     },
     electronBuilder: {
+      chainWebpackMainProcess: config => {
+        config.module
+          .rule('babel')
+          .test(/\.js$/)
+          .include
+            .add(path.resolve(__dirname, 'src/lib/iconfont-sdk'))
+            .end()
+          .use('babel')
+          .loader('babel-loader')
+          .options({
+            presets: [['@babel/preset-env', { modules: false }]],
+            plugins: ['@babel/plugin-proposal-class-properties']
+          })
+      },
       builderOptions: {
         publish: {
           provider: 'generic',

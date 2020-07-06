@@ -8,6 +8,9 @@ import {
 // import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 
+
+import './lib/iconfont-sdk'
+
 Object.assign(console, log.functions)
 
 // autoUpdater.logger = log

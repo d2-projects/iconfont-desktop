@@ -2,9 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 
 class Iconfont {
-
   ctoken = ''
-
   request = null
 
   constructor () {
@@ -46,7 +44,7 @@ class Iconfont {
         if (response.data.code === 200) {
           return response.data.data
         }
-        return Promise.reject('请求错误')
+        return Promise.reject(new Error('请求错误'))
       },
       error => Promise.reject(error)
     )
