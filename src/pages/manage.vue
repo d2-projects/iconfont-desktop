@@ -1,5 +1,5 @@
 <template>
-  <div>
-    about
+  <div class="pa-5">
+    manage
   </div>
 </template>

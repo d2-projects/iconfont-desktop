@@ -1,5 +1,5 @@
 <template>
   <div class="pa-5">
-    index
+    collections
   </div>
 </template>
