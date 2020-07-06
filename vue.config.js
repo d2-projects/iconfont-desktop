@@ -15,7 +15,10 @@ module.exports = {
         artifactName: '${productName}-${version}.${ext}',
         win: {
           signAndEditExecutable: false,
-          target: ['nsis', 'portable']
+          target: [
+            'nsis',
+            'portable'
+          ]
         },
         portable: {
           artifactName: '${productName}-portable-${version}.${ext}'
@@ -23,18 +26,7 @@ module.exports = {
       }
     }
   },
-  chainWebpack: (config) => {
-    config.module
-      .rule('vue')
-      .use('vue-loader')
-      .loader('vue-loader')
-      .tap(options => {
-        options.transformAssetUrls = {
-          img: 'src',
-          image: 'xlink:href',
-          'a-avatar': 'src'
-        }
-        return options
-      })
-  }
+  transpileDependencies: [
+    'vuetify'
+  ]
 }
