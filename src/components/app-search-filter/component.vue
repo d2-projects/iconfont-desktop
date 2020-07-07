@@ -8,7 +8,7 @@
 </style>
 
 <template>
-  <v-card class="app-search-filter" color="primary" dark flat>
+  <v-card class="app-search-filter py-2 pr-2" color="primary" dark flat>
     <app-scroll class="app-search-filter__scroll">
       <v-card-title>
         <v-icon left>mdi-star-circle</v-icon>
