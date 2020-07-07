@@ -1,4 +1,6 @@
 import navigation from './components/navigation'
+import loading from './components/loading'
+
 export default {
   render (h) {
     return <v-app>
@@ -6,6 +8,7 @@ export default {
         <router-view/>
       </v-main>
       <navigation/>
+      <loading/>
     </v-app>
   }
 }
