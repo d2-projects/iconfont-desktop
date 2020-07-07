@@ -90,7 +90,6 @@ export default class Iconfont {
     if (style) {
       data[style] = 1
     }
-    console.log(data)
     return this.request.post('api/icon/search.json', data)
   }
 }
