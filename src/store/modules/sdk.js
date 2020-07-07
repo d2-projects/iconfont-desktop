@@ -7,7 +7,8 @@ export default {
   state: {
     sdk: new Iconfont(),
     ready: false,
-    loading: false
+    loading: false,
+    dict: Iconfont.dict
   },
   actions: {
     /**
