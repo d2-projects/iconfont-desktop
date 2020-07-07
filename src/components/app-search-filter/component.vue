@@ -9,43 +9,28 @@
 
 <template>
   <v-card class="app-search-filter pa-1" color="primary" flat dark>
-    <app-scroll class="app-search-filter__scroll">
-      <v-expansion-panels flat multiple accordion tile hover>
-        <v-expansion-panel>
+    <app-scroll
+      class="app-search-filter__scroll"
+      :options="{
+        scrollbars: {
+          autoHide: 'never'
+        }
+      }">
+      <v-expansion-panels :value="opened" flat multiple accordion tile hover>
+        <v-expansion-panel
+          v-for="(value, index) of currentValue"
+          :key="index">
           <v-expansion-panel-header color="primary">
-            <v-icon class="flex-grow-0" left>mdi-star-circle</v-icon>
-            <span class="font-weight-bold">分类</span>
+            <v-icon class="flex-grow-0" left>{{ options[index].icon }}</v-icon>
+            <span class="font-weight-bold">{{ options[index].title }}</span>
           </v-expansion-panel-header>
           <v-expansion-panel-content color="primary">
-            <v-radio-group v-model="collection" hide-details>
-              <v-radio v-for="option in dict.collection" :key="option.name" :label="option.label" :value="option.name"/>
-            </v-radio-group>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-        <v-expansion-panel>
-          <v-expansion-panel-header color="primary">
-            <v-icon class="flex-grow-0" left>mdi-invert-colors</v-icon>
-            <span class="font-weight-bold">填充</span>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content color="primary">
-            <v-radio-group v-model="fills" hide-details>
+            <v-radio-group
+              v-model="currentValue[index]"
+              hide-details
+              @change="onRadioGroupChange">
               <v-radio
-                v-for="option in dict.fills"
-                :key="option.name"
-                :label="option.label"
-                :value="option.name"/>
-            </v-radio-group>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-        <v-expansion-panel>
-          <v-expansion-panel-header color="primary">
-            <v-icon class="flex-grow-0" left>mdi-palette</v-icon>
-            <span class="font-weight-bold">风格</span>
-          </v-expansion-panel-header>
-          <v-expansion-panel-content color="primary">
-            <v-radio-group v-model="style" hide-details>
-              <v-radio
-                v-for="option in dict.style"
+                v-for="option in options[index].options"
                 :key="option.name"
                 :label="option.label"
                 :value="option.name"/>
@@ -62,17 +47,52 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'app-search-filter',
+  props: {
+    value: {
+      type: Object,
+      default: () => ({
+        collection: '',
+        fills: '',
+        style: ''
+      })
+    }
+  },
   data () {
     return {
-      collection: 'all',
-      fills: 'all',
-      style: 'all'
+      opened: [0, 1, 2],
+      currentValue: ['', '', '']
+    }
+  },
+  watch: {
+    value: {
+      handler (value) {
+        this.currentValue = [
+          value.collection,
+          value.fills,
+          value.style
+        ]
+      },
+      immediate: true
     }
   },
   computed: {
-    ...mapState('sdk', [
-      'dict'
-    ])
+    ...mapState('sdk', ['dict']),
+    options () {
+      return [
+        { title: '分类', icon: 'mdi-star-circle', options: this.dict.collection },
+        { title: '填充', icon: 'mdi-invert-colors', options: this.dict.fills },
+        { title: '风格', icon: 'mdi-palette', options: this.dict.style }
+      ]
+    }
+  },
+  methods: {
+    onRadioGroupChange () {
+      this.$emit('input', {
+        collection: this.currentValue[0],
+        fills: this.currentValue[1],
+        style: this.currentValue[2]
+      })
+    }
   }
 }
 </script>

@@ -24,7 +24,7 @@ $sidebarWidth: 240px;
   <div class="app-page">
     <!-- left -->
     <div class="app-page__side py-2 pl-2">
-      <app-search-filter/>
+      <app-search-filter v-model="filter"/>
     </div>
     <!-- right -->
     <div class="app-page__main">
@@ -32,3 +32,17 @@ $sidebarWidth: 240px;
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      filter: {
+        collection: 'all',
+        fills: 'all',
+        style: 'all'
+      }
+    }
+  }
+}
+</script>
