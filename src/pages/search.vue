@@ -1,5 +1,34 @@
+<style lang="scss">
+$sidebarWidth: 240px;
+@include b(page) {
+  min-height: 100%;
+  position: relative;
+  @include e(side) {
+    position: absolute;
+    width: $sidebarWidth;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+  @include e(main) {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: $sidebarWidth;
+    right: 0px;
+  }
+}
+</style>
+
 <template>
-  <div class="pa-5">
-    <app-search-bar/>
+  <div class="app-page">
+    <!-- left -->
+    <div class="app-page__side pa-2">
+      <app-search-filter/>
+    </div>
+    <!-- right -->
+    <div class="app-page__main">
+
+    </div>
   </div>
 </template>

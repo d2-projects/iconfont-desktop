@@ -1,0 +1,133 @@
+// BEM
+// 
+// ---------- example ----------
+// 
+// @include b(foo) {
+//   height: 60px;
+//   @include when(center) { text-align: center; }
+//   @include e(header) { padding: 0 8px; }
+//   @include e(footer) { padding: 0 8px; }
+//   @include m(success) {
+//     background-color: green;
+//     @include e(header) { color: green; }
+//     @include e(footer) { color: green; }
+//   }
+// }
+// 
+// ---------- output ----------
+// 
+// .d2-foo { height: 60px; }
+// .d2-foo.is-center { text-align: center; }
+// .d2-foo .d2-foo__header { padding: 0 8px; }
+// .d2-foo .d2-foo__footer { padding: 0 8px; }
+// .d2-foo--success { background-color: green; }
+// .d2-foo--success .d2-foo__header { color: green; }
+// .d2-foo--success .d2-foo__footer { color: green; }
+@mixin b($block) {
+  $B: $namespace+'-'+$block !global;
+  .#{$B} {
+    @content;
+  }
+};
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: "";
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + ","};
+  }
+  @if hitAllSpecialNestRule($selector) {
+    @at-root {
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+};
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: "";
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector + & + $modifier-separator + $unit + ","};
+  }
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+};
+
+// is-xxx
+// 
+// ---------- example ----------
+// 
+// .foo {
+//   @include when(disabled) {
+//     color: red;
+//   }
+// }
+// 
+// ---------- output ----------
+// 
+// .foo.is-disabled { color: red; }
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+};
+
+// extend-rule 将一组样式创建成占位符选择器
+// share-rule 引用上一步闯将的占位符选择器
+// 
+// ---------- example ----------
+// 
+// .foo {
+//   @include share-rule(my-temp-styles) {
+//     color: red;
+//   }
+// }
+// .foo2 {
+//   @include extend-rule(my-temp-styles);
+// }
+// 
+// ---------- output ----------
+// 
+// .foo2 { color: red; }
+@mixin extend-rule($name) {
+  @extend #{'%shared-'+$name};
+};
+@mixin share-rule($name) {
+  $rule-name: '%shared-'+$name;
+  @at-root #{$rule-name} {
+    @content
+  }
+};
+
+// 伪类
+// 
+// ---------- example ----------
+// 
+// .foo {
+//   @include pseudo(first-child) {
+//     color: red;
+//   }
+// }
+// 
+// ---------- output ----------
+// 
+// .foo:first-child { color: red; }
+@mixin pseudo($pseudo) {
+  @at-root #{&}#{':#{$pseudo}'} {
+    @content
+  }
+};
