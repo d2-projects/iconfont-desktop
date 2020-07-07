@@ -23,12 +23,12 @@ $sidebarWidth: 240px;
 <template>
   <div class="app-page">
     <!-- left -->
-    <div class="app-page__side pa-2">
+    <div class="app-page__side py-2 pl-2">
       <app-search-filter/>
     </div>
     <!-- right -->
     <div class="app-page__main">
-
+      <app-search-bar/>
     </div>
   </div>
 </template>
