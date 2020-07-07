@@ -1,7 +1,10 @@
+import { mapState } from 'vuex'
+
 export default {
+  name: 'loading',
   render () {
     const node =
-      <v-dialog vModel={ this.active } persistent width="300" overlay-color="rgba(0,0,0,0)">
+      <v-dialog value={ this.loading } persistent width="300" overlay-color="rgba(0,0,0,0)">
         <v-card color="primary" dark>
           <v-card-text class="pt-5">
             Loading
@@ -15,5 +18,10 @@ export default {
     return {
       active: true
     }
+  },
+  computed: {
+    ...mapState('sdk', [
+      'loading'
+    ])
   }
 }

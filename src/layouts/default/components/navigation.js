@@ -1,4 +1,5 @@
 export default {
+  name: 'navigation',
   render (h) {
     const node =
       <v-bottom-navigation

@@ -12,5 +12,9 @@ new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: h => h(App),
+  created () {
+    // 初始化核心 sdk
+    this.$store.dispatch('sdk/init')
+  }
 }).$mount('#app')

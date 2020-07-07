@@ -4,10 +4,29 @@ import qs from 'qs'
 export default class Iconfont {
   ctoken = ''
   request = null
+  ready = false
 
-  constructor () {
-    this.init()
-  }
+  constructor () {}
+
+  static optionsCollection = [
+    { label: '全部图标', value: -1 },
+    { label: '精选图标', value: 1 }
+  ]
+
+  static optionsFills = [
+    { label: '所有颜色', value: '' },
+    { label: '多色图标', value: 1 },
+    { label: '单色图标', value: 0 }
+  ]
+
+  static optionsStyle = [
+    { label: '线性', value: 'line' },
+    { label: '面性', value: 'fill' },
+    { label: '扁平', value: 'flat' },
+    { label: '手绘', value: 'hand' },
+    { label: '简约', value: 'simple' },
+    { label: '精美', value: 'complex' }
+  ]
 
   async init () {
     const preload = await axios.get('https://www.iconfont.cn')
@@ -48,27 +67,13 @@ export default class Iconfont {
       },
       error => Promise.reject(error)
     )
+    this.setReady(true)
+    console.log('iconfont-sdk is ready')
   }
 
-  static optionsCollection = [
-    { label: '全部图标', value: -1 },
-    { label: '精选图标', value: 1 }
-  ]
-
-  static optionsFills = [
-    { label: '所有颜色', value: '' },
-    { label: '多色图标', value: 1 },
-    { label: '单色图标', value: 0 }
-  ]
-
-  static optionsStyle = [
-    { label: '线性', value: 'line' },
-    { label: '面性', value: 'fill' },
-    { label: '扁平', value: 'flat' },
-    { label: '手绘', value: 'hand' },
-    { label: '简约', value: 'simple' },
-    { label: '精美', value: 'complex' }
-  ]
+  setReady (ready = false) {
+    this.ready = ready
+  }
 
   async search ({
     keyword = '',
