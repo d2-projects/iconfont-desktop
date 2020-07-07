@@ -43,7 +43,20 @@
 </template>
 
 <script>
+import { fromPairs } from 'lodash-es'
 import { mapState } from 'vuex'
+
+// searchFilter () {
+//   const find = keyname => {
+//     const item = this.dict[keyname].find(e => e.name === this.filter[keyname])
+//     return item ? item.value : this.dict[keyname][0].value
+//   }
+//   return {
+//     collection: find('collection'),
+//     fills: find('fills'),
+//     style: find('style')
+//   }
+// }
 
 export default {
   name: 'app-search-filter',
@@ -66,10 +79,11 @@ export default {
   watch: {
     value: {
       handler (value) {
+        const data = this.valueToName(value)
         this.currentValue = [
-          value.collection,
-          value.fills,
-          value.style
+          data.collection,
+          data.fills,
+          data.style
         ]
       },
       immediate: true
@@ -86,12 +100,29 @@ export default {
     }
   },
   methods: {
+    findInDictBy (value, dictName, byKeyname, returnKeyname) {
+      const item = this.dict[dictName].find(dictItem => dictItem[byKeyname] === value)
+      return item ? item[returnKeyname] : value
+    },
+    nameToValue (source) {
+      return fromPairs(Object.keys(source).map(keyname => [
+        keyname,
+        this.findInDictBy(source[keyname], keyname, 'name', 'value')
+      ]))
+    },
+    valueToName (source) {
+      return fromPairs(Object.keys(source).map(keyname => [
+        keyname,
+        this.findInDictBy(source[keyname], keyname, 'value', 'name')
+      ]))
+    },
     onRadioGroupChange () {
-      this.$emit('input', {
+      const value = this.nameToValue({
         collection: this.currentValue[0],
         fills: this.currentValue[1],
         style: this.currentValue[2]
       })
+      this.$emit('input', value)
     }
   }
 }
