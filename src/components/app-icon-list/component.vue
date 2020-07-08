@@ -14,13 +14,15 @@
       }
     }"
     @scrollBottom="onScrollBottom">
-    <slot name="header"/>
-    <v-row no-gutters class="pa-1">
-      <v-col v-for="item in value" :key="item.id" xs="6" sm="4" md="2" lg="2" xl="1" class="pa-1">
-        <app-icon-list-item :value="item"/>
-      </v-col>
-    </v-row>
-    <slot name="footer"/>
+    <v-container>
+      <slot name="header"/>
+      <v-row no-gutters>
+        <v-col v-for="item in value" :key="item.id" xs="4" sm="3" md="2" lg="2" xl="1" class="pa-1">
+          <app-icon-list-item :value="item"/>
+        </v-col>
+      </v-row>
+      <slot name="footer"/>
+    </v-container>
   </app-scroll>
 </template>
 

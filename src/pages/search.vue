@@ -42,7 +42,7 @@ $sidebarWidth: 240px;
 <template>
   <div class="app-page">
     <!-- left -->
-    <div class="app-page__side py-2 pl-2">
+    <div class="app-page__side pa-4 pr-0">
       <app-search-filter v-model="filter" @change="doSearch"/>
     </div>
     <!-- right -->
@@ -89,7 +89,7 @@ export default {
       const result = await this.search({
         keyword: this.keyword,
         ...this.filter,
-        pageSize: 60
+        pageSize: 36
       })
       this.list = result.icons
     }
