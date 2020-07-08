@@ -69,7 +69,6 @@ export default class Iconfont {
       error => Promise.reject(error)
     )
     this.setReady(true)
-    console.log('iconfont-sdk is ready')
   }
 
   setReady (ready = false) {

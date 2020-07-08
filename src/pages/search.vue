@@ -17,6 +17,25 @@ $sidebarWidth: 240px;
     left: $sidebarWidth;
     right: 0px;
   }
+  @include e(main-topbar) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 1;
+    overflow: hidden;
+    transition: all .3s;
+    &:hover {
+      background-color: rgba(#FFF, .95);
+    }
+  }
+  @include e(main-content) {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+  }
 }
 </style>
 
@@ -24,12 +43,24 @@ $sidebarWidth: 240px;
   <div class="app-page">
     <!-- left -->
     <div class="app-page__side py-2 pl-2">
-      <app-search-filter v-model="filter"/>
+      <app-search-filter
+        v-model="filter"
+        @change="doSearch"/>
     </div>
     <!-- right -->
     <div class="app-page__main">
-      <app-search-bar v-model="keyword" @submit="onSearchBarSubmit"/>
-      <span v-for="item in list" :key="item.id" v-html="item.show_svg"></span>
+      <div class="app-page__main-content px-1">
+        <app-icon-list
+          :value="list"
+          :space-top="96">
+          <div slot="header" :style="{ height: topbarHeight + 'px' }"></div>
+        </app-icon-list>
+      </div>
+      <div ref="topbar" class="app-page__main-topbar">
+        <app-search-bar
+          v-model="keyword"
+          @submit="doSearch"/>
+      </div>
     </div>
   </div>
 </template>
@@ -39,24 +70,32 @@ import { mapActions } from 'vuex'
 export default {
   data () {
     return {
-      keyword: '',
+      keyword: 'github',
       filter: {
         collection: -1,
         fills: '',
         style: ''
       },
       list: [],
-      count: 0
+      count: 0,
+      topbarHeight: 0
     }
+  },
+  mounted () {
+    this.topbarHeight = this.getTopbarHeight()
   },
   methods: {
     ...mapActions('sdk', [
       'search'
     ]),
-    async onSearchBarSubmit (keyword) {
+    getTopbarHeight () {
+      return this.$refs.topbar.offsetHeight
+    },
+    async doSearch () {
       const result = await this.search({
         keyword: this.keyword,
-        ...this.filter
+        ...this.filter,
+        pageSize: 60
       })
       this.list = result.icons
     }

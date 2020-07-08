@@ -7,7 +7,7 @@ export default {
       <v-dialog value={ this.loading } persistent width="300" overlay-color="rgba(0,0,0,0)">
         <v-card color="primary" dark>
           <v-card-text class="pt-5">
-            Loading
+            初始化 Iconfont SDK
           </v-card-text>
           <v-progress-linear indeterminate color="white" class="mb-0"/>
         </v-card>
@@ -23,5 +23,10 @@ export default {
     ...mapState('sdk', [
       'loading'
     ])
+  },
+  watch: {
+    loading (loading) {
+      console.log(loading)
+    }
   }
 }

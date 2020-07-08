@@ -7,7 +7,7 @@
 </style>
 
 <template>
-  <div class="app-search-bar pa-2">
+  <div class="app-search-bar pa-5">
     <div class="app-search-bar__input-group d-flex mx-auto">
       <v-text-field
         class="mr-5"

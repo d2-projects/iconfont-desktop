@@ -2,6 +2,12 @@ import { remote } from 'electron'
 
 const Iconfont = remote.getGlobal('Iconfont')
 
+const wait = time => new Promise(resolve => {
+  setTimeout(() => {
+    resolve()
+  }, time)
+})
+
 export default {
   namespaced: true,
   state: {
@@ -16,10 +22,13 @@ export default {
      * @param {Object} context
      */
     async init ({ state }) {
-      this.loading = true
-      await state.sdk.init()
-      this.ready = true
-      this.loading = false
+      state.loading = true
+      await Promise.all([
+        state.sdk.init(),
+        wait(1000)
+      ])
+      state.ready = true
+      state.loading = false
     },
     search ({ state }, payload) {
       return state.sdk.search(payload)
