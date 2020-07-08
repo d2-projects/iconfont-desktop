@@ -2,7 +2,6 @@
 @include b(icon-list-item) {
   border-radius: 4px;
   cursor: pointer;
-  user-select: none;
   background-color: rgba(#000, .03);
   &:hover {
     background-color: rgba(#000, .05);

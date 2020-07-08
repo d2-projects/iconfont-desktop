@@ -15,13 +15,17 @@
     }"
     @scrollBottom="onScrollBottom">
     <v-container>
-      <slot name="header"/>
+      <div class="pa-1">
+        <slot name="header"/>
+      </div>
       <v-row no-gutters>
         <v-col v-for="item in value" :key="item.id" xs="4" sm="3" md="2" lg="2" xl="1" class="pa-1">
           <app-icon-list-item :value="item"/>
         </v-col>
       </v-row>
-      <slot name="footer"/>
+      <div class="pa-1">
+        <slot name="footer"/>
+      </div>
     </v-container>
   </app-scroll>
 </template>
@@ -37,7 +41,7 @@ export default {
   },
   methods: {
     onScrollBottom (event) {
-      console.log('onScrollBottom')
+      this.$emit('scrollBottom', event)
     }
   }
 }
