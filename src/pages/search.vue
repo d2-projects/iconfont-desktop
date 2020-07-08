@@ -58,17 +58,17 @@ $sidebarWidth: 240px;
           <div slot="header" :style="{ height: topbarHeight + 'px' }"></div>
           <div slot="footer">
             <!-- 加载更多 -->
-            <v-btn v-if="showLoadMoreButton" color="primary" :loading="isSearching" @click="trySearch" text large block>
+            <v-btn v-if="canLoadMore" color="primary" :loading="isSearching" @click="trySearch" text large block>
               加载更多 {{ list.length }}/{{ total }}
               <v-icon right>mdi-cloud-download-outline</v-icon>
             </v-btn>
             <!-- 全部加载完毕 -->
-            <v-btn v-if="showLoadedAllButton" :ripple="false" text large block disabled>
+            <v-btn v-if="isLoadedAll" :ripple="false" text large block disabled>
               全部加载完毕
               <v-icon right>mdi-checkbox-marked-circle-outline</v-icon>
             </v-btn>
             <!-- 没有搜索到数据 -->
-            <v-btn v-if="showEmptyButton" :ripple="false" text large block disabled>
+            <v-btn v-if="isNoResult" :ripple="false" text large block disabled>
               无搜索结果
               <v-icon right>mdi-alert-circle-outline</v-icon>
             </v-btn>
@@ -110,13 +110,13 @@ export default {
     }
   },
   computed: {
-    showLoadMoreButton () {
+    canLoadMore () {
       return this.isSearched && this.total !== 0 && this.total !== this.list.length
     },
-    showLoadedAllButton () {
+    isLoadedAll () {
       return this.isSearched && this.total !== 0 && this.total === this.list.length
     },
-    showEmptyButton () {
+    isNoResult () {
       return this.isSearched && this.total === 0
     }
   },
