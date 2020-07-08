@@ -25,6 +25,12 @@ $sidebarWidth: 240px;
     z-index: 1;
     overflow: hidden;
     transition: all .3s;
+    background-image: linear-gradient(
+      180deg,
+      rgba(#FFF, 1) 0%,
+      rgba(#FFF, .9) 70%,
+      rgba(#FFF, 0) 100%
+    );
     &:hover {
       background-color: rgba(#FFF, .95);
     }
