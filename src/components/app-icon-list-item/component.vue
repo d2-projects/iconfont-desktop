@@ -17,12 +17,6 @@
 <template>
   <v-responsive class="app-icon-list-item" :aspect-ratio="1">
     <div
-      v-if="placeholder"
-      class="app-icon-list-item__icon grey lighten-5"
-      flex="main:center cross:center">
-    </div>
-    <div
-      v-else
       class="app-icon-list-item__icon grey lighten-5"
       v-html="value.show_svg"
       flex="main:center cross:center"/>
@@ -36,9 +30,6 @@ export default {
     value: {
       type: Object,
       default: () => ({})
-    },
-    placeholder: {
-      type: Boolean
     }
   }
 }

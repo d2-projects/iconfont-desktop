@@ -47,19 +47,18 @@ $sidebarWidth: 240px;
   <div class="app-page">
     <!-- left -->
     <div class="app-page__side pa-4 pr-0">
-      <app-search-filter v-model="filter" @change="onFilterChange"/>
+      <app-search-filter v-model="filter" @change="searchWithNewQuery"/>
     </div>
     <!-- right -->
     <div class="app-page__main">
       <div class="app-page__main-content">
         <app-icon-list
           :value="list"
-          :placeholders="placeholders"
-          @scrollBottom="onScrollBottom">
+          @inCordonY="onInCordonY">
           <div slot="header" :style="{ height: topbarHeight + 'px' }"></div>
           <div slot="footer">
             <!-- 加载更多 -->
-            <v-btn v-if="canLoadMore" color="primary" :loading="isSearching" @click="fetchList" text large block>
+            <v-btn v-if="canLoadMore" color="primary" :loading="isSearching" @click="loadMore" text large block>
               加载更多 {{ list.length }}/{{ total }}
               <v-icon right>mdi-cloud-download-outline</v-icon>
             </v-btn>
@@ -80,7 +79,7 @@ $sidebarWidth: 240px;
         <app-search-bar
           v-model="keyword"
           :loading="isSearching"
-          @submit="onSearchSubmit"/>
+          @submit="searchWithNewQuery"/>
       </div>
     </div>
   </div>
@@ -98,15 +97,17 @@ export default {
         fills: '',
         style: ''
       },
-      pageSize: 12 * 7,
+      pageSize: 6 * 5,
       pageNo: 1,
       // 搜索结果
-      placeholders: 0,
       list: [],
       total: 0,
       // 搜索状态
       isSearched: false,
       isSearching: false,
+      // 自动加载前几页
+      autoSearchCount: 0,
+      autoSearchCountMax: 5,
       // UI
       topbarHeight: 0
     }
@@ -120,6 +121,9 @@ export default {
     },
     isNoResult () {
       return this.isSearched && this.total === 0
+    },
+    canAutoSearch () {
+      return this.autoSearchCount < this.autoSearchCountMax
     }
   },
   mounted () {
@@ -136,26 +140,28 @@ export default {
     getTopbarHeight () {
       return this.$refs.topbar.offsetHeight
     },
-    onScrollBottom () {
-      this.fetchList()
-    },
     reset () {
       this.list = []
       this.pageNo = 1
       this.isSearched = false
+      this.autoSearchCount = 0
     },
-    onFilterChange () {
+    searchWithNewQuery () {
       this.reset()
       this.fetchList()
     },
-    onSearchSubmit () {
-      this.reset()
+    loadMore () {
       this.fetchList()
+    },
+    onInCordonY () {
+      if (!this.isSearching && this.canLoadMore && this.canAutoSearch) {
+        this.autoSearchCount += 1
+        this.fetchList()
+      }
     },
     async fetchList () {
       if (!this.keyword || this.isSearching) return
       this.isSearching = true
-      this.placeholders = this.pageSize
       const result = await this.search({
         keyword: this.keyword,
         ...this.filter,
@@ -163,7 +169,6 @@ export default {
         pageNo: this.pageNo
       })
       this.pageNo += 1
-      this.placeholders = 0
       this.list.push(...result.icons)
       this.total = result.count
       this.isSearched = true

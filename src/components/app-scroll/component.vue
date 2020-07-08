@@ -49,6 +49,14 @@ export default {
     theme: {
       type: String,
       default: 'thin-dark'
+    },
+    cordonX: {
+      type: Number,
+      default: 0
+    },
+    cordonY: {
+      type: Number,
+      default: 0
     }
   },
   data () {
@@ -107,6 +115,10 @@ export default {
                 const information = this.osInstance.scroll()
                 const ratioY = information.ratio.y
                 this.$emit(camelCase(name.replace(/^on/, '')), event)
+                const cordonY = information.max.y - information.position.y
+                const cordonX = information.max.x - information.position.x
+                if (cordonY <= this.cordonY) this.$emit('inCordonY', event)
+                if (cordonX <= this.cordonX) this.$emit('inCordonX', event)
                 if (ratioY === 0) this.$emit('scrollTop', event)
                 if (ratioY === 1) this.$emit('scrollBottom', event)
               }
