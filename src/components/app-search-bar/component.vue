@@ -1,6 +1,6 @@
 <style lang="scss">
 @include b(search-bar) {
-  @include e(input-group) {
+  @include e(content) {
     max-width: 400px;
   }
 }
@@ -8,7 +8,7 @@
 
 <template>
   <div class="app-search-bar pa-4">
-    <div class="app-search-bar__input-group d-flex mx-auto">
+    <div class="app-search-bar__content d-flex mx-auto">
       <v-text-field
         ref="input"
         class="mr-5"
@@ -20,12 +20,14 @@
         single-line
         autofocus
         hide-details
+        background-color="rgba(240, 240, 240, 0.8)"
         @input="onInput"
         @keydown="onKeyDown"
         @click="onClickInput"/>
       <v-btn
         :loading="loading"
         :disabled="false"
+        :elevation="2"
         color="primary"
         class="white--text"
         fab

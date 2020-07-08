@@ -24,15 +24,13 @@ $sidebarWidth: 240px;
     right: 0px;
     z-index: 1;
     overflow: hidden;
+    position: relative;
     transition: all .3s;
-    background-image: linear-gradient(
-      180deg,
-      rgba(#FFF, 1) 0%,
-      rgba(#FFF, .9) 70%,
-      rgba(#FFF, 0) 100%
-    );
+    background-color: rgba(#FFF, .5);
+    backdrop-filter: saturate(180%) blur(6px);
+    border-bottom: 1px solid #FFF;
     &:hover {
-      background-color: rgba(#FFF, .95);
+      background-color: rgba(#FFF, .7);
     }
   }
   @include e(main-content) {
