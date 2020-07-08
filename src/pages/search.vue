@@ -43,23 +43,17 @@ $sidebarWidth: 240px;
   <div class="app-page">
     <!-- left -->
     <div class="app-page__side py-2 pl-2">
-      <app-search-filter
-        v-model="filter"
-        @change="doSearch"/>
+      <app-search-filter v-model="filter" @change="doSearch"/>
     </div>
     <!-- right -->
     <div class="app-page__main">
-      <div class="app-page__main-content px-1">
-        <app-icon-list
-          :value="list"
-          :space-top="96">
+      <div class="app-page__main-content">
+        <app-icon-list :value="list">
           <div slot="header" :style="{ height: topbarHeight + 'px' }"></div>
         </app-icon-list>
       </div>
       <div ref="topbar" class="app-page__main-topbar">
-        <app-search-bar
-          v-model="keyword"
-          @submit="doSearch"/>
+        <app-search-bar v-model="keyword" @submit="doSearch"/>
       </div>
     </div>
   </div>

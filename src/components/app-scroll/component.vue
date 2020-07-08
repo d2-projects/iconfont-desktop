@@ -32,6 +32,8 @@ import {
 } from 'lodash-es'
 import OverlayScrollbars from 'overlayscrollbars'
 import 'overlayscrollbars/css/OverlayScrollbars.css'
+import '@/assets/style/components/overlayscrollbars/os-theme-thin-dark.css'
+import '@/assets/style/components/overlayscrollbars/os-theme-thin-light.css'
 
 // https://kingsora.github.io/OverlayScrollbars/#!documentation/options
 
@@ -43,6 +45,10 @@ export default {
     },
     extensions: {
       type: [String, Array, Object]
+    },
+    theme: {
+      type: String,
+      default: 'thin-dark'
     }
   },
   data () {
@@ -89,6 +95,7 @@ export default {
         'onUpdated'
       ]
       const osOptionsDefault = {
+        className: `os-theme-${this.theme}`,
         scrollbars: {
           autoHide: 'move'
         },

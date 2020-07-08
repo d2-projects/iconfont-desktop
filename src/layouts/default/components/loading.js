@@ -23,10 +23,5 @@ export default {
     ...mapState('sdk', [
       'loading'
     ])
-  },
-  watch: {
-    loading (loading) {
-      console.log(loading)
-    }
   }
 }

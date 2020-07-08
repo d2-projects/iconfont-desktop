@@ -24,7 +24,7 @@ export default {
     async init ({ state }) {
       state.loading = true
       await state.sdk.init()
-      await wait(2000)
+      await wait(1000)
       state.ready = true
       state.loading = false
     },

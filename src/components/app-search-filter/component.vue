@@ -15,7 +15,8 @@
         scrollbars: {
           autoHide: 'never'
         }
-      }">
+      }"
+      theme="thin-light">
       <v-expansion-panels :value="opened" flat multiple accordion tile hover>
         <v-expansion-panel
           v-for="(value, index) of currentValue"
