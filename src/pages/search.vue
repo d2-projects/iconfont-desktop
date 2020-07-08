@@ -89,7 +89,7 @@ export default {
       const result = await this.search({
         keyword: this.keyword,
         ...this.filter,
-        pageSize: 36
+        pageSize: 6 * 10
       })
       this.list = result.icons
     }
