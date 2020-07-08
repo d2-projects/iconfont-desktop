@@ -5,7 +5,7 @@
 </style>
 
 <template>
-  <app-scroll class="app-icon-list">
+  <app-scroll class="app-icon-list" @scrollBottom="onScrollBottom">
     <slot name="header"/>
     <v-row no-gutters>
       <v-col v-for="item in value" :key="item.id" xs="6" sm="4" md="2" lg="2" xl="1" class="pa-2">
@@ -23,6 +23,11 @@ export default {
     value: {
       type: Array,
       default: () => []
+    }
+  },
+  methods: {
+    onScrollBottom (event) {
+      console.log('onScrollBottom')
     }
   }
 }

@@ -23,10 +23,8 @@ export default {
      */
     async init ({ state }) {
       state.loading = true
-      await Promise.all([
-        state.sdk.init(),
-        wait(1000)
-      ])
+      await state.sdk.init()
+      await wait(2000)
       state.ready = true
       state.loading = false
     },

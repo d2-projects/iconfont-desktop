@@ -92,10 +92,27 @@ export default {
         scrollbars: {
           autoHide: 'move'
         },
-        callbacks: fromPairs(map(osCallbacks, name => [
-          name,
-          event => this.$emit(camelCase(name.replace(/^on/, '')), event)
-        ]))
+        callbacks: fromPairs(map(osCallbacks, name => {
+          let callback = () => {}
+          switch (name) {
+            case 'onScroll':
+              callback = event => {
+                const information = this.osInstance.scroll()
+                const ratioY = information.ratio.y
+                this.$emit(camelCase(name.replace(/^on/, '')), event)
+                if (ratioY === 0) this.$emit('scrollTop', event)
+                if (ratioY === 1) this.$emit('scrollBottom', event)
+              }
+              break
+            default:
+              callback = event => this.$emit(camelCase(name.replace(/^on/, '')), event)
+              break
+          }
+          return [
+            name,
+            callback
+          ]
+        }))
       }
       const customizer = (left, right, key) => {
         if (key === 'callbacks') {
