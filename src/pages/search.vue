@@ -58,7 +58,7 @@ $sidebarWidth: 240px;
           <div slot="header" :style="{ height: topbarHeight + 'px' }"></div>
           <div slot="footer">
             <!-- 加载更多 -->
-            <v-btn v-if="showLoadMoreButton" color="primary" :loading="isSearching" @click="doSearch" text large block>
+            <v-btn v-if="showLoadMoreButton" color="primary" :loading="isSearching" @click="trySearch" text large block>
               加载更多 {{ list.length }}/{{ total }}
               <v-icon right>mdi-cloud-download-outline</v-icon>
             </v-btn>
@@ -76,7 +76,10 @@ $sidebarWidth: 240px;
         </app-icon-list>
       </div>
       <div ref="topbar" class="app-page__main-topbar">
-        <app-search-bar v-model="keyword" @submit="onKeywordChange"/>
+        <app-search-bar
+          v-model="keyword"
+          :loading="isSearching"
+          @submit="onSearchSubmit"/>
       </div>
     </div>
   </div>
@@ -132,7 +135,7 @@ export default {
       return this.$refs.topbar.offsetHeight
     },
     onScrollBottom () {
-      this.doSearch()
+      this.trySearch()
     },
     resetSearchStatus () {
       this.list = []
@@ -141,14 +144,18 @@ export default {
     },
     onFilterChange () {
       this.resetSearchStatus()
-      this.doSearch()
+      this.trySearch()
     },
-    onKeywordChange () {
+    onSearchSubmit () {
       this.resetSearchStatus()
-      this.doSearch()
+      this.trySearch()
     },
-    async doSearch () {
-      console.log('doSearch')
+    async trySearch () {
+      // 空关键字忽略
+      if (!this.keyword) return
+      // 加载状态时忽略
+      if (this.isSearching) return
+      // 开始请求数据
       this.isSearching = true
       const result = await this.search({
         keyword: this.keyword,

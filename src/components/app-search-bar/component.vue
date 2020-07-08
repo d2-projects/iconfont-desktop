@@ -10,6 +10,7 @@
   <div class="app-search-bar pa-4">
     <div class="app-search-bar__input-group d-flex mx-auto">
       <v-text-field
+        ref="input"
         class="mr-5"
         v-model="currentValue"
         label="搜索"
@@ -19,9 +20,11 @@
         single-line
         autofocus
         hide-details
-        @input="tryEmit"/>
+        @input="onInput"
+        @keydown="onKeyDown"
+        @click="onClickInput"/>
       <v-btn
-        :loading="false"
+        :loading="loading"
         :disabled="false"
         color="primary"
         class="white--text"
@@ -42,12 +45,15 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    loading: {
+      type: Boolean
     }
   },
   data () {
     return {
       currentValue: '',
-      tryEmit: null
+      throttled: null
     }
   },
   watch: {
@@ -59,12 +65,24 @@ export default {
     }
   },
   created () {
-    this.tryEmit = throttle(this.doEmit, 1000)
+    this.throttled = throttle(this.onInput, 1000)
   },
   methods: {
-    doEmit () {
+    onInput () {
       this.$emit('input', this.currentValue)
       this.$emit('change', this.currentValue)
+    },
+    onKeyDown (event) {
+      if (event.keyCode === 13) {
+        this.onClickSearch()
+      }
+    },
+    onClickInput () {
+      if (this.currentValue) {
+        this.currentValue = ''
+        this.onInput()
+        this.onClickSearch()
+      }
     },
     onClickSearch () {
       this.$emit('submit', this.currentValue)
