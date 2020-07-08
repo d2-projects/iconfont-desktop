@@ -15,7 +15,6 @@
         v-model="currentValue"
         label="搜索"
         filled
-        clearable
         rounded
         single-line
         autofocus
