@@ -19,8 +19,11 @@
         <slot name="header"/>
       </div>
       <v-row no-gutters>
-        <v-col v-for="item in value" :key="item.id" xs="4" sm="3" md="2" lg="2" xl="1" class="pa-1">
+        <v-col v-for="item of value" :key="item.id" xs="4" sm="3" md="2" lg="2" xl="1" class="pa-1">
           <app-icon-list-item :value="item"/>
+        </v-col>
+        <v-col v-for="n in placeholders" :key="n" xs="4" sm="3" md="2" lg="2" xl="1" class="pa-1">
+          <app-icon-list-item placeholder/>
         </v-col>
       </v-row>
       <div class="pa-1">
@@ -37,6 +40,10 @@ export default {
     value: {
       type: Array,
       default: () => []
+    },
+    placeholders: {
+      type: Number,
+      default: 0
     }
   },
   methods: {

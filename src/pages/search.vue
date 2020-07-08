@@ -26,11 +26,11 @@ $sidebarWidth: 240px;
     overflow: hidden;
     position: relative;
     transition: all .3s;
-    background-color: rgba(#FFF, .5);
+    background-color: rgba(#FFF, .8);
     backdrop-filter: saturate(180%) blur(6px);
     border-bottom: 1px solid #FFF;
     &:hover {
-      background-color: rgba(#FFF, .7);
+      background-color: rgba(#FFF, .9);
     }
   }
   @include e(main-content) {
@@ -52,11 +52,14 @@ $sidebarWidth: 240px;
     <!-- right -->
     <div class="app-page__main">
       <div class="app-page__main-content">
-        <app-icon-list :value="list" @scrollBottom="onScrollBottom">
+        <app-icon-list
+          :value="list"
+          :placeholders="placeholders"
+          @scrollBottom="onScrollBottom">
           <div slot="header" :style="{ height: topbarHeight + 'px' }"></div>
           <div slot="footer">
             <!-- 加载更多 -->
-            <v-btn v-if="canLoadMore" color="primary" :loading="isSearching" @click="trySearch" text large block>
+            <v-btn v-if="canLoadMore" color="primary" :loading="isSearching" @click="fetchList" text large block>
               加载更多 {{ list.length }}/{{ total }}
               <v-icon right>mdi-cloud-download-outline</v-icon>
             </v-btn>
@@ -95,9 +98,10 @@ export default {
         fills: '',
         style: ''
       },
-      pageSize: 6 * 4,
+      pageSize: 12 * 7,
       pageNo: 1,
       // 搜索结果
+      placeholders: 0,
       list: [],
       total: 0,
       // 搜索状态
@@ -133,28 +137,25 @@ export default {
       return this.$refs.topbar.offsetHeight
     },
     onScrollBottom () {
-      this.trySearch()
+      this.fetchList()
     },
-    resetSearchStatus () {
+    reset () {
       this.list = []
       this.pageNo = 1
       this.isSearched = false
     },
     onFilterChange () {
-      this.resetSearchStatus()
-      this.trySearch()
+      this.reset()
+      this.fetchList()
     },
     onSearchSubmit () {
-      this.resetSearchStatus()
-      this.trySearch()
+      this.reset()
+      this.fetchList()
     },
-    async trySearch () {
-      // 空关键字忽略
-      if (!this.keyword) return
-      // 加载状态时忽略
-      if (this.isSearching) return
-      // 开始请求数据
+    async fetchList () {
+      if (!this.keyword || this.isSearching) return
       this.isSearching = true
+      this.placeholders = this.pageSize
       const result = await this.search({
         keyword: this.keyword,
         ...this.filter,
@@ -162,6 +163,7 @@ export default {
         pageNo: this.pageNo
       })
       this.pageNo += 1
+      this.placeholders = 0
       this.list.push(...result.icons)
       this.total = result.count
       this.isSearched = true

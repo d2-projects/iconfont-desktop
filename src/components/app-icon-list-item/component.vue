@@ -2,10 +2,6 @@
 @include b(icon-list-item) {
   border-radius: 4px;
   cursor: pointer;
-  background-color: rgba(#000, .03);
-  &:hover {
-    background-color: rgba(#000, .05);
-  }
   @include e(icon) {
     height: 100%;
     width: 100%;
@@ -21,7 +17,13 @@
 <template>
   <v-responsive class="app-icon-list-item" :aspect-ratio="1">
     <div
-      class="app-icon-list-item__icon"
+      v-if="placeholder"
+      class="app-icon-list-item__icon grey lighten-5"
+      flex="main:center cross:center">
+    </div>
+    <div
+      v-else
+      class="app-icon-list-item__icon grey lighten-5"
       v-html="value.show_svg"
       flex="main:center cross:center"/>
   </v-responsive>
@@ -34,6 +36,9 @@ export default {
     value: {
       type: Object,
       default: () => ({})
+    },
+    placeholder: {
+      type: Boolean
     }
   }
 }
