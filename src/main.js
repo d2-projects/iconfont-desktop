@@ -15,7 +15,6 @@ new Vue({
   vuetify,
   render: h => h(App),
   created () {
-    // 初始化核心 sdk
-    this.$store.dispatch('sdk/init')
+    this.$store.dispatch('sdk/autoLogin')
   }
 }).$mount('#app')

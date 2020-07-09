@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash-es'
 import axios from 'axios'
 import qs from 'qs'
 import cookie from 'cookie'
@@ -46,7 +47,9 @@ export default class Iconfont {
    * @param {Object} cookies 使用指定的 cookie 初始化
    */
   async requestGenerator (cookies) {
-    const _cookies = cookies || await this.getCookie()
+    const _cookies = isEmpty(cookies) ? await this.getCookie() : cookies
+    console.log(cookies)
+    console.log(_cookies)
     const request = axios.create({
       baseURL: this.baseURL,
       timeout: 10000,
