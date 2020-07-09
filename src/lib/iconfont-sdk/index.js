@@ -1,10 +1,11 @@
 import axios from 'axios'
 import qs from 'qs'
+import cookie from 'cookie'
 
 export default class Iconfont {
-  ctoken = ''
   request = null
   ready = false
+  baseURL = 'https://www.iconfont.cn'
 
   constructor () {}
 
@@ -29,37 +30,50 @@ export default class Iconfont {
     ]
   }
 
-  async init () {
-    const preload = await axios.get('https://www.iconfont.cn')
-    let cookie = ''
-    preload.headers['set-cookie'].forEach(item => {
-      cookie += item.split(';')[0] + ';'
-      if (item.includes('ctoken')) {
-        this.ctoken = item.match(/ctoken=(.*?);/)[1]
-      }
-    })
-    this.request = axios.create({
-      baseURL: 'https://www.iconfont.cn',
+  async getCookie () {
+    const preload = await axios.get(this.baseURL)
+    const data = Object.assign(
+      {},
+      ...preload.headers['set-cookie']
+        .map(item => item.split(';')[0])
+        .map(cookie.parse)
+    )
+    return data
+  }
+
+  cookiesSerialize (cookies = {}) {
+    const result = Object.keys(cookies)
+      .map(name => `${name}=${cookies[name]}`)
+      .join('; ')
+    console.log(result)
+    return result
+  }
+
+  requestGenerator (cookies = {}) {
+    const request = axios.create({
+      baseURL: this.baseURL,
       timeout: 10000,
       xsrfCookieName: 'ctoken',
       xsrfHeaderName: 'x-csrf-token',
       withCredentials: true,
       headers: {
-        cookie: cookie,
-        'x-csrf-token': this.ctoken,
+        cookie: this.cookiesSerialize(cookies),
+        'x-csrf-token': cookies.ctoken,
         'content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
       }
     })
-    this.request.interceptors.request.use(
+    request.interceptors.request.use(
       config => {
-        config.data.ctoken = this.ctoken
-        config.data.t = new Date().getTime()
-        config.data = qs.stringify(config.data)
+        if (config.method === 'post') {
+          config.data.ctoken = cookies.ctoken
+          config.data.t = new Date().getTime()
+          config.data = qs.stringify(config.data)
+        }
         return config
       },
       error => Promise.reject(error)
     )
-    this.request.interceptors.response.use(
+    request.interceptors.response.use(
       response => {
         if (response.data.code === 200) {
           return response.data.data
@@ -68,6 +82,13 @@ export default class Iconfont {
       },
       error => Promise.reject(error)
     )
+    return request
+  }
+
+  async init (cookies) {
+    const _cookies = cookies || await this.getCookie()
+    console.log(_cookies)
+    this.request = this.requestGenerator(_cookies)
     this.setReady(true)
   }
 
@@ -96,5 +117,9 @@ export default class Iconfont {
       data[style] = 1
     }
     return this.request.post('api/icon/search.json', data)
+  }
+
+  async pubinfo () {
+    return this.request.get('api/pubinfo.json')
   }
 }

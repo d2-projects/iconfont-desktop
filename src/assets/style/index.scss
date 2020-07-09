@@ -5,3 +5,7 @@
 html body {
   user-select: none;
 }
+
+@include b(drag) {
+  -webkit-app-region: drag;
+}

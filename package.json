@@ -13,6 +13,7 @@
   "main": "background.js",
   "dependencies": {
     "axios": "^0.19.2",
+    "cookie": "^0.4.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.8.28",
     "electron-log": "^4.2.2",

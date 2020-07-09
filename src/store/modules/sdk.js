@@ -2,11 +2,11 @@ import { remote } from 'electron'
 
 const Iconfont = remote.getGlobal('Iconfont')
 
-const wait = time => new Promise(resolve => {
-  setTimeout(() => {
-    resolve()
-  }, time)
-})
+// const wait = time => new Promise(resolve => {
+//   setTimeout(() => {
+//     resolve()
+//   }, time)
+// })
 
 export default {
   namespaced: true,
@@ -21,15 +21,17 @@ export default {
      * @description 初始化
      * @param {Object} context
      */
-    async init ({ state }) {
+    async init ({ state }, cookies) {
       state.loading = true
-      await state.sdk.init()
-      await wait(1000)
+      await state.sdk.init(cookies)
       state.ready = true
       state.loading = false
     },
     search ({ state }, payload) {
       return state.sdk.search(payload)
+    },
+    pubinfo ({ state }) {
+      return state.sdk.pubinfo()
     }
   }
 }
