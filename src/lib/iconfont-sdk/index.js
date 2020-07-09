@@ -98,7 +98,7 @@ export default class Iconfont {
   /**
    * @description [API] 图标搜索
    */
-  async search ({
+  async iconSearch ({
     keyword = '',
     pageNo = 1,
     pageSize = 10,

@@ -135,7 +135,7 @@ export default {
   },
   methods: {
     ...mapActions('sdk', [
-      'search'
+      'iconSearch'
     ]),
     getTopbarHeight () {
       return this.$refs.topbar.offsetHeight
@@ -162,7 +162,7 @@ export default {
     async fetchList () {
       if (!this.keyword || this.isSearching) return
       this.isSearching = true
-      const result = await this.search({
+      const result = await this.iconSearch({
         keyword: this.keyword,
         ...this.filter,
         pageSize: this.pageSize,
