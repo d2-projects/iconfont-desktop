@@ -1,5 +1,5 @@
 <template>
-  <v-system-bar class="app-drag" color="primary" app dark window>
+  <v-system-bar class="app-drag" color="primary" @dblclick="onDbclick" app dark window>
     <v-icon left>{{ icon }}</v-icon>
     <span>{{ title }}</span>
     <v-spacer></v-spacer>
@@ -56,6 +56,9 @@ export default {
     onClickCloseButton (event) {
       event.target.blur()
       this.close()
+    },
+    onDbclick () {
+      this.toggleMaximize()
     }
   }
 }

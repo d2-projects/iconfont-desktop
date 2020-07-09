@@ -3,6 +3,7 @@ export default {
   render (h) {
     const node =
       <v-bottom-navigation
+        class="app-drag"
         value={ this.active }
         shift={ true }
         app={ true }
