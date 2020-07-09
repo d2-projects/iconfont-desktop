@@ -22,11 +22,22 @@ module.exports = {
           .test(/\.js$/)
           .include
             .add(path.resolve(__dirname, 'src/lib/iconfont-sdk'))
+            .add(path.resolve(__dirname, 'src/background.js'))
             .end()
           .use('babel')
           .loader('babel-loader')
           .options({
-            presets: [['@babel/preset-env', { modules: false }]],
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  modules: false,
+                  targets: {
+                    electron: '9'
+                  }
+                }
+              ]
+            ],
             plugins: ['@babel/plugin-proposal-class-properties']
           })
       },
