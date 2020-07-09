@@ -8,6 +8,10 @@ export default class Iconfont {
   baseURL = 'https://www.iconfont.cn'
   // 用于网络请求的实例
   request = null
+  // [数据] 当前用户的信息
+  user = {}
+  // [数据] 全站图标数量
+  iconCount = 0
 
   static dictionary = dictionary
 
@@ -78,13 +82,17 @@ export default class Iconfont {
    */
   async init (cookies) {
     this.request = await this.requestGenerator(cookies)
+    await this.pubinfo()
   }
 
   /**
    * @description [API] 公共数据
    */
   async pubinfo () {
-    return this.request.get('api/pubinfo.json')
+    const result = await this.request.get('api/pubinfo.json')
+    this.user = result.user || {}
+    this.iconCount = result.iconCount
+    return result
   }
 
   /**
