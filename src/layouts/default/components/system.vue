@@ -23,11 +23,10 @@ export default {
       'isAlwaysOnTop'
     ]),
     ...mapGetters('sdk', [
-      'isLogged',
-      'userName'
+      'isLogged'
     ]),
     title () {
-      return this.isLogged ? `${this.userName} 已连接到 iconfont+` : '未登录'
+      return this.isLogged ? '已登录到 iconfont+' : '未登录'
     },
     icon () {
       return this.isLogged ? 'mdi-cloud-check-outline' : 'mdi-alert-rhombus-outline'
