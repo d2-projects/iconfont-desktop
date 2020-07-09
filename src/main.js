@@ -16,5 +16,6 @@ new Vue({
   render: h => h(App),
   created () {
     this.$store.dispatch('sdk/autoLogin')
+    this.$store.dispatch('window/init')
   }
 }).$mount('#app')

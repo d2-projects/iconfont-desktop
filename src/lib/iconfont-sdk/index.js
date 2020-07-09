@@ -48,8 +48,6 @@ export default class Iconfont {
    */
   async requestGenerator (cookies) {
     const _cookies = isEmpty(cookies) ? await this.getCookie() : cookies
-    console.log(cookies)
-    console.log(_cookies)
     const request = axios.create({
       baseURL: this.baseURL,
       timeout: 10000,

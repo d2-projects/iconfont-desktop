@@ -4,9 +4,7 @@ import {
   isEmpty,
   get
 } from 'lodash-es'
-import {
-  remote
-} from 'electron'
+import { remote } from 'electron'
 
 const BrowserWindow = remote.BrowserWindow
 const Iconfont = remote.getGlobal('Iconfont')
@@ -116,14 +114,9 @@ export default {
     }
   },
   mutations: {
-    ...fromPairs(
-      [
-        'user',
-        'initialization'
-      ].map(name => [
-        `${name}Set`,
-        (state, value) => { state[name] = value }
-      ])
-    )
+    ...fromPairs([
+      'user',
+      'initialization'
+    ].map(name => [`${name}Set`, (state, value) => { state[name] = value }]))
   }
 }
