@@ -4,26 +4,24 @@ import cookie from 'cookie'
 import dictionary from './dictionary'
 
 export default class Iconfont {
-  request = null
-  ready = false
+  // iconfont 官网地址
   baseURL = 'https://www.iconfont.cn'
-
-  constructor () {}
+  // 用于网络请求的实例
+  request = null
 
   static dictionary = dictionary
 
-  setReady (ready = false) {
-    this.ready = ready
-  }
+  constructor () {}
 
   /**
    * @description 获取基本的 cookie 注意这里获取的是未登录的状态 无法使用用户相关的功能
    */
   async getCookie () {
     const preload = await axios.get(this.baseURL)
+    const headers = preload.headers['set-cookie']
     const data = Object.assign(
       {},
-      ...preload.headers['set-cookie']
+      ...headers
         .map(item => item.split(';')[0])
         .map(cookie.parse)
     )
@@ -60,7 +58,6 @@ export default class Iconfont {
     request.interceptors.request.use(
       config => {
         if (config.method === 'post') {
-          config.data.ctoken = _cookies.ctoken
           config.data.t = new Date().getTime()
           config.data = qs.stringify(config.data)
         }
@@ -81,7 +78,6 @@ export default class Iconfont {
    */
   async init (cookies) {
     this.request = await this.requestGenerator(cookies)
-    this.setReady(true)
   }
 
   /**
