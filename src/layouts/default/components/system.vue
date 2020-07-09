@@ -1,12 +1,31 @@
 <template>
-  <v-system-bar class="app-drag" color="primary" @dblclick="onDbclick" app dark window>
-    <v-icon left>{{ icon }}</v-icon>
-    <span>{{ title }}</span>
-    <v-spacer></v-spacer>
-    <v-icon v-if="!isFullScreen" @click="onClickMinimizeButton">mdi-minus</v-icon>
-    <v-icon v-if="!isFullScreen" @click="onClickMaximizeButton">{{ isMaximized ? 'mdi-window-restore' : 'mdi-window-maximize' }}</v-icon>
-    <v-icon @click="onClickFullScreenButton">{{ isFullScreen ? 'mdi-fullscreen-exit' : 'mdi-fullscreen' }}</v-icon>
-    <v-icon @click="onClickCloseButton">mdi-close</v-icon>
+  <v-system-bar
+    class="app-drag"
+    color="primary"
+    @click="blurIcons"
+    @dblclick="toggleMaximize"
+    app
+    dark
+    window>
+    <v-icon left>
+      {{ icon }}
+    </v-icon>
+    <span>
+      {{ title }}
+    </span>
+    <v-spacer/>
+    <v-icon v-if="!isFullScreen" @click="minimize">
+      mdi-minus
+    </v-icon>
+    <v-icon v-if="!isFullScreen" @click="toggleMaximize">
+      {{ isMaximized ? 'mdi-window-restore' : 'mdi-window-maximize' }}
+    </v-icon>
+    <v-icon @click="toggleFullScreen">
+      {{ isFullScreen ? 'mdi-fullscreen-exit' : 'mdi-fullscreen' }}
+    </v-icon>
+    <v-icon @click="close">
+      mdi-close
+    </v-icon>
   </v-system-bar>
 </template>
 
@@ -40,24 +59,11 @@ export default {
       'toggleMaximize',
       'minimize'
     ]),
-    onClickMinimizeButton (event) {
-      event.target.blur()
-      this.minimize()
-    },
-    onClickMaximizeButton (event) {
-      event.target.blur()
-      this.toggleMaximize()
-    },
-    onClickFullScreenButton (event) {
-      event.target.blur()
-      this.toggleFullScreen()
-    },
-    onClickCloseButton (event) {
-      event.target.blur()
-      this.close()
-    },
-    onDbclick () {
-      this.toggleMaximize()
+    blurIcons () {
+      this.$el.getElementsByClassName('v-icon')
+        .forEach(icon => {
+          icon.blur()
+        })
     }
   }
 }

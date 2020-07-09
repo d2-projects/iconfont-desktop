@@ -8,6 +8,11 @@
 
 * [推出chrome工具，取消20个下载限制](https://github.com/thx/iconfont-plus/issues/209)
 
+## 工具准备
+
+* [font-carrier](https://github.com/purplebamboo/font-carrier)
+* [svg2ttf](https://github.com/fontello/svg2ttf)
+
 ## 数据
 
 ```

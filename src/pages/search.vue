@@ -55,7 +55,7 @@ $sidebarWidth: 240px;
         <app-icon-list
           :value="list"
           @inCordonY="onInCordonY">
-          <div slot="header" :style="{ height: topbarHeight + 'px' }"></div>
+          <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
           <div slot="footer">
             <!-- 加载更多 -->
             <v-btn v-if="canLoadMore" color="primary" :loading="isSearching" @click="loadMore" text large block>

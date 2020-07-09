@@ -1,25 +1,15 @@
+<template>
+  <v-bottom-navigation class="app-drag" :value="this.active" @change="onChange" shift app>
+    <v-btn v-for="nav of navs" :key="nav.value" :value="nav.value">
+      <span>{{ nav.label }}</span>
+      <v-icon>{{ nav.icon }}</v-icon>
+    </v-btn>
+  </v-bottom-navigation>
+</template>
+
+<script>
 export default {
   name: 'navigation',
-  render (h) {
-    const node =
-      <v-bottom-navigation
-        class="app-drag"
-        value={ this.active }
-        shift={ true }
-        app={ true }
-        onChange={ this.onChange }>
-        {
-          this.navs.map(
-            nav => <v-btn
-              value={ nav.value }>
-              <span>{ nav.label }</span>
-              <v-icon>{ nav.icon }</v-icon>
-            </v-btn>
-          )
-        }
-      </v-bottom-navigation>
-    return node
-  },
   data () {
     return {
       navs: [
@@ -44,3 +34,4 @@ export default {
     }
   }
 }
+</script>
