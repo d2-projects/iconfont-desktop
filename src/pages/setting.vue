@@ -2,7 +2,6 @@
   <div class="pa-5">
     <v-btn @click="loginWithGithub">loginWithGithub</v-btn>
     <v-btn @click="logoutGithub">退出 Github</v-btn>
-    <v-btn @click="getPubinfo">getPubinfo</v-btn>
   </div>
 </template>
 
@@ -21,13 +20,8 @@ const BrowserWindow = remote.BrowserWindow
 export default {
   methods: {
     ...mapActions('sdk', [
-      'init',
-      'pubinfo'
+      'init'
     ]),
-    async getPubinfo () {
-      const result = await this.pubinfo()
-      console.log(JSON.stringify(result, null, 4))
-    },
     logoutGithub () {
       const win = new BrowserWindow({
         width: 1200,

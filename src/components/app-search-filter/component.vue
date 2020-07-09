@@ -79,30 +79,30 @@ export default {
     }
   },
   computed: {
-    ...mapState('sdk', ['dict']),
+    ...mapState('sdk', ['dictionary']),
     options () {
       return [
-        { title: '分类', icon: 'mdi-star-circle', options: this.dict.collection },
-        { title: '填充', icon: 'mdi-invert-colors', options: this.dict.fills },
-        { title: '风格', icon: 'mdi-palette', options: this.dict.style }
+        { title: '分类', icon: 'mdi-star-circle', options: this.dictionary.collection },
+        { title: '填充', icon: 'mdi-invert-colors', options: this.dictionary.fills },
+        { title: '风格', icon: 'mdi-palette', options: this.dictionary.style }
       ]
     }
   },
   methods: {
-    findInDictBy (value, dictName, byKeyname, returnKeyname) {
-      const item = this.dict[dictName].find(dictItem => dictItem[byKeyname] === value)
+    findInDictionaryBy (value, dictionaryName, byKeyname, returnKeyname) {
+      const item = this.dictionary[dictionaryName].find(dictionaryItem => dictionaryItem[byKeyname] === value)
       return item ? item[returnKeyname] : value
     },
     nameToValue (source) {
       return fromPairs(Object.keys(source).map(keyname => [
         keyname,
-        this.findInDictBy(source[keyname], keyname, 'name', 'value')
+        this.findInDictionaryBy(source[keyname], keyname, 'name', 'value')
       ]))
     },
     valueToName (source) {
       return fromPairs(Object.keys(source).map(keyname => [
         keyname,
-        this.findInDictBy(source[keyname], keyname, 'value', 'name')
+        this.findInDictionaryBy(source[keyname], keyname, 'value', 'name')
       ]))
     },
     onRadioGroupChange () {

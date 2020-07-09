@@ -5,10 +5,10 @@
   @include e(icon) {
     height: 100%;
     width: 100%;
-    font-size: 48px;
-    line-height: 48px;
+    font-size: 64px;
+    line-height: 64px;
     svg {
-      max-width: 80%;
+      max-width: 70%;
     }
   }
 }
