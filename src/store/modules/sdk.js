@@ -59,19 +59,13 @@ export default {
       commit('loadingSet', false)
       commit('loadingMessageSet', '')
     },
-    async init ({ state, commit }, cookies) {
-      await state.sdk.init(cookies)
-      commit('userSet', state.sdk.user)
-      commit('iconCountSet', state.sdk.iconCount)
-    },
-    iconSearch ({ state }, payload) {
-      return state.sdk.iconSearch(payload)
-    },
-    async logout ({ dispatch }) {
+    async logout ({ state, dispatch, commit }) {
       const promise = new Promise(async resolve => {
         const win = new BrowserWindow({ show: false })
         await win.webContents.session.clearStorageData()
-        await dispatch('init')
+        await state.sdk.init()
+        commit('userSet', state.sdk.user)
+        commit('iconCountSet', state.sdk.iconCount)
         win.close()
         resolve()
       })
@@ -82,7 +76,9 @@ export default {
       const promise = new Promise(resolve => {
         const win = new BrowserWindow({ show: false })
         win.once('ready-to-show', async () => {
-          await dispatch('init', await getIconfontCookies(win))
+          await state.sdk.init(await getIconfontCookies(win))
+          commit('userSet', state.sdk.user)
+          commit('iconCountSet', state.sdk.iconCount)
           win.close()
           resolve()
         })
@@ -91,7 +87,7 @@ export default {
       const message = '正在自动登录'
       await dispatch('loading', { promise, message })
     },
-    async login ({ state, dispatch }) {
+    async login ({ state, dispatch, commit }) {
       const promise = new Promise(resolve => {
         const win = new BrowserWindow({
           width: 1200,
@@ -109,7 +105,9 @@ export default {
             }
             if (url === state.url.iconfont) {
               // 登录完成
-              await dispatch('init', await getIconfontCookies(win))
+              await state.sdk.init(await getIconfontCookies(win))
+              commit('userSet', state.sdk.user)
+              commit('iconCountSet', state.sdk.iconCount)
               win.close()
             }
           })

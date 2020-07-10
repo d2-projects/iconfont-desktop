@@ -66,6 +66,9 @@ export default class Iconfont {
           config.data.t = new Date().getTime()
           config.data = qs.stringify(config.data)
         }
+        // if (config.method === 'get') {
+        //   console.log(JSON.stringify(config, null, 2))
+        // }
         return config
       },
       error => Promise.reject(error)
@@ -83,17 +86,29 @@ export default class Iconfont {
    */
   async init (cookies) {
     this.request = await this.requestGenerator(cookies)
-    await this.pubinfo()
+    const pubinfo = await this.pubinfo()
+    this.user = pubinfo.user || {}
+    this.iconCount = pubinfo.iconCount || 0
+    return pubinfo
   }
 
   /**
    * @description [API] 公共数据
+   * @description 这个方法会在 init 后自动调用
    */
   async pubinfo () {
-    const result = await this.request.get('api/pubinfo.json')
-    this.user = result.user || {}
-    this.iconCount = result.iconCount
-    return result
+    return this.request.get('api/pubinfo.json')
+  }
+
+  /**
+   * @description [API] 首页数据
+   */
+  async commonIndexConfig () {
+    return this.request.get('api/common/indexConfig.json', {
+      params: {
+        name: 1
+      }
+    })
   }
 
   /**

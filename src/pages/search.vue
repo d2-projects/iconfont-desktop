@@ -86,7 +86,8 @@ $sidebarWidth: 240px;
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
+
 export default {
   data () {
     return {
@@ -113,6 +114,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('sdk', [
+      'sdk'
+    ]),
     canLoadMore () {
       return this.isSearched && this.total !== 0 && this.total !== this.list.length
     },
@@ -138,9 +142,6 @@ export default {
     next()
   },
   methods: {
-    ...mapActions('sdk', [
-      'iconSearch'
-    ]),
     getTopbarHeight () {
       return this.$refs.topbar.offsetHeight
     },
@@ -166,7 +167,7 @@ export default {
     async fetchList () {
       if (!this.keyword || this.isSearching) return
       this.isSearching = true
-      const result = await this.iconSearch({
+      const result = await this.sdk.iconSearch({
         keyword: this.keyword,
         ...this.filter,
         pageSize: this.pageSize,
