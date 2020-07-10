@@ -49,6 +49,10 @@ export default {
     userName: state => get(state, 'user.nickname', '')
   },
   actions: {
+    refresh ({ state, commit }) {
+      commit('userSet', state.sdk.user)
+      commit('iconCountSet', state.sdk.iconCount)
+    },
     async loading ({ commit }, { promise, message = '' } = {}) {
       commit('loadingMessageSet', message)
       commit('loadingSet', true)
@@ -64,8 +68,7 @@ export default {
         const win = new BrowserWindow({ show: false })
         await win.webContents.session.clearStorageData()
         await state.sdk.init()
-        commit('userSet', state.sdk.user)
-        commit('iconCountSet', state.sdk.iconCount)
+        await dispatch('refresh')
         win.close()
         resolve()
       })
@@ -77,8 +80,7 @@ export default {
         const win = new BrowserWindow({ show: false })
         win.once('ready-to-show', async () => {
           await state.sdk.init(await getIconfontCookies(win))
-          commit('userSet', state.sdk.user)
-          commit('iconCountSet', state.sdk.iconCount)
+          await dispatch('refresh')
           win.close()
           resolve()
         })
@@ -106,8 +108,7 @@ export default {
             if (url === state.url.iconfont) {
               // 登录完成
               await state.sdk.init(await getIconfontCookies(win))
-              commit('userSet', state.sdk.user)
-              commit('iconCountSet', state.sdk.iconCount)
+              await dispatch('refresh')
               win.close()
             }
           })
