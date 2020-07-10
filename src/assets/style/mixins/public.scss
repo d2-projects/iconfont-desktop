@@ -1,0 +1,51 @@
+%absoluteParent {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+%absoluteX {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+}
+
+%absoluteY {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+}
+
+%absoluteAll {
+  @extend %absoluteX;
+  @extend %absoluteY;
+}
+
+%absoluteTop {
+  @extend %absoluteX;
+  top: 0px;
+}
+
+%absoluteBottom {
+  @extend %absoluteX;
+  bottom: 0px;
+}
+
+%absoluteLeft {
+  @extend %absoluteY;
+  left: 0px;
+}
+
+%absoluteRight {
+  @extend %absoluteY;
+  right: 0px;
+}
+
+%backdrop {
+  transition: all .3s;
+  background-color: rgba(#FFF, .8);
+  backdrop-filter: saturate(180%) blur(6px);
+  &:hover {
+    background-color: rgba(#FFF, .9);
+  }
+}

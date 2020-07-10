@@ -1,3 +1,18 @@
+<style lang="scss">
+@include b(page-index) {
+  @extend %absoluteParent;
+  @include e(topbar) {
+    z-index: 1;
+    border-bottom: 1px solid #FFF;
+    @extend %absoluteTop;
+    @extend %backdrop;
+  }
+  @include e(content) {
+    @extend %absoluteAll;
+  }
+}
+</style>
+
 <route>
 {
   "meta": {
@@ -7,8 +22,13 @@
 </route>
 
 <template>
-  <div>
-    <app-search-bar @submit="onSearch"/>
+  <div class="app-page-index">
+    <div class="app-page-index__content">
+      <p v-for="n in 100" :key="n">{{ n }}</p>
+    </div>
+    <div class="app-page-index__topbar">
+      <app-search-bar @submit="onSearch"/>
+    </div>
   </div>
 </template>
 

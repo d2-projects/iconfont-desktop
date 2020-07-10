@@ -1,44 +1,23 @@
 <style lang="scss">
 $sidebarWidth: 240px;
 @include b(page-search) {
-  height: 100%;
-  position: relative;
+  @extend %absoluteParent;
   @include e(side) {
-    position: absolute;
+    @extend %absoluteLeft;
     width: $sidebarWidth;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
   }
   @include e(main) {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
+    @extend %absoluteAll;
     left: $sidebarWidth;
-    right: 0px;
   }
   @include e(main-topbar) {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
     z-index: 1;
-    overflow: hidden;
-    position: relative;
-    transition: all .3s;
-    background-color: rgba(#FFF, .8);
-    backdrop-filter: saturate(180%) blur(6px);
     border-bottom: 1px solid #FFF;
-    &:hover {
-      background-color: rgba(#FFF, .9);
-    }
+    @extend %absoluteTop;
+    @extend %backdrop;
   }
   @include e(main-content) {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    @extend %absoluteAll;
   }
 }
 </style>
