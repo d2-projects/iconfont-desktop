@@ -25,15 +25,13 @@
     <div class="app-page-index__content">
       <app-list>
         <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
-        <v-row class="mb-5">
-          <v-col
-            v-for="item of collections"
-            :key="item.id"
-            xs="6"
-            sm="6"
-            md="4"
-            lg="4"
-            xl="2">
+        <v-row v-if="collections.length === 0" class="mb-5">
+          <v-col v-for="n in 6" :key="n" xs="6" sm="6" md="4" lg="4" xl="2">
+            <app-collection-card-skeleton/>
+          </v-col>
+        </v-row>
+        <v-row v-else class="mb-5">
+          <v-col v-for="item of collections" :key="item.id" xs="6" sm="6" md="4" lg="4" xl="2">
             <app-collection-card :value="item"/>
           </v-col>
         </v-row>
