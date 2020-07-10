@@ -126,6 +126,10 @@ export default {
       return this.autoSearchCount < this.autoSearchCountMax
     }
   },
+  created () {
+    this.keyword = this.$route.query.keyword || ''
+    this.searchWithNewQuery()
+  },
   mounted () {
     this.topbarHeight = this.getTopbarHeight()
   },
