@@ -18,13 +18,20 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      keyword: ''
+      keyword: '',
+      row1: [],
+      row2: []
     }
   },
   computed: {
     ...mapState('sdk', [
       'sdk'
     ])
+  },
+  async created () {
+    const result = await this.sdk.commonIndexConfig()
+    this.row1 = result.topCollections
+    this.row2 = result.bottomCollections
   },
   methods: {
     onSearch (keyword) {

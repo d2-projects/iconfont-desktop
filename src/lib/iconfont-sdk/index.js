@@ -68,11 +68,15 @@ export default class Iconfont {
       config => {
         if (config.method === 'post') {
           config.data.t = new Date().getTime()
+          config.data.ctoken = _cookies.ctoken
           config.data = qs.stringify(config.data)
         }
-        // if (config.method === 'get') {
-        //   console.log(JSON.stringify(config, null, 2))
-        // }
+        if (config.method === 'get') {
+          const params = config.params || {}
+          params.t = new Date().getTime()
+          params.ctoken = _cookies.ctoken
+          config.params = params
+        }
         return config
       },
       error => Promise.reject(error)
