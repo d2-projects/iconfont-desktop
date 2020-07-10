@@ -1,34 +1,9 @@
-<style lang="scss">
-@include b(icon-list) {
-  height: 100%;
-}
-</style>
-
 <template>
-  <app-scroll
-    class="app-icon-list"
-    :options="{
-      scrollbars: {
-        autoHide: 'scroll',
-        autoHideDelay: 300
-      }
-    }"
-    :cordon-y="800"
-    @inCordonY="event => $emit('inCordonY', event)">
-    <v-container>
-      <div class="pa-1">
-        <slot name="header"/>
-      </div>
-      <v-row no-gutters>
-        <v-col v-for="item of value" :key="item.id" xs="4" sm="2" md="2" lg="1" xl="1" class="pa-1">
-          <app-icon-list-item :value="item"/>
-        </v-col>
-      </v-row>
-      <div class="pa-1">
-        <slot name="footer"/>
-      </div>
-    </v-container>
-  </app-scroll>
+  <v-row no-gutters>
+    <v-col v-for="item of value" :key="item.id" xs="4" sm="2" md="2" lg="1" xl="1" class="pa-1">
+      <app-icon-list-item :value="item"/>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

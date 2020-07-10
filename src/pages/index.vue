@@ -24,9 +24,12 @@
 <template>
   <div class="app-page-index">
     <div class="app-page-index__content">
-      <p v-for="n in 100" :key="n">{{ n }}</p>
+      <app-list>
+        <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
+        <p v-for="n in 100" :key="n">{{ n }}</p>
+      </app-list>
     </div>
-    <div class="app-page-index__topbar">
+    <div ref="topbar" class="app-page-index__topbar">
       <app-search-bar @submit="onSearch"/>
     </div>
   </div>
@@ -40,7 +43,9 @@ export default {
     return {
       keyword: '',
       row1: [],
-      row2: []
+      row2: [],
+      // UI
+      topbarHeight: 0
     }
   },
   computed: {
@@ -52,6 +57,9 @@ export default {
     const result = await this.sdk.commonIndexConfig()
     this.row1 = result.topCollections
     this.row2 = result.bottomCollections
+  },
+  mounted () {
+    this.topbarHeight = this.$refs.topbar.offsetHeight
   },
   methods: {
     onSearch (keyword) {
