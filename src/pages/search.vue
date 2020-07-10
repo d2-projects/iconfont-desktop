@@ -1,7 +1,7 @@
 <style lang="scss">
 $sidebarWidth: 240px;
-@include b(page) {
-  min-height: 100%;
+@include b(page-search) {
+  height: 100%;
   position: relative;
   @include e(side) {
     position: absolute;
@@ -52,14 +52,14 @@ $sidebarWidth: 240px;
 </route>
 
 <template>
-  <div class="app-page">
+  <div class="app-page-search">
     <!-- left -->
-    <div class="app-page__side pa-4 pr-0">
+    <div class="app-page-search__side pa-4 pr-0">
       <app-search-filter v-model="filter" @change="searchWithNewQuery"/>
     </div>
     <!-- right -->
-    <div class="app-page__main">
-      <div class="app-page__main-content">
+    <div class="app-page-search__main">
+      <div class="app-page-search__main-content">
         <app-icon-list
           :value="list"
           @inCordonY="onInCordonY">
@@ -83,7 +83,7 @@ $sidebarWidth: 240px;
           </div>
         </app-icon-list>
       </div>
-      <div ref="topbar" class="app-page__main-topbar">
+      <div ref="topbar" class="app-page-search__main-topbar">
         <app-search-bar
           v-model="keyword"
           :loading="isSearching"
