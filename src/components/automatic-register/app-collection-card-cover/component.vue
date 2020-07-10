@@ -8,8 +8,8 @@
   @include e(icon-content) {
     height: 100%;
     width: 100%;
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 26px;
+    line-height: 26px;
     svg {
       max-width: 70%;
     }

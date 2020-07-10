@@ -25,11 +25,14 @@
     <div class="app-page-index__content">
       <app-list>
         <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
-        <v-row>
+        <v-row class="mb-5">
           <v-col
             v-for="item of collections"
             :key="item.id"
-            cols="4"
+            xs="6"
+            sm="6"
+            md="4"
+            lg="4"
             xl="2">
             <app-collection-card :value="item"/>
           </v-col>
