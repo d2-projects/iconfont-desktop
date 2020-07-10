@@ -91,7 +91,7 @@ export default {
   data () {
     return {
       // 搜索条件
-      keyword: 'github',
+      keyword: '',
       filter: {
         collection: -1,
         fills: '',

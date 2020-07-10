@@ -36,6 +36,7 @@ export default {
     // 数据
     dictionary: Iconfont.dictionary,
     user: {},
+    iconCount: 0,
     // 设置
     url: {
       iconfont: 'https://www.iconfont.cn/',
@@ -61,6 +62,7 @@ export default {
     async init ({ state, commit }, cookies) {
       await state.sdk.init(cookies)
       commit('userSet', state.sdk.user)
+      commit('iconCountSet', state.sdk.iconCount)
     },
     iconSearch ({ state }, payload) {
       return state.sdk.iconSearch(payload)
@@ -122,6 +124,7 @@ export default {
   mutations: {
     ...fromPairs([
       'user',
+      'iconCount',
       'loading',
       'loadingMessage'
     ].map(name => [`${name}Set`, (state, value) => { state[name] = value }]))

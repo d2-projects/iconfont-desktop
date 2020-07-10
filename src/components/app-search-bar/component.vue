@@ -13,7 +13,7 @@
         ref="input"
         class="mr-5"
         v-model="currentValue"
-        label="搜索"
+        :label="placeholder"
         filled
         rounded
         single-line
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { throttle } from 'lodash-es'
 
 export default {
@@ -55,6 +56,15 @@ export default {
     return {
       currentValue: '',
       throttled: null
+    }
+  },
+  computed: {
+    ...mapState('sdk', [
+      'iconCount'
+    ]),
+    placeholder () {
+      const n = this.iconCount
+      return n ? `在 ${n.toLocaleString()} 个图标中搜索` : '搜索'
     }
   },
   watch: {
