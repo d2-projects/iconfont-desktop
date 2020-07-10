@@ -9611,9 +9611,9 @@ vue-router-layout@^0.1.2:
   resolved "https://registry.npm.taobao.org/vue-router-layout/download/vue-router-layout-0.1.5.tgz#4e0454d10428a114be91d6458ffa4242664c6d70"
   integrity sha1-TgRU0QQooRS+kdZFj/pCQmZMbXA=
 
-vue-router@^3.2.0:
+vue-router@^3.3.4:
   version "3.3.4"
-  resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.3.4.tgz?cache=0&sync_timestamp=1592476684972&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-router%2Fdownload%2Fvue-router-3.3.4.tgz#4e38abc34a11c41b6c3d8244449a2e363ba6250b"
+  resolved "https://registry.npm.taobao.org/vue-router/download/vue-router-3.3.4.tgz?cache=0&sync_timestamp=1594111718735&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-router%2Fdownload%2Fvue-router-3.3.4.tgz#4e38abc34a11c41b6c3d8244449a2e363ba6250b"
   integrity sha1-Tjirw0oRxBtsPYJERJouNjumJQs=
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:

@@ -9,13 +9,11 @@ import '@mdi/font/css/materialdesignicons.css'
 
 Vue.config.productionTip = false
 
+// store.dispatch('window/init')
+
 new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App),
-  created () {
-    this.$store.dispatch('sdk/autoLogin')
-    this.$store.dispatch('window/init')
-  }
+  render: h => h(App)
 }).$mount('#app')

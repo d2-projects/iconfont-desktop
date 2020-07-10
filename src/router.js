@@ -2,6 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import routes from 'vue-auto-routing'
 import { createRouterLayout } from 'vue-router-layout'
+import store from './store'
+
+const push = Router.prototype.push
+Router.prototype.push = function (location) {
+  return push.call(this, location).catch(err => err)
+}
+const replace = Router.prototype.replace
+Router.prototype.replace = function (location) {
+  return replace.call(this, location).catch(err => err)
+}
+
+const sdk = store.state.sdk.sdk
 
 Vue.use(Router)
 
@@ -9,7 +21,7 @@ const RouterLayout = createRouterLayout(layout => {
   return import('@/layouts/' + layout + '/index.js')
 })
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -18,3 +30,16 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.sdk && !sdk.isReady()) {
+    console.log('需要 SDK 初始化')
+    next({
+      name: 'init'
+    })
+  } else {
+    next()
+  }
+})
+
+export default router

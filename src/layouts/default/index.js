@@ -1,5 +1,4 @@
 import navigation from './components/navigation'
-import loading from './components/loading'
 import system from './components/system'
 
 export default {
@@ -10,7 +9,6 @@ export default {
         <router-view/>
       </v-main>
       <navigation/>
-      <loading/>
     </v-app>
   }
 }

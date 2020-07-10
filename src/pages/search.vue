@@ -43,6 +43,14 @@ $sidebarWidth: 240px;
 }
 </style>
 
+<route>
+{
+  "meta": {
+    "sdk": true
+  }
+}
+</route>
+
 <template>
   <div class="app-page">
     <!-- left -->

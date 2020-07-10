@@ -18,6 +18,10 @@ export default class Iconfont {
 
   constructor () {}
 
+  isReady () {
+    return this.request !== null
+  }
+
   /**
    * @description 获取基本的 cookie 注意这里获取的是未登录的状态 无法使用用户相关的功能
    */
