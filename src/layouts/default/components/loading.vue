@@ -1,7 +1,13 @@
 <template>
-  <v-dialog :value="initialization" width="300" overlay-color="rgba(0, 0, 0, 0)" persistent>
+  <v-dialog
+    :value="loading"
+    width="300"
+    overlay-color="rgba(0, 0, 0, 0)"
+    persistent>
     <v-card color="primary" dark>
-      <v-card-text class="pt-5">wating...</v-card-text>
+      <v-card-text class="pt-5">
+        {{ loadingMessage }}
+      </v-card-text>
       <v-progress-linear class="mb-0" color="white" indeterminate/>
     </v-card>
   </v-dialog>
@@ -19,7 +25,8 @@ export default {
   },
   computed: {
     ...mapState('sdk', [
-      'initialization'
+      'loading',
+      'loadingMessage'
     ])
   }
 }

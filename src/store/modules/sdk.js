@@ -31,7 +31,8 @@ export default {
     // 核心
     sdk: new Iconfont(),
     // 状态标识
-    initialization: false,
+    loading: false,
+    loadingMessage: '',
     // 数据
     dictionary: Iconfont.dictionary,
     user: {},
@@ -47,13 +48,15 @@ export default {
     userName: state => get(state, 'user.nickname', '')
   },
   actions: {
-    async initialization ({ commit }, promise) {
-      commit('initializationSet', true)
+    async loading ({ commit }, { promise, message = '' } = {}) {
+      commit('loadingMessageSet', message)
+      commit('loadingSet', true)
       await Promise.all([
         promise,
         wait(1000)
       ])
-      commit('initializationSet', false)
+      commit('loadingSet', false)
+      commit('loadingMessageSet', '')
     },
     async init ({ state, commit }, cookies) {
       await state.sdk.init(cookies)
@@ -70,7 +73,8 @@ export default {
         win.close()
         resolve()
       })
-      await dispatch('initialization', promise)
+      const message = '清理信息'
+      await dispatch('loading', { promise, message })
     },
     async autoLogin ({ state, dispatch, commit }) {
       const promise = new Promise(resolve => {
@@ -82,7 +86,8 @@ export default {
         })
         win.loadURL(state.url.iconfont)
       })
-      await dispatch('initialization', promise)
+      const message = '正在自动登录'
+      await dispatch('loading', { promise, message })
     },
     async login ({ state, dispatch }) {
       const promise = new Promise(resolve => {
@@ -110,13 +115,15 @@ export default {
         win.loadURL(state.url.iconfont)
         win.on('close', () => { resolve() })
       })
-      await dispatch('initialization', promise)
+      const message = '正在登录'
+      await dispatch('loading', { promise, message })
     }
   },
   mutations: {
     ...fromPairs([
       'user',
-      'initialization'
+      'loading',
+      'loadingMessage'
     ].map(name => [`${name}Set`, (state, value) => { state[name] = value }]))
   }
 }

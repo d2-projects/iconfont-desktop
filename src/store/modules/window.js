@@ -1,9 +1,7 @@
 import { fromPairs } from 'lodash-es'
 import { remote } from 'electron'
 
-function win () {
-  return remote.BrowserWindow.getFocusedWindow()
-}
+const win = remote.BrowserWindow.getFocusedWindow()
 
 export default {
   namespaced: true,
@@ -27,7 +25,7 @@ export default {
         'always-on-top-changed'
       ]
       names.forEach(name => {
-        win().on(name, () => {
+        win.on(name, () => {
           commit('refreshStatus')
         })
       })
@@ -40,12 +38,12 @@ export default {
       'unmaximize',
       'minimize',
       'restore'
-    ].map(name => [name, () => { win()[name]() }])),
+    ].map(name => [name, () => { win[name]() }])),
     toggleFullScreen ({ state }) {
-      win().setFullScreen(!state.isFullScreen)
+      win.setFullScreen(!state.isFullScreen)
     },
     toggleAlwaysOnTop ({ state }) {
-      win().setAlwaysOnTop(!state.isAlwaysOnTop)
+      win.setAlwaysOnTop(!state.isAlwaysOnTop)
     },
     toggleMaximize ({ state, dispatch }) {
       if (state.isMaximized) dispatch('unmaximize')
@@ -58,10 +56,10 @@ export default {
   },
   mutations: {
     refreshStatus (state) {
-      state.isMaximized = win().isMaximized()
-      state.isMinimized = win().isMinimized()
-      state.isFullScreen = win().isFullScreen()
-      state.isAlwaysOnTop = win().isAlwaysOnTop()
+      state.isMaximized = win.isMaximized()
+      state.isMinimized = win.isMinimized()
+      state.isFullScreen = win.isFullScreen()
+      state.isAlwaysOnTop = win.isAlwaysOnTop()
     }
   }
 }
