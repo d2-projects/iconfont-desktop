@@ -5,7 +5,7 @@ export default {
   render (h) {
     return <v-app>
       <system/>
-      <v-main>
+      <v-main class="grey lighten-4">
         <router-view/>
       </v-main>
       <navigation/>

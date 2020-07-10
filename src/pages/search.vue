@@ -12,7 +12,6 @@ $sidebarWidth: 240px;
   }
   @include e(main-topbar) {
     z-index: 1;
-    border-bottom: 1px solid #FFF;
     @extend %absoluteTop;
     @extend %backdrop;
   }

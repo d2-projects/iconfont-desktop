@@ -3,7 +3,6 @@
   @extend %absoluteParent;
   @include e(topbar) {
     z-index: 1;
-    border-bottom: 1px solid #FFF;
     @extend %absoluteTop;
     @extend %backdrop;
   }
@@ -26,7 +25,15 @@
     <div class="app-page-index__content">
       <app-list>
         <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
-        <p v-for="n in 100" :key="n">{{ n }}</p>
+        <v-row>
+          <v-col
+            v-for="item of collections"
+            :key="item.id"
+            cols="4"
+            xl="2">
+            <app-collection-card :value="item"/>
+          </v-col>
+        </v-row>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-index__topbar">
@@ -42,8 +49,7 @@ export default {
   data () {
     return {
       keyword: '',
-      row1: [],
-      row2: [],
+      collections: [],
       // UI
       topbarHeight: 0
     }
@@ -55,8 +61,10 @@ export default {
   },
   async created () {
     const result = await this.sdk.commonIndexConfig()
-    this.row1 = result.topCollections
-    this.row2 = result.bottomCollections
+    this.collections = [
+      ...result.topCollections,
+      ...result.bottomCollections
+    ]
   },
   mounted () {
     this.topbarHeight = this.$refs.topbar.offsetHeight

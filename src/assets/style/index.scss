@@ -1,3 +1,7 @@
+$color-pack: false;
+
+@import '~vuetify/src/styles/main.sass';
+
 @import './mixins/config.scss';
 @import './mixins/function.scss';
 @import './mixins/mixins.scss';

@@ -42,10 +42,11 @@
 }
 
 %backdrop {
+  $color: map-get($grey, 'lighten-4');
   transition: all .3s;
-  background-color: rgba(#FFF, .8);
+  background-color: rgba($color, .7);
   backdrop-filter: saturate(180%) blur(6px);
   &:hover {
-    background-color: rgba(#FFF, .9);
+    background-color: rgba($color, .8);
   }
 }
