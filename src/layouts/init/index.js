@@ -1,4 +1,3 @@
-import navigation from '@/components/layout/navigation.vue'
 import system from '@/components/layout/system.vue'
 
 export default {
@@ -8,7 +7,6 @@ export default {
       <v-main>
         <router-view/>
       </v-main>
-      <navigation/>
     </v-app>
   }
 }

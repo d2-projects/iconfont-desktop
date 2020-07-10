@@ -19,6 +19,7 @@
 import { mapState, mapActions } from 'vuex'
 
 export default {
+  layout: 'init',
   computed: {
     ...mapState('sdk', [
       'loadingMessage'
