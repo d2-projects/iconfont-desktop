@@ -124,18 +124,18 @@ export default class Iconfont {
    */
   async iconSearch ({
     keyword = '',
-    pageNo = 1,
-    pageSize = 10,
-    sortType = 'updated_at',
+    sort = 'updated_at',
     collection = -1,
     fills = '',
-    style = ''
+    style = '',
+    pageNo = 1,
+    pageSize = 10
   }) {
     const data = {
       page: pageNo,
       pageSize: pageSize,
       q: keyword,
-      sortType: sortType,
+      sortType: sort,
       fromCollection: collection,
       fills: fills
     }
@@ -143,5 +143,27 @@ export default class Iconfont {
       data[style] = 1
     }
     return this.request.post('api/icon/search.json', data)
+  }
+
+
+  /**
+   * @description [API] 图标库搜索
+   */
+  async collections ({
+    keyword = '',
+    type = 3,
+    sort = 'time',
+    pageNo = 1,
+    pageSize = 9
+  }) {
+    return this.request.get('api/collections.json', {
+      params: {
+        type: type,
+        sort: sort,
+        limit: pageSize,
+        page: pageNo,
+        keyword: keyword
+      }
+    })
   }
 }

@@ -84,8 +84,8 @@ export default {
         fills: '',
         style: ''
       },
-      pageSize: 6 * 5,
       pageNo: 1,
+      pageSize: 6 * 5,
       // 搜索结果
       list: [],
       total: 0,

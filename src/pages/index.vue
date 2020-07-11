@@ -41,9 +41,7 @@ import { mapState, mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      keyword: '',
       collections: fill(Array(6), { loading: true }),
-      // UI
       topbarHeight: 0
     }
   },
