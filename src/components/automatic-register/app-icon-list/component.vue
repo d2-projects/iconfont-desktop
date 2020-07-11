@@ -1,7 +1,7 @@
 <template>
   <v-row no-gutters>
     <v-col v-for="item of value" :key="item.id" xs="4" sm="2" md="2" lg="1" xl="1" class="pa-1">
-      <app-icon-list-item :value="item"/>
+      <app-icon-render :value="item.show_svg" class="white rounded"/>
     </v-col>
   </v-row>
 </template>

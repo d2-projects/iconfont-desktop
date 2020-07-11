@@ -61,17 +61,17 @@ export default {
     this.collections = [
       ...result.topCollections,
       ...result.bottomCollections
-    ].map(collection => ({
+    ].map(e => ({
       loading: false,
-      name: collection.name,
-      username: get(collection, 'User.nickname', ''),
-      avatar: get(collection, 'User.avatar', ''),
-      isOfficial: collection.is_official === 1,
-      icons: collection.icons,
-      countIcons: collection.icons_count,
-      countVisits: collection.visits_count,
-      countLikes: collection.likes_count,
-      countFavorite: collection.favorite_count
+      name: e.name,
+      username: get(e, 'User.nickname', ''),
+      avatar: get(e, 'User.avatar', ''),
+      isOfficial: e.is_official === 1,
+      icons: e.icons,
+      countIcons: e.icons_count,
+      countVisits: e.visits_count,
+      countLikes: e.likes_count,
+      countFavorite: e.favorite_count
     }))
   },
   mounted () {
