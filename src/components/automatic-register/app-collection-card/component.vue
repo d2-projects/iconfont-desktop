@@ -4,8 +4,10 @@
       <v-skeleton-loader
         class="white"
         height="350"
-        type="list-item-avatar-two-line, image, list-item-two-line"
-        :loading="loading">
+        :types="{ collection: 'list-item-avatar-two-line, image, list-item-two-line' }"
+        type="collection"
+        :loading="loading"
+        transition="fade-transition">
         <v-card :class="`elevation-${ hover ? 6 : 1 }`" class="transition-swing">
           <v-card-text flex="cross:center">
             <v-avatar size="26" color="grey lighten-2" class="mr-2">
