@@ -45,8 +45,17 @@ export default {
     }
   },
   getters: {
-    isLogged: state => !isEmpty(state.user),
-    userName: state => get(state, 'user.nickname', '')
+    isLogged: state => {
+      return !isEmpty(state.user)
+    },
+    userName: state => {
+      return get(state, 'user.nickname', '')
+    },
+    iconSearchPlaceholder: state => {
+      return state.iconCount
+        ? `在 ${state.iconCount.toLocaleString()} 个图标中搜索`
+        : '搜索'
+    }
   },
   actions: {
     refresh ({ state, commit }) {

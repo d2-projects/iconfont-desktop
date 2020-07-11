@@ -63,6 +63,7 @@ $sidebarWidth: 240px;
       <div ref="topbar" class="app-page-search__main-topbar">
         <app-search-bar
           v-model="keyword"
+          :placeholder="iconSearchPlaceholder"
           :loading="isSearching"
           @submit="searchWithNewQuery"/>
       </div>
@@ -71,7 +72,7 @@ $sidebarWidth: 240px;
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   data () {
@@ -101,6 +102,9 @@ export default {
   computed: {
     ...mapState('sdk', [
       'sdk'
+    ]),
+    ...mapGetters('sdk', [
+      'iconSearchPlaceholder'
     ]),
     canLoadMore () {
       return this.isSearched && this.total !== 0 && this.total !== this.list.length

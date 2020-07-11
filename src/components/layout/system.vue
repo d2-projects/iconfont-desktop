@@ -10,14 +10,12 @@
     <v-row no-gutters>
       <v-col cols="5">
         <v-icon left>{{ icon }}</v-icon>
-        <span>{{ title }}</span>
+        <span class="font-weight-medium">{{ title }}</span>
       </v-col>
       <v-col cols="2" flex="main:center cross:center">
-        <v-row justify="center" no-gutters>
-          <v-col xs="10" sm="8" md="6" lg="5" xl="4">
-            <v-progress-linear color="white" rounded indeterminate/>
-          </v-col>
-        </v-row>
+        <span class="font-weight-medium">
+          Iconfont Desktop
+        </span>
       </v-col>
       <v-col cols="5" flex="main:right">
         <v-icon v-if="!isFullScreen" @click="minimize">

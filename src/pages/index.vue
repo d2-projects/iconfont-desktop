@@ -25,22 +25,18 @@
     <div class="app-page-index__content">
       <app-list>
         <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
-        <v-row class="mb-5">
-          <v-col v-for="(collection, collectionIndex) of collections" :key="collectionIndex" xs="6" sm="6" md="4" lg="4" xl="2">
-            <app-collection-card v-bind="collection"/>
-          </v-col>
-        </v-row>
+        <app-collection-list :value="collections"/>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-index__topbar">
-      <app-search-bar @submit="onSearch"/>
+      <app-search-bar :placeholder="iconSearchPlaceholder" @submit="onSearch"/>
     </div>
   </div>
 </template>
 
 <script>
 import { get, fill } from 'lodash-es'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   data () {
@@ -54,6 +50,9 @@ export default {
   computed: {
     ...mapState('sdk', [
       'sdk'
+    ]),
+    ...mapGetters('sdk', [
+      'iconSearchPlaceholder'
     ])
   },
   async created () {

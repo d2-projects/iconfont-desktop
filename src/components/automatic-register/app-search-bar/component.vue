@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import { throttle } from 'lodash-es'
 
 export default {
@@ -50,21 +49,16 @@ export default {
     },
     loading: {
       type: Boolean
+    },
+    placeholder: {
+      type: String,
+      default: ''
     }
   },
   data () {
     return {
       currentValue: '',
       throttled: null
-    }
-  },
-  computed: {
-    ...mapState('sdk', [
-      'iconCount'
-    ]),
-    placeholder () {
-      const n = this.iconCount
-      return n ? `在 ${n.toLocaleString()} 个图标中搜索` : '搜索'
     }
   },
   watch: {
