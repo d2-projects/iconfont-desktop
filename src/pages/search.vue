@@ -33,7 +33,7 @@ $sidebarWidth: 240px;
   <div class="app-page-search">
     <!-- left -->
     <div class="app-page-search__side pa-4 pr-0">
-      <app-search-filter v-model="filter" @change="searchWithNewQuery"/>
+      <app-search-filter v-model="filter" @change="reload"/>
     </div>
     <!-- right -->
     <div class="app-page-search__main">
@@ -65,7 +65,7 @@ $sidebarWidth: 240px;
           v-model="keyword"
           :placeholder="iconSearchPlaceholder"
           :loading="isSearching"
-          @submit="searchWithNewQuery"/>
+          @submit="reload"/>
       </div>
     </div>
   </div>
@@ -73,28 +73,21 @@ $sidebarWidth: 240px;
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import fetchList from '@/mixins/fetch-list.js'
 
 export default {
+  mixins: [
+    fetchList
+  ],
   data () {
     return {
       // 搜索条件
-      keyword: '',
       filter: {
         collection: -1,
         fills: '',
         style: ''
       },
-      pageNo: 1,
       pageSize: 6 * 5,
-      // 搜索结果
-      list: [],
-      total: 0,
-      // 搜索状态
-      isSearched: false,
-      isSearching: false,
-      // 自动加载前几页
-      autoSearchCount: 0,
-      autoSearchCountMax: 5,
       // UI
       topbarHeight: 0
     }
@@ -105,23 +98,11 @@ export default {
     ]),
     ...mapGetters('sdk', [
       'iconSearchPlaceholder'
-    ]),
-    canLoadMore () {
-      return this.isSearched && this.total !== 0 && this.total !== this.list.length
-    },
-    isLoadedAll () {
-      return this.isSearched && this.total !== 0 && this.total === this.list.length
-    },
-    isNoResult () {
-      return this.isSearched && this.total === 0
-    },
-    canAutoSearch () {
-      return this.autoSearchCount < this.autoSearchCountMax
-    }
+    ])
   },
   created () {
     this.keyword = this.$route.query.keyword || ''
-    this.searchWithNewQuery()
+    this.load()
   },
   mounted () {
     this.topbarHeight = this.$refs.topbar.offsetHeight
@@ -131,39 +112,16 @@ export default {
     next()
   },
   methods: {
-    reset () {
-      this.list = []
-      this.pageNo = 1
-      this.isSearched = false
-      this.autoSearchCount = 0
-    },
-    searchWithNewQuery () {
-      this.reset()
-      this.fetchList()
-    },
-    loadMore () {
-      this.fetchList()
-    },
-    onInCordonY () {
-      if (!this.isSearching && this.canLoadMore && this.canAutoSearch) {
-        this.autoSearchCount += 1
-        this.fetchList()
-      }
-    },
-    async fetchList () {
-      if (!this.keyword || this.isSearching) return
-      this.isSearching = true
-      const result = await this.sdk.iconSearch({
+    async load () {
+      const result = await this.fetchList(this.sdk.iconSearch({
         keyword: this.keyword,
         ...this.filter,
         pageSize: this.pageSize,
         pageNo: this.pageNo
-      })
-      this.pageNo += 1
+      }))
       this.list.push(...result.icons)
       this.total = result.count
-      this.isSearched = true
-      this.isSearching = false
+      this.pageNo += 1
     }
   }
 }
