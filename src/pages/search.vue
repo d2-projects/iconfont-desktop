@@ -33,39 +33,75 @@ $sidebarWidth: 240px;
   <div class="app-page-search">
     <!-- left -->
     <div class="app-page-search__side pa-4 pr-0">
-      <app-search-filter v-model="filter" @change="reload"/>
+      <app-search-filter
+        v-model="list.query.filter"
+        @change="listMixinReload"/>
     </div>
     <!-- right -->
     <div class="app-page-search__main">
       <div class="app-page-search__main-content">
-        <app-list @inCordonY="onInCordonY">
-          <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
+        <app-list @inCordonY="listMixinOnInCordonY">
+          <div
+            slot="header"
+            :style="{
+              height: ui.topbar.size + 'px'
+            }"/>
           <div slot="footer">
             <!-- 加载更多 -->
-            <v-btn v-if="canLoadMore" class="ma-1" color="primary" :loading="isSearching" @click="loadMore" text large block>
-              加载更多 {{ list.length }}/{{ total }}
-              <v-icon right>mdi-cloud-download-outline</v-icon>
+            <v-btn
+              v-if="listMixinCanLoadMore"
+              class="ma-1"
+              color="primary"
+              :loading="list.status.isSearching"
+              @click="listMixinLoadMore"
+              text
+              large
+              block>
+              加载更多 {{ list.data.length }}/{{ list.page.total }}
+              <v-icon right>
+                mdi-cloud-download-outline
+              </v-icon>
             </v-btn>
             <!-- 全部加载完毕 -->
-            <v-btn v-if="isLoadedAll" class="ma-1" :ripple="false" text large block disabled>
+            <v-btn
+              v-if="listMixinIsLoadedAll"
+              class="ma-1"
+              :ripple="false"
+              text
+              large
+              block
+              disabled>
               全部加载完毕
-              <v-icon right>mdi-checkbox-marked-circle-outline</v-icon>
+              <v-icon right>
+                mdi-checkbox-marked-circle-outline
+              </v-icon>
             </v-btn>
             <!-- 没有搜索到数据 -->
-            <v-btn v-if="isNoResult" class="ma-1" :ripple="false" text large block disabled>
+            <v-btn
+              v-if="listMixinIsNoResult"
+              class="ma-1"
+              :ripple="false"
+              text
+              large
+              block
+              disabled>
               无搜索结果
-              <v-icon right>mdi-alert-circle-outline</v-icon>
+              <v-icon right>
+                mdi-alert-circle-outline
+              </v-icon>
             </v-btn>
           </div>
-          <app-icon-list :value="list"/>
+          <app-icon-list :value="list.data"/>
         </app-list>
       </div>
-      <div ref="topbar" class="app-page-search__main-topbar">
+      <div
+        ref="topbar"
+        class="app-page-search__main-topbar">
         <app-search-bar
-          v-model="keyword"
+          v-model="list.query.keyword"
           :placeholder="iconSearchPlaceholder"
-          :loading="isSearching"
-          @submit="reload"/>
+          :loading="list.status.isSearching"
+          @submit="listMixinReload"/>
       </div>
     </div>
   </div>
@@ -73,23 +109,29 @@ $sidebarWidth: 240px;
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import fetchList from '@/mixins/fetch-list.js'
+
+import ui from '@/mixins/ui.js'
+import list from '@/mixins/list.js'
 
 export default {
   mixins: [
-    fetchList
+    ui,
+    list
   ],
   data () {
     return {
-      // 搜索条件
-      filter: {
-        collection: -1,
-        fills: '',
-        style: ''
-      },
-      pageSize: 6 * 5,
-      // UI
-      topbarHeight: 0
+      list: {
+        query: {
+          filter: {
+            collection: -1,
+            fills: '',
+            style: ''
+          }
+        },
+        page: {
+          size: 6 * 5
+        }
+      }
     }
   },
   computed: {
@@ -101,27 +143,20 @@ export default {
     ])
   },
   created () {
-    this.keyword = this.$route.query.keyword || ''
-    this.load()
-  },
-  mounted () {
-    this.topbarHeight = this.$refs.topbar.offsetHeight
-  },
-  beforeRouteLeave (to, from, next) {
-    this.list = []
-    next()
+    this.list.query.keyword = this.$route.query.keyword || ''
+    this.listMixinReload()
   },
   methods: {
-    async load () {
-      const result = await this.fetchList(this.sdk.iconSearch({
-        keyword: this.keyword,
-        ...this.filter,
-        pageSize: this.pageSize,
-        pageNo: this.pageNo
+    async listMixinLoad () {
+      const result = await this.listMininFetch(this.sdk.iconSearch({
+        keyword: this.list.query.keyword,
+        ...this.list.query.filter,
+        pageSize: this.list.page.size,
+        pageNo: this.list.page.current
       }))
-      this.list.push(...result.icons)
-      this.total = result.count
-      this.pageNo += 1
+      this.list.data.push(...result.icons)
+      this.list.page.total = result.count
+      this.list.page.current += 1
     }
   }
 }
