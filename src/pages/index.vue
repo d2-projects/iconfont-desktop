@@ -25,14 +25,9 @@
     <div class="app-page-index__content">
       <app-list>
         <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
-        <v-row v-if="collections.length === 0" class="mb-5">
-          <v-col v-for="n in 6" :key="n" xs="6" sm="6" md="4" lg="4" xl="2">
-            <app-collection-card-skeleton/>
-          </v-col>
-        </v-row>
-        <v-row v-else class="mb-5">
-          <v-col v-for="item of collections" :key="item.id" xs="6" sm="6" md="4" lg="4" xl="2">
-            <app-collection-card :value="item"/>
+        <v-row class="mb-5">
+          <v-col v-for="(collection, collectionIndex) of collections" :key="collectionIndex" xs="6" sm="6" md="4" lg="4" xl="2">
+            <app-collection-card v-bind="collection"/>
           </v-col>
         </v-row>
       </app-list>
@@ -44,13 +39,14 @@
 </template>
 
 <script>
+import { get, fill } from 'lodash-es'
 import { mapState } from 'vuex'
 
 export default {
   data () {
     return {
       keyword: '',
-      collections: [],
+      collections: fill(Array(6), { loading: true }),
       // UI
       topbarHeight: 0
     }
@@ -65,7 +61,18 @@ export default {
     this.collections = [
       ...result.topCollections,
       ...result.bottomCollections
-    ]
+    ].map(collection => ({
+      loading: false,
+      name: collection.name,
+      username: get(collection, 'User.nickname', ''),
+      avatar: get(collection, 'User.avatar', ''),
+      isOfficial: collection.is_official === 1,
+      icons: collection.icons,
+      countIcons: collection.icons_count,
+      countVisits: collection.visits_count,
+      countLikes: collection.likes_count,
+      countFavorite: collection.favorite_count
+    }))
   },
   mounted () {
     this.topbarHeight = this.$refs.topbar.offsetHeight
