@@ -24,22 +24,22 @@
           <v-card-text class="font-weight-medium pb-0">{{ name }}</v-card-text>
           <v-card-text flex="main:justify">
             <span>
-              <span class="grey--text">icons </span>
+              <span class="grey--text mr-1">icons</span>
               <span class="font-weight-medium red--text">x{{ countIcons }}</span>
             </span>
             <span>
-              <span class="grey--text">visits </span>
+              <span class="grey--text mr-1">visits</span>
               <span class="font-weight-medium">{{ countVisits | numberFormat }}</span>
             </span>
           </v-card-text>
           <v-divider/>
           <v-card-actions>
             <v-spacer/>
-            <v-btn color="indigo" text small>
+            <v-btn color="indigo" text>
               <v-icon size="16" left>mdi-thumb-up</v-icon>
               {{ countLikes | numberFormat }}
             </v-btn>
-            <v-btn color="red" text small>
+            <v-btn color="red" text>
               <v-icon size="16" left>mdi-heart</v-icon>
               {{ countFavorite | numberFormat }}
             </v-btn>
