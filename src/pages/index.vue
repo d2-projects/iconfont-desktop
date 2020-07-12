@@ -53,28 +53,34 @@ export default {
       'iconSearchPlaceholder'
     ])
   },
-  async created () {
-    const result = await this.sdk.commonIndexConfig()
-    this.collections = [
-      ...result.topCollections,
-      ...result.bottomCollections
-    ].map(e => ({
-      loading: false,
-      name: e.name,
-      username: get(e, 'User.nickname', ''),
-      avatar: get(e, 'User.avatar', ''),
-      isOfficial: e.is_official === 1,
-      icons: e.icons,
-      countIcons: e.icons_count,
-      countVisits: e.visits_count,
-      countLikes: e.likes_count,
-      countFavorite: e.favorite_count
-    }))
+  created () {
+    this.getIndexData()
   },
   mounted () {
     this.topbarHeight = this.$refs.topbar.offsetHeight
   },
   methods: {
+    listItem (item) {
+      return {
+        loading: false,
+        name: item.name,
+        username: get(item, 'User.nickname', ''),
+        avatar: get(item, 'User.avatar', ''),
+        isOfficial: item.is_official === 1,
+        icons: item.icons,
+        countIcons: item.icons_count,
+        countVisits: item.visits_count,
+        countLikes: item.likes_count,
+        countFavorite: item.favorite_count
+      }
+    },
+    async getIndexData () {
+      const result = await this.sdk.commonIndexConfig()
+      this.collections = [
+        ...result.topCollections,
+        ...result.bottomCollections
+      ].map(this.listItem)
+    },
     onSearch (keyword) {
       if (keyword) {
         this.$router.replace({

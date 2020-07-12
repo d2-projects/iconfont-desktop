@@ -1,3 +1,5 @@
+import { fill, find, without } from 'lodash-es'
+
 export default {
   data () {
     return {
@@ -24,6 +26,12 @@ export default {
         autoLoad: {
           count: 0,
           max: 5
+        },
+        // 占位
+        placeholder: {
+          template: {
+            loading: true
+          }
         }
       }
     }
@@ -48,6 +56,9 @@ export default {
     },
     listMixinCanAutoLoad () {
       return this.list.autoLoad.count < this.list.autoLoad.max
+    },
+    listMixinIsHasPlaceholder () {
+      return !!find(this.list.data, this.list.placeholder.template)
     }
   },
   beforeRouteLeave (to, from, next) {
@@ -81,6 +92,14 @@ export default {
     listMixinLoadMore () {
       if (this.listMixinCanDoLoad) {
         this.listMixinLoad()
+      }
+    },
+    listMixinAddPlaceholder () {
+      this.list.data.push(...fill(Array(this.list.page.size), this.list.placeholder.template))
+    },
+    listMixinRemovePlaceholder () {
+      if (this.listMixinIsHasPlaceholder) {
+        this.list.data = without(this.list.data, this.list.placeholder.template)
       }
     },
     async listMininFetch (promise) {

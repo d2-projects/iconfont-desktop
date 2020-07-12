@@ -24,41 +24,47 @@
   <div class="app-page-collections">
     <div class="app-page-collections__content">
       <app-list>
-        <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
-        <app-collection-list :value="list"/>
+        <div
+          slot="header"
+          :style="{
+            height: ui.topbar.size + 'px'
+          }"/>
+        <app-collection-list :value="list.data"/>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-collections__topbar">
       <app-search-bar
-        v-model="keyword"
+        v-model="list.query.keyword"
         placeholder="搜索图标库"
-        :loading="isSearching"
-        @submit="searchWithNewQuery"/>
+        :loading="list.status.isSearching"
+        @submit="listMixinReload"/>
     </div>
   </div>
 </template>
 
 <script>
-import { fill } from 'lodash-es'
+import { get } from 'lodash-es'
 import { mapState } from 'vuex'
 
+import ui from '@/mixins/ui.js'
+import list from '@/mixins/list.js'
+
 export default {
+  mixins: [
+    ui,
+    list
+  ],
   data () {
     return {
-      // 搜索条件
-      keyword: '',
-      type: 3,
-      sort: 'time',
-      pageNo: 1,
-      pageSize: 3,
-      // 搜索结果
-      list: fill(Array(6), { loading: true }),
-      total: 0,
-      // 搜索状态
-      isSearched: false,
-      isSearching: false,
-      // UI
-      topbarHeight: 0
+      list: {
+        query: {
+          type: 3,
+          sort: 'time'
+        },
+        page: {
+          size: 6
+        }
+      }
     }
   },
   computed: {
@@ -66,28 +72,34 @@ export default {
       'sdk'
     ])
   },
-  mounted () {
-    this.topbarHeight = this.$refs.topbar.offsetHeight
-  },
   methods: {
-    searchWithNewQuery () {
-      this.fetchList()
+    listItem (item) {
+      return {
+        loading: false,
+        name: item.name,
+        username: get(item, 'User.nickname', ''),
+        avatar: get(item, 'User.avatar', ''),
+        isOfficial: item.is_official === 1,
+        icons: item.icons,
+        countIcons: item.icons_count,
+        countVisits: item.visits_count,
+        countLikes: item.likes_count,
+        countFavorite: item.favorite_count
+      }
     },
-    async fetchList () {
-      if (!this.keyword || this.isSearching) return
-      const result = await this.sdk.collections({
-        keyword: this.keyword,
-        type: this.type,
-        sort: this.sort,
-        pageNo: this.pageNo,
-        pageSize: this.pageSize
-      })
-      // count: 163
-      // limit: 9
-      // lists: Array(9)
-      // page: 1
-      // sort: "time"
-      console.log(result)
+    async listMixinLoad () {
+      this.listMixinAddPlaceholder()
+      const result = await this.listMininFetch(this.sdk.collections({
+        keyword: this.list.query.keyword,
+        type: this.list.query.type,
+        sort: this.list.query.sort,
+        pageNo: this.list.page.pageNo,
+        pageSize: this.list.page.size
+      }))
+      this.listMixinRemovePlaceholder()
+      this.list.data.push(...result.lists.map(this.listItem))
+      this.list.page.total = result.count
+      this.list.page.current += 1
     }
   }
 }
