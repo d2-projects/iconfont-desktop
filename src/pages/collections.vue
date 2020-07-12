@@ -35,21 +35,26 @@
         <div
           slot="footer"
           :style="{ height: ui.bottombar.size + 'px' }"/>
+        <v-sheet class="pa-4 mb-4" rounded>
+          <app-dict-select-chip
+            v-model="list.query.type"
+            name="collectionType"
+            @change="listMixinReload"/>
+          <app-dict-select-chip
+            v-model="list.query.sort"
+            name="collectionSort"
+            @change="listMixinReload"/>
+        </v-sheet>
         <app-collection-list :value="list.data"/>
       </app-list>
     </div>
-    <div ref="topbar" class="app-page-collections__topbar  pa-4" flex="dir:top main:center">
+    <div ref="topbar" class="app-page-collections__topbar pa-4">
       <app-input-search
-        class="mx-auto mb-3"
+        class="mx-auto"
         v-model="list.query.keyword"
         placeholder="搜索图标库"
         :loading="list.status.isSearching"
         @submit="listMixinReload"/>
-      <app-dict-select-chip
-        class="mx-auto"
-        v-model="list.query.type"
-        name="collectionType"
-        @change="listMixinReload"/>
     </div>
     <div ref="bottombar" class="app-page-collections__bottombar">
       <app-pagination v-model="list.page" @change="listMixinLoadMore"/>

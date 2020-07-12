@@ -8,7 +8,7 @@
         type="collection"
         :loading="loading"
         transition="fade-transition">
-        <v-card :class="`elevation-${ hover ? 4 : 2 }`" class="transition-swing">
+        <v-card :class="`elevation-${ hover ? 2 : 0 }`" class="transition-swing">
           <v-card-text flex="cross:center">
             <v-avatar size="26" color="grey lighten-2" class="mr-2">
               <v-img v-if="avatar" :src="avatar"/>
