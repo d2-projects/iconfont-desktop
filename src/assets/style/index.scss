@@ -11,6 +11,12 @@ html body {
   user-select: none;
 }
 
-@include b(drag) {
+.app-drag {
   -webkit-app-region: drag;
+}
+
+.is-nowrap{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

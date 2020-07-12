@@ -35,16 +35,18 @@
         <div
           slot="footer"
           :style="{ height: ui.bottombar.size + 'px' }"/>
-        <v-sheet class="pa-4 mb-4" rounded>
+        <app-dict-select-chip-group>
           <app-dict-select-chip
             v-model="list.query.type"
             name="collectionType"
+            label="图标库"
             @change="listMixinReload"/>
           <app-dict-select-chip
             v-model="list.query.sort"
             name="collectionSort"
+            label="排序"
             @change="listMixinReload"/>
-        </v-sheet>
+        </app-dict-select-chip-group>
         <app-collection-list :value="list.data"/>
       </app-list>
     </div>

@@ -1,19 +1,27 @@
 <template>
-  <div class="app-dict-select-chip">
-    <v-chip-group
-      v-model="currentvalue"
-      mandatory
-      active-class="primary--text"
-      @change="onChange">
-      <v-chip
-        v-for="option of options"
-        :key="option.name"
-        :value="option.name"
-        filter
-        outlined>
-        {{ option.label }}
-      </v-chip>
-    </v-chip-group>
+  <div class="app-dict-select-chip" flex="cross:center">
+    <div
+      flex-box="0"
+      :style="{ width: labelWidth + 'px' }"
+      class="font-weight-medium">
+      {{ label }}
+    </div>
+    <div flex-box="1">
+      <v-chip-group
+        v-model="currentvalue"
+        mandatory
+        active-class="primary--text"
+        @change="onChange">
+        <v-chip
+          v-for="option of options"
+          :key="option.name"
+          :value="option.name"
+          filter
+          outlined>
+          {{ option.label }}
+        </v-chip>
+      </v-chip-group>
+    </div>
   </div>
 </template>
 
@@ -31,6 +39,14 @@ export default {
       type: String,
       default: '',
       required: true
+    },
+    label: {
+      type: String,
+      default: ''
+    },
+    labelWidth: {
+      type: Number,
+      default: 80
     }
   },
   data () {

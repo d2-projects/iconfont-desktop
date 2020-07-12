@@ -21,7 +21,7 @@
             </span>
           </v-card-text>
           <app-collection-card-cover class="px-2" :value="icons"/>
-          <v-card-text class="font-weight-medium pb-0">{{ name }}</v-card-text>
+          <v-card-text class="font-weight-medium is-nowrap pb-0">{{ name }}</v-card-text>
           <v-card-text flex="main:justify">
             <span>
               <span class="grey--text mr-1">icons</span>
