@@ -10,7 +10,7 @@ import '@mdi/font/css/materialdesignicons.css'
 
 Vue.config.productionTip = false
 
-// store.dispatch('window/init')
+store.dispatch('window/init')
 
 new Vue({
   router,

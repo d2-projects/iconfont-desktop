@@ -36,7 +36,7 @@ function createWindow () {
     height: 800,
     // minWidth: 960,
     // minHeight: 500,
-    minWidth: 400,
+    minWidth: 960,
     minHeight: 500,
     useContentSize: true,
     center: true,

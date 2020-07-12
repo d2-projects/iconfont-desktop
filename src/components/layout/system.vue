@@ -18,6 +18,9 @@
         </span>
       </v-col>
       <v-col cols="5" flex="main:right">
+        <v-icon @click="toggleAlwaysOnTop">
+          {{ isAlwaysOnTop ? 'mdi-layers' : 'mdi-layers-outline' }}
+        </v-icon>
         <v-icon v-if="!isFullScreen" @click="minimize">
           mdi-minus
         </v-icon>
