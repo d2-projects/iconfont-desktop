@@ -20,10 +20,12 @@ export default {
   },
   methods: {
     uiLoad () {
-      Object.keys(this.ui).forEach(name => {
-        const item = this.ui[name]
-        const element = this.$refs[item.ref]
-        if (element) this.ui[name].size = element[item.attr]
+      this.$nextTick(() => {
+        Object.keys(this.ui).forEach(name => {
+          const item = this.ui[name]
+          const element = this.$refs[item.ref]
+          if (element) this.ui[name].size = element[item.attr]
+        })
       })
     }
   }

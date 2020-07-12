@@ -1,53 +1,49 @@
 <template>
-  <v-hover>
-    <template v-slot="{ hover }">
-      <v-skeleton-loader
-        class="white"
-        height="350"
-        :types="{ collection: 'list-item-avatar-two-line, image, list-item-two-line' }"
-        type="collection"
-        :loading="loading"
-        transition="fade-transition">
-        <v-card :class="`elevation-${ hover ? 2 : 0 }`" class="transition-swing">
-          <v-card-text flex="cross:center">
-            <v-avatar size="26" color="grey lighten-2" class="mr-2">
-              <v-img v-if="avatar" :src="avatar"/>
-              <span v-else class="grey--text text--lighten-5 text-caption font-weight-bold">{{ username[0] }}</span>
-            </v-avatar>
-            <span class="mr-auto">{{ username }}</span>
-            <span v-if="isOfficial" class="font-weight-medium grey--text">
-              官方图标
-              <v-icon size="14" class="ml-1 grey--text">mdi-shield-check</v-icon>
-            </span>
-          </v-card-text>
-          <app-collection-card-cover class="px-2" :value="icons"/>
-          <v-card-text class="font-weight-medium is-nowrap pb-0">{{ name }}</v-card-text>
-          <v-card-text flex="main:justify">
-            <span>
-              <span class="grey--text mr-1">icons</span>
-              <span class="font-weight-medium red--text">x{{ countIcons }}</span>
-            </span>
-            <span>
-              <span class="grey--text mr-1">visits</span>
-              <span class="font-weight-medium">{{ countVisits | numberFormat }}</span>
-            </span>
-          </v-card-text>
-          <v-divider/>
-          <v-card-actions>
-            <v-spacer/>
-            <v-btn color="indigo" text>
-              <v-icon size="16" left>mdi-thumb-up</v-icon>
-              {{ countLikes | numberFormat }}
-            </v-btn>
-            <v-btn color="red" text>
-              <v-icon size="16" left>mdi-heart</v-icon>
-              {{ countFavorite | numberFormat }}
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-skeleton-loader>
-    </template>
-  </v-hover>
+  <v-skeleton-loader
+    class="white"
+    height="350"
+    :types="{ collection: 'list-item-avatar-two-line, image, list-item-two-line' }"
+    type="collection"
+    :loading="loading"
+    transition="fade-transition">
+    <v-card elevation="0" class="transition-swing">
+      <v-card-text flex="cross:center">
+        <v-avatar size="26" color="grey lighten-2" class="mr-2">
+          <v-img v-if="avatar" :src="avatar"/>
+          <span v-else class="grey--text text--lighten-5 text-caption font-weight-bold">{{ username[0] }}</span>
+        </v-avatar>
+        <span class="mr-auto">{{ username }}</span>
+        <span v-if="isOfficial" class="font-weight-medium grey--text">
+          官方图标
+          <v-icon size="14" class="ml-1 grey--text">mdi-shield-check</v-icon>
+        </span>
+      </v-card-text>
+      <app-collection-card-cover class="px-2" :value="icons"/>
+      <v-card-text class="font-weight-medium is-nowrap pb-0">{{ name }}</v-card-text>
+      <v-card-text flex="main:justify">
+        <span>
+          <span class="grey--text mr-1">icons</span>
+          <span class="font-weight-medium red--text">x{{ countIcons }}</span>
+        </span>
+        <span>
+          <span class="grey--text mr-1">visits</span>
+          <span class="font-weight-medium">{{ countVisits | numberFormat }}</span>
+        </span>
+      </v-card-text>
+      <v-divider/>
+      <v-card-actions>
+        <v-spacer/>
+        <v-btn color="indigo" text>
+          <v-icon size="16" left>mdi-thumb-up</v-icon>
+          {{ countLikes | numberFormat }}
+        </v-btn>
+        <v-btn color="red" text>
+          <v-icon size="16" left>mdi-heart</v-icon>
+          {{ countFavorite | numberFormat }}
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-skeleton-loader>
 </template>
 
 <script>

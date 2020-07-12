@@ -58,7 +58,7 @@
         :loading="list.status.isSearching"
         @submit="listMixinReload"/>
     </div>
-    <div ref="bottombar" class="app-page-collections__bottombar">
+    <div v-if="list.page.total" ref="bottombar" class="app-page-collections__bottombar">
       <app-pagination v-model="list.page" @change="listMixinLoadMore"/>
     </div>
   </div>
@@ -94,6 +94,12 @@ export default {
       'sdk'
     ])
   },
+  created () {
+    this.listMixinLoad()
+  },
+  watch: {
+    'list.page.total': 'uiLoad'
+  },
   methods: {
     listItem (item) {
       return {
@@ -119,7 +125,6 @@ export default {
         pageNo: this.list.page.current,
         pageSize: this.list.page.size
       }))
-      console.log(result)
       this.listMixinRemovePlaceholder()
       this.list.data = result.lists.map(this.listItem)
       this.list.page.current = result.page
