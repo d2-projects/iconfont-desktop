@@ -44,7 +44,6 @@
 </template>
 
 <script>
-import { fromPairs } from 'lodash-es'
 import { mapState } from 'vuex'
 
 export default {

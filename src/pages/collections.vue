@@ -36,7 +36,6 @@
           slot="footer"
           :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-collection-list :value="list.data"/>
-        <app-collection-search-filter/>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-collections__topbar">
@@ -98,7 +97,6 @@ export default {
       }
     },
     async listMixinLoad () {
-      console.log(this.list.page.current)
       this.list.data = []
       this.listMixinAddPlaceholder()
       const result = await this.listMininFetch(this.sdk.collections({
