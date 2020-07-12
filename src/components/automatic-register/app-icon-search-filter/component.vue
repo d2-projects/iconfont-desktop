@@ -29,9 +29,9 @@
             <v-radio-group
               v-model="currentValue[index]"
               hide-details
-              @change="onRadioGroupChange">
+              @change="onRadioGroupChange(options[index].dictionaryName, index, options[index].propName)">
               <v-radio
-                v-for="option in options[index].options"
+                v-for="option in dictionary[options[index].dictionaryName]"
                 :key="option.name"
                 :label="option.label"
                 :value="option.name"/>
@@ -50,41 +50,69 @@ import { mapState } from 'vuex'
 export default {
   name: 'app-icon-search-filter',
   props: {
-    value: {
-      type: Object,
-      default: () => ({
-        collection: '',
-        fills: '',
-        style: ''
-      })
+    collection: {
+      type: [String, Number],
+      default: -1
+    },
+    fills: {
+      type: [String, Number],
+      default: ''
+    },
+    sty: {
+      type: [String, Number],
+      default: ''
     }
   },
   data () {
     return {
       opened: [0, 1, 2],
-      currentValue: ['', '', '']
+      currentValue: [-1, '', '']
     }
   },
   watch: {
-    value: {
+    collection: {
       handler (value) {
-        const data = this.valueToName(value)
-        this.currentValue = [
-          data.collection,
-          data.fills,
-          data.style
-        ]
+        this.currentValue[0] = this.findInDictionaryBy(value, 'collection', 'value', 'name')
+      },
+      immediate: true
+    },
+    fills: {
+      handler (value) {
+        this.currentValue[1] = this.findInDictionaryBy(value, 'fills', 'value', 'name')
+      },
+      immediate: true
+    },
+    sty: {
+      handler (value) {
+        this.currentValue[2] = this.findInDictionaryBy(value, 'style', 'value', 'name')
       },
       immediate: true
     }
   },
   computed: {
-    ...mapState('sdk', ['dictionary']),
+    ...mapState('sdk', [
+      'dictionary'
+    ]),
     options () {
       return [
-        { title: '分类', icon: 'mdi-star-circle', options: this.dictionary.collection },
-        { title: '填充', icon: 'mdi-invert-colors', options: this.dictionary.fills },
-        { title: '风格', icon: 'mdi-palette', options: this.dictionary.style }
+        {
+          title: '分类',
+          icon: 'mdi-star-circle',
+          dictionaryName: 'collection',
+          propName: 'collection'
+        },
+        {
+          title: '填充',
+          icon: 'mdi-invert-colors',
+          dictionaryName: 'fills',
+          propName: 'fills'
+        },
+        {
+          title: '风格',
+          icon: 'mdi-palette',
+          dictionaryName: 'style',
+          propName: 'sty'
+        }
       ]
     }
   },
@@ -93,26 +121,10 @@ export default {
       const item = this.dictionary[dictionaryName].find(dictionaryItem => dictionaryItem[byKeyname] === value)
       return item ? item[returnKeyname] : value
     },
-    nameToValue (source) {
-      return fromPairs(Object.keys(source).map(keyname => [
-        keyname,
-        this.findInDictionaryBy(source[keyname], keyname, 'name', 'value')
-      ]))
-    },
-    valueToName (source) {
-      return fromPairs(Object.keys(source).map(keyname => [
-        keyname,
-        this.findInDictionaryBy(source[keyname], keyname, 'value', 'name')
-      ]))
-    },
-    onRadioGroupChange () {
-      const value = this.nameToValue({
-        collection: this.currentValue[0],
-        fills: this.currentValue[1],
-        style: this.currentValue[2]
-      })
-      this.$emit('input', value)
-      this.$emit('change', value)
+    onRadioGroupChange (dictionaryName, index, propName) {
+      const value = this.findInDictionaryBy(this.currentValue[index], dictionaryName, 'name', 'value')
+      this.$emit(`update:${propName}`, value)
+      this.$emit('change')
     }
   }
 }

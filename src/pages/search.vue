@@ -34,7 +34,9 @@ $sidebarWidth: 240px;
     <!-- left -->
     <div class="app-page-search__side pa-4 pr-0">
       <app-icon-search-filter
-        v-model="list.query.filter"
+        v-bind:collection.sync="list.query.collection"
+        v-bind:fills.sync="list.query.fills"
+        v-bind:sty.sync="list.query.sty"
         @change="listMixinReload"/>
     </div>
     <!-- right -->
@@ -119,11 +121,9 @@ export default {
     return {
       list: {
         query: {
-          filter: {
-            collection: -1,
-            fills: '',
-            style: ''
-          }
+          collection: -1,
+          fills: '',
+          sty: ''
         },
         page: {
           size: 6 * 5
@@ -147,7 +147,9 @@ export default {
     async listMixinLoad () {
       const result = await this.listMininFetch(this.sdk.iconSearch({
         keyword: this.list.query.keyword,
-        ...this.list.query.filter,
+        collection: this.list.query.collection,
+        fills: this.list.query.fills,
+        style: this.list.query.sty,
         pageSize: this.list.page.size,
         pageNo: this.list.page.current
       }))
