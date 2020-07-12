@@ -1,39 +1,35 @@
 <style lang="scss">
-@include b(search-bar) {
-  @include e(content) {
-    max-width: 400px;
-  }
+@include b(input-search) {
+  max-width: 400px;
 }
 </style>
 
 <template>
-  <div class="app-search-bar pa-4">
-    <div class="app-search-bar__content d-flex mx-auto">
-      <v-text-field
-        ref="input"
-        class="mr-5"
-        v-model="currentValue"
-        :label="placeholder"
-        filled
-        rounded
-        single-line
-        autofocus
-        hide-details
-        background-color="rgba(240, 240, 240, 0.8)"
-        @input="onInput"
-        @keydown="onKeyDown"
-        @click="onClickInput"/>
-      <v-btn
-        :loading="loading"
-        :disabled="false"
-        :elevation="2"
-        color="primary"
-        class="white--text"
-        fab
-        @click="onClickSearch">
-        <v-icon dark>mdi-magnify</v-icon>
-      </v-btn>
-    </div>
+  <div class="app-input-search d-flex">
+    <v-text-field
+      ref="input"
+      class="mr-5"
+      v-model="currentValue"
+      :label="placeholder"
+      filled
+      rounded
+      single-line
+      autofocus
+      hide-details
+      background-color="rgba(240, 240, 240, 0.8)"
+      @input="onInput"
+      @keydown="onKeyDown"
+      @click="onClickInput"/>
+    <v-btn
+      :loading="loading"
+      :disabled="false"
+      :elevation="2"
+      color="primary"
+      class="white--text"
+      fab
+      @click="onClickSearch">
+      <v-icon dark>mdi-magnify</v-icon>
+    </v-btn>
   </div>
 </template>
 
@@ -41,7 +37,7 @@
 import { throttle } from 'lodash-es'
 
 export default {
-  name: 'app-search-bar',
+  name: 'app-input-search',
   props: {
     value: {
       type: String,

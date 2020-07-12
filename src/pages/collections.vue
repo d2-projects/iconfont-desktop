@@ -38,8 +38,9 @@
         <app-collection-list :value="list.data"/>
       </app-list>
     </div>
-    <div ref="topbar" class="app-page-collections__topbar">
-      <app-search-bar
+    <div ref="topbar" class="app-page-collections__topbar  pa-4">
+      <app-input-search
+        class="mx-auto"
         v-model="list.query.keyword"
         placeholder="搜索图标库"
         :loading="list.status.isSearching"

@@ -95,8 +95,9 @@ $sidebarWidth: 240px;
       </div>
       <div
         ref="topbar"
-        class="app-page-search__main-topbar">
-        <app-search-bar
+        class="app-page-search__main-topbar pa-4">
+        <app-input-search
+          class="mx-auto"
           v-model="list.query.keyword"
           :placeholder="iconSearchPlaceholder"
           :loading="list.status.isSearching"

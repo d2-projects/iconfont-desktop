@@ -28,8 +28,8 @@
         <app-collection-list :value="collections"/>
       </app-list>
     </div>
-    <div ref="topbar" class="app-page-index__topbar">
-      <app-search-bar :placeholder="iconSearchPlaceholder" @submit="onSearch"/>
+    <div ref="topbar" class="app-page-index__topbar pa-4">
+      <app-input-search class="mx-auto" :placeholder="iconSearchPlaceholder" @submit="onSearch"/>
     </div>
   </div>
 </template>
