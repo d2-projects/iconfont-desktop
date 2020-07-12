@@ -1,6 +1,6 @@
 <style lang="scss">
 @include b(input-search) {
-  max-width: 400px;
+  width: 400px;
 }
 </style>
 

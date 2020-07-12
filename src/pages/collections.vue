@@ -38,13 +38,18 @@
         <app-collection-list :value="list.data"/>
       </app-list>
     </div>
-    <div ref="topbar" class="app-page-collections__topbar  pa-4">
+    <div ref="topbar" class="app-page-collections__topbar  pa-4" flex="dir:top main:center">
       <app-input-search
-        class="mx-auto"
+        class="mx-auto mb-3"
         v-model="list.query.keyword"
         placeholder="搜索图标库"
         :loading="list.status.isSearching"
         @submit="listMixinReload"/>
+      <app-dict-select-chip
+        class="mx-auto"
+        v-model="list.query.type"
+        name="collectionType"
+        @change="listMixinReload"/>
     </div>
     <div ref="bottombar" class="app-page-collections__bottombar">
       <app-pagination v-model="list.page" @change="listMixinLoadMore"/>

@@ -20,10 +20,10 @@ export default {
   ],
   // collection
   collectionType: [
-    { label: '所有', name: '3', value: 3 },
-    { label: '官方', name: '1', value: 1 },
-    { label: '多色', name: '2', value: 2 },
-    { label: '单色', name: '4', value: 4 }
+    { label: '所有图标库', name: '3', value: 3 },
+    { label: '官方图标库', name: '1', value: 1 },
+    { label: '多色图标库', name: '2', value: 2 },
+    { label: '单色图标库', name: '4', value: 4 }
   ],
   collectionSort: [
     { label: '时间', name: 'time', value: 'time' },
