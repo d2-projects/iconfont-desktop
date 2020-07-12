@@ -70,12 +70,14 @@ export default class Iconfont {
           config.data.t = new Date().getTime()
           config.data.ctoken = _cookies.ctoken
           config.data = qs.stringify(config.data)
+          console.log(config.data)
         }
         if (config.method === 'get') {
           const params = config.params || {}
           params.t = new Date().getTime()
           params.ctoken = _cookies.ctoken
           config.params = params
+          console.log(config.params)
         }
         return config
       },

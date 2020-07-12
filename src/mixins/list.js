@@ -21,7 +21,6 @@ export default {
         },
         // 搜索结果
         data: [],
-        total: 0,
         // 自动加载
         autoLoad: {
           count: 0,
@@ -79,6 +78,7 @@ export default {
     listMixinReset () {
       this.list.data = []
       this.list.page.current = 1
+      this.list.page.total = 0
       this.list.status.isSearched = false
       this.list.autoLoad.count = 0
     },
@@ -95,11 +95,19 @@ export default {
       }
     },
     listMixinAddPlaceholder () {
-      this.list.data.push(...fill(Array(this.list.page.size), this.list.placeholder.template))
+      this.list.data.push(
+        ...fill(
+          Array(this.list.page.size),
+          this.list.placeholder.template
+        )
+      )
     },
     listMixinRemovePlaceholder () {
       if (this.listMixinIsHasPlaceholder) {
-        this.list.data = without(this.list.data, this.list.placeholder.template)
+        this.list.data = without(
+          this.list.data,
+          this.list.placeholder.template
+        )
       }
     },
     async listMininFetch (promise) {

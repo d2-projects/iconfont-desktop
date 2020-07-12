@@ -6,6 +6,11 @@
     @extend %absoluteTop;
     @extend %backdrop;
   }
+  @include e(bottombar) {
+    z-index: 1;
+    @extend %absoluteBottom;
+    @extend %backdrop;
+  }
   @include e(content) {
     @extend %absoluteAll;
   }
@@ -30,6 +35,11 @@
             height: ui.topbar.size + 'px'
           }"/>
         <app-collection-list :value="list.data"/>
+        <div
+          slot="footer"
+          :style="{
+            height: ui.bottombar.size + 'px'
+          }"/>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-collections__topbar">
@@ -38,6 +48,9 @@
         placeholder="搜索图标库"
         :loading="list.status.isSearching"
         @submit="listMixinReload"/>
+    </div>
+    <div ref="bottombar" class="app-page-collections__bottombar">
+      <app-pagination v-model="list.page" @change="listMixinLoadMore"/>
     </div>
   </div>
 </template>
@@ -62,7 +75,7 @@ export default {
           sort: 'time'
         },
         page: {
-          size: 6
+          size: 12
         }
       }
     }
@@ -88,18 +101,22 @@ export default {
       }
     },
     async listMixinLoad () {
+      console.log(this.list.page.current)
+      this.list.data = []
       this.listMixinAddPlaceholder()
       const result = await this.listMininFetch(this.sdk.collections({
         keyword: this.list.query.keyword,
         type: this.list.query.type,
         sort: this.list.query.sort,
-        pageNo: this.list.page.pageNo,
+        pageNo: this.list.page.current,
         pageSize: this.list.page.size
       }))
+      console.log(result)
       this.listMixinRemovePlaceholder()
-      this.list.data.push(...result.lists.map(this.listItem))
+      this.list.data = result.lists.map(this.listItem)
+      this.list.page.current = result.page
+      this.list.page.size = result.limit
       this.list.page.total = result.count
-      this.list.page.current += 1
     }
   }
 }

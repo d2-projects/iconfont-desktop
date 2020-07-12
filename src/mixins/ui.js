@@ -6,6 +6,11 @@ export default {
           ref: 'topbar',
           size: 0,
           attr: 'offsetHeight'
+        },
+        bottombar: {
+          ref: 'bottombar',
+          size: 0,
+          attr: 'offsetHeight'
         }
       }
     }
