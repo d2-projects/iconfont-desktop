@@ -46,11 +46,10 @@ $sidebarWidth: 240px;
             :style="{
               height: ui.topbar.size + 'px'
             }"/>
-          <div slot="footer">
+          <div slot="footer" class="ma-1 mb-2">
             <!-- 加载更多 -->
             <v-btn
               v-if="listMixinCanLoadMore"
-              class="ma-1"
               color="primary"
               :loading="list.status.isSearching"
               @click="listMixinLoadMore"
@@ -65,7 +64,6 @@ $sidebarWidth: 240px;
             <!-- 全部加载完毕 -->
             <v-btn
               v-if="listMixinIsLoadedAll"
-              class="ma-1"
               :ripple="false"
               text
               large
@@ -79,7 +77,6 @@ $sidebarWidth: 240px;
             <!-- 没有搜索到数据 -->
             <v-btn
               v-if="listMixinIsNoResult"
-              class="ma-1"
               :ripple="false"
               text
               large
