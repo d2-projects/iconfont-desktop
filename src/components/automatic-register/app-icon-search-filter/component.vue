@@ -1,5 +1,5 @@
 <style lang="scss">
-@include b(search-filter) {
+@include b(icon-search-filter) {
   height: 100%;
   @include e(scroll) {
     height: 100%;
@@ -8,9 +8,9 @@
 </style>
 
 <template>
-  <v-card class="app-search-filter pa-1" color="primary" flat dark>
+  <v-card class="app-icon-search-filter pa-1" color="primary" flat dark>
     <app-scroll
-      class="app-search-filter__scroll"
+      class="app-icon-search-filter__scroll"
       :options="{
         scrollbars: {
           autoHide: 'never'
@@ -48,7 +48,7 @@ import { fromPairs } from 'lodash-es'
 import { mapState } from 'vuex'
 
 export default {
-  name: 'app-search-filter',
+  name: 'app-icon-search-filter',
   props: {
     value: {
       type: Object,

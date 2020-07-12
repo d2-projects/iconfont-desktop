@@ -31,15 +31,12 @@
       <app-list>
         <div
           slot="header"
-          :style="{
-            height: ui.topbar.size + 'px'
-          }"/>
-        <app-collection-list :value="list.data"/>
+          :style="{ height: ui.topbar.size + 'px' }"/>
         <div
           slot="footer"
-          :style="{
-            height: ui.bottombar.size + 'px'
-          }"/>
+          :style="{ height: ui.bottombar.size + 'px' }"/>
+        <app-collection-list :value="list.data"/>
+        <app-collection-search-filter/>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-collections__topbar">

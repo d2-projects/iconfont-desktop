@@ -33,7 +33,7 @@ $sidebarWidth: 240px;
   <div class="app-page-search">
     <!-- left -->
     <div class="app-page-search__side pa-4 pr-0">
-      <app-search-filter
+      <app-icon-search-filter
         v-model="list.query.filter"
         @change="listMixinReload"/>
     </div>
