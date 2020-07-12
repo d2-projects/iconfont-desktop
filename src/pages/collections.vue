@@ -84,7 +84,7 @@ export default {
           sort: 'time'
         },
         page: {
-          size: 12
+          size: 9
         },
         setting: {
           searchWithoutKeywords: true
