@@ -28,7 +28,7 @@
 <template>
   <div class="app-page-collections">
     <div class="app-page-collections__content">
-      <app-list>
+      <app-list ref="list">
         <div
           slot="header"
           :style="{ height: ui.topbar.size + 'px' }"/>
@@ -85,6 +85,9 @@ export default {
         },
         page: {
           size: 12
+        },
+        setting: {
+          searchWithoutKeywords: true
         }
       }
     }
@@ -94,13 +97,20 @@ export default {
       'sdk'
     ])
   },
-  created () {
+  mounted () {
     this.listMixinLoad()
   },
   watch: {
     'list.page.total': 'uiLoad'
   },
   methods: {
+    scrollTop () {
+      const list = this.$refs.list
+      if (!list) return
+      const osInstance = list.getOsInstance()
+      if (!osInstance) return
+      osInstance.scroll(0)
+    },
     listItem (item) {
       return {
         loading: false,
@@ -116,6 +126,7 @@ export default {
       }
     },
     async listMixinLoad () {
+      this.scrollTop()
       this.list.data = []
       this.listMixinAddPlaceholder()
       const result = await this.listMininFetch(this.sdk.collections({

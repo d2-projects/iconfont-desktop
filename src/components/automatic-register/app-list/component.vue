@@ -6,6 +6,7 @@
 
 <template>
   <app-scroll
+    ref="scroll"
     class="app-list"
     :options="{
       scrollbars: {
@@ -29,6 +30,12 @@
 
 <script>
 export default {
-  name: 'app-list'
+  name: 'app-list',
+  methods: {
+    getOsInstance () {
+      const scroll = this.$refs.scroll
+      return scroll ? scroll.getOsInstance() : {}
+    }
+  }
 }
 </script>

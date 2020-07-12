@@ -31,6 +31,10 @@ export default {
           template: {
             loading: true
           }
+        },
+        // 设置
+        setting: {
+          searchWithoutKeywords: false
         }
       }
     }
@@ -51,7 +55,7 @@ export default {
         this.list.page.total === 0
     },
     listMixinCanDoLoad () {
-      return this.list.query.keyword && !this.list.status.isSearching
+      return (this.list.setting.searchWithoutKeywords || this.list.query.keyword) && !this.list.status.isSearching
     },
     listMixinCanAutoLoad () {
       return this.list.autoLoad.count < this.list.autoLoad.max
