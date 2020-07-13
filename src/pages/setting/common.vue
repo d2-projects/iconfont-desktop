@@ -10,6 +10,6 @@
 
 <template>
   <div>
-    app-page-setting-cog
+    通用
   </div>
 </template>

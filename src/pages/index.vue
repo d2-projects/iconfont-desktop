@@ -15,7 +15,9 @@
 <route>
 {
   "meta": {
-    "sdk": true
+    "sdk": true,
+    "title": "首页",
+    "icon": "mdi-home-variant"
   }
 }
 </route>

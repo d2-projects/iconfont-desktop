@@ -10,6 +10,6 @@
 
 <template>
   <div>
-    app-page-setting-account
+    账户
   </div>
 </template>

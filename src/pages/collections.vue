@@ -20,7 +20,9 @@
 <route>
 {
   "meta": {
-    "sdk": true
+    "sdk": true,
+    "title": "图标库",
+    "icon": "mdi-image-multiple"
   }
 }
 </route>

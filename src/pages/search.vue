@@ -16,7 +16,9 @@ $sidebarWidth: 240px;
 <route>
 {
   "meta": {
-    "sdk": true
+    "sdk": true,
+    "title": "图标",
+    "icon": "mdi-magnify"
   }
 }
 </route>

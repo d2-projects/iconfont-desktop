@@ -16,7 +16,9 @@
 <route>
 {
   "meta": {
-    "sdk": true
+    "sdk": true,
+    "title": "设置",
+    "icon": "mdi-tune"
   }
 }
 </route>
@@ -27,8 +29,8 @@
       <app-list class="white">
         <v-list flat>
           <v-subheader>设置</v-subheader>
-          <v-list-item-group v-model="active" color="primary">
-            <v-list-item v-for="menu of menus" :key="menu.value" :value="menu.value">
+          <v-list-item-group v-model="active" color="primary" @change="onMenuChange">
+            <v-list-item v-for="menu of menusSetting" :key="menu.value" :value="menu.value">
               <v-list-item-icon>
                 <v-icon>{{ menu.icon }}</v-icon>
               </v-list-item-icon>
@@ -42,29 +44,38 @@
     </div>
     <div class="app-page-setting__main">
       <app-list>
-        <router-view/>
+        <div class="pa-3">
+          <router-view/>
+        </div>
       </app-list>
     </div>
   </div>
 </template>
 
 <script>
-import { find, get } from 'lodash-es'
-import routes from 'vue-auto-routing'
-
 export default {
   data () {
     return {
-      active: 'account'
+      active: '',
+      menusSetting: [
+        {
+          label: '账户',
+          value: 'setting-account',
+          icon: 'mdi-account-circle'
+        },
+        {
+          label: '通用',
+          value: 'setting-common',
+          icon: 'mdi-cog'
+        }
+      ]
     }
   },
-  computed: {
-    menus () {
-      return get(find(routes, { name: 'setting' }), 'children', []).map(route => ({
-        label: route.meta.title,
-        value: route.name,
-        icon: route.meta.icon
-      }))
+  methods: {
+    onMenuChange () {
+      this.$router.push({
+        name: this.active
+      })
     }
   }
 }

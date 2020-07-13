@@ -2,6 +2,7 @@
 const path = require('path')
 
 module.exports = {
+  publicPath: '/',
   css: {
     loaderOptions: {
       // 设置 scss 公用变量文件
