@@ -1,14 +1,14 @@
 <template>
   <v-bottom-navigation
     class="app-drag"
-    :value="this.active"
+    :value="active"
     shift
     app>
     <v-btn
       v-for="menu of menus"
       :key="menu.value"
       :value="menu.value"
-      @click="onChange(menu.value)">
+      @click="onClick(menu.value)">
       <span>{{ menu.label }}</span>
       <v-icon>{{ menu.icon }}</v-icon>
     </v-btn>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { last } from 'lodash'
 import { menus } from '@/router.js'
 
 export default {
@@ -27,14 +28,12 @@ export default {
   },
   computed: {
     active () {
-      return this.$route.name
+      return last(this.$route.matched).name.split('-')[0]
     }
   },
   methods: {
-    onChange (name) {
-      this.$router.replace({
-        name
-      })
+    onClick (name) {
+      this.$router.replace({ name })
     }
   }
 }

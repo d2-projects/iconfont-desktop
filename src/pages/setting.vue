@@ -36,7 +36,7 @@
               v-for="menu of menus"
               :key="menu.value"
               :value="menu.value"
-              @click="onSelect(menu.value)">
+              @click="onClick(menu.value)">
               <v-list-item-icon>
                 <v-icon>
                   {{ menu.icon }}
@@ -77,7 +77,7 @@ export default {
     }
   },
   methods: {
-    onSelect (name) {
+    onClick (name) {
       this.$router.replace({ name })
     }
   }
