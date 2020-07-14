@@ -33,7 +33,7 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.sdk && !sdk.isReady()) {
+  if (find(to.matched, { meta: { sdk: true } }) && !sdk.isReady()) {
     console.log('需要 SDK 初始化')
     next({
       name: 'sys-init'
