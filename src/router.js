@@ -36,7 +36,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.sdk && !sdk.isReady()) {
     console.log('需要 SDK 初始化')
     next({
-      name: 'init'
+      name: 'sys-init'
     })
   } else {
     next()

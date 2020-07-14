@@ -1,7 +1,6 @@
 <route>
 {
   "meta": {
-    "sdk": true,
     "title": "账户",
     "icon": "mdi-account-circle"
   }

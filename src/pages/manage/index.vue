@@ -1,5 +1,5 @@
 <template>
   <div>
-    setting
+    manage
   </div>
 </template>

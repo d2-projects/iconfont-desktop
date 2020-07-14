@@ -2,8 +2,8 @@
 {
   "meta": {
     "sdk": true,
-    "title": "图标库",
-    "icon": "mdi-image-multiple"
+    "title": "图标",
+    "icon": "mdi-tag-outline"
   }
 }
 </route>

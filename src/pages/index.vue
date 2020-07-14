@@ -86,7 +86,7 @@ export default {
     onSearch (keyword) {
       if (keyword) {
         this.$router.replace({
-          name: 'search',
+          name: 'icons',
           query: {
             keyword
           }

@@ -13,16 +13,6 @@ $sidebarWidth: 240px;
 }
 </style>
 
-<route>
-{
-  "meta": {
-    "sdk": true,
-    "title": "图标",
-    "icon": "mdi-magnify"
-  }
-}
-</route>
-
 <template>
   <div class="app-page-search">
     <div class="app-page-search__content">
