@@ -1,5 +1,5 @@
 <style lang="scss">
-@include b(collection-card-cover) {
+@include b(collection-cover) {
   overflow: hidden;
   @include e(responsive) {
     width: 20%;
@@ -9,18 +9,18 @@
 </style>
 
 <template>
-  <div class="app-collection-card-cover">
+  <div class="app-collection-cover">
     <app-icon-render
       v-for="(item, itemIndex) of value"
       :key="itemIndex"
       :value="item.show_svg"
-      class="app-collection-card-cover__responsive"/>
+      class="app-collection-cover__responsive"/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app-collection-card-cover',
+  name: 'app-collection-cover',
   props: {
     value: {
       type: Array,

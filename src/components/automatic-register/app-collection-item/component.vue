@@ -1,16 +1,15 @@
 <template>
-  <v-skeleton-loader
-    class="white"
+  <app-collection-skeleton
+    type="list-item-avatar-two-line, image, list-item-two-line"
     height="350"
-    :types="{ collection: 'list-item-avatar-two-line, image, list-item-two-line' }"
-    type="collection"
-    :loading="loading"
-    transition="fade-transition">
-    <v-card elevation="0" class="transition-swing">
+    :loading="loading">
+    <v-card elevation="0">
       <v-card-text flex="cross:center">
         <v-avatar size="26" color="grey lighten-2" class="mr-2">
           <v-img v-if="avatar" :src="avatar"/>
-          <span v-else class="grey--text text--lighten-5 text-caption font-weight-bold">{{ username[0] }}</span>
+          <span v-else class="grey--text text--lighten-5 text-caption font-weight-bold">
+            {{ username[0] }}
+          </span>
         </v-avatar>
         <span class="mr-auto">{{ username }}</span>
         <span v-if="isOfficial" class="font-weight-medium grey--text">
@@ -18,7 +17,7 @@
           <v-icon size="14" class="ml-1 grey--text">mdi-shield-check</v-icon>
         </span>
       </v-card-text>
-      <app-collection-card-cover class="px-2" :value="icons"/>
+      <app-collection-cover class="px-2" :value="icons"/>
       <v-card-text class="font-weight-medium is-nowrap pb-0">{{ name }}</v-card-text>
       <v-card-text flex="main:justify">
         <span>
@@ -43,12 +42,12 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-  </v-skeleton-loader>
+  </app-collection-skeleton>
 </template>
 
 <script>
 export default {
-  name: 'app-collection-card',
+  name: 'app-collection-item',
   props: {
     loading: { type: Boolean },
     name: { type: String, default: '' },
