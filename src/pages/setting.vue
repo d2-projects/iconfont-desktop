@@ -30,7 +30,7 @@
         <v-list flat>
           <v-subheader>设置</v-subheader>
           <v-list-item-group v-model="active" color="primary" @change="onMenuChange">
-            <v-list-item v-for="menu of menusSetting" :key="menu.value" :value="menu.value">
+            <v-list-item v-for="menu of menus" :key="menu.value" :value="menu.value">
               <v-list-item-icon>
                 <v-icon>{{ menu.icon }}</v-icon>
               </v-list-item-icon>
@@ -53,22 +53,13 @@
 </template>
 
 <script>
+import { menus } from '@/router.js'
+
 export default {
   data () {
     return {
       active: '',
-      menusSetting: [
-        {
-          label: '账户',
-          value: 'setting-account',
-          icon: 'mdi-account-circle'
-        },
-        {
-          label: '通用',
-          value: 'setting-common',
-          icon: 'mdi-cog'
-        }
-      ]
+      menus: menus.setting
     }
   },
   methods: {

@@ -5,28 +5,24 @@
     shift
     app>
     <v-btn
-      v-for="nav of navs"
-      :key="nav.value"
-      :value="nav.value"
-      @click="onChange(nav.value)">
-      <span>{{ nav.label }}</span>
-      <v-icon>{{ nav.icon }}</v-icon>
+      v-for="menu of menus"
+      :key="menu.value"
+      :value="menu.value"
+      @click="onChange(menu.value)">
+      <span>{{ menu.label }}</span>
+      <v-icon>{{ menu.icon }}</v-icon>
     </v-btn>
   </v-bottom-navigation>
 </template>
 
 <script>
+import { menus } from '@/router.js'
+
 export default {
   name: 'navigation',
   data () {
     return {
-      navs: [
-        { label: '首页', value: 'index', icon: 'mdi-home-variant' },
-        { label: '库', value: 'collections', icon: 'mdi-image-multiple' },
-        { label: '搜索', value: 'search', icon: 'mdi-magnify' },
-        { label: '管理', value: 'manage', icon: 'mdi-account-box-multiple' },
-        { label: '设置', value: 'setting', icon: 'mdi-tune' }
-      ]
+      menus: menus.nav
     }
   },
   computed: {
