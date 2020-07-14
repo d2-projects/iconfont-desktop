@@ -27,9 +27,7 @@ export default {
   },
   async created () {
     await this.autoLogin()
-    this.$router.replace({
-      name: 'index'
-    })
+    this.$router.replace(this.$route.query.redirect || '/')
   },
   methods: {
     ...mapActions('sdk', [
