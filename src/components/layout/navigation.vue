@@ -1,6 +1,14 @@
 <template>
-  <v-bottom-navigation class="app-drag" :value="this.active" @change="onChange" shift app>
-    <v-btn v-for="nav of navs" :key="nav.value" :value="nav.value">
+  <v-bottom-navigation
+    class="app-drag"
+    :value="this.active"
+    shift
+    app>
+    <v-btn
+      v-for="nav of navs"
+      :key="nav.value"
+      :value="nav.value"
+      @click="onChange(nav.value)">
       <span>{{ nav.label }}</span>
       <v-icon>{{ nav.icon }}</v-icon>
     </v-btn>
