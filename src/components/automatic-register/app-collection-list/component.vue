@@ -1,7 +1,7 @@
 <template>
   <v-row class="app-collection-list">
     <v-col v-for="(collection, collectionIndex) of value" :key="collectionIndex" xs="6" sm="6" md="4" lg="4" xl="2">
-      <app-collection-item v-bind="collection"/>
+      <app-collection v-bind="collection"/>
     </v-col>
   </v-row>
 </template>

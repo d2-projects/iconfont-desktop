@@ -6,13 +6,15 @@
     type="collection"
     :loading="loading"
     transition="fade-transition">
-    <slot/>
+    <v-card elevation="0">
+      <slot/>
+    </v-card>
   </v-skeleton-loader>
 </template>
 
 <script>
 export default {
-  name: 'app-collection-skeleton',
+  name: 'app-collection-body',
   props: {
     type: {
       type: String,
