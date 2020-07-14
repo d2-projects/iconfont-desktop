@@ -1,7 +1,34 @@
 import { fromPairs } from 'lodash-es'
 import { remote } from 'electron'
 
-const win = remote.BrowserWindow.getFocusedWindow()
+function runOnWindow (callback) {
+  const win = remote.BrowserWindow.getFocusedWindow()
+  if (win) {
+    callback(win)
+  }
+}
+
+const events = [
+  'resize',
+  'move',
+  'maximize',
+  'unmaximize',
+  'minimize',
+  'restore',
+  'enter-full-screen',
+  'leave-full-screen',
+  'always-on-top-changed'
+]
+
+const methods = [
+  'close',
+  'hide',
+  'show',
+  'maximize',
+  'unmaximize',
+  'minimize',
+  'restore'
+]
 
 export default {
   namespaced: true,
@@ -13,37 +40,31 @@ export default {
   },
   actions: {
     init ({ commit }) {
-      const names = [
-        'resize',
-        'move',
-        'maximize',
-        'unmaximize',
-        'minimize',
-        'restore',
-        'enter-full-screen',
-        'leave-full-screen',
-        'always-on-top-changed'
-      ]
-      names.forEach(name => {
-        win.on(name, () => {
-          commit('refreshStatus')
+      runOnWindow(win => {
+        win.removeAllListeners()
+        events.forEach(name => {
+          win.on(name, () => {
+            console.log(name)
+            commit('refreshStatus')
+          })
         })
       })
     },
-    ...fromPairs([
-      'close',
-      'hide',
-      'show',
-      'maximize',
-      'unmaximize',
-      'minimize',
-      'restore'
-    ].map(name => [name, () => { win[name]() }])),
+    ...fromPairs(
+      methods.map(
+        name => [
+          name,
+          () => {
+            runOnWindow(win => win[name]())
+          }
+        ]
+      )
+    ),
     toggleFullScreen ({ state }) {
-      win.setFullScreen(!state.isFullScreen)
+      runOnWindow(win => win.setFullScreen(!state.isFullScreen))
     },
     toggleAlwaysOnTop ({ state }) {
-      win.setAlwaysOnTop(!state.isAlwaysOnTop)
+      runOnWindow(win => win.setAlwaysOnTop(!state.isAlwaysOnTop))
     },
     toggleMaximize ({ state, dispatch }) {
       if (state.isMaximized) dispatch('unmaximize')
@@ -56,10 +77,12 @@ export default {
   },
   mutations: {
     refreshStatus (state) {
-      state.isMaximized = win.isMaximized()
-      state.isMinimized = win.isMinimized()
-      state.isFullScreen = win.isFullScreen()
-      state.isAlwaysOnTop = win.isAlwaysOnTop()
+      runOnWindow(win => {
+        state.isMaximized = win.isMaximized()
+        state.isMinimized = win.isMinimized()
+        state.isFullScreen = win.isFullScreen()
+        state.isAlwaysOnTop = win.isAlwaysOnTop()
+      })
     }
   }
 }

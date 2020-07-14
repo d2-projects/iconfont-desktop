@@ -10,11 +10,12 @@ import '@mdi/font/css/materialdesignicons.css'
 
 Vue.config.productionTip = false
 
-store.dispatch('window/init')
-
 new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: h => h(App),
+  mounted () {
+    store.dispatch('window/init')
+  }
 }).$mount('#app')
