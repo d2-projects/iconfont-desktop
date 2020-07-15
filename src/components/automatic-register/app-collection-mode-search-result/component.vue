@@ -4,8 +4,12 @@
     :height="220"
     :loading="loading">
     <app-collection-cover class="pa-2 pb-0" :value="icons"/>
-    <v-card-text flex="main:justify">
+    <v-card-text class="pb-0" flex="main:justify">
       <app-collection-info-name :value="name"/>
+      <app-collection-info-count-icons :value="countIcons"/>
+    </v-card-text>
+    <v-card-text flex="main:justify">
+      <app-collection-info-user-horizontal :value="user"/>
       <app-collection-info-count-icons :value="countIcons"/>
     </v-card-text>
   </app-collection-body>
@@ -19,7 +23,8 @@ const dataMap = [
   ['id', 'id', 0],
   ['name', 'name', ''],
   ['icons', 'icons', []],
-  ['countIcons', 'icons_count', 0]
+  ['countIcons', 'icons_count', 0],
+  ['user', 'User', {}]
 ]
 
 export default {
