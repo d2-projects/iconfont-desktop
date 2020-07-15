@@ -1,5 +1,5 @@
 <template>
-  <v-card-text flex="dir:top cross:center">
+  <div flex="dir:top cross:center">
     <v-avatar :size="size" color="grey lighten-2" class="mb-2">
       <v-img v-if="avatar" :src="avatar"/>
       <span
@@ -9,7 +9,7 @@
       </span>
     </v-avatar>
     <div class="text-subtitle-1">{{ nickname }}</div>
-  </v-card-text>
+  </div>
 </template>
 
 <script>
