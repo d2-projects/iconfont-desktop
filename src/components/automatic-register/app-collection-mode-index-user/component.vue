@@ -3,9 +3,9 @@
     type="list-item-avatar-two-line, image"
     :height="260"
     :loading="loading">
-    <v-card-text class="pb-0">
+    <app-collection-text class="pb-0">
       <app-collection-info-user-portrait :value="user"/>
-    </v-card-text>
+    </app-collection-text>
     <app-collection-cover class="pa-2" :value="icons"/>
   </app-collection-body>
 </template>

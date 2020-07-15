@@ -3,9 +3,9 @@
     type="card-heading, image"
     :height="220"
     :loading="loading">
-    <v-card-text class="text-subtitle-1 text-center pb-0">
+    <app-collection-text class="text-subtitle-1 text-center pb-0">
       {{ name }}
-    </v-card-text>
+    </app-collection-text>
     <app-collection-cover class="pa-2" :value="icons"/>
   </app-collection-body>
 </template>
