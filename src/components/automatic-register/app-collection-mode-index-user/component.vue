@@ -3,7 +3,7 @@
     type="list-item-avatar-two-line, image"
     :height="260"
     :loading="loading">
-    <app-collection-user-portrait :value="user" class="pb-0"/>
+    <app-collection-info-user-portrait :value="user" class="pb-0"/>
     <app-collection-cover class="pa-2" :value="icons"/>
   </app-collection-body>
 </template>

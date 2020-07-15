@@ -22,7 +22,7 @@ const dataMap = [
 ]
 
 export default {
-  name: 'app-collection-user-portrait',
+  name: 'app-collection-info-user-portrait',
   props: {
     value: {
       type: Object,
