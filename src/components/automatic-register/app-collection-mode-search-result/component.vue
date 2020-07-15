@@ -10,7 +10,7 @@
     </v-card-text>
     <v-card-text flex="main:justify">
       <app-collection-info-user-horizontal :value="user"/>
-      <app-collection-info-count-icons :value="countIcons"/>
+      <app-collection-info-count-visits :value="countVisits"/>
     </v-card-text>
   </app-collection-body>
 </template>
@@ -24,6 +24,7 @@ const dataMap = [
   ['name', 'name', ''],
   ['icons', 'icons', []],
   ['countIcons', 'icons_count', 0],
+  ['countVisits', 'visits_count', 0],
   ['user', 'User', {}]
 ]
 
