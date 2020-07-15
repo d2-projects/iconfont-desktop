@@ -1,7 +1,7 @@
 <template>
   <app-collection-body
     type="list-item-avatar-two-line, image, list-item-two-line"
-    :height="350"
+    :height="360"
     :loading="loading">
     <v-card-text flex="cross:center">
       <v-avatar size="26" color="grey lighten-2" class="mr-2">

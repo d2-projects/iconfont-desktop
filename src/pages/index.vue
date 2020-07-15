@@ -27,7 +27,14 @@
     <div class="app-page-index__content">
       <app-list>
         <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
-        <app-collection-list :value="collections">
+        <!-- row 1 -->
+        <app-collection-list :value="topCollections">
+          <template v-slot="{ collection }">
+            <app-collection-mode-index-user :value="collection"/>
+          </template>
+        </app-collection-list>
+        <!-- row 2 -->
+        <app-collection-list :value="bottomCollections">
           <template v-slot="{ collection }">
             <app-collection v-bind="collection"/>
           </template>
@@ -41,13 +48,14 @@
 </template>
 
 <script>
-import { get, fill } from 'lodash-es'
+import { fill } from 'lodash-es'
 import { mapState, mapGetters } from 'vuex'
 
 export default {
   data () {
     return {
-      collections: fill(Array(6), { loading: true }),
+      topCollections: fill(Array(3), { loading: true }),
+      bottomCollections: fill(Array(3), { loading: true }),
       topbarHeight: 0
     }
   },
@@ -66,26 +74,11 @@ export default {
     this.topbarHeight = this.$refs.topbar.offsetHeight
   },
   methods: {
-    listItem (item) {
-      return {
-        loading: false,
-        name: item.name,
-        username: get(item, 'User.nickname', ''),
-        avatar: get(item, 'User.avatar', ''),
-        isOfficial: item.is_official === 1,
-        icons: item.icons,
-        countIcons: item.icons_count,
-        countVisits: item.visits_count,
-        countLikes: item.likes_count,
-        countFavorite: item.favorite_count
-      }
-    },
     async getIndexData () {
       const result = await this.sdk.commonIndexConfig()
-      this.collections = [
-        ...result.topCollections,
-        ...result.bottomCollections
-      ].map(this.listItem)
+      console.log(result)
+      this.topCollections = result.topCollections
+      this.bottomCollections = result.bottomCollections
     },
     onSearch (keyword) {
       if (keyword) {
