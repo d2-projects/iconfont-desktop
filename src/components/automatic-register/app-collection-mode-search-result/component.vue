@@ -3,10 +3,11 @@
     type="card-heading, image"
     :height="220"
     :loading="loading">
-    <v-card-text class="text-subtitle-1 text-center pb-0">
-      {{ name }}
+    <app-collection-cover class="pa-2 pb-0" :value="icons"/>
+    <v-card-text flex="main:justify">
+      <app-collection-info-name :value="name"/>
+      <app-collection-info-count-icons :value="countIcons"/>
     </v-card-text>
-    <app-collection-cover class="pa-2" :value="icons"/>
   </app-collection-body>
 </template>
 
@@ -17,11 +18,12 @@ const dataMap = [
   ['loading', 'loading', false],
   ['id', 'id', 0],
   ['name', 'name', ''],
-  ['icons', 'icons', []]
+  ['icons', 'icons', []],
+  ['countIcons', 'icons_count', 0]
 ]
 
 export default {
-  name: 'app-collection-mode-index-official',
+  name: 'app-collection-mode-search-result',
   props: {
     value: {
       type: Object,

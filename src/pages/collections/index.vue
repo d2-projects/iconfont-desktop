@@ -39,7 +39,11 @@
             label="排序"
             @change="listMixinReload"/>
         </app-dict-select-chip-group>
-        <app-collection-list :value="list.data"/>
+        <app-collection-list :value="list.data">
+          <template v-slot="{ collection }">
+            <app-collection-mode-search-result :value="collection"/>
+          </template>
+        </app-collection-list>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-collections__topbar pa-4">
@@ -57,7 +61,6 @@
 </template>
 
 <script>
-import { get } from 'lodash-es'
 import { mapState } from 'vuex'
 
 import ui from '@/mixins/ui.js'
@@ -103,20 +106,6 @@ export default {
       if (!osInstance) return
       osInstance.scroll(0)
     },
-    listItem (item) {
-      return {
-        loading: false,
-        name: item.name,
-        username: get(item, 'User.nickname', ''),
-        avatar: get(item, 'User.avatar', ''),
-        isOfficial: item.is_official === 1,
-        icons: item.icons,
-        countIcons: item.icons_count,
-        countVisits: item.visits_count,
-        countLikes: item.likes_count,
-        countFavorite: item.favorite_count
-      }
-    },
     async listMixinLoad () {
       this.scrollTop()
       this.list.data = []
@@ -128,8 +117,9 @@ export default {
         pageNo: this.list.page.current,
         pageSize: this.list.page.size
       }))
+      console.log(result)
       this.listMixinRemovePlaceholder()
-      this.list.data = result.lists.map(this.listItem)
+      this.list.data = result.lists
       this.list.page.current = result.page
       this.list.page.size = result.limit
       this.list.page.total = result.count

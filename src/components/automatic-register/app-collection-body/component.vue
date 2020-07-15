@@ -1,6 +1,14 @@
+<style lang="scss">
+@include b(collection-body) {
+  .v-card {
+    overflow: hidden;
+  }
+}
+</style>
+
 <template>
   <v-skeleton-loader
-    class="white"
+    class="white app-collection-body"
     :height="height"
     :types="{ collection: type }"
     type="collection"
