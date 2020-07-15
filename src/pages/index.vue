@@ -27,7 +27,11 @@
     <div class="app-page-index__content">
       <app-list>
         <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
-        <app-collection-list :value="collections"/>
+        <app-collection-list :value="collections">
+          <template v-slot="{ collection }">
+            <app-collection v-bind="collection"/>
+          </template>
+        </app-collection-list>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-index__topbar pa-4">
