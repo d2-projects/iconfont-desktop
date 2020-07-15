@@ -36,13 +36,16 @@
         <!-- row 2 -->
         <app-collection-list :value="bottomCollections">
           <template v-slot="{ collection }">
-            <app-collection v-bind="collection"/>
+            <app-collection-mode-index-official :value="collection"/>
           </template>
         </app-collection-list>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-index__topbar pa-4">
-      <app-input-search class="mx-auto" :placeholder="iconSearchPlaceholder" @submit="onSearch"/>
+      <app-input-search
+        class="mx-auto"
+        :placeholder="iconSearchPlaceholder"
+        @submit="onSearch"/>
     </div>
   </div>
 </template>

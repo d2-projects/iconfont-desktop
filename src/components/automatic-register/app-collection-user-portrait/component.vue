@@ -2,11 +2,13 @@
   <v-card-text flex="dir:top cross:center">
     <v-avatar :size="size" color="grey lighten-2" class="mb-2">
       <v-img v-if="avatar" :src="avatar"/>
-      <span v-else-if="nickname" class="grey--text text--lighten-5 text-caption font-weight-bold">
+      <span
+        v-else-if="nickname"
+        class="grey--text text--lighten-5 font-weight-bold">
         {{ nickname[0] }}
       </span>
     </v-avatar>
-    <div class="text-body-1">{{ nickname }}</div>
+    <div class="text-subtitle-1">{{ nickname }}</div>
   </v-card-text>
 </template>
 

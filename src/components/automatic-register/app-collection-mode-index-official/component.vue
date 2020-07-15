@@ -1,9 +1,11 @@
 <template>
   <app-collection-body
-    type="list-item-avatar-two-line, image"
-    :height="260"
+    type="card-heading, image"
+    :height="220"
     :loading="loading">
-    <app-collection-user-portrait :value="user" class="pb-0"/>
+    <v-card-text class="text-subtitle-1 text-center pb-0">
+      {{ name }}
+    </v-card-text>
     <app-collection-cover class="pa-2" :value="icons"/>
   </app-collection-body>
 </template>
@@ -13,13 +15,13 @@ import { fromPairs, get } from 'lodash-es'
 
 const dataMap = [
   ['loading', 'loading', false],
+  ['name', 'name', ''],
   ['id', 'id', 0],
-  ['icons', 'icons', []],
-  ['user', 'User', {}]
+  ['icons', 'icons', []]
 ]
 
 export default {
-  name: 'app-collection-mode-index-user',
+  name: 'app-collection-mode-index-official',
   props: {
     value: {
       type: Object,
