@@ -7,16 +7,18 @@
 }
 </route>
 
+<template>
+  <div>
+    <app-login/>
+  </div>
+</template>
+
 <script>
-import login from './__components__/login'
+import appLogin from './__components__/login'
 
 export default {
-  render (h) {
-    const node =
-      <div>
-        <login/>
-      </div>
-    return node
+  components: {
+    appLogin
   }
 }
 </script>
