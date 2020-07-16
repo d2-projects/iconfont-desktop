@@ -1,5 +1,5 @@
 <template>
-  <div flex="dir:top cross:center">
+  <div class="is-pointer" flex="dir:top cross:center">
     <v-avatar :size="size" color="grey lighten-2" class="mb-2">
       <v-img v-if="avatar" :src="avatar"/>
       <span

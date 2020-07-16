@@ -9,7 +9,7 @@
 </style>
 
 <template>
-  <div class="app-collection-cover">
+  <div class="app-collection-cover is-pointer">
     <app-icon-render
       v-for="(item, itemIndex) of value"
       :key="itemIndex"
