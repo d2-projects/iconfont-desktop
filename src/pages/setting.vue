@@ -1,14 +1,14 @@
 <style lang="scss">
 @include b(page-setting) {
   $sidebarWidth: 260px;
-  @extend %absoluteParent;
+  @extend .absolute-parent;
   @include e(sidebar) {
     width: $sidebarWidth;
-    @extend %absoluteLeft;
+    @extend .absolute-left;
   }
   @include e(main) {
     left: $sidebarWidth;
-    @extend %absoluteRight;
+    @extend .absolute-right;
   }
   @include e(main-content) {
     max-width: 600px;

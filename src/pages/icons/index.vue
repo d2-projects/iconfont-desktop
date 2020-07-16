@@ -1,14 +1,14 @@
 <style lang="scss">
 $sidebarWidth: 240px;
 @include b(page-search) {
-  @extend %absoluteParent;
+  @extend .absolute-parent;
   @include e(topbar) {
     z-index: 1;
-    @extend %absoluteTop;
-    @extend %backdrop;
+    @extend .absolute-top;
+    @extend .backdrop;
   }
   @include e(content) {
-    @extend %absoluteAll;
+    @extend .absolute-all;
   }
 }
 </style>

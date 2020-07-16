@@ -1,13 +1,13 @@
 <style lang="scss">
 @include b(login) {
-  @extend %absoluteParent;
+  @extend .absolute-parent;
   .layer {
-    @extend %absoluteAll;
+    @extend .absolute-all;
   }
   .planet-wrap {
     background-color: #090723;
     overflow: hidden;
-    @extend %absoluteParent;
+    @extend .absolute-parent;
     .planet {
       position: absolute;
       opacity: .3;

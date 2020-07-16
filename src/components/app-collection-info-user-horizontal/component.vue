@@ -4,7 +4,7 @@
     position: relative;
   }
   @include e(content) {
-    @extend %absoluteAll;
+    @extend .absolute-all;
   }
 }
 </style>

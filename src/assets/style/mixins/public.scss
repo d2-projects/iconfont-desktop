@@ -1,47 +1,47 @@
-%absoluteParent {
+.absolute-parent {
   height: 100%;
   width: 100%;
   position: relative;
 }
 
-%absoluteX {
+.absolute-x {
   position: absolute;
   left: 0px;
   right: 0px;
 }
 
-%absoluteY {
+.absolute-y {
   position: absolute;
   top: 0px;
   bottom: 0px;
 }
 
-%absoluteAll {
-  @extend %absoluteX;
-  @extend %absoluteY;
+.absolute-all {
+  @extend .absolute-x;
+  @extend .absolute-y;
 }
 
-%absoluteTop {
-  @extend %absoluteX;
+.absolute-top {
+  @extend .absolute-x;
   top: 0px;
 }
 
-%absoluteBottom {
-  @extend %absoluteX;
+.absolute-bottom {
+  @extend .absolute-x;
   bottom: 0px;
 }
 
-%absoluteLeft {
-  @extend %absoluteY;
+.absolute-left {
+  @extend .absolute-y;
   left: 0px;
 }
 
-%absoluteRight {
-  @extend %absoluteY;
+.absolute-right {
+  @extend .absolute-y;
   right: 0px;
 }
 
-%backdrop {
+.backdrop {
   $color: map-get($grey, 'lighten-4');
   transition: all .3s;
   background-color: rgba($color, .7);

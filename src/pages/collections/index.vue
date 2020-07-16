@@ -1,18 +1,18 @@
 <style lang="scss">
 @include b(page-collections) {
-  @extend %absoluteParent;
+  @extend .absolute-parent;
   @include e(topbar) {
     z-index: 1;
-    @extend %absoluteTop;
-    @extend %backdrop;
+    @extend .absolute-top;
+    @extend .backdrop;
   }
   @include e(bottombar) {
     z-index: 1;
-    @extend %absoluteBottom;
-    @extend %backdrop;
+    @extend .absolute-bottom;
+    @extend .backdrop;
   }
   @include e(content) {
-    @extend %absoluteAll;
+    @extend .absolute-all;
   }
 }
 </style>
