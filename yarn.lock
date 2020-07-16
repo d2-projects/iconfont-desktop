@@ -9642,6 +9642,11 @@ vue@^2.6.11:
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha1-dllNh31LEiNEBuhONSdcbVFBJcU=
 
+vuelidate@^0.7.5:
+  version "0.7.5"
+  resolved "https://registry.npm.taobao.org/vuelidate/download/vuelidate-0.7.5.tgz#ff48c75ae9d24ea24c24e9ea08065eda0a0cba0a"
+  integrity sha1-/0jHWunSTqJMJOnqCAZe2goMugo=
+
 vuetify@^2.2.11:
   version "2.3.3"
   resolved "https://registry.npm.taobao.org/vuetify/download/vuetify-2.3.3.tgz#b517e77c35f5f89d91b4d95b025131f1c5cdf35d"

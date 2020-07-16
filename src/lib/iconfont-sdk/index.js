@@ -109,6 +109,19 @@ export default class Iconfont {
   }
 
   /**
+   * @description [API] 用户信息
+   */
+  async userDetail ({
+    id
+  } = {}) {
+    return this.request.get('api/user/detail.json', {
+      params: {
+        uid: id || this.user.id || ''
+      }
+    })
+  }
+
+  /**
    * @description [API] 首页数据
    */
   async commonIndexConfig () {
