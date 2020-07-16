@@ -1,5 +1,5 @@
-import navigation from '@/components/layout/navigation.vue'
-import system from '@/components/layout/system.vue'
+import navigation from '../components/navigation'
+import system from '../components/system'
 
 export default {
   render (h) {

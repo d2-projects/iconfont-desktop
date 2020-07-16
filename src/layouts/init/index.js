@@ -1,4 +1,4 @@
-import system from '@/components/layout/system.vue'
+import system from '../components/system'
 
 export default {
   render (h) {

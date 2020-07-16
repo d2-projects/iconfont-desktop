@@ -7,8 +7,16 @@
 }
 </route>
 
-<template>
-  <div>
-    账户
-  </div>
-</template>
+<script>
+import login from './__components__/login'
+
+export default {
+  render (h) {
+    const node =
+      <div>
+        <login/>
+      </div>
+    return node
+  }
+}
+</script>
