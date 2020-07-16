@@ -11,7 +11,7 @@
 
 <template>
   <span class="app-collection-info-name d-flex align-center flex-grow-1">
-    <v-icon size="22" left>mdi-subtitles-outline</v-icon>
+    <v-icon size="22" color="grey" left>mdi-subtitles-outline</v-icon>
     <div class="app-collection-info-name__main align-self-stretch flex-grow-1">
       <div class="app-collection-info-name__content is-nowrap">
         {{ value }}

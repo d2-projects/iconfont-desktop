@@ -1,7 +1,7 @@
 <template>
   <span class="d-flex align-center flex-shrink-0">
-    <v-icon size="22" left>mdi-eye-outline</v-icon>
-    <span>{{ value | numberFormat }}</span>
+    <v-icon size="22" color="grey" left>mdi-eye-outline</v-icon>
+    <span class="font-weight-medium">{{ value | numberFormat }}</span>
   </span>
 </template>
 

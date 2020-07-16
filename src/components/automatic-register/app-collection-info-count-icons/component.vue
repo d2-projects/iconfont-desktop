@@ -1,7 +1,7 @@
 <template>
   <span class="d-flex align-center flex-shrink-0">
     <span class="mr-1">icons</span>
-    <span class="red--text">{{ value }}</span>
+    <span class="red--text font-weight-medium">{{ value }}</span>
   </span>
 </template>
 
