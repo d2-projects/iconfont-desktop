@@ -8,16 +8,20 @@
     dark
     window>
     <v-row no-gutters>
-      <v-col cols="5">
-        <v-icon left>{{ icon }}</v-icon>
-        <span class="font-weight-medium">{{ title }}</span>
+      <v-col v-if="isLogged" cols="5" flex="cross:center">
+        <v-icon left>mdi-cloud-check-outline</v-icon>
+        <span class="font-weight-medium">已登录到 iconfont+</span>
+      </v-col>
+      <v-col v-else cols="5" flex="cross:center">
+        <v-icon left>mdi-earth</v-icon>
+        <span class="font-weight-medium is-pointer" @click="toLogin">登录到 iconfont+</span>
       </v-col>
       <v-col cols="2" flex="main:center cross:center">
         <span class="font-weight-medium">
           Iconfont Desktop
         </span>
       </v-col>
-      <v-col cols="5" flex="main:right">
+      <v-col cols="5" flex="main:right cross:center">
         <v-icon @click="toggleAlwaysOnTop">
           {{ isAlwaysOnTop ? 'mdi-layers' : 'mdi-layers-outline' }}
         </v-icon>
@@ -52,13 +56,7 @@ export default {
     ]),
     ...mapGetters('sdk', [
       'isLogged'
-    ]),
-    title () {
-      return this.isLogged ? '已登录到 iconfont+' : '未登录'
-    },
-    icon () {
-      return this.isLogged ? 'mdi-cloud-check-outline' : 'mdi-alert-rhombus-outline'
-    }
+    ])
   },
   methods: {
     ...mapActions('window', [
@@ -73,6 +71,11 @@ export default {
         .forEach(icon => {
           icon.blur()
         })
+    },
+    toLogin () {
+      this.$router.replace({
+        name: 'setting-account'
+      })
     }
   }
 }

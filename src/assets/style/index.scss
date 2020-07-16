@@ -15,6 +15,10 @@ html body {
   -webkit-app-region: drag;
 }
 
+.app-no-drag {
+  -webkit-app-region: no-drag;
+}
+
 .is-rounded {
   border-radius: 4px;
 }

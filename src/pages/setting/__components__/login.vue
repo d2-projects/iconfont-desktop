@@ -17,7 +17,7 @@
         数据的访问原理与网站一致，在登录过程中 Iconfont Desktop 不会获取您的账号密码
       </p>
     </div>
-    <div class="absolute-all d-flex flex-column justify-center align-center">
+    <div class="absolute-all" flex="dir:top main:center cross:center">
       <img
         class="app-login__logo mb-5"
         src="@/assets/image/iconfont-text.svg"
