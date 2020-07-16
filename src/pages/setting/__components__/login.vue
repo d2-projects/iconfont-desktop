@@ -14,7 +14,7 @@
         登录到 iconfont+ 获得更全面的功能体验
       </p>
       <p class="text-center text-caption grey--text lighten-3">
-        数据的访问原理与网站一致，Iconfont Desktop 软件不会上传您的个人信息到服务器
+        数据的访问原理与网站一致，在登录过程中 Iconfont Desktop 不会获取您的账号密码
       </p>
     </div>
     <div class="absolute-all d-flex flex-column justify-center align-center">
@@ -24,7 +24,7 @@
         alt="iconfont">
       <v-row class="flex-grow-0">
         <v-col>
-          <v-btn color="blue-grey lighten-5" outlined>
+          <v-btn color="blue-grey lighten-5" @click="login" outlined>
             Github
             <v-icon right dark>mdi-github</v-icon>
           </v-btn>
@@ -41,12 +41,18 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import planet from './planet'
 
 export default {
   name: 'app-login',
   components: {
     planet
+  },
+  methods: {
+    ...mapActions('sdk', [
+      'login'
+    ])
   }
 }
 </script>
