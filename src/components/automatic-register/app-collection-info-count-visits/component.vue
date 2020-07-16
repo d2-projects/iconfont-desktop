@@ -2,8 +2,12 @@
   <v-tooltip top open-delay="500">
     <template v-slot:activator="{ on, attrs }">
       <span class="d-flex align-center flex-shrink-0" v-on="on" v-bind="attrs">
-        <v-icon size="22" color="grey" left>mdi-eye-outline</v-icon>
-        <span class="font-weight-medium">{{ value | numberFormat }}</span>
+        <v-icon size="22" color="grey" left>
+          mdi-eye-outline
+        </v-icon>
+        <span class="font-weight-medium">
+          {{ value | numberFormat }}
+        </span>
       </span>
     </template>
     <span>{{ tooltipText }}</span>
