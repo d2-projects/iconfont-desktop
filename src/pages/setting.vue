@@ -10,6 +10,9 @@
     left: $sidebarWidth;
     @extend %absoluteRight;
   }
+  @include e(main-content) {
+    max-width: 600px;
+  }
 }
 </style>
 
@@ -54,7 +57,7 @@
     </div>
     <div class="app-page-setting__main">
       <app-list>
-        <div class="pa-3">
+        <div class="app-page-setting__main-content pa-3 ml-auto mr-auto">
           <router-view/>
         </div>
       </app-list>

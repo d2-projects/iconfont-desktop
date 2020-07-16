@@ -15,6 +15,10 @@ html body {
   -webkit-app-region: drag;
 }
 
+.is-rounded {
+  border-radius: 4px;
+}
+
 .is-nowrap{
   overflow: hidden;
   text-overflow: ellipsis;
