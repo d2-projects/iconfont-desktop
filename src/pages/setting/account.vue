@@ -21,10 +21,10 @@
     <app-setting-list label-position="left" label-align="right">
       <app-setting-list-text-field label="昵称" v-model="user.nickname"/>
       <app-setting-list-text-field label="QQ" v-model="user.qq"/>
-      <app-setting-list-text-field label="联系邮箱" v-model="user.email"/>
+      <app-setting-list-text-field label="联系邮箱" v-model="user.show_email"/>
       <app-setting-list-text-field label="个性签名" v-model="user.bio"/>
       <app-setting-list-item>
-        <v-btn outlined color="primary">保存</v-btn>
+        <v-btn outlined color="primary" @click="submit">保存</v-btn>
       </app-setting-list-item>
     </app-setting-list>
   </div>
@@ -75,8 +75,14 @@ export default {
         this.user = Object.assign({}, this.user, result)
       }
     },
-    submit () {
-      console.log('submit')
+    async submit () {
+      try {
+        await this.sdk.userUpdate(this.user)
+        this.$toasted.global.app_success()
+        this.load()
+      } catch (error) {
+        this.$toasted.global.app_error({ message: error.message })
+      }
     }
   }
 }

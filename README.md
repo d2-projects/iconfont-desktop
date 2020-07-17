@@ -3,6 +3,7 @@
 * [vuetifyjs](https://vuetifyjs.com/zh-Hans/)
 * [materialdesignicons](https://materialdesignicons.com/)
 * [nodejs](http://nodejs.cn/api/events.html)
+* [vue-toasted](https://github.com/shakee93/vue-toasted#options)
 
 ## iconfont 用户诉求
 

@@ -11,6 +11,16 @@ html body {
   user-select: none;
 }
 
+.toasted-container .toasted .action {
+  font-size: 15px;
+  color: #FFF;
+  font-weight: 400;
+}
+.toasted.toasted-primary {
+  font-weight: 400;
+  padding: 0px 20px;
+}
+
 .app-drag {
   -webkit-app-region: drag;
 }

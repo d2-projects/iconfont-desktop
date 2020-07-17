@@ -82,7 +82,9 @@ export default class Iconfont {
       error => Promise.reject(error)
     )
     request.interceptors.response.use(
-      response => response.data.code === 200 ? response.data.data : Promise.reject(new Error('请求错误')),
+      response => response.data.code === 200
+        ? response.data.data
+        : Promise.reject(new Error(response.data.message)),
       error => Promise.reject(error)
     )
     return request
@@ -112,12 +114,39 @@ export default class Iconfont {
    * @description [API] 用户信息
    */
   async userDetail ({
-    id
+    id = 0
   } = {}) {
     return this.request.get('api/user/detail.json', {
       params: {
         uid: id || this.user.id || ''
       }
+    })
+  }
+
+  /**
+   * @description [API] 更新用户信息
+   */
+  async userUpdate ({
+    alipay_code = '',
+    avatar = '',
+    bio = '',
+    id = 0,
+    isXiaoer = false,
+    nickname = '',
+    qq = '',
+    show_email = '',
+    weixin_code = ''
+  } = {}) {
+    return this.request.post('api/user/update.json', {
+      uid: id || this.user.id || '',
+      alipay_code: alipay_code,
+      avatar: avatar,
+      bio: bio,
+      isXiaoer: isXiaoer,
+      nickname: nickname,
+      qq: qq,
+      show_email: show_email,
+      weixin_code: weixin_code
     })
   }
 
@@ -143,7 +172,7 @@ export default class Iconfont {
     style = '',
     pageNo = 1,
     pageSize = 10
-  }) {
+  } = {}) {
     const data = {
       page: pageNo,
       pageSize: pageSize,
@@ -168,7 +197,7 @@ export default class Iconfont {
     sort = 'time',
     pageNo = 1,
     pageSize = 9
-  }) {
+  } = {}) {
     return this.request.get('api/collections.json', {
       params: {
         type: type,
