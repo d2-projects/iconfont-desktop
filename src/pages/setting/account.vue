@@ -18,36 +18,42 @@
 <template>
   <div class="app-setting-account">
     <app-login v-if="!isLogged"/>
-    {{ form }}
-    <!-- <form class="app-setting-account__form mx-auto">
-      <v-card elevation="0">
-        <v-card-text>
-          <v-text-field
-            v-model="form.nickname"
-            label="昵称"
-            outlined
-            dense/>
-          <v-text-field
-            v-model="form.qq"
-            label="QQ"
-            outlined
-            dense/>
-          <v-text-field
-            v-model="form.email"
-            label="邮箱"
-            outlined
-            dense/>
-          <v-textarea
-            v-model="form.bio"
-            label="签名"
-            outlined
-            dense/>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn @click="submit" text>保存</v-btn>
-        </v-card-actions>
-      </v-card>
-    </form> -->
+    <app-setting-list label-position="left" label-align="right" class="mb-5">
+      <app-setting-list-item label="昵称">
+        <v-text-field
+          v-model="user.nickname"
+          outlined
+          dense
+          single-line
+          hide-details/>
+      </app-setting-list-item>
+      <app-setting-list-item label="昵称">
+        <v-text-field
+          v-model="user.nickname"
+          outlined
+          dense
+          single-line
+          hide-details/>
+      </app-setting-list-item>
+    </app-setting-list>
+    <app-setting-list>
+      <app-setting-list-item label="昵称">
+        <v-text-field
+          v-model="user.nickname"
+          outlined
+          dense
+          single-line
+          hide-details/>
+      </app-setting-list-item>
+      <app-setting-list-item label="昵称">
+        <v-text-field
+          v-model="user.nickname"
+          outlined
+          dense
+          single-line
+          hide-details/>
+      </app-setting-list-item>
+    </app-setting-list>
   </div>
 </template>
 
@@ -58,7 +64,7 @@ import appLogin from './__components__/login'
 export default {
   data () {
     return {
-      form: {
+      user: {
         alipay_code: '',
         avatar: '',
         bio: '',
@@ -92,7 +98,7 @@ export default {
     async load () {
       if (this.isLogged) {
         const result = await this.sdk.userDetail()
-        this.form = result
+        this.user = result
       }
     },
     submit () {}
