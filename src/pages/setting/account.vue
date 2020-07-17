@@ -19,6 +19,9 @@
   <div class="app-setting-account">
     <app-login v-if="!isLogged"/>
     <app-setting-list label-position="left" label-align="right">
+      <app-setting-list-item label="头像">
+        <app-upload v-model="user.avatar"/>
+      </app-setting-list-item>
       <app-setting-list-text-field label="昵称" v-model="user.nickname"/>
       <app-setting-list-text-field label="QQ" v-model="user.qq"/>
       <app-setting-list-text-field label="联系邮箱" v-model="user.show_email"/>

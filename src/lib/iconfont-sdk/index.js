@@ -1,5 +1,7 @@
 import { isEmpty } from 'lodash-es'
 import axios from 'axios'
+import fs from 'fs'
+import FormData from 'form-data'
 import qs from 'qs'
 import cookie from 'cookie'
 import dictionary from './dictionary'
@@ -7,6 +9,8 @@ import dictionary from './dictionary'
 export default class Iconfont {
   // iconfont 官网地址
   baseURL = 'https://www.iconfont.cn'
+  // 用于网络请求
+  cookies = {}
   // 用于网络请求的实例
   request = null
   // [数据] 当前用户的信息
@@ -66,7 +70,7 @@ export default class Iconfont {
     })
     request.interceptors.request.use(
       config => {
-        if (config.method === 'post') {
+        if (config.method === 'post' && config.headers['content-type'] !== 'multipart/form-data') {
           config.data.t = new Date().getTime()
           config.data.ctoken = _cookies.ctoken
           config.data = qs.stringify(config.data)
@@ -96,10 +100,27 @@ export default class Iconfont {
    */
   async init (cookies) {
     this.request = await this.requestGenerator(cookies)
+    this.cookies = cookies
     const pubinfo = await this.pubinfo()
     this.user = pubinfo.user || {}
     this.iconCount = pubinfo.iconCount || 0
     return pubinfo
+  }
+
+  /**
+   * @description [API] 文件上传
+   */
+  async upload () {
+    const data = new FormData()
+    data.append('filename', fs.readFileSync('/Users/liyang/Desktop/WechatIMG8800.png'))
+    return this.request.post('api/upload', data, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      },
+      params: {
+        ctoken: this.cookies.ctoken
+      }
+    })
   }
 
   /**
