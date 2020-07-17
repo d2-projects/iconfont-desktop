@@ -1,7 +1,7 @@
 <style lang="scss">
 @include b(setting-list-item) {
   fieldset {
-    border-color: map-get($grey, 'lighten-2');
+    border-color: map-get($grey, 'lighten-3');
   }
   @extend .mb-4;
   &:last-child {
@@ -53,13 +53,13 @@ export default {
     classNames () {
       return this.isLabelLeft ? [
         'd-flex',
-        'align-center',
-        `text-${this.appSettingList.labelAlign}`
+        'align-center'
       ] : []
     },
     labelClassNames () {
       return this.isLabelLeft ? [
-        'mr-4'
+        'mr-4',
+        `text-${this.appSettingList.labelAlign}`
       ] : [
         'mb-4'
       ]

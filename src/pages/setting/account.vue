@@ -18,40 +18,13 @@
 <template>
   <div class="app-setting-account">
     <app-login v-if="!isLogged"/>
-    <app-setting-list label-position="left" label-align="right" class="mb-5">
-      <app-setting-list-item label="昵称">
-        <v-text-field
-          v-model="user.nickname"
-          outlined
-          dense
-          single-line
-          hide-details/>
-      </app-setting-list-item>
-      <app-setting-list-item label="昵称">
-        <v-text-field
-          v-model="user.nickname"
-          outlined
-          dense
-          single-line
-          hide-details/>
-      </app-setting-list-item>
-    </app-setting-list>
-    <app-setting-list>
-      <app-setting-list-item label="昵称">
-        <v-text-field
-          v-model="user.nickname"
-          outlined
-          dense
-          single-line
-          hide-details/>
-      </app-setting-list-item>
-      <app-setting-list-item label="昵称">
-        <v-text-field
-          v-model="user.nickname"
-          outlined
-          dense
-          single-line
-          hide-details/>
+    <app-setting-list label-position="left" label-align="right">
+      <app-setting-list-text-field label="昵称" v-model="user.nickname"/>
+      <app-setting-list-text-field label="QQ" v-model="user.qq"/>
+      <app-setting-list-text-field label="联系邮箱" v-model="user.email"/>
+      <app-setting-list-text-field label="个性签名" v-model="user.bio"/>
+      <app-setting-list-item>
+        <v-btn outlined color="primary">保存</v-btn>
       </app-setting-list-item>
     </app-setting-list>
   </div>
@@ -64,6 +37,7 @@ import appLogin from './__components__/login'
 export default {
   data () {
     return {
+      demo: '',
       user: {
         alipay_code: '',
         avatar: '',
@@ -98,10 +72,12 @@ export default {
     async load () {
       if (this.isLogged) {
         const result = await this.sdk.userDetail()
-        this.user = result
+        this.user = Object.assign({}, this.user, result)
       }
     },
-    submit () {}
+    submit () {
+      console.log('submit')
+    }
   }
 }
 </script>
