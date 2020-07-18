@@ -7,13 +7,16 @@
   &:last-child {
     @extend .mb-0;
   }
+  @include e(label) {
+    margin-top: 4px;
+  }
 }
 </style>
 
 <template>
   <div class="app-setting-list-item" :class="classNames">
     <div
-      class="text-subtitle-1"
+      class="app-setting-list-item__label text-subtitle-1"
       :class="labelClassNames"
       :style="labelStyle">
       {{ label }}
@@ -53,7 +56,7 @@ export default {
     classNames () {
       return this.isLabelLeft ? [
         'd-flex',
-        'align-center'
+        'align-start'
       ] : []
     },
     labelClassNames () {
