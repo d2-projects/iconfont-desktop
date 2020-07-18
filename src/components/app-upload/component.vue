@@ -6,13 +6,16 @@
 
 <template>
   <div class="app-upload is-rounded" @click="onClick">
-    <v-img
-      v-if="value"
-      class="is-rounded ma-2"
-      :src="value"
-      height="90"
-      width="90"
-      aspect-ratio="1"/>
+    <div v-if="value" class="pa-2">
+      <slot v-bind:src="value">
+        <v-img
+          class="is-rounded"
+          :src="value"
+          max-width="200"
+          max-height="200"
+          contain/>
+      </slot>
+    </div>
     <div v-else class="text-subtitle-1 is-pointer px-2 py-1">
       点击上传图片
     </div>
@@ -45,6 +48,7 @@ export default {
       this.$refs.input.click()
     },
     async fileSelected (event) {
+      if (event.target.files.length === 0) return
       const file = event.target.files[0]
       const result = await this.sdk.upload({
         filePath: file.path
