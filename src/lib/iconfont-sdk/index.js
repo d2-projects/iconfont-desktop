@@ -70,7 +70,7 @@ export default class Iconfont {
     })
     request.interceptors.request.use(
       config => {
-        if (config.method === 'post' && config.headers['content-type'] !== 'multipart/form-data') {
+        if (config.method === 'post' && !/^multipart\/form-data/.test(config.headers['content-type'])) {
           config.data.t = new Date().getTime()
           config.data.ctoken = _cookies.ctoken
           config.data = qs.stringify(config.data)
@@ -110,13 +110,13 @@ export default class Iconfont {
   /**
    * @description [API] 文件上传
    */
-  async upload () {
-    const data = new FormData()
-    data.append('filename', fs.readFileSync('/Users/liyang/Desktop/WechatIMG8800.png'))
-    return this.request.post('api/upload', data, {
-      headers: {
-        'content-type': 'multipart/form-data'
-      },
+  async upload ({
+    filePath
+  }) {
+    const form = new FormData()
+    form.append('filename', fs.createReadStream(filePath))
+    return this.request.post('api/upload', form, {
+      headers: form.getHeaders(),
       params: {
         ctoken: this.cookies.ctoken
       }

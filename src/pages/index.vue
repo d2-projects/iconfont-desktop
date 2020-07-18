@@ -79,7 +79,6 @@ export default {
   methods: {
     async getIndexData () {
       const result = await this.sdk.commonIndexConfig()
-      console.log(result)
       this.topCollections = result.topCollections
       this.bottomCollections = result.bottomCollections
     },

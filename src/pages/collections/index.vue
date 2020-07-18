@@ -117,7 +117,6 @@ export default {
         pageNo: this.list.page.current,
         pageSize: this.list.page.size
       }))
-      console.log(result)
       this.listMixinRemovePlaceholder()
       this.list.data = result.lists
       this.list.page.current = result.page
