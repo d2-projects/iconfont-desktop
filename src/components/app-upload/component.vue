@@ -5,8 +5,17 @@
 </style>
 
 <template>
-  <div class="app-upload pa-4 is-rounded" @click="onClick">
-    <v-img class="is-rounded" :src="value" height="90" width="90" aspect-ratio="1"/>
+  <div class="app-upload is-rounded" @click="onClick">
+    <v-img
+      v-if="value"
+      class="is-rounded ma-2"
+      :src="value"
+      height="90"
+      width="90"
+      aspect-ratio="1"/>
+    <div v-else class="text-subtitle-1 is-pointer px-2 py-1">
+      点击上传图片
+    </div>
     <input
       ref="input"
       type="file"
@@ -33,12 +42,14 @@ export default {
   },
   methods: {
     onClick () {
-      console.log('onClick')
       this.$refs.input.click()
     },
-    fileSelected (event) {
+    async fileSelected (event) {
       const file = event.target.files[0]
-      console.log(file)
+      const result = await this.sdk.upload({
+        filePath: file.path
+      })
+      this.$emit('input', result.url)
     }
   }
 }
