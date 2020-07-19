@@ -11,7 +11,7 @@
 
 <template>
   <span class="app-collection-info-name d-flex align-center flex-grow-1 is-pointer">
-    <v-avatar :size="size" color="grey lighten-2 mr-2">
+    <v-avatar :size="size" color="grey lighten-2" class="mr-2">
       <v-img v-if="avatar" :src="avatar"/>
       <span
         v-else-if="nickname"

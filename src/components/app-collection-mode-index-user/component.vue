@@ -6,7 +6,7 @@
     <app-collection-text class="pb-0">
       <app-collection-info-user-portrait :value="user"/>
     </app-collection-text>
-    <app-collection-cover class="pa-2" :value="icons"/>
+    <app-collection-cover class="pa-2" :value="icons" :id="id"/>
   </app-collection-body>
 </template>
 

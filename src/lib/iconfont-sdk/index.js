@@ -208,7 +208,6 @@ export default class Iconfont {
     return this.request.post('api/icon/search.json', data)
   }
 
-
   /**
    * @description [API] 图标库搜索
    */
@@ -226,6 +225,19 @@ export default class Iconfont {
         limit: pageSize,
         page: pageNo,
         keyword: keyword
+      }
+    })
+  }
+
+  /**
+   * @description [API] 图标库详情
+   */
+  async collectionDetail ({
+    id = 0
+  } = {}) {
+    return this.request.get('api/collection/detail.json', {
+      params: {
+        id
       }
     })
   }

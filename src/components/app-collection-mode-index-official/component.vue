@@ -6,7 +6,7 @@
     <app-collection-text class="text-subtitle-1 text-center pb-0">
       {{ name }}
     </app-collection-text>
-    <app-collection-cover class="pa-2" :value="icons"/>
+    <app-collection-cover class="pa-2" :value="icons" :id="id"/>
   </app-collection-body>
 </template>
 

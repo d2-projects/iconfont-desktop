@@ -3,7 +3,7 @@
     type="image, list-item, actions"
     :height="313"
     :loading="loading">
-    <app-collection-cover class="pa-2 pb-0" :value="icons"/>
+    <app-collection-cover class="pa-2 pb-0" :value="icons" :id="id"/>
     <app-collection-text class="pb-0" justify>
       <app-collection-info-name :value="name" class="mr-2"/>
       <app-collection-info-count-icons :value="countIcons"/>

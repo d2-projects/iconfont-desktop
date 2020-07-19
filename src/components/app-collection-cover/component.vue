@@ -9,7 +9,7 @@
 </style>
 
 <template>
-  <div class="app-collection-cover is-pointer">
+  <div class="app-collection-cover is-pointer" @click="onClick">
     <app-icon-render
       v-for="(item, itemIndex) of value"
       :key="itemIndex"
@@ -25,6 +25,20 @@ export default {
     value: {
       type: Array,
       default: () => []
+    },
+    id: {
+      type: Number,
+      default: 0
+    }
+  },
+  methods: {
+    onClick () {
+      this.$router.replace({
+        name: 'collections-details',
+        query: {
+          id: this.id
+        }
+      })
     }
   }
 }
