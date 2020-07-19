@@ -79,6 +79,10 @@ export default {
   created () {
     this.getCollectionDetail()
   },
+  beforeRouteLeave (to, from, next) {
+    this.detail = {}
+    next()
+  },
   methods: {
     async getCollectionDetail () {
       const result = await this.sdk.collectionDetail({
