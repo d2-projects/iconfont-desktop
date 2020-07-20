@@ -76,6 +76,11 @@ export default {
   mounted () {
     this.topbarHeight = this.$refs.topbar.offsetHeight
   },
+  beforeRouteLeave (to, from, next) {
+    this.topCollections = []
+    this.bottomCollections = []
+    next()
+  },
   methods: {
     async getIndexData () {
       const result = await this.sdk.commonIndexConfig()
