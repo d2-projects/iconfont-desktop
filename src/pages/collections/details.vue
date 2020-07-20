@@ -22,7 +22,11 @@
         <div
           slot="footer"
           :style="{ height: ui.bottombar.size + 'px' }"/>
-        <app-icon-list :value="list" class="mb-2"/>
+        <app-icon-list :value="list" class="mb-2">
+          <template v-slot="{ icon }">
+            <app-icon-render :value="icon.show_svg" class="white rounded"/>
+          </template>
+        </app-icon-list>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-collections-details__topbar">

@@ -81,7 +81,11 @@ $sidebarWidth: 240px;
             label="风格"
             @change="listMixinReload"/>
         </app-dict-select-chip-group>
-        <app-icon-list :value="list.data"/>
+        <app-icon-list :value="list.data" class="mb-2">
+          <template v-slot="{ icon }">
+            <app-icon-render :value="icon.show_svg" class="white rounded"/>
+          </template>
+        </app-icon-list>
       </app-list>
     </div>
     <div
