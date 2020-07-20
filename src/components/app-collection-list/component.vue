@@ -8,7 +8,7 @@
       md="4"
       lg="4"
       xl="2">
-      <slot v-bind:collection="collection"/>
+      <slot :collection="collection"/>
     </v-col>
   </v-row>
 </template>

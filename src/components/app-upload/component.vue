@@ -10,7 +10,7 @@
 <template>
   <div class="app-upload is-rounded is-pointer" @click="onClick">
     <div v-if="value" class="pa-2">
-      <slot v-bind:src="value">
+      <slot :src="value">
         <v-img
           class="is-rounded"
           :src="value"

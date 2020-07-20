@@ -21,9 +21,11 @@
     <app-setting-list label-position="left" label-align="right">
       <app-setting-list-item label="头像">
         <app-upload v-model="user.avatar">
-          <v-avatar size="100">
-            <img :src="user.avatar">
-          </v-avatar>
+          <template v-slot="{ src }">
+            <v-avatar size="100">
+              <img :src="src">
+            </v-avatar>
+          </template>
         </app-upload>
       </app-setting-list-item>
       <app-setting-list-text-field label="昵称" v-model="user.nickname"/>
