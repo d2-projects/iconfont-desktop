@@ -140,14 +140,15 @@ export default {
   },
   methods: {
     async listMixinLoad () {
-      const result = await this.listMininFetch(this.sdk.iconSearch({
+      const fetch = this.sdk.iconSearch({
         keyword: this.list.query.keyword,
         collection: this.list.query.collection,
         fills: this.list.query.fills,
         style: this.list.query.sty,
         pageSize: this.list.page.size,
         pageNo: this.list.page.current
-      }))
+      })
+      const result = await this.listMininFetch(fetch)
       this.list.data.push(...result.icons)
       this.list.page.total = result.count
       this.list.page.current += 1

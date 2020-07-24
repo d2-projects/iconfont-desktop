@@ -110,13 +110,14 @@ export default {
       this.scrollTop()
       this.list.data = []
       this.listMixinAddPlaceholder()
-      const result = await this.listMininFetch(this.sdk.collections({
+      const fetch = this.sdk.collections({
         keyword: this.list.query.keyword,
         type: this.list.query.type,
         sort: this.list.query.sort,
         pageNo: this.list.page.current,
         pageSize: this.list.page.size
-      }))
+      })
+      const result = await this.listMininFetch(fetch)
       this.listMixinRemovePlaceholder()
       this.list.data = result.lists
       this.list.page.current = result.page

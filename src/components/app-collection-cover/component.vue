@@ -34,7 +34,7 @@ export default {
   methods: {
     onClick () {
       this.$router.replace({
-        name: 'collections-details',
+        name: 'collections-detail',
         query: {
           id: this.id
         }
