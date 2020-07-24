@@ -10,11 +10,13 @@
 
 <template>
   <div class="app-collection-cover is-pointer" @click="onClick">
-    <app-icon-render
+    <app-square
       v-for="(item, itemIndex) of value"
       :key="itemIndex"
-      :value="item.show_svg"
-      class="app-collection-cover__responsive"/>
+      class="app-collection-cover__responsive"
+      center>
+      <app-icon-render :value="item.show_svg"/>
+    </app-square>
   </div>
 </template>
 
