@@ -1,7 +1,5 @@
 <style lang="scss">
 @include b(icon-render) {
-  font-size: 26px;
-  line-height: 26px;
   svg {
     max-width: 70%;
   }
@@ -9,7 +7,11 @@
 </style>
 
 <template>
-  <i v-html="value" class="app-icon-render"/>
+  <i
+    v-html="value"
+    class="app-icon-render"
+    :style="style"
+    flex="main:center cross:center"/>
 </template>
 
 <script>
@@ -19,6 +21,18 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    size: {
+      type: Number,
+      default: 26
+    }
+  },
+  computed: {
+    style () {
+      return {
+        fontSize: this.size + 'px',
+        lineHeight: this.size + 'px'
+      }
     }
   }
 }

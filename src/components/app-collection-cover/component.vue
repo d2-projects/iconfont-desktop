@@ -15,7 +15,7 @@
       :key="itemIndex"
       class="app-collection-cover__responsive"
       center>
-      <app-icon-render :value="item.show_svg"/>
+      <app-icon-render :value="item.show_svg" :size="32"/>
     </app-square>
   </div>
 </template>
