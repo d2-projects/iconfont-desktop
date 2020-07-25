@@ -1,5 +1,5 @@
 <style lang="scss">
-@include b(page-collections) {
+@include b(page-collection) {
   @extend .absolute-parent;
   @include e(topbar) {
     z-index: 1;
@@ -18,8 +18,8 @@
 </style>
 
 <template>
-  <div class="app-page-collections">
-    <div class="app-page-collections__content">
+  <div class="app-page-collection">
+    <div class="app-page-collection__content">
       <app-list ref="list">
         <div
           slot="header"
@@ -46,7 +46,7 @@
         </app-collection-list>
       </app-list>
     </div>
-    <div ref="topbar" class="app-page-collections__topbar pa-4">
+    <div ref="topbar" class="app-page-collection__topbar pa-4">
       <app-input-search
         class="mx-auto"
         v-model="list.query.keyword"
@@ -54,7 +54,7 @@
         :loading="list.status.isSearching"
         @submit="listMixinReload"/>
     </div>
-    <div v-if="list.page.total" ref="bottombar" class="app-page-collections__bottombar">
+    <div v-if="list.page.total" ref="bottombar" class="app-page-collection__bottombar">
       <app-pagination v-model="list.page" @change="listMixinLoadMore"/>
     </div>
   </div>

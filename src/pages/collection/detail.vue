@@ -1,5 +1,5 @@
 <style lang="scss">
-@include b(page-collections-detail) {
+@include b(page-collection-detail) {
   @extend .absolute-parent;
   @include e(topbar) {
     z-index: 1;
@@ -13,8 +13,8 @@
 </style>
 
 <template>
-  <div class="app-page-collections-detail">
-    <div class="app-page-collections-detail__content">
+  <div class="app-page-collection-detail">
+    <div class="app-page-collection-detail__content">
       <app-list ref="list">
         <div
           slot="header"
@@ -31,7 +31,7 @@
         </app-icon-list>
       </app-list>
     </div>
-    <div ref="topbar" class="app-page-collections-detail__topbar">
+    <div ref="topbar" class="app-page-collection-detail__topbar">
       <v-container class="px-0">
         <v-skeleton-loader
           height="72"
