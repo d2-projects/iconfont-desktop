@@ -31,6 +31,19 @@ Vue.toasted.register('app_error', payload => (payload && payload.message) || 'SD
   }
 })
 
+Vue.prototype.$go = {
+  datail: {
+    user (id) {
+      this.$router.replace({
+        name: 'user-detail',
+        query: {
+          id
+        }
+      })
+    }
+  }
+}
+
 new Vue({
   router,
   store,

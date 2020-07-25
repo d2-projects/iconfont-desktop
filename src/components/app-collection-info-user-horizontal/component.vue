@@ -10,7 +10,9 @@
 </style>
 
 <template>
-  <span class="app-collection-info-name d-flex align-center flex-grow-1 is-pointer" @click="onClick">
+  <span
+    class="app-collection-info-name d-flex align-center flex-grow-1 is-pointer"
+    @click="$go.datail.user(id)">
     <v-avatar :size="size" color="grey lighten-2" class="mr-2">
       <v-img v-if="avatar" :src="avatar"/>
       <span
@@ -50,16 +52,6 @@ export default {
   },
   computed: {
     ...fromPairs(dataMap.map(e => [e[0], function () { return get(this.value, e[1], e[2]) }]))
-  },
-  methods: {
-    onClick () {
-      this.$router.replace({
-        name: 'user-detail',
-        query: {
-          id: this.id
-        }
-      })
-    }
   }
 }
 </script>

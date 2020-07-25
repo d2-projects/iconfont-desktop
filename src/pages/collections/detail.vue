@@ -39,7 +39,7 @@
           :loading="list.status.isSearching"
           transition="fade-transition">
           <div flex="cross:center">
-            <v-avatar :size="64" color="grey lighten-2" class="mr-4" @click="onClickAvatar">
+            <v-avatar :size="64" color="grey lighten-2" class="mr-4" @click="$go.datail.user(createrId)">
               <v-img v-if="createrAvatar" :src="createrAvatar"/>
               <span v-else-if="createrName" class="grey--text text--lighten-5 text-h4 font-weight-bold">
                 {{ createrName[0] }}
@@ -109,14 +109,6 @@ export default {
       this.listMixinRemovePlaceholder()
       this.list.data = result.icons
       this.detail = Object.freeze(omit(result, 'icons'))
-    },
-    onClickAvatar () {
-      this.$router.replace({
-        name: 'user-detail',
-        query: {
-          id: this.createrId
-        }
-      })
     }
   }
 }
