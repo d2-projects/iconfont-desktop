@@ -17,11 +17,7 @@ $sidebarWidth: 240px;
   <div class="app-page-search">
     <div class="app-page-search__content">
       <app-list @inCordonY="listMixinOnInCordonY">
-        <div
-          slot="header"
-          :style="{
-            height: ui.topbar.size + 'px'
-          }"/>
+        <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" class="ma-1 mb-2">
           <!-- 加载更多 -->
           <v-btn

@@ -21,12 +21,8 @@
   <div class="app-page-collection">
     <div class="app-page-collection__content">
       <app-list ref="list">
-        <div
-          slot="header"
-          :style="{ height: ui.topbar.size + 'px' }"/>
-        <div
-          slot="footer"
-          :style="{ height: ui.bottombar.size + 'px' }"/>
+        <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
+        <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-dict-select-chip-group>
           <app-dict-select-chip
             v-model="list.query.type"

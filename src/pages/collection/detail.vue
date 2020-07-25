@@ -16,12 +16,8 @@
   <div class="app-page-collection-detail">
     <div class="app-page-collection-detail__content">
       <app-list ref="list">
-        <div
-          slot="header"
-          :style="{ height: ui.topbar.size + 'px' }"/>
-        <div
-          slot="footer"
-          :style="{ height: ui.bottombar.size + 'px' }"/>
+        <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
+        <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-icon-list :value="list.data" class="mb-2">
           <template v-slot="{ icon }">
             <app-square class="white rounded" center>
@@ -41,14 +37,14 @@
           <div flex="cross:center">
             <v-avatar :size="64" color="grey lighten-2" class="mr-4" @click="$go.datail.user(createrId)">
               <v-img v-if="createrAvatar" :src="createrAvatar"/>
-              <span v-else-if="createrName" class="grey--text text--lighten-5 text-h4 font-weight-bold">
-                {{ createrName[0] }}
+              <span v-else-if="createrNickname" class="grey--text text--lighten-5 text-h4 font-weight-bold">
+                {{ createrNickname[0] }}
               </span>
             </v-avatar>
             <div>
               <div class="text-h6">{{ collectionName }}</div>
               <div class="text-caption">{{ collectionCountIcons }} icons</div>
-              <div class="text-caption">{{ createrName }}</div>
+              <div class="text-caption">{{ createrNickname }}</div>
             </div>
           </div>
         </v-skeleton-loader>
@@ -68,7 +64,7 @@ const dataMap = [
   ['collectionName', 'collection.name', ''],
   ['collectionCountIcons', 'collection.icons_count', 0],
   ['createrId', 'creater.id', ''],
-  ['createrName', 'creater.nickname', ''],
+  ['createrNickname', 'creater.nickname', ''],
   ['createrAvatar', 'creater.avatar', '']
 ]
 
