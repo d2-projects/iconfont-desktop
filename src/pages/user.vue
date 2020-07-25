@@ -3,7 +3,8 @@
   "meta": {
     "sdk": true,
     "title": "用户",
-    "icon": "mdi-account"
+    "icon": "mdi-account",
+    "sort": 3
   }
 }
 </route>

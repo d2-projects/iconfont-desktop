@@ -3,7 +3,8 @@
   "meta": {
     "sdk": true,
     "title": "管理",
-    "icon": "mdi-account-box-multiple"
+    "icon": "mdi-account-box-multiple",
+    "sort": 4
   }
 }
 </route>

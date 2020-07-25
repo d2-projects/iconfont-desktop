@@ -17,7 +17,8 @@
   "meta": {
     "sdk": true,
     "title": "首页",
-    "icon": "mdi-home-variant"
+    "icon": "mdi-home-variant",
+    "sort": 0
   }
 }
 </route>

@@ -55,8 +55,13 @@ function createMenu (route) {
   return {
     label: route.meta.title,
     value: route.name || get(find(route.children, { path: '' }), 'name', 'index'),
-    icon: route.meta.icon
+    icon: route.meta.icon,
+    sort: route.meta.sort || 0
   }
+}
+
+function sortMenu (a, b) {
+  return a.sort - b.sort
 }
 
 function findRoutesBy (query) {
@@ -70,4 +75,5 @@ export const menus = {
   nav: routes
     .filter(isMenu)
     .map(createMenu)
+    .sort(sortMenu)
 }

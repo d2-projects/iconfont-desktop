@@ -21,7 +21,8 @@
   "meta": {
     "sdk": true,
     "title": "设置",
-    "icon": "mdi-tune"
+    "icon": "mdi-tune",
+    "sort": 5
   }
 }
 </route>

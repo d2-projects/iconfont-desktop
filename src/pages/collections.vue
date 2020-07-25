@@ -3,7 +3,8 @@
   "meta": {
     "sdk": true,
     "title": "图标库",
-    "icon": "mdi-image-multiple"
+    "icon": "mdi-image-multiple",
+    "sort": 1
   }
 }
 </route>
