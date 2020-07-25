@@ -39,15 +39,15 @@
           :loading="list.status.isSearching"
           transition="fade-transition">
           <div flex="cross:center">
-            <v-avatar :size="64" color="grey lighten-2" class="mr-4">
+            <v-avatar :size="64" color="grey lighten-2" class="mr-4" @click="onClickAvatar">
               <v-img v-if="createrAvatar" :src="createrAvatar"/>
               <span v-else-if="createrName" class="grey--text text--lighten-5 text-h4 font-weight-bold">
                 {{ createrName[0] }}
               </span>
             </v-avatar>
             <div>
-              <div class="text-h6">{{ name }}</div>
-              <div class="text-caption">{{ countIcons }} icons</div>
+              <div class="text-h6">{{ collectionName }}</div>
+              <div class="text-caption">{{ collectionCountIcons }} icons</div>
               <div class="text-caption">{{ createrName }}</div>
             </div>
           </div>
@@ -65,8 +65,9 @@ import ui from '@/mixins/ui.js'
 import list from '@/mixins/list.js'
 
 const dataMap = [
-  ['name', 'collection.name', ''],
-  ['countIcons', 'collection.icons_count', 0],
+  ['collectionName', 'collection.name', ''],
+  ['collectionCountIcons', 'collection.icons_count', 0],
+  ['createrId', 'creater.id', ''],
   ['createrName', 'creater.nickname', ''],
   ['createrAvatar', 'creater.avatar', '']
 ]
@@ -80,7 +81,7 @@ export default {
     return {
       list: {
         page: {
-          size: 36
+          size: 120
         }
       },
       detail: {}
@@ -108,6 +109,14 @@ export default {
       this.listMixinRemovePlaceholder()
       this.list.data = result.icons
       this.detail = Object.freeze(omit(result, 'icons'))
+    },
+    onClickAvatar () {
+      this.$router.replace({
+        name: 'user-detail',
+        query: {
+          id: this.createrId
+        }
+      })
     }
   }
 }

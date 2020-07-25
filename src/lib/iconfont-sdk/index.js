@@ -145,6 +145,32 @@ export default class Iconfont {
   }
 
   /**
+   * @description [API] 用户的图标库
+   */
+  async userCollections ({
+    id = 0
+  } = {}) {
+    return this.request.get('api/user/collections.json', {
+      params: {
+        uid: id || this.user.id || ''
+      }
+    })
+  }
+
+  /**
+   * @description [API] 用户收藏的图标
+   */
+  async userLikes ({
+    id = 0
+  } = {}) {
+    return this.request.get('api/user/likes.json', {
+      params: {
+        uid: id || this.user.id || ''
+      }
+    })
+  }
+
+  /**
    * @description [API] 更新用户信息
    */
   async userUpdate ({
