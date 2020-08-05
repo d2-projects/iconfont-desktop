@@ -49,6 +49,7 @@ import { fromPairs, get } from 'lodash-es'
 import { mapState } from 'vuex'
 
 import ui from '@/mixins/ui.js'
+import list from '@/mixins/list.js'
 
 const dataMap = [
   ['userId', 'id', ''],
@@ -58,10 +59,16 @@ const dataMap = [
 
 export default {
   mixins: [
-    ui
+    ui,
+    list
   ],
   data () {
     return {
+      list: {
+        page: {
+          size: 120
+        }
+      },
       detail: {}
     }
   },
@@ -70,6 +77,34 @@ export default {
       'sdk'
     ]),
     ...fromPairs(dataMap.map(e => [e[0], function () { return get(this.detail, e[1], e[2]) }]))
+  },
+  created () {
+    this.listMixinLoad()
+    this.userDetailLoad()
+  },
+  methods: {
+    async listMixinLoad () {
+      this.listMixinAddPlaceholder()
+      const fetch = this.sdk.userCollections({
+        id: this.$route.query.id
+      })
+      const result = await this.listMininFetch(fetch)
+      this.listMixinRemovePlaceholder()
+      this.list.data = result.collections
+    },
+    async userDetailLoad () {
+      const result = await this.sdk.userDetail({
+        id: this.$route.query.id
+      })
+      this.detail = result
+      // alipay_code: string
+      // avatar: string
+      // bio: string
+      // id: 7509436
+      // isXiaoer: false
+      // nickname: string
+      // weixin_code: string
+    }
   }
 }
 </script>
