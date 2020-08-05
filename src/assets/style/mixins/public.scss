@@ -44,7 +44,7 @@
 .backdrop {
   $color: map-get($grey, 'lighten-4');
   transition: all .3s;
-  background-color: rgba($color, .7);
+  background-color: rgba($color, .5);
   backdrop-filter: saturate(180%) blur(6px);
   &:hover {
     background-color: rgba($color, .8);
