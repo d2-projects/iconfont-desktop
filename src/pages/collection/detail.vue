@@ -35,16 +35,16 @@
           :loading="list.status.isSearching"
           transition="fade-transition">
           <div flex="cross:center">
-            <v-avatar :size="64" color="grey lighten-2" class="mr-4" @click="$go.datail.user(createrId)">
-              <v-img v-if="createrAvatar" :src="createrAvatar"/>
-              <span v-else-if="createrNickname" class="grey--text text--lighten-5 text-h4 font-weight-bold">
-                {{ createrNickname[0] }}
+            <v-avatar :size="64" color="grey lighten-2" class="mr-4" @click="$go.datail.user(creatorId)">
+              <v-img v-if="creatorAvatar" :src="creatorAvatar"/>
+              <span v-else-if="creatorNickname" class="grey--text text--lighten-5 text-h4 font-weight-bold">
+                {{ creatorNickname[0] }}
               </span>
             </v-avatar>
             <div>
               <div class="text-h6">{{ collectionName }}</div>
               <div class="text-caption">{{ collectionCountIcons }} icons</div>
-              <div class="text-caption">{{ createrNickname }}</div>
+              <div class="text-caption">{{ creatorNickname }}</div>
             </div>
           </div>
         </v-skeleton-loader>
@@ -63,9 +63,9 @@ import list from '@/mixins/list.js'
 const dataMap = [
   ['collectionName', 'collection.name', ''],
   ['collectionCountIcons', 'collection.icons_count', 0],
-  ['createrId', 'creater.id', ''],
-  ['createrNickname', 'creater.nickname', ''],
-  ['createrAvatar', 'creater.avatar', '']
+  ['creatorId', 'creator.id', ''],
+  ['creatorNickname', 'creator.nickname', ''],
+  ['creatorAvatar', 'creator.avatar', '']
 ]
 
 export default {
