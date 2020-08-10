@@ -11,7 +11,7 @@
 <template>
   <div class="app-collection-cover is-pointer" @click="onClick">
     <app-square
-      v-for="(item, itemIndex) of value"
+      v-for="(item, itemIndex) of list"
       :key="itemIndex"
       class="app-collection-cover__responsive"
       center>
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { take } from 'lodash-es'
+
 export default {
   name: 'app-collection-cover',
   props: {
@@ -31,6 +33,11 @@ export default {
     id: {
       type: Number,
       default: 0
+    }
+  },
+  computed: {
+    list () {
+      return take(this.value, 5 * 3)
     }
   },
   methods: {

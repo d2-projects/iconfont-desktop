@@ -15,8 +15,10 @@
 <template>
   <div class="app-page-user-detail">
     <div class="app-page-user-detail__content">
-      <div :style="{ height: ui.topbar.size + 'px' }"/>
-      <router-view/>
+      <app-list ref="list">
+        <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
+        <router-view/>
+      </app-list>
     </div>
     <div ref="topbar" class="app-page-user-detail__topbar">
       <v-container class="px-0">
@@ -47,7 +49,6 @@ import { fromPairs, get } from 'lodash-es'
 import { mapState } from 'vuex'
 
 import ui from '@/mixins/ui.js'
-import list from '@/mixins/list.js'
 
 const dataMap = [
   ['userId', 'id', ''],
@@ -57,16 +58,10 @@ const dataMap = [
 
 export default {
   mixins: [
-    ui,
-    list
+    ui
   ],
   data () {
     return {
-      list: {
-        page: {
-          size: 120
-        }
-      },
       detail: {}
     }
   },
@@ -77,19 +72,9 @@ export default {
     ...fromPairs(dataMap.map(e => [e[0], function () { return get(this.detail, e[1], e[2]) }]))
   },
   created () {
-    this.listMixinLoad()
     this.userDetailLoad()
   },
   methods: {
-    async listMixinLoad () {
-      this.listMixinAddPlaceholder()
-      const fetch = this.sdk.userCollections({
-        id: this.$route.query.id
-      })
-      const result = await this.listMininFetch(fetch)
-      this.listMixinRemovePlaceholder()
-      this.list.data = result.collections
-    },
     async userDetailLoad () {
       const result = await this.sdk.userDetail({
         id: this.$route.query.id
