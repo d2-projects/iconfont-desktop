@@ -15,10 +15,8 @@
 <template>
   <div class="app-page-user-detail">
     <div class="app-page-user-detail__content">
-      <app-list ref="list">
-        <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
-        list
-      </app-list>
+      <div :style="{ height: ui.topbar.size + 'px' }"/>
+      <router-view/>
     </div>
     <div ref="topbar" class="app-page-user-detail__topbar">
       <v-container class="px-0">
