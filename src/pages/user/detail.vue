@@ -34,9 +34,18 @@
                 {{ userNickname[0] }}
               </span>
             </v-avatar>
-            <div>
+            <div class="mr-auto">
               <div class="text-h6">{{ userNickname }}</div>
             </div>
+            <v-btn-toggle :value="$route.name" rounded dense>
+              <v-btn
+                v-for="route of childRoutes"
+                :key="route.name"
+                :value="route.name"
+                @click="onChildPageTabTabClick(route.name)">
+                {{ route.title }}
+              </v-btn>
+            </v-btn-toggle>
           </div>
         </v-skeleton-loader>
       </v-container>
@@ -56,13 +65,20 @@ const dataMap = [
   ['userAvatar', 'avatar', '']
 ]
 
+const childRoutes = [
+  { title: '图标', name: 'user-detail-collections' },
+  { title: '插画', name: 'user-detail-illustrations' },
+  { title: '喜欢', name: 'user-detail-likes' }
+]
+
 export default {
   mixins: [
     ui
   ],
   data () {
     return {
-      detail: {}
+      detail: {},
+      childRoutes
     }
   },
   computed: {
@@ -80,13 +96,12 @@ export default {
         id: this.$route.query.id
       })
       this.detail = result
-      // alipay_code: string
-      // avatar: string
-      // bio: string
-      // id: 7509436
-      // isXiaoer: false
-      // nickname: string
-      // weixin_code: string
+    },
+    onChildPageTabTabClick (name) {
+      this.$router.replace({
+        name,
+        query: this.$route.query
+      })
     }
   }
 }

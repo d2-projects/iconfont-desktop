@@ -18,7 +18,7 @@ export default {
     return {
       list: {
         page: {
-          size: 120
+          size: 6
         }
       }
     }
