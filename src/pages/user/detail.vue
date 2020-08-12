@@ -28,7 +28,7 @@
           :loading="false"
           transition="fade-transition">
           <div flex="cross:center">
-            <v-avatar :size="64" color="grey lighten-2" class="mr-4 is-pointer">
+            <v-avatar :size="64" color="grey lighten-2" class="mr-4">
               <v-img v-if="userAvatar" :src="userAvatar"/>
               <span v-else-if="userNickname" class="grey--text text--lighten-5 text-h4 font-weight-bold">
                 {{ userNickname[0] }}

@@ -2,8 +2,8 @@
   <div
     class="is-pointer"
     flex="dir:top cross:center"
-    @click="$go.datail.user(id)">
-    <v-avatar :size="size" color="grey lighten-2" class="mb-2">
+    @click="$go.detail.user(id)">
+    <v-avatar :size="size" color="grey lighten-2 is-pointer" class="mb-2">
       <v-img v-if="avatar" :src="avatar"/>
       <span
         v-else-if="nickname"

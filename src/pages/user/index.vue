@@ -23,14 +23,17 @@
       <app-list ref="list">
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
-        {{ list.data.length }}
+        <app-user-card
+          v-for="(user, userIndex) of list.data"
+          :key="userIndex"
+          :value="user"/>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-user__topbar pa-4">
       <app-input-search
         class="mx-auto"
         v-model="list.query.keyword"
-        placeholder="搜索图标库"
+        placeholder="搜索用户"
         :loading="list.status.isSearching"
         @submit="listMixinReload"/>
     </div>
@@ -54,6 +57,11 @@ export default {
   data () {
     return {
       list: {
+        // 搜索条件
+        query: {
+          keyword: 'AlexKing1004'
+        },
+        // 分页
         page: {
           size: 10
         }
@@ -64,9 +72,6 @@ export default {
     ...mapState('sdk', [
       'sdk'
     ])
-  },
-  mounted () {
-    this.listMixinLoad()
   },
   watch: {
     'list.page.total': 'uiLoad'

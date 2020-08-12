@@ -45,7 +45,6 @@ import { mapActions } from 'vuex'
 import planet from './planet'
 
 export default {
-  name: 'app-login',
   components: {
     planet
   },
