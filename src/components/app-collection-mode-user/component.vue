@@ -14,7 +14,6 @@
     </app-collection-text>
     <app-collection-action-group>
       <app-collection-action-item-likes :value="countLikes"/>
-      <app-collection-action-item-favorite :value="countFavorite"/>
     </app-collection-action-group>
   </app-collection-body>
 </template>
@@ -30,7 +29,6 @@ const dataMap = [
   ['countIcons', 'icons_count', 0],
   ['countVisits', 'visits_count', 0],
   ['countLikes', 'likes_count', 0],
-  ['countFavorite', 'favorite_count', 0],
   ['timeUpdate', 'updated_at', '']
 ]
 
