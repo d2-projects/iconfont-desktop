@@ -69,6 +69,13 @@ export default {
     next()
   },
   methods: {
+    scrollTop () {
+      const list = this.$refs.list
+      if (!list) return
+      const osInstance = list.getOsInstance()
+      if (!osInstance) return
+      osInstance.scroll(0)
+    },
     listMixinOnInCordonY () {
       if (
         !this.list.status.isSearching &&

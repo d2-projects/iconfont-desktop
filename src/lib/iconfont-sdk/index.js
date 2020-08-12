@@ -235,6 +235,24 @@ export default class Iconfont {
   }
 
   /**
+   * @description [API] 用户搜索
+   * @description pageSize 暂时无效 固定为 10 官方 bug
+   */
+  async userSearch ({
+    keyword = '',
+    sort = 'updated_at',
+    pageNo = 1,
+    pageSize = 10
+  } = {}) {
+    return this.request.post('api/user/search.json', {
+      page: pageNo,
+      pageSize: pageSize,
+      q: keyword,
+      sortType: sort
+    })
+  }
+
+  /**
    * @description [API] 图标库搜索
    */
   async collections ({

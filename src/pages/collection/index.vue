@@ -95,13 +95,6 @@ export default {
     'list.page.total': 'uiLoad'
   },
   methods: {
-    scrollTop () {
-      const list = this.$refs.list
-      if (!list) return
-      const osInstance = list.getOsInstance()
-      if (!osInstance) return
-      osInstance.scroll(0)
-    },
     async listMixinLoad () {
       this.scrollTop()
       this.list.data = []
