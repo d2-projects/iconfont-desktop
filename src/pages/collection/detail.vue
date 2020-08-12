@@ -35,7 +35,7 @@
           :loading="list.status.isSearching"
           transition="fade-transition">
           <div flex="cross:center">
-            <v-avatar :size="64" color="grey lighten-2" class="mr-4" @click="$go.datail.user(creatorId)">
+            <v-avatar :size="64" color="grey lighten-2" class="mr-4 is-pointer" @click="$go.datail.user(creatorId)">
               <v-img v-if="creatorAvatar" :src="creatorAvatar"/>
               <span v-else-if="creatorNickname" class="grey--text text--lighten-5 text-h4 font-weight-bold">
                 {{ creatorNickname[0] }}
