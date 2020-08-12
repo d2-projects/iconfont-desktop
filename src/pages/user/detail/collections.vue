@@ -1,7 +1,7 @@
 <template>
   <app-collection-list :value="list.data">
     <template v-slot="{ collection }">
-      <app-collection-mode-search-result :value="collection"/>
+      <app-collection-mode-user :value="collection"/>
     </template>
   </app-collection-list>
 </template>
