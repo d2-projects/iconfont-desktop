@@ -25,11 +25,6 @@
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-dict-select-chip-group>
           <app-dict-select-chip
-            v-model="list.query.type"
-            name="collectionType"
-            label="图标库"
-            @change="listMixinReload"/>
-          <app-dict-select-chip
             v-model="list.query.sort"
             name="collectionSort"
             label="排序"
@@ -37,7 +32,7 @@
         </app-dict-select-chip-group>
         <app-collection-list :value="list.data">
           <template v-slot="{ collection }">
-            <app-collection-mode-search-result :value="collection"/>
+            <app-collection-mode-search-result :value="collection" illustration/>
           </template>
         </app-collection-list>
       </app-list>
@@ -46,7 +41,7 @@
       <app-input-search
         class="mx-auto"
         v-model="list.query.keyword"
-        placeholder="搜索图标库"
+        placeholder="搜索插画"
         :loading="list.status.isSearching"
         @submit="listMixinReload"/>
     </div>
@@ -71,7 +66,6 @@ export default {
     return {
       list: {
         query: {
-          type: 3,
           sort: 'time'
         },
         page: {
@@ -99,9 +93,8 @@ export default {
       this.scrollTop()
       this.list.data = []
       this.listMixinAddPlaceholder()
-      const fetch = this.sdk.collections({
+      const fetch = this.sdk.illustrations({
         keyword: this.list.query.keyword,
-        type: this.list.query.type,
         sort: this.list.query.sort,
         pageNo: this.list.page.current,
         pageSize: this.list.page.size

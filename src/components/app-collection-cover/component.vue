@@ -10,13 +10,23 @@
 
 <template>
   <div class="app-collection-cover is-pointer" @click="onClick">
-    <app-square
-      v-for="(item, itemIndex) of list"
-      :key="itemIndex"
-      class="app-collection-cover__responsive"
-      center>
-      <app-icon-render :value="item.show_svg" :size="32"/>
-    </app-square>
+    <v-row v-if="illustration" dense>
+      <v-col
+        v-for="(item, itemIndex) of list"
+        :key="itemIndex"
+        cols="4">
+        <v-img :aspect-ratio="1" :src="item.file" contain/>
+      </v-col>
+    </v-row>
+    <template v-else>
+      <app-square
+        v-for="(item, itemIndex) of list"
+        :key="itemIndex"
+        class="app-collection-cover__responsive"
+        center>
+        <app-icon-render :value="item.show_svg" :size="32"/>
+      </app-square>
+    </template>
   </div>
 </template>
 
@@ -33,6 +43,9 @@ export default {
     id: {
       type: Number,
       default: 0
+    },
+    illustration: {
+      type: Boolean
     }
   },
   computed: {

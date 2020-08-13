@@ -253,6 +253,26 @@ export default class Iconfont {
   }
 
   /**
+   * @description [API] 插画库搜索
+   */
+  async illustrations ({
+    keyword = '',
+    sort = 'time',
+    pageNo = 1,
+    pageSize = 9
+  } = {}) {
+    return this.request.get('api/collections.json', {
+      params: {
+        collectionType: 'illustration',
+        sort: sort,
+        limit: pageSize,
+        page: pageNo,
+        keyword: keyword
+      }
+    })
+  }
+
+  /**
    * @description [API] 图标库搜索
    */
   async collections ({

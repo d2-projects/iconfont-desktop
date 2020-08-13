@@ -3,7 +3,7 @@
     type="image, list-item, actions"
     :height="313"
     :loading="loading">
-    <app-collection-cover class="pa-2 pb-0" :value="icons" :id="id"/>
+    <app-collection-cover class="pa-2 pb-0" :value="icons" :id="id" :illustration="illustration"/>
     <app-collection-text class="pb-0" justify>
       <app-collection-info-name :value="name" class="mr-2"/>
       <app-collection-info-count-icons :value="countIcons"/>
@@ -20,30 +20,12 @@
 </template>
 
 <script>
-import { fromPairs, get } from 'lodash-es'
-
-const dataMap = [
-  ['loading', 'loading', false],
-  ['id', 'id', 0],
-  ['name', 'name', ''],
-  ['icons', 'icons', []],
-  ['countIcons', 'icons_count', 0],
-  ['countVisits', 'visits_count', 0],
-  ['countLikes', 'likes_count', 0],
-  ['countFavorite', 'favorite_count', 0],
-  ['user', 'User', {}]
-]
+import mixinComponentCollection from '@/mixins/component-collection.js'
 
 export default {
   name: 'app-collection-mode-search-result',
-  props: {
-    value: {
-      type: Object,
-      default: () => ({})
-    }
-  },
-  computed: {
-    ...fromPairs(dataMap.map(e => [e[0], function () { return get(this.value, e[1], e[2]) }]))
-  }
+  mixins: [
+    mixinComponentCollection
+  ]
 }
 </script>
