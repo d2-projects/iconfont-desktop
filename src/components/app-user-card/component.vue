@@ -7,9 +7,9 @@
 </style>
 
 <template>
-  <div class="app-user-card px-6 py-3 mb-4 rounded">
+  <div class="app-user-card px-6 py-3 mb-2 rounded">
     <div
-      class="app-user-card__header"
+      class="app-user-card__header py-3"
       flex="cross:center"
       @click="$go.detail.user(id)">
       <v-avatar color="grey lighten-2" class="is-pointer mr-4">

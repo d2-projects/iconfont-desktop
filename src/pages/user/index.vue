@@ -80,13 +80,11 @@ export default {
     async listMixinLoad () {
       this.scrollTop()
       this.list.data = []
-      this.listMixinAddPlaceholder()
       const fetch = this.sdk.userSearch({
         keyword: this.list.query.keyword,
         pageNo: this.list.page.current
       })
       const result = await this.listMininFetch(fetch)
-      this.listMixinRemovePlaceholder()
       this.list.data = result.users
       this.list.page.total = result.count
     }
