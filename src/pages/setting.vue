@@ -22,7 +22,7 @@
     "sdk": true,
     "title": "设置",
     "icon": "mdi-tune",
-    "sort": 5
+    "sort": 6
   }
 }
 </route>

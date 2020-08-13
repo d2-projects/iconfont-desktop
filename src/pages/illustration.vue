@@ -2,9 +2,9 @@
 {
   "meta": {
     "sdk": true,
-    "title": "用户",
-    "icon": "mdi-account",
-    "sort": 4
+    "title": "插画",
+    "icon": "mdi-image-outline",
+    "sort": 2
   }
 }
 </route>

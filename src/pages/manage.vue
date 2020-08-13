@@ -4,7 +4,7 @@
     "sdk": true,
     "title": "管理",
     "icon": "mdi-account-box-multiple",
-    "sort": 4
+    "sort": 5
   }
 }
 </route>

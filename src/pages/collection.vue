@@ -3,7 +3,7 @@
   "meta": {
     "sdk": true,
     "title": "图标库",
-    "icon": "mdi-image-multiple",
+    "icon": "mdi-folder-outline",
     "sort": 1
   }
 }

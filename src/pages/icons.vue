@@ -3,8 +3,8 @@
   "meta": {
     "sdk": true,
     "title": "图标",
-    "icon": "mdi-tag-outline",
-    "sort": 2
+    "icon": "mdi-emoticon-happy-outline",
+    "sort": 3
   }
 }
 </route>
