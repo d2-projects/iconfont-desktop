@@ -253,56 +253,38 @@ export default class Iconfont {
   }
 
   /**
-   * @description [API] 插画库搜索
-   */
-  async illustrations ({
-    keyword = '',
-    sort = 'time',
-    pageNo = 1,
-    pageSize = 9
-  } = {}) {
-    return this.request.get('api/collections.json', {
-      params: {
-        collectionType: 'illustration',
-        sort: sort,
-        limit: pageSize,
-        page: pageNo,
-        keyword: keyword
-      }
-    })
-  }
-
-  /**
-   * @description [API] 图标库搜索
+   * @description [API] 图标库/插画库 搜索
    */
   async collections ({
     keyword = '',
     type = 3,
     sort = 'time',
     pageNo = 1,
-    pageSize = 9
+    pageSize = 9,
+    illustration = false
   } = {}) {
-    return this.request.get('api/collections.json', {
-      params: {
-        type: type,
-        sort: sort,
-        limit: pageSize,
-        page: pageNo,
-        keyword: keyword
-      }
-    })
+    let params = {
+      type: type,
+      sort: sort,
+      limit: pageSize,
+      page: pageNo,
+      keyword: keyword
+    }
+    if (illustration) params.collectionType = 'illustration'
+    return this.request.get('api/collections.json', { params })
   }
 
   /**
-   * @description [API] 图标库详情
+   * @description [API] 图标库/插画库 详情
    */
   async collectionDetail ({
-    id = 0
+    id = 0,
+    illustration = false
   } = {}) {
-    return this.request.get('api/collection/detail.json', {
-      params: {
-        id
-      }
-    })
+    let params = {
+      id
+    }
+    if (illustration) params.type = 'illustration'
+    return this.request.get('api/collection/detail.json', { params })
   }
 }
