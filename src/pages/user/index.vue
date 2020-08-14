@@ -59,7 +59,7 @@ export default {
       list: {
         // 搜索条件
         query: {
-          keyword: 'AlexKing1004'
+          keyword: 'hou'
         },
         // 分页
         page: {

@@ -59,7 +59,7 @@ export default {
         },
         () => ({
           file: '',
-          show_svg: '' 
+          show_svg: ''
         })
       )
       return concat(list, supplementList)
