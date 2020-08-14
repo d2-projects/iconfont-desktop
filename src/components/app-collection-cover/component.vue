@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { take } from 'lodash-es'
+import { take, concat } from 'lodash-es'
 
 export default {
   name: 'app-collection-cover',
@@ -50,7 +50,19 @@ export default {
   },
   computed: {
     list () {
-      return take(this.value, 5 * 3)
+      const count = this.illustration ? 2 * 3 : 5 * 3
+      const list = take(this.value, count)
+      const supplementLength = count - list.length
+      const supplementList = Array.from(
+        {
+          length: supplementLength
+        },
+        () => ({
+          file: '',
+          show_svg: '' 
+        })
+      )
+      return concat(list, supplementList)
     }
   },
   methods: {

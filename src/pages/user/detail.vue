@@ -70,7 +70,7 @@ const dataMap = [
 const childRoutes = [
   { title: '图标', name: 'user-detail-collections' },
   { title: '插画', name: 'user-detail-illustrations' },
-  { title: '喜欢', name: 'user-detail-likes' }
+  { title: '收藏', name: 'user-detail-likes' }
 ]
 
 export default {
