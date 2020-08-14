@@ -148,13 +148,14 @@ export default class Iconfont {
    * @description [API] 用户的图标库
    */
   async userCollections ({
-    id = 0
+    id = 0,
+    illustration = false
   } = {}) {
-    return this.request.get('api/user/collections.json', {
-      params: {
-        uid: id || this.user.id || ''
-      }
-    })
+    let params = {
+      uid: id || this.user.id || ''
+    }
+    if (illustration) params.type = 'illustration'
+    return this.request.get('api/user/collections.json', { params })
   }
 
   /**
