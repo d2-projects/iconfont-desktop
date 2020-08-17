@@ -2,23 +2,35 @@ import Vue from 'vue'
 import router from '@/router'
 
 Vue.prototype.$go = {
-  detail: {
-    user (id) {
+  user: {
+    detail (id) {
       router.replace({
         name: 'user-detail',
         query: { id }
       })
-    },
-    illustration (id) {
+    }
+  },
+  illustration: {
+    detail (id) {
       router.replace({
         name: 'illustration-detail',
         query: { id }
       })
-    },
-    collection (id) {
+    }
+  },
+  collection: {
+    detail (id) {
       router.replace({
         name: 'collection-detail',
         query: { id }
+      })
+    }
+  },
+  icons: {
+    search (keyword) {
+      router.replace({
+        name: 'icons',
+        query: { keyword }
       })
     }
   },

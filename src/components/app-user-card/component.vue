@@ -11,7 +11,7 @@
     <div
       class="app-user-card__header py-3"
       flex="cross:center"
-      @click="$go.detail.user(id)">
+      @click="$go.user.detail(id)">
       <v-avatar color="grey lighten-2" class="is-pointer mr-4">
         <v-img v-if="avatar" :src="avatar"/>
         <span

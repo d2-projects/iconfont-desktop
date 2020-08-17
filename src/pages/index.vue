@@ -89,14 +89,7 @@ export default {
       this.bottomCollections = result.bottomCollections
     },
     onSearch (keyword) {
-      if (keyword) {
-        this.$router.replace({
-          name: 'icons',
-          query: {
-            keyword
-          }
-        })
-      }
+      if (keyword) this.$go.icons.search(keyword)
     }
   }
 }

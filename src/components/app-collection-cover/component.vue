@@ -67,8 +67,8 @@ export default {
   },
   methods: {
     onClick () {
-      if (this.illustration) this.$go.detail.illustration(this.id)
-      else this.$go.detail.collection(this.id)
+      if (this.illustration) this.$go.illustration.detail(this.id)
+      else this.$go.collection.detail(this.id)
     }
   }
 }

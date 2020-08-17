@@ -2,7 +2,7 @@
   <div
     class="is-pointer"
     flex="dir:top cross:center"
-    @click="$go.detail.user(id)">
+    @click="$go.user.detail(id)">
     <v-avatar :size="size" color="grey lighten-2 is-pointer" class="mb-2">
       <v-img v-if="avatar" :src="avatar"/>
       <span
