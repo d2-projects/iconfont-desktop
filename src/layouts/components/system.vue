@@ -73,9 +73,7 @@ export default {
         })
     },
     toLogin () {
-      this.$router.replace({
-        name: 'setting-account'
-      })
+      this.$go.setting.account()
     }
   }
 }

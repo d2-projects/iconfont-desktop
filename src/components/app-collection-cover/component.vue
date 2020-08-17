@@ -67,12 +67,8 @@ export default {
   },
   methods: {
     onClick () {
-      this.$router.replace({
-        name: this.illustration ? 'illustration-detail' : 'collection-detail',
-        query: {
-          id: this.id
-        }
-      })
+      if (this.illustration) this.$go.detail.illustration(this.id)
+      else this.$go.detail.collection(this.id)
     }
   }
 }
