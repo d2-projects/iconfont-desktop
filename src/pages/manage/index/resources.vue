@@ -1,5 +1,5 @@
 <template>
   <div>
-    resources
+    manage-resources
   </div>
 </template>

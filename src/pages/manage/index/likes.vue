@@ -1,5 +1,5 @@
 <template>
   <div>
-    likes
+    manage-likes
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
   <div>
-    uploads 我上传的icon
+    manage-resources-uploads 我上传的icon
   </div>
 </template>

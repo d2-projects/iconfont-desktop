@@ -1,5 +1,5 @@
 <template>
   <div>
-    histories 下载历史
+    manage-resources-histories 下载历史
   </div>
 </template>

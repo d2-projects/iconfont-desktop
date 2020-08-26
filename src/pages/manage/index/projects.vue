@@ -1,5 +1,5 @@
 <template>
   <div>
-    projects
+    manage-projects
   </div>
 </template>

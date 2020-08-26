@@ -1,5 +1,5 @@
 <template>
   <div>
-    library 我收藏的图标库
+    manage-likes-library 我收藏的图标库
   </div>
 </template>

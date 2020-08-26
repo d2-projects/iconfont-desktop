@@ -1,5 +1,5 @@
 <template>
   <div>
-    collections 我的图标库
+    manage-resources-collections 我的图标库
   </div>
 </template>

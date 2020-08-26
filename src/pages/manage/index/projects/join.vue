@@ -1,5 +1,5 @@
 <template>
   <div>
-    join 我参与的项目
+    manage-projects-join 我参与的项目
   </div>
 </template>
