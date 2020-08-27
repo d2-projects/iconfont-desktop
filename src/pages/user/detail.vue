@@ -38,15 +38,7 @@
               <div class="text-h6 is-nowrap">{{ userNickname }}</div>
               <div class="text-subtitle-1 is-nowrap">{{ userBio }}</div>
             </div>
-            <v-btn-toggle :value="$route.name" rounded dense>
-              <v-btn
-                v-for="route of childRoutes"
-                :key="route.name"
-                :value="route.name"
-                @click="onChildPageTabTabClick(route.name)">
-                {{ route.title }}
-              </v-btn>
-            </v-btn-toggle>
+            <app-links-btn-group :options="children" query/>
           </div>
         </v-skeleton-loader>
       </v-container>
@@ -67,10 +59,28 @@ const dataMap = [
   ['userAvatar', 'avatar', '']
 ]
 
-const childRoutes = [
-  { title: '图标', name: 'user-detail-collections' },
-  { title: '插画', name: 'user-detail-illustrations' },
-  { title: '收藏', name: 'user-detail-likes' }
+const children = [
+  {
+    title: '图标',
+    matchPath: '/user/detail/collections',
+    route: {
+      name: 'user-detail-collections'
+    }
+  },
+  {
+    title: '插画',
+    matchPath: '/user/detail/illustrations',
+    route: {
+      name: 'user-detail-illustrations'
+    }
+  },
+  {
+    title: '收藏',
+    matchPath: '/user/detail/likes',
+    route: {
+      name: 'user-detail-likes'
+    }
+  }
 ]
 
 export default {
@@ -80,7 +90,7 @@ export default {
   data () {
     return {
       detail: {},
-      childRoutes
+      children
     }
   },
   computed: {
@@ -98,12 +108,6 @@ export default {
         id: this.$route.query.id
       })
       this.detail = result
-    },
-    onChildPageTabTabClick (name) {
-      this.$router.replace({
-        name,
-        query: this.$route.query
-      })
     }
   }
 }
