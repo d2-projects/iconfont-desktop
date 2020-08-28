@@ -18,7 +18,7 @@
 <template>
   <div class="app-setting-account">
     <app-login v-if="!isLogged"/>
-    <app-setting-list label-position="left" label-align="right">
+    <app-setting-list v-else label-position="left" label-align="right">
       <app-setting-list-item label="头像">
         <app-upload v-model="user.avatar">
           <template v-slot="{ src }">
@@ -36,14 +36,15 @@
         <app-upload v-model="user.alipay_code"/>
       </app-setting-list-item>
       <app-setting-list-item>
-        <v-btn outlined color="primary" @click="submit">保存</v-btn>
+        <v-btn outlined color="primary" @click="submit" class="mr-1">保存</v-btn>
+        <v-btn outlined color="error" @click="logout">退出登录</v-btn>
       </app-setting-list-item>
     </app-setting-list>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import appLogin from './__components__/login'
 
 export default {
@@ -81,6 +82,9 @@ export default {
     isLogged: 'load'
   },
   methods: {
+    ...mapActions('sdk', [
+      'logout'
+    ]),
     async load () {
       if (this.isLogged) {
         const result = await this.sdk.userDetail()
