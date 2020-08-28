@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'app-links-btn-group',
+  name: 'app-nav-group-button',
   props: {
     options: {
       type: Array,

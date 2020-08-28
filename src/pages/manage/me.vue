@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-links-btn-group :options="children"/>
+    <app-nav-group-button :options="children"/>
     <router-view/>
   </div>
 </template>
