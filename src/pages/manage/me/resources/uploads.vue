@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <app-login-after>
     manage-me-resources-uploads 我上传的icon
-  </div>
+  </app-login-after>
 </template>

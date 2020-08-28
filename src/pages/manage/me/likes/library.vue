@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <app-login-after>
     manage-me-likes-library 我收藏的图标库
-  </div>
+  </app-login-after>
 </template>

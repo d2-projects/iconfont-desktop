@@ -1,5 +1,6 @@
 <style lang="scss">
 @include b(login) {
+  max-width: 600px;
   @include e(logo) {
     width: 106px;
   }
@@ -7,7 +8,7 @@
 </style>
 
 <template>
-  <v-responsive class="app-login absolute-parent" :aspect-ratio="2/1">
+  <v-responsive class="app-login absolute-parent mx-auto" :aspect-ratio="2/1">
     <planet class="absolute-all"/>
     <div class="absolute-bottom">
       <p class="text-center text-caption grey--text lighten-5 mb-1">

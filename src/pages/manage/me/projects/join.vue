@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <app-login-after>
     manage-me-projects-join 我参与的项目
-  </div>
+  </app-login-after>
 </template>

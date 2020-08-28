@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <app-login-after>
     manage-me-projects-sponsor 我发起的项目
-  </div>
+  </app-login-after>
 </template>

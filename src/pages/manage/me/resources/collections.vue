@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <app-login-after>
     manage-me-resources-collections 我的图标库
-  </div>
+  </app-login-after>
 </template>
