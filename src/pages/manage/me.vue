@@ -1,29 +1,39 @@
 <template>
   <div>
-    <v-btn-toggle :value="$route.name" rounded dense>
-      <v-btn
-        v-for="route of childRoutes"
-        :key="route.name"
-        :value="route.name"
-        @click="onChildPageTabTabClick(route.name)">
-        {{ route.title }}
-      </v-btn>
-    </v-btn-toggle>
+    <app-links-btn-group :options="children" query/>
     <router-view/>
   </div>
 </template>
 
 <script>
-const childRoutes = [
-  { title: '资源', name: 'manage-me-resources-uploads' },
-  { title: '收藏', name: 'manage-me-likes-icons' },
-  { title: '项目', name: 'manage-me-projects-sponsor' }
+const children = [
+  {
+    title: '资源',
+    matchPath: '/manage/me/likes',
+    route: {
+      name: 'manage-me-resources-uploads'
+    }
+  },
+  {
+    title: '收藏',
+    matchPath: '/manage/me/likes',
+    route: {
+      name: 'manage-me-likes-icons'
+    }
+  },
+  {
+    title: '项目',
+    matchPath: '/manage/me/likes',
+    route: {
+      name: 'manage-me-projects-sponsor'
+    }
+  }
 ]
 
 export default {
   data () {
     return {
-      childRoutes
+      children
     }
   },
   methods: {
