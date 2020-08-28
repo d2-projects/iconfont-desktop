@@ -17,8 +17,7 @@
 
 <template>
   <div class="app-setting-account">
-    <app-login v-if="!isLogged" class="my-5"/>
-    <template v-else>
+    <app-login-after>
       <app-setting-list label-position="left" label-align="right">
         <app-setting-list-item label="登出">
           <v-btn outlined color="error" @click="logout">退出登录</v-btn>
@@ -45,13 +44,12 @@
           <v-btn outlined color="primary" @click="submit">保存</v-btn>
         </app-setting-list-item>
       </app-setting-list>
-    </template>
+    </app-login-after>
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
-import appLogin from './__components__/login'
 
 export default {
   data () {
@@ -69,9 +67,6 @@ export default {
         weixin_code: ''
       }
     }
-  },
-  components: {
-    appLogin
   },
   computed: {
     ...mapState('sdk', [
