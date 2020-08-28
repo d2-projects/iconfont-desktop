@@ -17,8 +17,13 @@
 
 <template>
   <div class="app-setting-account">
-    <app-login v-if="!isLogged"/>
+    <app-login v-if="!isLogged" class="my-5"/>
     <template v-else>
+      <app-setting-list label-position="left" label-align="right">
+        <app-setting-list-item label="登出">
+          <v-btn outlined color="error" @click="logout">退出登录</v-btn>
+        </app-setting-list-item>
+      </app-setting-list>
       <app-setting-list label-position="left" label-align="right">
         <app-setting-list-item label="头像">
           <app-upload v-model="user.avatar">
@@ -38,11 +43,6 @@
         </app-setting-list-item>
         <app-setting-list-item>
           <v-btn outlined color="primary" @click="submit">保存</v-btn>
-        </app-setting-list-item>
-      </app-setting-list>
-      <app-setting-list label-position="left" label-align="right">
-        <app-setting-list-item label="登出">
-          <v-btn outlined color="error" @click="logout">退出登录</v-btn>
         </app-setting-list-item>
       </app-setting-list>
     </template>
