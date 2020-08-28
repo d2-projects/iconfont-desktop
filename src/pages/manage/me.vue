@@ -1,7 +1,24 @@
+<style lang="scss">
+@include b(page-manage-me) {
+  @extend .absolute-parent;
+  @include e(topbar) {
+    z-index: 1;
+    @extend .absolute-top;
+  }
+  @include e(content) {
+    @extend .absolute-all;
+  }
+}
+</style>
+
 <template>
-  <div>
-    <app-nav-group-button :options="children"/>
-    <router-view/>
+  <div class="app-page-manage-me">
+    <div class="app-page-manage-me__content">
+      <router-view/>
+    </div>
+    <div class="app-page-manage-me__topbar">
+      <app-nav-group-tabs :options="children"/>
+    </div>
   </div>
 </template>
 

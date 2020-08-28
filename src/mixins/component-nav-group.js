@@ -1,18 +1,4 @@
-<template>
-  <v-btn-toggle :value="currentValue" rounded dense>
-    <v-btn
-      v-for="option of options"
-      :key="option.route.name"
-      :value="option.matchPath"
-      @click="onClick(option.route)">
-      {{ option.title }}
-    </v-btn>
-  </v-btn-toggle>
-</template>
-
-<script>
 export default {
-  name: 'app-nav-group-button',
   props: {
     options: {
       type: Array,
@@ -50,4 +36,3 @@ export default {
     }
   }
 }
-</script>

@@ -38,7 +38,7 @@
               <div class="text-h6 is-nowrap">{{ userNickname }}</div>
               <div class="text-subtitle-1 is-nowrap">{{ userBio }}</div>
             </div>
-            <app-nav-group-button :options="children" query/>
+            <app-nav-group-buttons :options="children" query/>
           </div>
         </v-skeleton-loader>
       </v-container>
