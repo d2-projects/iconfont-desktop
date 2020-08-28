@@ -59,30 +59,6 @@ const dataMap = [
   ['userAvatar', 'avatar', '']
 ]
 
-const children = [
-  {
-    title: '图标',
-    matchPath: '/user/detail/collections',
-    route: {
-      name: 'user-detail-collections'
-    }
-  },
-  {
-    title: '插画',
-    matchPath: '/user/detail/illustrations',
-    route: {
-      name: 'user-detail-illustrations'
-    }
-  },
-  {
-    title: '收藏',
-    matchPath: '/user/detail/likes',
-    route: {
-      name: 'user-detail-likes'
-    }
-  }
-]
-
 export default {
   mixins: [
     ui
@@ -90,7 +66,29 @@ export default {
   data () {
     return {
       detail: {},
-      children
+      children: [
+        {
+          title: '图标',
+          matchPath: '/user/detail/collections',
+          route: {
+            name: 'user-detail-collections'
+          }
+        },
+        {
+          title: '插画',
+          matchPath: '/user/detail/illustrations',
+          route: {
+            name: 'user-detail-illustrations'
+          }
+        },
+        {
+          title: '收藏',
+          matchPath: '/user/detail/likes',
+          route: {
+            name: 'user-detail-likes'
+          }
+        }
+      ]
     }
   },
   computed: {
