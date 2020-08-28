@@ -1,5 +1,5 @@
 <template>
-  <v-sheet class="app-setting-list pa-5" rounded>
+  <v-sheet class="app-setting-list pa-5 my-5" rounded>
     <slot/>
   </v-sheet>
 </template>

@@ -58,7 +58,7 @@
     </div>
     <div class="app-page-setting__main">
       <app-list>
-        <div class="app-page-setting__main-content pa-3 mx-auto">
+        <div class="app-page-setting__main-content mx-auto">
           <router-view/>
         </div>
       </app-list>
