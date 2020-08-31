@@ -31,7 +31,7 @@
           </v-btn>
         </v-col>
         <v-col>
-          <v-btn color="orange" outlined>
+          <v-btn color="orange" @click="login" outlined>
             新浪微博
             <v-icon right dark>mdi-sina-weibo</v-icon>
           </v-btn>
