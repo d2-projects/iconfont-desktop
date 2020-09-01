@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { remote } from 'electron'
+import { get } from 'lodash-es'
 import marked from 'marked'
 import 'github-markdown-css'
 export default {
@@ -38,6 +40,18 @@ export default {
   methods: {
     refersh (source) {
       this.html = marked(source)
+      this.initLinkClick()
+    },
+    initLinkClick () {
+      this.$nextTick(() => {
+        this.$el.getElementsByTagName('a').forEach(a => {
+          a.onclick = e => {
+            const href = get(e, 'target.href', '')
+            if (href) remote.shell.openExternal(href)
+            return false
+          }
+        })
+      })
     }
   }
 }
