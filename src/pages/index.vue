@@ -28,16 +28,9 @@
     <div class="app-page-index__content">
       <app-list>
         <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
-        <!-- row 1 -->
         <app-collection-list :value="topCollections">
           <template v-slot="{ collection }">
             <app-collection-mode-index-user :value="collection"/>
-          </template>
-        </app-collection-list>
-        <!-- row 2 -->
-        <app-collection-list :value="bottomCollections">
-          <template v-slot="{ collection }">
-            <app-collection-mode-index-official :value="collection"/>
           </template>
         </app-collection-list>
       </app-list>
@@ -58,8 +51,7 @@ import { mapState, mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      topCollections: fill(Array(3), { loading: true }),
-      bottomCollections: fill(Array(3), { loading: true }),
+      topCollections: fill(Array(6), { loading: true }),
       topbarHeight: 0
     }
   },
@@ -79,14 +71,12 @@ export default {
   },
   beforeRouteLeave (to, from, next) {
     this.topCollections = []
-    this.bottomCollections = []
     next()
   },
   methods: {
     async getIndexData () {
       const result = await this.sdk.commonIndexConfig()
       this.topCollections = result.topCollections
-      this.bottomCollections = result.bottomCollections
     },
     onSearch (keyword) {
       if (keyword) this.$go.icons.search(keyword)
