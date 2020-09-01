@@ -2,7 +2,8 @@
 {
   "meta": {
     "title": "通用",
-    "icon": "mdi-cog"
+    "icon": "mdi-cog",
+    "sort": 1
   }
 }
 </route>

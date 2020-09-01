@@ -10,7 +10,8 @@
 {
   "meta": {
     "title": "账户",
-    "icon": "mdi-account-circle"
+    "icon": "mdi-account-circle",
+    "sort": 0
   }
 }
 </route>

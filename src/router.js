@@ -73,7 +73,8 @@ function findRoutesBy (query) {
 export const menus = {
   setting: findRoutesBy({ path: 'setting' })
     .filter(isMenu)
-    .map(createMenu),
+    .map(createMenu)
+    .sort(sortMenu),
   nav: routes
     .filter(isMenu)
     .map(createMenu)

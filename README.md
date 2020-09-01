@@ -13,6 +13,7 @@
 
 * [font-carrier](https://github.com/purplebamboo/font-carrier)
 * [svg2ttf](https://github.com/fontello/svg2ttf)
+* [ginger-cat 插画](https://icons8.cn/illustrations/style--ginger-cat-1)
 
 ## 数据
 
