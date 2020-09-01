@@ -1,5 +1,9 @@
 <style lang="scss">
-@include b(markdown-render) {}
+@include b(markdown-render) {
+  h1, h2 {
+    border-bottom: none;
+  }
+}
 </style>
 
 <template>

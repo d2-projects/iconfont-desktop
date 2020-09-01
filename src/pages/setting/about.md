@@ -1,18 +1,11 @@
-# About
+**数据**
 
-## Iconfont Desktop
+本工具展示的所有的图标、插画、用户信息均来自 [www.iconfont.cn](https://www.iconfont.cn/)
 
-* [vuetifyjs](https://vuetifyjs.com/zh-Hans/)
-* [materialdesignicons](https://materialdesignicons.com/)
-* [nodejs](http://nodejs.cn/api/events.html)
-* [vue-toasted](https://github.com/shakee93/vue-toasted#options)
+**引用**
 
-## iconfont 用户诉求
+插画来自 [icons8.com](https://icons8.com/)
 
-* [推出chrome工具，取消20个下载限制](https://github.com/thx/iconfont-plus/issues/209)
+**依赖**
 
-## 工具准备
-
-* [font-carrier](https://github.com/purplebamboo/font-carrier)
-* [svg2ttf](https://github.com/fontello/svg2ttf)
-* [ginger-cat 插画](https://icons8.cn/illustrations/style--ginger-cat-1)
+使用 [vuetifyjs](https://vuetifyjs.com) & [Electron](https://github.com/electron) 构建
