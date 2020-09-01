@@ -1,11 +1,3 @@
-<style lang="scss">
-@include b(setting-account) {
-  @include e(form) {
-    max-width: 400px;
-  }
-}
-</style>
-
 <route>
 {
   "meta": {
@@ -17,36 +9,34 @@
 </route>
 
 <template>
-  <div class="app-setting-account">
-    <app-login-after>
-      <app-setting-list label-position="left" label-align="right">
-        <app-setting-list-item label="登出">
-          <v-btn outlined color="error" @click="logout">退出登录</v-btn>
-        </app-setting-list-item>
-      </app-setting-list>
-      <app-setting-list label-position="left" label-align="right">
-        <app-setting-list-item label="头像">
-          <app-upload v-model="user.avatar">
-            <template v-slot="{ src }">
-              <v-avatar size="100">
-                <img :src="src">
-              </v-avatar>
-            </template>
-          </app-upload>
-        </app-setting-list-item>
-        <app-setting-list-text-field label="昵称" v-model="user.nickname"/>
-        <app-setting-list-text-field label="QQ" v-model="user.qq"/>
-        <app-setting-list-text-field label="联系邮箱" v-model="user.show_email"/>
-        <app-setting-list-text-field label="个性签名" v-model="user.bio"/>
-        <app-setting-list-item label="支付宝打赏">
-          <app-upload v-model="user.alipay_code"/>
-        </app-setting-list-item>
-        <app-setting-list-item>
-          <v-btn outlined color="primary" @click="submit">保存</v-btn>
-        </app-setting-list-item>
-      </app-setting-list>
-    </app-login-after>
-  </div>
+  <app-login-after>
+    <app-setting-list label-position="left" label-align="right">
+      <app-setting-list-item label="登出">
+        <v-btn outlined color="error" @click="logout">退出登录</v-btn>
+      </app-setting-list-item>
+    </app-setting-list>
+    <app-setting-list label-position="left" label-align="right">
+      <app-setting-list-item label="头像">
+        <app-upload v-model="user.avatar">
+          <template v-slot="{ src }">
+            <v-avatar size="100">
+              <img :src="src">
+            </v-avatar>
+          </template>
+        </app-upload>
+      </app-setting-list-item>
+      <app-setting-list-text-field label="昵称" v-model="user.nickname"/>
+      <app-setting-list-text-field label="QQ" v-model="user.qq"/>
+      <app-setting-list-text-field label="联系邮箱" v-model="user.show_email"/>
+      <app-setting-list-text-field label="个性签名" v-model="user.bio"/>
+      <app-setting-list-item label="支付宝打赏">
+        <app-upload v-model="user.alipay_code"/>
+      </app-setting-list-item>
+      <app-setting-list-item>
+        <v-btn outlined color="primary" @click="submit">保存</v-btn>
+      </app-setting-list-item>
+    </app-setting-list>
+  </app-login-after>
 </template>
 
 <script>

@@ -4706,6 +4706,11 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+github-markdown-css@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npm.taobao.org/github-markdown-css/download/github-markdown-css-4.0.0.tgz#be9f4caf7a389228d4c368336260ffc909061f35"
+  integrity sha1-vp9Mr3o4kijUw2gzYmD/yQkGHzU=
+
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/glob-parent/download/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
@@ -6148,6 +6153,11 @@ map-visit@^1.0.0:
   integrity sha1-7Nyo8TFE5mDxtb1B8S80edmN+48=
   dependencies:
     object-visit "^1.0.0"
+
+marked@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npm.taobao.org/marked/download/marked-1.1.1.tgz?cache=0&sync_timestamp=1594690265250&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmarked%2Fdownload%2Fmarked-1.1.1.tgz#e5d61b69842210d5df57b05856e0c91572703e6a"
+  integrity sha1-5dYbaYQiENXfV7BYVuDJFXJwPmo=
 
 matcher@^3.0.0:
   version "3.0.0"
@@ -9005,6 +9015,11 @@ terser@^4.1.2, terser@^4.6.12, terser@^4.8.0:
     commander "^2.20.0"
     source-map "~0.6.1"
     source-map-support "~0.5.12"
+
+text-loader@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npm.taobao.org/text-loader/download/text-loader-0.0.1.tgz#8bf75d749b7c0579c939920051c69ea572ebddc1"
+  integrity sha1-i/dddJt8BXnJOZIAUcaepXLr3cE=
 
 text-table@^0.2.0:
   version "0.2.0"

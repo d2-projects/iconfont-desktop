@@ -9,7 +9,18 @@
 </route>
 
 <template>
-  <div>
-    关于
-  </div>
+  <app-setting-list>
+    <app-markdown-render :value="source"/>
+  </app-setting-list>
 </template>
+
+<script>
+import source from './about.md'
+export default {
+  data () {
+    return {
+      source
+    }
+  }
+}
+</script>
