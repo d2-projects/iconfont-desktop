@@ -1,5 +1,5 @@
 <template>
   <app-login-after>
-    manage-me-resources-collections 我的图标库
+    <app-page-placeholder-working-in-progress/>
   </app-login-after>
 </template>

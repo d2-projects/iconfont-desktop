@@ -1,5 +1,5 @@
 <template>
   <app-login-after>
-    manage-me-likes-illustration 我收藏的插画库
+    <app-page-placeholder-working-in-progress/>
   </app-login-after>
 </template>

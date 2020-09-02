@@ -1,5 +1,5 @@
 <template>
   <app-login-after>
-    manage-me-resources-histories 下载历史
+    <app-page-placeholder-working-in-progress/>
   </app-login-after>
 </template>
