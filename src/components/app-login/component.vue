@@ -21,7 +21,7 @@
     <div class="absolute-all" flex="dir:top main:center cross:center">
       <img
         class="app-login__logo mb-5"
-        src="@/assets/image/iconfont-text.svg"
+        src="@/assets/image/logo/iconfont/text.svg"
         alt="iconfont">
       <v-row class="flex-grow-0">
         <v-col>
