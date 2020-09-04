@@ -50,7 +50,6 @@ export default {
       commit('iconCountSet', state.sdk.iconCount)
     },
     async loading ({ commit }, { promise, message = '' } = {}) {
-      console.log(1)
       commit('loadingMessageSet', message)
       commit('loadingSet', true)
       await Promise.all([
@@ -59,7 +58,6 @@ export default {
       ])
       commit('loadingSet', false)
       commit('loadingMessageSet', '')
-      console.log(2)
     },
     async logout ({ state, dispatch, commit }) {
       const promise = new Promise(async resolve => {
@@ -104,6 +102,7 @@ export default {
           webContents.on('did-navigate', async (event, url) => {
             if (startsWith(url, state.url.githubLoginCallback)) {
               // 这个时候一般是 github 返回 iconfont 的时候出错了 -> 重试登录
+              commit('loadingMessageSet', '正在自动重试 Github 登录')
               webContents.loadURL(state.url.githubLogin)
             }
             if (url === state.url.iconfont) {
