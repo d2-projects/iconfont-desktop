@@ -25,13 +25,13 @@
         alt="iconfont">
       <v-row class="flex-grow-0">
         <v-col>
-          <v-btn color="blue-grey lighten-5" @click="login" outlined>
+          <v-btn color="blue-grey lighten-5" @click="loginWithGithub" outlined>
             Github
             <v-icon right dark>mdi-github</v-icon>
           </v-btn>
         </v-col>
         <v-col>
-          <v-btn color="orange" @click="login" outlined>
+          <v-btn color="orange" @click="loginWithWeibo" outlined>
             新浪微博
             <v-icon right dark>mdi-sina-weibo</v-icon>
           </v-btn>
@@ -52,7 +52,8 @@ export default {
   },
   methods: {
     ...mapActions('sdk', [
-      'login'
+      'loginWithGithub',
+      'loginWithWeibo'
     ])
   }
 }

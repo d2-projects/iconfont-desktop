@@ -5,8 +5,6 @@ import routes from 'vue-auto-routing'
 import { createRouterLayout } from 'vue-router-layout'
 import store from './store'
 
-console.log(routes)
-
 const push = Router.prototype.push
 Router.prototype.push = function (location) {
   return push.call(this, location).catch(err => err)

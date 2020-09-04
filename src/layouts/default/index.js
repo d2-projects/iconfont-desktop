@@ -9,6 +9,7 @@ export default {
         <router-view/>
       </v-main>
       <navigation/>
+      <app-sys-loading/>
     </v-app>
   }
 }
