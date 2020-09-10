@@ -6473,6 +6473,11 @@ nan@^2.12.1:
   resolved "https://registry.npm.taobao.org/nan/download/nan-2.14.1.tgz#d7be34dfa3105b91494c3147089315eff8874b01"
   integrity sha1-174036MQW5FJTDFHCJMV7/iHSwE=
 
+nanoid@^2.1.0:
+  version "2.1.11"
+  resolved "https://registry.npm.taobao.org/nanoid/download/nanoid-2.1.11.tgz#ec24b8a758d591561531b4176a01e3ab4f0f0280"
+  integrity sha1-7CS4p1jVkVYVMbQXagHjq08PAoA=
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.npm.taobao.org/nanomatch/download/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
@@ -6516,6 +6521,11 @@ no-case@^2.2.0:
   integrity sha1-YLgTOWvjmz8SiKTB7V0efSi0ZKw=
   dependencies:
     lower-case "^1.1.1"
+
+node-downloader-helper@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.npm.taobao.org/node-downloader-helper/download/node-downloader-helper-1.0.13.tgz#bbed82ba9c5b0722d56cbb8770c0300f7785a400"
+  integrity sha1-u+2CupxbByLVbLuHcMAwD3eFpAA=
 
 node-forge@0.9.0:
   version "0.9.0"
@@ -8433,6 +8443,13 @@ shelljs@^0.8.3:
     glob "^7.0.0"
     interpret "^1.0.0"
     rechoir "^0.6.2"
+
+shortid@^2.2.15:
+  version "2.2.15"
+  resolved "https://registry.npm.taobao.org/shortid/download/shortid-2.2.15.tgz#2b902eaa93a69b11120373cd42a1f1fe4437c122"
+  integrity sha1-K5AuqpOmmxESA3PNQqHx/kQ3wSI=
+  dependencies:
+    nanoid "^2.1.0"
 
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.3"
