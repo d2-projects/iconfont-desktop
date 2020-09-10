@@ -6,7 +6,7 @@ import {
 } from 'lodash-es'
 import { remote } from 'electron'
 
-import { wait, getCookiesFromIconfont } from '@/utils'
+import { wait, getCookiesFromIconfont } from '@/utils/tools.js'
 
 const BrowserWindow = remote.BrowserWindow
 const Iconfont = remote.getGlobal('Iconfont')

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { oneOf } from '@/utils'
+import { oneOf } from '@/utils/tools.js'
 
 export default {
   name: 'app-setting-list',

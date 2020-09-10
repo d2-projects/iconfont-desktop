@@ -7,6 +7,7 @@ const app = remote.app
 console.log(app)
 console.log(path)
 console.log(DownloadTask)
+// http://www.electronjs.org/docs/api/app#appgetpathname
 console.log(app.getPath('userData'))
 
 export default {

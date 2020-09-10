@@ -39,3 +39,20 @@ export async function getCookiesFromIconfont (win) {
   const cookies = await getCookies(win, '.iconfont.cn')
   return fromPairs(cookies.map(e => [e.name, e.value]))
 }
+
+/**
+ * @description 转换文件大小的显示
+ * @param {value} 原始大小 byte
+ */
+export function byteTo (value) {
+  const sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+  const getPowAndMult = (value, p) => {
+    if (value >= 1024) {
+      return getPowAndMult(value / 1024, p + 1)
+    }
+    return { power: p, mult: value }
+  }
+  const res = getPowAndMult(value, 0)
+  const number = Number(res.mult.toFixed(1))
+  return `${number}${sizes[res.power]}`
+}
