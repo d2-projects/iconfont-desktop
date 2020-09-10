@@ -59,14 +59,21 @@ export default class DownloadTask {
       onProgress(stats)
     })
   }
+
   /**
    * @description 开始
    */
-  start () { this.downloader.start() }
+  start () {
+    this.downloader.start()
+  }
+
   /**
    * @description 暂停
    */
-  pause () { this.downloader.pause() }
+  pause () {
+    this.downloader.pause()
+  }
+
   /**
    * @description 恢复
    */
@@ -76,6 +83,7 @@ export default class DownloadTask {
       this.downloader.resume()
     }
   }
+
   /**
    * @description 停止
    */

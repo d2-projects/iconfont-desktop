@@ -20,8 +20,6 @@ export default class Iconfont {
 
   static dictionary = dictionary
 
-  constructor () {}
-
   isReady () {
     return this.request !== null
   }
@@ -151,7 +149,7 @@ export default class Iconfont {
     id = 0,
     illustration = false
   } = {}) {
-    let params = {
+    const params = {
       uid: id || this.user.id || ''
     }
     if (illustration) params.type = 'illustration'
@@ -264,7 +262,7 @@ export default class Iconfont {
     pageSize = 9,
     illustration = false
   } = {}) {
-    let params = {
+    const params = {
       type: type,
       sort: sort,
       limit: pageSize,
@@ -282,7 +280,7 @@ export default class Iconfont {
     id = 0,
     illustration = false
   } = {}) {
-    let params = {
+    const params = {
       id
     }
     if (illustration) params.type = 'illustration'

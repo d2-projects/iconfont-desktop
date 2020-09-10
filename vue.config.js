@@ -22,9 +22,9 @@ module.exports = {
           .rule('babel')
           .test(/\.js$/)
           .include
-            .add(path.resolve(__dirname, 'src/lib/iconfont-sdk'))
-            .add(path.resolve(__dirname, 'src/background.js'))
-            .end()
+          .add(path.resolve(__dirname, 'src/lib/iconfont-sdk'))
+          .add(path.resolve(__dirname, 'src/background.js'))
+          .end()
           .use('babel')
           .loader('babel-loader')
           .options({

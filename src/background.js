@@ -8,7 +8,6 @@ import {
 // import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 
-
 import Iconfont from './lib/iconfont-sdk'
 global.Iconfont = Iconfont
 
