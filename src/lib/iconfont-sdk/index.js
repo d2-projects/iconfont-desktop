@@ -288,4 +288,31 @@ export default class Iconfont {
     if (illustration) params.type = 'illustration'
     return this.request.get('api/collection/detail.json', { params })
   }
+
+  /**
+   * @description [API] 图标库/插画库 喜欢
+   */
+  async collectionLike ({
+    id = 0
+  } = {}) {
+    return this.request.post('api/collection/like.json', { cid: id })
+  }
+
+  /**
+   * @description [API] 图标库/插画库 收藏
+   */
+  async collectionAddFavorite ({
+    id = 0
+  } = {}) {
+    return this.request.post('api/user/addCollectionFavorite.json', { cid: id })
+  }
+
+  /**
+   * @description [API] 图标库/插画库 删除收藏
+   */
+  async collectionDelFavorite ({
+    id = 0
+  } = {}) {
+    return this.request.post('api/user/delCollectionFavorite.json', { cid: id })
+  }
 }

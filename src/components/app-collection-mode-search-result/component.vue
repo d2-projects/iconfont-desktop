@@ -13,8 +13,8 @@
       <app-collection-info-count-visits :value="countVisits"/>
     </app-collection-text>
     <app-collection-action-group>
-      <app-collection-action-item-likes :value="countLikes"/>
-      <app-collection-action-item-favorite :value="countFavorite"/>
+      <app-collection-action-item-favorite :id="id" :value="countFavorite"/>
+      <app-collection-action-item-likes :id="id" :value="countLikes"/>
     </app-collection-action-group>
   </app-collection-body>
 </template>
