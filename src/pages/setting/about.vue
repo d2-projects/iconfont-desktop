@@ -3,7 +3,7 @@
   "meta": {
     "title": "关于",
     "icon": "mdi-information-outline",
-    "sort": 2
+    "sort": 1
   }
 }
 </route>

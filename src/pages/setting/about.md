@@ -5,7 +5,3 @@
 **引用**
 
 插画来自 [icons8.com](https://icons8.com/)
-
-**依赖**
-
-使用 [vuetifyjs](https://vuetifyjs.com) & [Electron](https://github.com/electron) 构建
