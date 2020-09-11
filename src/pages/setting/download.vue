@@ -1,7 +1,7 @@
 <route>
 {
   "meta": {
-    "title": "下载任务",
+    "title": "下载管理",
     "icon": "mdi-arrow-down-bold-box-outline",
     "sort": 2
   }
