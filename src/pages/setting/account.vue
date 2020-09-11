@@ -16,6 +16,7 @@
       </app-setting-list-item>
     </app-setting-list>
     <app-setting-list label-position="left" label-align="right">
+      <app-setting-list-header title="用户信息" description="修改用户头像和其它用户数据"/>
       <app-setting-list-item label="头像">
         <app-upload v-model="user.avatar">
           <template v-slot="{ src }">
