@@ -31,15 +31,15 @@ function mkdir (dir) {
 * @description 路径是否存在，不存在则创建
 * @param {string} dir 路径
 */
-async function ensurePathSafe (dir) {
-  let isExists = await getFolderStat(dir)
+export async function createFolder (dir) {
+  const isExists = await getFolderStat(dir)
   // 如果该路径且不是文件，返回true
   if (isExists && isExists.isDirectory()) return true
   else if (isExists) return false
   // 如果该路径不存在 拿到上级路径
-  let tempDir = path.parse(dir).dir
+  const tempDir = path.parse(dir).dir
   // 递归判断，如果上级目录也不存在，则会代码会在此处继续循环执行，直到目录存在
-  let status = await ensurePathSafe(tempDir)
+  const status = await createFolder(tempDir)
   let mkdirStatus
   if (status) {
     mkdirStatus = await mkdir(dir)
@@ -53,16 +53,21 @@ async function ensurePathSafe (dir) {
 * @param {string} name 文件名
 * @param {string} content 内容
 */
-async function writeFileSafely ({
-  folder,
-  name,
-  content
-}) {
-  await ensurePathSafe(folder)
+export async function writeFile (folder, name, content) {
+  await createFolder(folder)
   await fs.writeFileSync(path.join(folder, name), content)
 }
 
-export default {
-  ensurePathSafe,
-  writeFileSafely
+/**
+* @description 读取文件 以对象形式输出
+* @param {string} folder 路径
+* @param {string} name 文件名
+* @param {string} content 如果文件不存在 返回的默认值
+*/
+export async function readFileAsObject (folder, name, content = {}) {
+  try {
+    return JSON.parse(await fs.readFileSync(path.join(folder, name), { encoding: 'utf-8' }))
+  } catch (error) {
+    return content
+  }
 }

@@ -32,7 +32,13 @@ const router = new Router({
   ]
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
+  const settingIsLoaded = store.state.setting.isLoaded
+  // 加载软件设置
+  if (!settingIsLoaded) {
+    await store.dispatch('setting/loadSetting')
+  }
+  // 访问需要 SKD 的页面 需要初始化 SDK
   if (find(to.matched, { meta: { sdk: true } }) && !sdk.isReady()) {
     next({
       name: 'sys-init',

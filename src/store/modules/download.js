@@ -1,14 +1,14 @@
-import DownloadTask from '@/lib/download-task'
-import path from 'path'
-import { remote } from 'electron'
+// import DownloadTask from '@/lib/download-task'
+// import path from 'path'
+// import { remote } from 'electron'
 
-const app = remote.app
+// const app = remote.app
 
-console.log(app)
-console.log(path)
-console.log(DownloadTask)
+// console.log(app)
+// console.log(path)
+// console.log(DownloadTask)
 // http://www.electronjs.org/docs/api/app#appgetpathname
-console.log(app.getPath('userData'))
+// console.log(app.getPath('userData'))
 
 export default {
   namespaced: true,
