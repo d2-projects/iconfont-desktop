@@ -12,7 +12,7 @@
   <app-login-after>
     <app-setting-list label-position="left" label-align="right">
       <app-setting-list-header title="连接" description="在客户端登录或退出您的 iconfont+ 账户"/>
-      <app-setting-list-item label="登出">
+      <app-setting-list-item no-label>
         <v-btn outlined color="error" @click="logout">退出登录</v-btn>
       </app-setting-list-item>
     </app-setting-list>

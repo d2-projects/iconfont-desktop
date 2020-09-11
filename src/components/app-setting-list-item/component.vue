@@ -16,6 +16,7 @@
 <template>
   <div class="app-setting-list-item" :class="classNames">
     <div
+      v-if="!isLabelHide"
       class="app-setting-list-item__label text-subtitle-1"
       :class="labelClassNames"
       :style="labelStyle">
@@ -39,9 +40,16 @@ export default {
     label: {
       type: String,
       default: ''
+    },
+    noLabel: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
+    isLabelHide () {
+      return this.noLabel || (this.isLabelTop && !this.label)
+    },
     isLabelTop () {
       return this.appSettingList.labelPosition === 'top'
     },
