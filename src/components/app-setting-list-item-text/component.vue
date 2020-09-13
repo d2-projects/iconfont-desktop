@@ -7,38 +7,17 @@
       single-line
       hide-details
       clearable
-      @input="onInput"/>
+      @input="emit"/>
   </app-setting-list-item>
 </template>
 
 <script>
+import mixinSettingListItem from '@/mixins/component-setting-list-item.js'
+
 export default {
   name: 'app-setting-list-item-text',
-  props: {
-    value: {
-      type: String,
-      default: ''
-    },
-    label: {
-      type: String,
-      default: ''
-    }
-  },
-  data () {
-    const data = {}
-    data.currentValue = this.value
-    return data
-  },
-  watch: {
-    value (value) {
-      this.currentValue = value
-    }
-  },
-  methods: {
-    onInput (value) {
-      this.$emit('input', value)
-      this.$emit('change', value)
-    }
-  }
+  mixins: [
+    mixinSettingListItem
+  ]
 }
 </script>

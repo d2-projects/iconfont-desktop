@@ -1,4 +1,9 @@
-import { ipcMain, shell, BrowserWindow } from 'electron'
+import {
+  ipcMain,
+  shell,
+  BrowserWindow,
+  dialog
+} from 'electron'
 
 /**
  * @description 使用浏览器打开链接
@@ -19,5 +24,8 @@ ipcMain.handle('selectFolder', async (event, arg) => {
       'createDirectory'
     ]
   })
-  return result
+  if (!result.canceled) {
+    return result.filePaths[0]
+  }
+  return ''
 })
