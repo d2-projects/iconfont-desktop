@@ -47,9 +47,9 @@
 
 <template>
   <div class="app-planet absolute-parent is-rounded">
-    <div class="app-planet__o is-1"></div>
-    <div class="app-planet__o is-2"></div>
-    <div class="app-planet__o is-3"></div>
-    <div class="app-planet__o is-4"></div>
+    <div class="app-planet__o is-1"/>
+    <div class="app-planet__o is-2"/>
+    <div class="app-planet__o is-3"/>
+    <div class="app-planet__o is-4"/>
   </div>
 </template>

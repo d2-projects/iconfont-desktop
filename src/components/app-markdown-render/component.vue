@@ -7,7 +7,7 @@
 </style>
 
 <template>
-  <div class="app-markdown-render markdown-body" v-html="html"></div>
+  <div class="app-markdown-render markdown-body" v-html="html"/>
 </template>
 
 <script>

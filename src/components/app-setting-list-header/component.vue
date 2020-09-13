@@ -12,7 +12,7 @@
       <div class="text-h6">{{ title }}</div>
       <div class="text-caption">{{ description }}</div>
     </div>
-    <div></div>
+    <div/>
   </div>
 </template>
 
