@@ -6,6 +6,7 @@ import {
   installVueDevtools
 } from 'vue-cli-plugin-electron-builder/lib'
 // import { autoUpdater } from 'electron-updater'
+import './ipc/main.js'
 import log from 'electron-log'
 
 import Iconfont from './lib/iconfont-sdk'

@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { remote } from 'electron'
 import { get } from 'lodash-es'
 import marked from 'marked'
 import 'github-markdown-css'
@@ -47,7 +46,7 @@ export default {
         this.$el.getElementsByTagName('a').forEach(a => {
           a.onclick = e => {
             const href = get(e, 'target.href', '')
-            if (href) remote.shell.openExternal(href)
+            if (href) this.$store.dispatch('ipc/openExternal', href)
             return false
           }
         })
