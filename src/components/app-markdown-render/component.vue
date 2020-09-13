@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { ipcRenderer } from 'electron'
 import { get } from 'lodash-es'
 import marked from 'marked'
 import 'github-markdown-css'
@@ -38,9 +38,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions('ipc', [
-      'openExternal'
-    ]),
     refersh (source) {
       this.html = marked(source)
       this.initLinkClick()
@@ -50,7 +47,7 @@ export default {
         this.$el.getElementsByTagName('a').forEach(a => {
           a.onclick = e => {
             const href = get(e, 'target.href', '')
-            if (href) this.openExternal(href)
+            if (href) ipcRenderer.invoke('openExternal', href)
             return false
           }
         })

@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'app-setting-list-text-field',
+  name: 'app-setting-list-item-text',
   props: {
     value: {
       type: String,

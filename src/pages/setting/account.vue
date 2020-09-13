@@ -27,10 +27,10 @@
           </template>
         </app-upload>
       </app-setting-list-item>
-      <app-setting-list-text-field label="昵称" v-model="user.nickname"/>
-      <app-setting-list-text-field label="QQ" v-model="user.qq"/>
-      <app-setting-list-text-field label="联系邮箱" v-model="user.show_email"/>
-      <app-setting-list-text-field label="个性签名" v-model="user.bio"/>
+      <app-setting-list-item-text label="昵称" v-model="user.nickname"/>
+      <app-setting-list-item-text label="QQ" v-model="user.qq"/>
+      <app-setting-list-item-text label="联系邮箱" v-model="user.show_email"/>
+      <app-setting-list-item-text label="个性签名" v-model="user.bio"/>
       <app-setting-list-item label="支付宝打赏">
         <app-upload v-model="user.alipay_code"/>
       </app-setting-list-item>
