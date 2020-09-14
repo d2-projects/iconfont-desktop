@@ -31,7 +31,7 @@ protocol.registerSchemesAsPrivileged([
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-    frame: false,
+    title: 'Iconfont Desktop',
     width: 960,
     height: 720,
     minWidth: 960,

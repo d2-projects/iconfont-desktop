@@ -2,8 +2,6 @@
   <v-system-bar
     class="app-drag"
     color="primary"
-    @click="blurIcons"
-    @dblclick="toggleMaximize"
     app
     dark
     window>
@@ -17,61 +15,26 @@
         <span class="font-weight-medium is-pointer" @click="toLogin">登录到 iconfont+</span>
       </v-col>
       <v-col cols="2" flex="main:center cross:center">
-        <span class="font-weight-medium">
-          Iconfont Desktop
-        </span>
+        <span class="font-weight-medium"></span>
       </v-col>
       <v-col cols="5" flex="main:right cross:center">
-        <v-icon @click="toggleAlwaysOnTop">
-          {{ isAlwaysOnTop ? 'mdi-layers' : 'mdi-layers-outline' }}
-        </v-icon>
-        <v-icon v-if="!isFullScreen" @click="minimize">
-          mdi-minus
-        </v-icon>
-        <v-icon v-if="!isFullScreen" @click="toggleMaximize">
-          {{ isMaximized ? 'mdi-window-restore' : 'mdi-window-maximize' }}
-        </v-icon>
-        <v-icon @click="toggleFullScreen">
-          {{ isFullScreen ? 'mdi-fullscreen-exit' : 'mdi-fullscreen' }}
-        </v-icon>
-        <v-icon @click="close">
-          mdi-close
-        </v-icon>
+        <span class="font-weight-medium"></span>
       </v-col>
     </v-row>
   </v-system-bar>
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'system',
   computed: {
-    ...mapState('window', [
-      'isMaximized',
-      'isMinimized',
-      'isFullScreen',
-      'isAlwaysOnTop'
-    ]),
     ...mapGetters('sdk', [
       'isLogged'
     ])
   },
   methods: {
-    ...mapActions('window', [
-      'close',
-      'toggleFullScreen',
-      'toggleAlwaysOnTop',
-      'toggleMaximize',
-      'minimize'
-    ]),
-    blurIcons () {
-      this.$el.getElementsByClassName('v-icon')
-        .forEach(icon => {
-          icon.blur()
-        })
-    },
     toLogin () {
       this.$go.setting.account()
     }
