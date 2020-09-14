@@ -7,7 +7,8 @@
         outlined
         dense
         single-line
-        hide-details/>
+        hide-details
+        @input="onTextFieldInput"/>
       <v-btn
         height="40"
         color="primary"
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+import { throttle } from 'lodash-es'
 import { ipcRenderer } from 'electron'
 import mixinSettingListItem from '@/mixins/component-setting-list-item.js'
 
@@ -30,11 +32,15 @@ export default {
   ],
   methods: {
     async onClickSelectButton () {
-      const folder = await ipcRenderer.invoke('selectFolder')
-      if (folder) {
-        this.emit(folder)
+      const value = await ipcRenderer.invoke('selectFolder')
+      if (value) {
+        await this.emit(value)
+        this.currentValue = value
       }
-    }
+    },
+    onTextFieldInput: throttle(function (value) {
+      this.emit(value)
+    }, 1000)
   }
 }
 </script>

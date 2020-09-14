@@ -33,21 +33,29 @@ export default {
      * @description 保存当前设置到文件
      */
     async saveSetting ({ state }) {
-      await writeFile(settingFolder, settingFileName, JSON.stringify(state, null, 2))
+      await writeFile(settingFolder, settingFileName, JSON.stringify(state.setting, null, 2))
     },
     /**
      * @description 设置某个项目
      * @param {String} name 项目名
      * @param {Any} value 项目值
      */
-    async set ({ state, dispatch }, { name = '', value = '' }) {
-      state.setting[name] = value
+    async set ({ state, commit, dispatch }, { name = '', value = '' }) {
+      commit('set', { name, value })
       await dispatch('saveSetting')
+    },
+    /**
+     * @description 获得某个项目
+     * @param {String} name 项目名
+     */
+    async get ({ state, dispatch }, name = '') {
+      console.log(state.setting[name])
+      return state.setting[name]
     }
   },
   mutations: {
-    get (state, name = '') {
-      return state.setting[name]
+    set (state, { name = '', value = '' }) {
+      state.setting[name] = value
     }
   }
 }
