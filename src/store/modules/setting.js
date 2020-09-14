@@ -14,8 +14,9 @@ export default {
   state: {
     isLoaded: false,
     setting: {
-      // 默认下载地址
+      // 默认下载地址 - 图标
       'folder.download.icon': path.join(app.getPath('downloads'), 'iconfont-desktop', 'icons'),
+      // 默认下载地址 - 插画
       'folder.download.illustration': path.join(app.getPath('downloads'), 'iconfont-desktop', 'illustrations')
     }
   },
