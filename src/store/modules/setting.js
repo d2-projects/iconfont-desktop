@@ -1,5 +1,5 @@
 import path from 'path'
-import { isEmpty } from 'lodash-es'
+import { isEmpty, assign, cloneDeep } from 'lodash-es'
 import { remote } from 'electron'
 import { writeFile, readFileAsObject } from '@/utils/file.js'
 
@@ -26,7 +26,8 @@ export default {
     async loadSetting ({ state, dispatch }) {
       const setting = await readFileAsObject(settingFolder, settingFileName)
       if (isEmpty(setting)) await dispatch('saveSetting')
-      else state.setting = setting
+      else state.setting = assign({}, state.setting, setting)
+      await dispatch('saveSetting')
       state.isLoaded = true
     },
     /**
