@@ -12,5 +12,6 @@
   <app-setting-list label-position="left" label-align="right">
     <app-setting-list-header title="下载位置" description="管理各类资源的下载设置"/>
     <app-setting-list-item-select-folder label="图标" store="setting:folder.download.icon"/>
+    <app-setting-list-item-select-folder label="插画" store="setting:folder.download.illustration"/>
   </app-setting-list>
 </template>

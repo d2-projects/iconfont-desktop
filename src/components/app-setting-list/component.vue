@@ -17,7 +17,7 @@ export default {
     },
     labelWidth: {
       type: Number,
-      default: 100
+      default: 90
     },
     labelAlign: {
       type: String,
