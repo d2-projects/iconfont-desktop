@@ -1,23 +1,22 @@
 <style lang="scss">
 @include b(setting-list-header) {
-  border-bottom: 1px solid map-get($grey, 'lighten-4');
+  @include when(sub) {
+    border-left: 2px solid map-get($blue, 'darken-2');
+    @extend .pl-3;
+  }
 }
 </style>
 
 <template>
-  <div
-    class="app-setting-list-header mt-n5 mx-n5 mb-5 px-5 py-3"
-    flex="main:justify cross:center">
-    <div>
-      <div class="text-h6">{{ title }}</div>
-      <div class="text-caption">{{ description }}</div>
+  <div class="app-setting-list-header mb-3" :class="{ 'is-sub': sub }">
+    <div :class="sub ? 'text-subtitle-1 font-weight-bold' : 'text-h6'">
+      {{ title }}
     </div>
-    <div/>
+    <div class="text-caption">{{ description }}</div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'app-setting-list-header',
   props: {
@@ -30,6 +29,9 @@ export default {
       type: String,
       default: '',
       required: false
+    },
+    sub: {
+      type: Boolean
     }
   }
 }
