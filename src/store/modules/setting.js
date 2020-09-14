@@ -51,7 +51,6 @@ export default {
      * @param {String} name 项目名
      */
     async get ({ state, dispatch }, name = '') {
-      console.log(state.setting[name])
       return state.setting[name]
     }
   },

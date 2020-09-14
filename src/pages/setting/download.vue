@@ -13,3 +13,13 @@
     下载任务
   </app-setting-list>
 </template>
+
+<script>
+export default {
+  mounted () {
+    this.$store.dispatch('download/taskCreat', {
+      url: 'https://cdn.d2.pub/files/image-hosting/20200603194141.png'
+    })
+  }
+}
+</script>
