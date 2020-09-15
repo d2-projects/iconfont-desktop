@@ -2,6 +2,8 @@ import path from 'path'
 import { DownloaderHelper } from 'node-downloader-helper'
 import { createFolder } from '@/utils/file.js'
 
+// https://github.com/hgouveia/node-downloader-helper
+
 // const url = 'http://cdn.d2.pub/mirrors/d2-projects/electron-vue-template/releases/download/v1.25.0/electron-vue-template-portable-1.25.0.exe'
 
 export default {
@@ -12,12 +14,14 @@ export default {
   actions: {
     async taskCreat ({ state, commit, dispatch }, {
       url = '',
-      fileName = ''
+      folder = '',
+      fileName = '',
+      override = false
     }) {
-      const folder = await dispatch('setting/get', 'folder.download.icon', { root: true })
       await createFolder(folder)
       const dl = new DownloaderHelper(url, folder, {
-        fileName: fileName || path.parse(url).base
+        fileName: fileName || path.parse(url).base,
+        override
       })
       console.log(dl)
       dl.on('progress', stats => {

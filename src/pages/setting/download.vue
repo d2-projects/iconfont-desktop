@@ -16,9 +16,10 @@
 
 <script>
 export default {
-  mounted () {
+  async mounted () {
     this.$store.dispatch('download/taskCreat', {
-      url: 'https://cdn.d2.pub/files/image-hosting/20200603194141.png'
+      url: 'https://cdn.d2.pub/files/image-hosting/20200603194141.png',
+      folder: await this.$store.dispatch('setting/get', 'download.icon.folder')
     })
   }
 }

@@ -7,22 +7,51 @@
   &:last-child {
     @extend .mb-0;
   }
+  @include when(label-left) {
+    @extend .d-flex;
+    @extend .align-start;
+    @include e(label) {
+      margin-top: 6px;
+      margin-bottom: 6px;
+      @extend .mr-4;
+    }
+    @include e(body) {
+      min-height: 40px;
+      @extend .app-setting-list-item__body;
+      @extend .flex-grow-1;
+      @extend .d-flex;
+      @extend .align-center;
+    }
+  }
+  @include when(label-top) {
+    @include e(label) {
+      @extend .mb-4;
+    }
+    @include e(body) {
+      @extend .app-setting-list-item__body;
+    }
+  }
   @include e(label) {
-    margin-top: 4px;
+    @extend .text-subtitle-1;
   }
 }
 </style>
 
 <template>
-  <div class="app-setting-list-item" :class="classNames">
+  <div
+    class="app-setting-list-item"
+    :class="{
+      'is-label-left': isLabelLeft,
+      'is-label-top': isLabelTop
+    }">
     <div
       v-if="!isLabelHide"
-      class="app-setting-list-item__label text-subtitle-1"
-      :class="labelClassNames"
+      class="app-setting-list-item__label"
+      :class="labelClassName"
       :style="labelStyle">
       {{ label }}
     </div>
-    <div :class="bodyClassNames">
+    <div class="app-setting-list-item__body">
       <slot/>
     </div>
   </div>
@@ -57,28 +86,10 @@ export default {
       return this.appSettingList.labelPosition === 'left'
     },
     labelStyle () {
-      return this.isLabelLeft ? {
-        width: this.appSettingList.labelWidth + 'px'
-      } : {}
+      return this.isLabelLeft ? { width: this.appSettingList.labelWidth + 'px' } : {}
     },
-    classNames () {
-      return this.isLabelLeft ? [
-        'd-flex',
-        'align-start'
-      ] : []
-    },
-    labelClassNames () {
-      return this.isLabelLeft ? [
-        'mr-4',
-        `text-${this.appSettingList.labelAlign}`
-      ] : [
-        'mb-4'
-      ]
-    },
-    bodyClassNames () {
-      return this.isLabelLeft ? [
-        'flex-grow-1'
-      ] : []
+    labelClassName () {
+      return this.isLabelLeft ? `text-${this.appSettingList.labelAlign}` : ''
     }
   }
 }

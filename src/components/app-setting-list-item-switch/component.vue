@@ -1,28 +1,15 @@
 <style lang="scss">
-@include b(setting-list-item-select-folder) {
-  width: 100%;
+@include b(setting-list-item-switch) {
+  .v-input--selection-controls {
+    margin-top: 0px;
+    padding-top: 0px;
+  }
 }
 </style>
 
 <template>
-  <app-setting-list-item :label="label">
-    <div class="app-setting-list-item-select-folder" flex>
-      <v-text-field
-        v-model="currentValue"
-        class="mr-2"
-        outlined
-        dense
-        single-line
-        hide-details
-        @input="onTextFieldInput"/>
-      <v-btn
-        height="40"
-        color="primary"
-        outlined
-        @click="onClickSelectButton">
-        选择目录
-      </v-btn>
-    </div>
+  <app-setting-list-item :label="label" class="app-setting-list-item-switch">
+    <v-switch v-model="currentValue" inset hide-details></v-switch>
   </app-setting-list-item>
 </template>
 
@@ -32,7 +19,7 @@ import { ipcRenderer } from 'electron'
 import mixinSettingListItem from '@/mixins/component-setting-list-item.js'
 
 export default {
-  name: 'app-setting-list-item-select-folder',
+  name: 'app-setting-list-item-switch',
   mixins: [
     mixinSettingListItem
   ],
