@@ -16,23 +16,25 @@ export default {
       url = '',
       folder = '',
       fileName = '',
-      override = false
+      override = false,
+      autoStart = true
     }) {
       await createFolder(folder)
-      const dl = new DownloaderHelper(url, folder, {
+      const downloader = new DownloaderHelper(url, folder, {
         fileName: fileName || path.parse(url).base,
         override
       })
-      console.log(dl)
-      dl.on('progress', stats => {
-        // downloaded: 34379
-        // name: "20200603194141.png"
-        // progress: 100
-        // speed: 34379
-        // total: 34379
-        console.log(stats)
-      })
-      dl.start()
+      downloader.on('progress', stats => {})
+      downloader.on('end', info => {})
+      // 自动启动
+      if (autoStart) {
+        // downloader.start()
+      }
+    }
+  },
+  mutations: {
+    taskPush (state, data) {
+      state.tasks.push(data)
     }
   }
 }
