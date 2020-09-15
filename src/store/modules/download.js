@@ -25,11 +25,11 @@ export default {
       })
       console.log(dl)
       dl.on('progress', stats => {
-        // downloaded: 47584
-        // name: "electron-vue-template-1.25.0.exe.blockmap; filename*=utf-8''electron-vue-template-1.25.0.exe.blockmap"
+        // downloaded: 34379
+        // name: "20200603194141.png"
         // progress: 100
-        // speed: 47584
-        // total: 47584
+        // speed: 34379
+        // total: 34379
         console.log(stats)
       })
       dl.start()

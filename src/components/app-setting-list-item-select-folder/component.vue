@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import { throttle } from 'lodash-es'
 import { ipcRenderer } from 'electron'
 import mixinSettingListItem from '@/mixins/component-setting-list-item.js'
 

@@ -19,7 +19,8 @@ export default {
   async mounted () {
     this.$store.dispatch('download/taskCreat', {
       url: 'https://cdn.d2.pub/files/image-hosting/20200603194141.png',
-      folder: await this.$store.dispatch('setting/get', 'download.icon.folder')
+      folder: await this.$store.dispatch('setting/get', 'download.icon.folder'),
+      override: await this.$store.dispatch('setting/get', 'download.icon.override')
     })
   }
 }
