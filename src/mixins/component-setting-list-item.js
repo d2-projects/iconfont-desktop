@@ -1,4 +1,4 @@
-import { get } from 'lodash-es'
+import { get, throttle } from 'lodash-es'
 
 export default {
   props: {
@@ -53,7 +53,7 @@ export default {
     }
   },
   methods: {
-    async emit (value) {
+    emit: throttle(async function (value) {
       if (this.isBindStore) {
         await this.$store.dispatch(`${this.bindStoreModule}/set`, {
           name: this.bindStoreKey,
@@ -63,6 +63,6 @@ export default {
         this.$emit('input', value)
         this.$emit('change', value)
       }
-    }
+    })
   }
 }

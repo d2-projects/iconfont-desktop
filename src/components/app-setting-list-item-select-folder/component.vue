@@ -14,7 +14,7 @@
         dense
         single-line
         hide-details
-        @input="onTextFieldInput"/>
+        @input="emit"/>
       <v-btn
         height="40"
         color="primary"
@@ -40,13 +40,10 @@ export default {
     async onClickSelectButton () {
       const value = await ipcRenderer.invoke('selectFolder')
       if (value) {
-        await this.emit(value)
         this.currentValue = value
+        this.emit(value)
       }
-    },
-    onTextFieldInput: throttle(function (value) {
-      this.emit(value)
-    }, 1000)
+    }
   }
 }
 </script>
