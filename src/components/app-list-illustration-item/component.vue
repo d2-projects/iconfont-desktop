@@ -1,14 +1,18 @@
 <template>
   <app-square class="white rounded" center>
-    <app-icon-render :value="icon.show_svg" :size="60"/>
+    <v-img
+      :aspect-ratio="1"
+      :src="illustration.file"
+      class="ma-6"
+      contain/>
   </app-square>
 </template>
 
 <script>
 export default {
-  name: 'app-icon-list-item',
+  name: 'app-list-illustration-item',
   props: {
-    icon: {
+    illustration: {
       type: Object,
       default: () => {}
     }

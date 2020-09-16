@@ -18,7 +18,7 @@
       <app-list ref="list">
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
-        <app-icon-list :value="list.data" class="mb-2"/>
+        <app-list-icon :value="list.data" class="mb-2"/>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-collection-detail__topbar">

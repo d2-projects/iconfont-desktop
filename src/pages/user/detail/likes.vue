@@ -1,5 +1,5 @@
 <template>
-  <app-icon-list :value="list.data" class="mb-2"/>
+  <app-list-icon :value="list.data" class="mb-2"/>
 </template>
 
 <script>

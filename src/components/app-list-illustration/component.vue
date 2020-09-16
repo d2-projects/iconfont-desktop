@@ -4,19 +4,19 @@
       v-for="item of value"
       :key="item.id"
       xs="4"
-      sm="2"
-      md="2"
-      lg="1"
-      xl="1"
+      sm="3"
+      md="3"
+      lg="2"
+      xl="2"
       class="pa-1">
-      <app-icon-list-item :icon="item"/>
+      <app-list-illustration-item :illustration="item"/>
     </v-col>
   </v-row>
 </template>
 
 <script>
 export default {
-  name: 'app-icon-list',
+  name: 'app-list-illustration',
   props: {
     value: {
       type: Array,
