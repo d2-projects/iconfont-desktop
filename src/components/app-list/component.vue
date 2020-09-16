@@ -5,8 +5,8 @@
 </style>
 
 <template>
-  <app-scroll
-    ref="scroll"
+  <app-scrollbar
+    ref="scrollbar"
     class="app-list"
     :options="{
       scrollbars: {
@@ -25,7 +25,7 @@
         <slot name="footer"/>
       </div>
     </v-container>
-  </app-scroll>
+  </app-scrollbar>
 </template>
 
 <script>
@@ -33,7 +33,7 @@ export default {
   name: 'app-list',
   methods: {
     getOsInstance () {
-      const scroll = this.$refs.scroll
+      const scroll = this.$refs.scrollbar
       return scroll ? scroll.getOsInstance() : {}
     }
   }

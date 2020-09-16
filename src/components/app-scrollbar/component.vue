@@ -38,7 +38,7 @@ import '@/assets/style/components/overlayscrollbars/os-theme-thin-light.css'
 // https://kingsora.github.io/OverlayScrollbars/#!documentation/options
 
 export default {
-  name: 'app-scroll',
+  name: 'app-scrollbar',
   props: {
     options: {
       type: Object
