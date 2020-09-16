@@ -18,11 +18,7 @@
       <app-list ref="list">
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
-        <app-illustration-list :value="list.data" class="mb-2">
-          <template v-slot="{ illustration }">
-            <app-illustration-list-item :illustration="illustration"/>
-          </template>
-        </app-illustration-list>
+        <app-illustration-list :value="list.data" class="mb-2"/>
       </app-list>
     </div>
     <div ref="topbar" class="app-page-illustration-detail__topbar">

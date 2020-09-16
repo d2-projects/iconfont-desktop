@@ -9,7 +9,7 @@
       lg="1"
       xl="1"
       class="pa-1">
-      <slot :icon="item"/>
+      <app-icon-list-item :icon="item"/>
     </v-col>
   </v-row>
 </template>
