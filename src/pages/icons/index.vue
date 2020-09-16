@@ -16,7 +16,7 @@ $sidebarWidth: 240px;
 <template>
   <div class="app-page-search">
     <div class="app-page-search__content">
-      <app-list @inCordonY="listMixinOnInCordonY">
+      <app-list @in-cordon-y="listMixinOnInCordonY">
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" class="ma-1 mb-2">
           <!-- 加载更多 -->

@@ -15,7 +15,7 @@
       }
     }"
     :cordon-y="800"
-    @inCordonY="event => $emit('inCordonY', event)">
+    @in-cordon-y="event => $emit('in-cordon-y', event)">
     <v-container class="pa-0">
       <div>
         <slot name="header"/>

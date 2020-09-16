@@ -117,10 +117,10 @@ export default {
                 this.$emit(camelCase(name.replace(/^on/, '')), event)
                 const cordonY = information.max.y - information.position.y
                 const cordonX = information.max.x - information.position.x
-                if (cordonY <= this.cordonY) this.$emit('inCordonY', event)
-                if (cordonX <= this.cordonX) this.$emit('inCordonX', event)
-                if (ratioY === 0) this.$emit('scrollTop', event)
-                if (ratioY === 1) this.$emit('scrollBottom', event)
+                if (cordonY <= this.cordonY) this.$emit('in-cordon-y', event)
+                if (cordonX <= this.cordonX) this.$emit('in-cordon-x', event)
+                if (ratioY === 0) this.$emit('scroll-top', event)
+                if (ratioY === 1) this.$emit('scroll-bottom', event)
               }
               break
             default:
