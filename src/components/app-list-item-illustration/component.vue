@@ -1,16 +1,16 @@
 <template>
-  <app-square class="white rounded" center>
+  <app-list-item-content>
     <v-img
       :aspect-ratio="1"
       :src="illustration.file"
       class="ma-6"
       contain/>
-  </app-square>
+  </app-list-item-content>
 </template>
 
 <script>
 export default {
-  name: 'app-list-illustration-item',
+  name: 'app-list-item-illustration',
   props: {
     illustration: {
       type: Object,

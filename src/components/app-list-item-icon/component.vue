@@ -1,14 +1,14 @@
 <template>
-  <app-square class="white rounded" center>
+  <app-list-item-content>
     <app-icon-render
       :value="icon.show_svg"
       :size="60"/>
-  </app-square>
+  </app-list-item-content>
 </template>
 
 <script>
 export default {
-  name: 'app-list-icon-item',
+  name: 'app-list-item-icon',
   props: {
     icon: {
       type: Object,

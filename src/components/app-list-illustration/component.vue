@@ -9,7 +9,7 @@
       lg="2"
       xl="2"
       class="pa-1">
-      <app-list-illustration-item :illustration="item"/>
+      <app-list-item-illustration :illustration="item"/>
     </v-col>
   </v-row>
 </template>

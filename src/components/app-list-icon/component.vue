@@ -9,7 +9,7 @@
       lg="1"
       xl="1"
       class="pa-1">
-      <app-list-icon-item :icon="item"/>
+      <app-list-item-icon :icon="item"/>
     </v-col>
   </v-row>
 </template>
