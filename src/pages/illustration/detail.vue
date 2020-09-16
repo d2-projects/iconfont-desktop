@@ -20,9 +20,7 @@
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-illustration-list :value="list.data" class="mb-2">
           <template v-slot="{ illustration }">
-            <app-square class="white rounded" center>
-              <v-img :aspect-ratio="1" :src="illustration.file" class="ma-6" contain/>
-            </app-square>
+            <app-illustration-list-item :illustration="illustration"/>
           </template>
         </app-illustration-list>
       </app-list>

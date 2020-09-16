@@ -79,9 +79,7 @@ $sidebarWidth: 240px;
         </app-dict-select-chip-group>
         <app-icon-list :value="list.data" class="mb-2">
           <template v-slot="{ icon }">
-            <app-square class="white rounded" center>
-              <app-icon-render :value="icon.show_svg" :size="60"/>
-            </app-square>
+            <app-icon-list-item :icon="icon"/>
           </template>
         </app-icon-list>
       </app-list>
