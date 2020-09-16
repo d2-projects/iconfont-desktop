@@ -16,7 +16,7 @@ $sidebarWidth: 240px;
 <template>
   <div class="app-page-search">
     <div class="app-page-search__content">
-      <app-list @in-cordon-y="listMixinOnInCordonY">
+      <app-scroll-group @in-cordon-y="listMixinOnInCordonY">
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" class="ma-1 mb-2">
           <!-- 加载更多 -->
@@ -78,7 +78,7 @@ $sidebarWidth: 240px;
             @change="listMixinReload"/>
         </app-dict-select-chip-group>
         <app-list-icon :value="list.data" class="mb-2"/>
-      </app-list>
+      </app-scroll-group>
     </div>
     <div
       ref="topbar"

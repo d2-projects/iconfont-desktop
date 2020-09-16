@@ -15,11 +15,11 @@
 <template>
   <div class="app-page-illustration-detail">
     <div class="app-page-illustration-detail__content">
-      <app-list ref="list">
+      <app-scroll-group ref="list">
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-list-illustration :value="list.data" class="mb-2"/>
-      </app-list>
+      </app-scroll-group>
     </div>
     <div ref="topbar" class="app-page-illustration-detail__topbar">
       <v-container class="px-0">

@@ -1,5 +1,5 @@
 <style lang="scss">
-@include b(list) {
+@include b(scroll-group) {
   height: 100%;
 }
 </style>
@@ -7,7 +7,7 @@
 <template>
   <app-scrollbar
     ref="scrollbar"
-    class="app-list"
+    class="app-scroll-group"
     :options="{
       scrollbars: {
         autoHide: 'scroll',
@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  name: 'app-list',
+  name: 'app-scroll-group',
   methods: {
     getOsInstance () {
       const scroll = this.$refs.scrollbar

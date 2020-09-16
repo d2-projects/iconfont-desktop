@@ -30,7 +30,7 @@
 <template>
   <div class="app-page-setting">
     <div class="app-page-setting__sidebar">
-      <app-list class="white">
+      <app-scroll-group class="white">
         <v-list flat>
           <v-subheader>设置</v-subheader>
           <v-list-item-group
@@ -54,14 +54,14 @@
             </v-list-item>
           </v-list-item-group>
         </v-list>
-      </app-list>
+      </app-scroll-group>
     </div>
     <div class="app-page-setting__main">
-      <app-list>
+      <app-scroll-group>
         <div class="app-page-setting__main-content mx-auto my-5">
           <router-view/>
         </div>
-      </app-list>
+      </app-scroll-group>
     </div>
   </div>
 </template>

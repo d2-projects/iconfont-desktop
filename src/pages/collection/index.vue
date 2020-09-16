@@ -20,7 +20,7 @@
 <template>
   <div class="app-page-collection">
     <div class="app-page-collection__content">
-      <app-list ref="list">
+      <app-scroll-group ref="list">
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-dict-select-chip-group>
@@ -40,7 +40,7 @@
             <app-collection-mode-search-result :value="collection"/>
           </template>
         </app-collection-list>
-      </app-list>
+      </app-scroll-group>
     </div>
     <div ref="topbar" class="app-page-collection__topbar pa-4">
       <app-input-search

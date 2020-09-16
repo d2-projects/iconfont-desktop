@@ -26,14 +26,14 @@
 <template>
   <div class="app-page-index">
     <div class="app-page-index__content">
-      <app-list>
+      <app-scroll-group>
         <div slot="header" :style="{ height: topbarHeight + 'px' }"/>
         <app-collection-list :value="topCollections">
           <template v-slot="{ collection }">
             <app-collection-mode-index-user :value="collection"/>
           </template>
         </app-collection-list>
-      </app-list>
+      </app-scroll-group>
     </div>
     <div ref="topbar" class="app-page-index__topbar pa-4">
       <app-input-search

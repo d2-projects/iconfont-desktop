@@ -15,10 +15,10 @@
 <template>
   <div class="app-page-user-detail">
     <div class="app-page-user-detail__content">
-      <app-list ref="list">
+      <app-scroll-group ref="list">
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <router-view/>
-      </app-list>
+      </app-scroll-group>
     </div>
     <div ref="topbar" class="app-page-user-detail__topbar">
       <v-container class="px-0">

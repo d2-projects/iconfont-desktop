@@ -20,14 +20,14 @@
 <template>
   <div class="app-page-user">
     <div class="app-page-user__content">
-      <app-list ref="list">
+      <app-scroll-group ref="list">
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-user-card
           v-for="(user, userIndex) of list.data"
           :key="userIndex"
           :value="user"/>
-      </app-list>
+      </app-scroll-group>
     </div>
     <div ref="topbar" class="app-page-user__topbar pa-4">
       <app-input-search

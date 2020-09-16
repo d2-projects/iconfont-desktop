@@ -15,10 +15,10 @@
 <template>
   <div class="app-page-manage-me-resources">
     <div class="app-page-manage-me-resources__content">
-      <app-list>
+      <app-scroll-group>
         <div slot="header" style="height: 108px;"/>
         <router-view/>
-      </app-list>
+      </app-scroll-group>
     </div>
     <div ref="topbar" class="app-page-manage-me-resources__topbar">
       <div style="height: 48px;"/>
