@@ -62,6 +62,9 @@ export default {
     },
     listMixinIsHasPlaceholder () {
       return !!find(this.list.data, this.list.placeholder.template)
+    },
+    listMixinDataWithOutPlaceholder () {
+      return without(this.list.data, this.list.placeholder.template)
     }
   },
   beforeRouteLeave (to, from, next) {
@@ -115,10 +118,7 @@ export default {
     },
     listMixinRemovePlaceholder () {
       if (this.listMixinIsHasPlaceholder) {
-        this.list.data = without(
-          this.list.data,
-          this.list.placeholder.template
-        )
+        this.list.data = this.listMixinDataWithOutPlaceholder
       }
     },
     async listMininFetch (promise) {
