@@ -64,14 +64,6 @@ import { mapState } from 'vuex'
 import ui from '@/mixins/ui.js'
 import list from '@/mixins/list.js'
 
-const dataMap = [
-  ['collectionName', 'collection.name', ''],
-  ['collectionCountIcons', 'collection.icons_count', 0],
-  ['creatorId', 'creator.id', ''],
-  ['creatorNickname', 'creator.nickname', ''],
-  ['creatorAvatar', 'creator.avatar', '']
-]
-
 export default {
   mixins: [
     ui,
@@ -91,7 +83,13 @@ export default {
     ...mapState('sdk', [
       'sdk'
     ]),
-    ...fromPairs(dataMap.map(e => [e[0], function () { return get(this.detail, e[1], e[2]) }]))
+    ...fromPairs([
+      ['collectionName', 'collection.name', ''],
+      ['collectionCountIcons', 'collection.icons_count', 0],
+      ['creatorId', 'creator.id', ''],
+      ['creatorNickname', 'creator.nickname', ''],
+      ['creatorAvatar', 'creator.avatar', '']
+    ].map(e => [e[0], function () { return get(this.detail, e[1], e[2]) }]))
   },
   watch: {
     detail: 'uiLoad'

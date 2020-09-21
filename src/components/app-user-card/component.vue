@@ -38,38 +38,6 @@
 <script>
 import { fromPairs, get } from 'lodash-es'
 
-// account_type: 0
-// alipay_code: ""
-// avatar: ""
-// avatar_file_name: null
-// avatar_small_file_name: null
-// avatar_tiny_file_name: null
-// bio: ""
-// collectionCount: 0
-// collections: Array(0)
-// created_at: "2019-09-16T03:58:05.000Z"
-// email: "6625734718@weibo.oauth.com"
-// from_site: null
-// iconsCount: 0
-// id: 6216846
-// last_login_at: null
-// nickname: "1"
-// qq: ""
-// role: 0
-// show_email: ""
-// status: 1
-// updated_at: "2019-09-16T03:58:55.000Z"
-// weixin_code: "//iconfont.alicdn.com/tfscom/TB1NcQ6GXXXXXcoXFXXwu0bFXXX.png"
-
-const dataMap = [
-  ['loading', 'loading', false],
-  ['id', 'id', 0],
-  ['avatar', 'avatar', ''],
-  ['nickname', 'nickname', ''],
-  ['bio', 'bio', ''],
-  ['collections', 'collections', []]
-]
-
 export default {
   name: 'app-user-card',
   props: {
@@ -79,7 +47,14 @@ export default {
     }
   },
   computed: {
-    ...fromPairs(dataMap.map(e => [e[0], function () { return get(this.value, e[1], e[2]) }]))
+    ...fromPairs([
+      ['loading', 'loading', false],
+      ['id', 'id', 0],
+      ['avatar', 'avatar', ''],
+      ['nickname', 'nickname', ''],
+      ['bio', 'bio', ''],
+      ['collections', 'collections', []]
+    ].map(e => [e[0], function () { return get(this.value, e[1], e[2]) }]))
   }
 }
 </script>

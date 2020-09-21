@@ -52,13 +52,6 @@ import { mapState } from 'vuex'
 
 import ui from '@/mixins/ui.js'
 
-const dataMap = [
-  ['userId', 'id', ''],
-  ['userNickname', 'nickname', ''],
-  ['userBio', 'bio', ''],
-  ['userAvatar', 'avatar', '']
-]
-
 export default {
   mixins: [
     ui
@@ -95,7 +88,12 @@ export default {
     ...mapState('sdk', [
       'sdk'
     ]),
-    ...fromPairs(dataMap.map(e => [e[0], function () { return get(this.detail, e[1], e[2]) }]))
+    ...fromPairs([
+      ['userId', 'id', ''],
+      ['userNickname', 'nickname', ''],
+      ['userBio', 'bio', ''],
+      ['userAvatar', 'avatar', '']
+    ].map(e => [e[0], function () { return get(this.detail, e[1], e[2]) }]))
   },
   created () {
     this.userDetailLoad()

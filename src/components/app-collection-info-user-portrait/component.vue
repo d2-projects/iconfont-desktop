@@ -18,12 +18,6 @@
 <script>
 import { fromPairs, get } from 'lodash-es'
 
-const dataMap = [
-  ['avatar', 'avatar', ''],
-  ['nickname', 'nickname', ''],
-  ['id', 'id', 0]
-]
-
 export default {
   name: 'app-collection-info-user-portrait',
   props: {
@@ -37,7 +31,11 @@ export default {
     }
   },
   computed: {
-    ...fromPairs(dataMap.map(e => [e[0], function () { return get(this.value, e[1], e[2]) }]))
+    ...fromPairs([
+      ['avatar', 'avatar', ''],
+      ['nickname', 'nickname', ''],
+      ['id', 'id', 0]
+    ].map(e => [e[0], function () { return get(this.value, e[1], e[2]) }]))
   }
 }
 </script>
