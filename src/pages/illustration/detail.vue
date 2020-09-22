@@ -25,7 +25,9 @@
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-list-illustration
           :value="list.data"
-          :select-active="list.select.active"/>
+          :value-without-placeholder="listMixinDataWithOutPlaceholder"
+          :select-active="list.select.active"
+          @click-item="onClickListItem"/>
       </app-scroll-group>
     </div>
     <div ref="topbar" class="app-page-illustration-detail__topbar">
@@ -110,6 +112,12 @@ export default {
       this.listMixinRemovePlaceholder()
       this.list.data = result.icons
       this.detail = Object.freeze(omit(result, 'icons'))
+    },
+    /**
+     * @description 列表中的某一项被点击 这个事件只应该在非多选模式时被触发
+     */
+    onClickListItem (item, index) {
+      console.log(item, index)
     }
   }
 }
