@@ -96,13 +96,13 @@ $sidebarWidth: 240px;
 <script>
 import { mapState, mapGetters } from 'vuex'
 
-import ui from '@/mixins/ui.js'
-import list from '@/mixins/list.js'
+import mixinPageUI from '@/mixins/page-ui.js'
+import mixinPageList from '@/mixins/page-list.js'
 
 export default {
   mixins: [
-    ui,
-    list
+    mixinPageUI,
+    mixinPageList
   ],
   data () {
     return {

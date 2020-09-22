@@ -4,11 +4,11 @@
 
 <script>
 import { mapState } from 'vuex'
-import list from '@/mixins/list.js'
+import mixinPageList from '@/mixins/page-list.js'
 
 export default {
   mixins: [
-    list
+    mixinPageList
   ],
   data () {
     return {
