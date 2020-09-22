@@ -35,6 +35,10 @@ export default {
         // 设置
         setting: {
           searchWithoutKeywords: false
+        },
+        // 多选
+        select: {
+          active: false
         }
       }
     }

@@ -23,7 +23,9 @@
       <app-scroll-group ref="list">
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
-        <app-list-illustration :value="list.data"/>
+        <app-list-illustration
+          :value="list.data"
+          :select-active="list.select.active"/>
       </app-scroll-group>
     </div>
     <div ref="topbar" class="app-page-illustration-detail__topbar">
@@ -51,7 +53,7 @@
     </div>
     <div ref="bottombar" class="app-page-illustration-detail__bottombar">
       <v-container class="px-0">
-        bottombar
+        <app-list-toolbar :select-active.sync="list.select.active"/>
       </v-container>
     </div>
   </div>
