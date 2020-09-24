@@ -77,7 +77,7 @@ $sidebarWidth: 240px;
             label="风格"
             @change="listMixinReload"/>
         </app-dict-select-chip-group>
-        <app-list-icon :value="listMixinData" class="mb-2"/>
+        <app-list-icon :value="list.data" class="mb-2"/>
       </app-scroll-group>
     </div>
     <div

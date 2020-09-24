@@ -1,5 +1,5 @@
 <template>
-  <app-collection-list :value="listMixinData">
+  <app-collection-list :value="list.data">
     <template v-slot="{ collection }">
       <app-collection-mode-user :value="collection" illustration/>
     </template>
