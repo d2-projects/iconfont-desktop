@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     async listMixinLoad () {
-      this.scrollTop()
+      this.listMixinScrollTop()
       this.list.data = []
       const fetch = this.sdk.userSearch({
         keyword: this.list.query.keyword,

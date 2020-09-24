@@ -12,6 +12,10 @@ export default {
     uniqueKey: {
       type: String,
       default: 'id'
+    },
+    selected: {
+      type: Array,
+      default: () => []
     }
   },
   methods: {

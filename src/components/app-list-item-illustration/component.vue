@@ -1,5 +1,5 @@
 <template>
-  <app-list-item-content>
+  <app-list-item-content :selected="selected">
     <v-img
       :aspect-ratio="1"
       :src="illustration.file"
@@ -15,6 +15,9 @@ export default {
     illustration: {
       type: Object,
       default: () => {}
+    },
+    selected: {
+      type: Boolean
     }
   }
 }

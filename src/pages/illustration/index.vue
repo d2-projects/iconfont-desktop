@@ -90,7 +90,7 @@ export default {
   },
   methods: {
     async listMixinLoad () {
-      this.scrollTop()
+      this.listMixinScrollTop()
       this.list.data = []
       this.listMixinAddPlaceholder()
       const fetch = this.sdk.collections({

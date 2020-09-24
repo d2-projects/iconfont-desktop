@@ -10,6 +10,7 @@
       xl="2"
       class="pa-1">
       <app-list-item-illustration
+        :selected="selected[index]"
         :illustration="item"
         @click.native="onListItemClick(item, index)"/>
     </v-col>

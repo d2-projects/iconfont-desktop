@@ -25,8 +25,9 @@
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-list-illustration
           :value="list.data"
+          :selected="listMixinSelectedData"
           :unique-key="list.setting.uniqueKey"
-          @click-item="onClickListItem"/>
+          @click-item="listMixinTryToggleItemSelect"/>
       </app-scroll-group>
     </div>
     <div ref="topbar" class="app-page-illustration-detail__topbar">
@@ -115,7 +116,7 @@ export default {
     /**
      * @description 列表中的某一项被点击 这个事件只应该在非多选模式时被触发
      */
-    onClickListItem (item, index) {
+    listMixinOnClickListItem (item, index) {
       console.log(item, index)
     }
   }

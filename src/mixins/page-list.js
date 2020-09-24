@@ -1,4 +1,4 @@
-import { fill, find, without } from 'lodash-es'
+import { fill, find, without, fromPairs } from 'lodash-es'
 
 export default {
   data () {
@@ -39,12 +39,26 @@ export default {
         },
         // 多选
         select: {
-          active: false
+          active: false,
+          // 这里存的是 uniqueKey
+          selectedIds: [40111, 40115]
         }
       }
     }
   },
   computed: {
+    /**
+     * @description 返回和当前 list.data 数量一致的关于选中状态的数据
+     * @example [true, false, false, true, ...]
+     */
+    listMixinSelectedData () {
+      const uniqueKey = this.list.setting.uniqueKey
+      const data = Object.assign(
+        fromPairs(this.listMixinDataWithOutPlaceholder.map(item => [item[uniqueKey], false])),
+        fromPairs(this.list.select.selectedIds.map(id => [id, true]))
+      )
+      return this.list.data.map(item => !!data[item[uniqueKey]])
+    },
     /**
      * @description 当前列表数据 - 除去占位
      */
@@ -102,7 +116,20 @@ export default {
     next()
   },
   methods: {
-    scrollTop () {
+    listMixinOnClickListItem (item, index) {},
+    listMixinTryToggleItemSelect (item, index) {
+      if (this.list.select.active) {
+        const id = item[this.list.setting.uniqueKey]
+        const index = this.list.select.selectedIds.indexOf(id)
+        if (index >= 0) {
+          this.list.select.selectedIds.splice(index, 1)
+        } else {
+          this.list.select.selectedIds.push(id)
+        }
+      }
+      this.listMixinOnClickListItem(item, index)
+    },
+    listMixinScrollTop () {
       const list = this.$refs.list
       if (!list) return
       const osInstance = list.getOsInstance()
