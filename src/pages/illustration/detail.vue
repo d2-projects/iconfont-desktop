@@ -58,6 +58,7 @@
         <app-list-toolbar
           :is-selected-all="listMixinIsSelectedAll"
           :is-select-active="list.select.active"
+          @select-all-change="listMixinOnSelectAllChange"
           @select-active-change="listMixinOnSelectActiveChange"/>
       </v-container>
     </div>

@@ -14,6 +14,8 @@
         :value="isSelectedAll"
         label="全选"
         :ripple="false"
+        @click="onClickSelectAll"
+        readonly
         hide-details/>
     </div>
     <div>
@@ -39,14 +41,13 @@ export default {
       type: Boolean
     }
   },
-  data () {
-    return {
-      selectAll: false
-    }
-  },
   methods: {
     onClickActiveButton () {
       this.$emit('select-active-change', !this.isSelectActive)
+    },
+    onClickSelectAll (e) {
+      this.$emit('select-all-change', !this.isSelectedAll)
+      return e
     }
   }
 }
