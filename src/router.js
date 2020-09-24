@@ -19,7 +19,7 @@ const sdk = store.state.sdk.sdk
 Vue.use(Router)
 
 const RouterLayout = createRouterLayout(layout => {
-  return import('@/layouts/' + layout + '/index.js')
+  return import('@/layouts/' + layout + '/index.vue')
 })
 
 const router = new Router({
