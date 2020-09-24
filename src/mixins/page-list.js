@@ -129,6 +129,15 @@ export default {
       }
       this.listMixinOnClickListItem(item, index)
     },
+    listMixinClearSelect () {
+      this.list.select.selectedIds = []
+    },
+    listMixinOnSelectActiveChange (value) {
+      if (!value) {
+        this.listMixinClearSelect()
+      }
+      this.list.select.active = value
+    },
     listMixinScrollTop () {
       const list = this.$refs.list
       if (!list) return

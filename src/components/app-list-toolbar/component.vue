@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     onClickActiveButton () {
-      this.$emit('update:selectActive', !this.selectActive)
+      this.$emit('select-active-change', !this.selectActive)
     }
   }
 }

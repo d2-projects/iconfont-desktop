@@ -55,7 +55,9 @@
     </div>
     <div ref="bottombar" class="app-page-illustration-detail__bottombar">
       <v-container class="px-0">
-        <app-list-toolbar :select-active.sync="list.select.active"/>
+        <app-list-toolbar
+          :select-active="list.select.active"
+          @select-active-change="listMixinOnSelectActiveChange"/>
       </v-container>
     </div>
   </div>
