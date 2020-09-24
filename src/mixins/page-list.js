@@ -41,14 +41,40 @@ export default {
         select: {
           active: false,
           // 这里存的是 uniqueKey
-          selectedIds: [40111, 40115]
+          selectedIds: []
         }
       }
     }
   },
   computed: {
     /**
-     * @description 返回和当前 list.data 数量一致的关于选中状态的数据
+     * @description 列表数据
+     */
+    listMixinData () {
+      return this.list.data
+    },
+    /**
+     * @description 列表数据 - 除去占位
+     */
+    listMixinDataWithOutPlaceholder () {
+      return this.listMixinIsHasPlaceholder
+        ? without(this.listMixinData, this.list.placeholder.template)
+        : this.listMixinData
+    },
+    /**
+     * @description 当前选中的数量
+     */
+    listMixinSelectedCount () {
+      return this.list.select.selectedIds.length
+    },
+    /**
+     * @description 当前是否已经选中全部
+     */
+    listMixinIsSelectedAll () {
+      return this.listMixinSelectedCount === this.listMixinData.length
+    },
+    /**
+     * @description 返回和当前 listMixinData 数量一致的关于选中状态的数据
      * @example [true, false, false, true, ...]
      */
     listMixinSelectedData () {
@@ -57,21 +83,13 @@ export default {
         fromPairs(this.listMixinDataWithOutPlaceholder.map(item => [item[uniqueKey], false])),
         fromPairs(this.list.select.selectedIds.map(id => [id, true]))
       )
-      return this.list.data.map(item => !!data[item[uniqueKey]])
-    },
-    /**
-     * @description 当前列表数据 - 除去占位
-     */
-    listMixinDataWithOutPlaceholder () {
-      return this.listMixinIsHasPlaceholder
-        ? without(this.list.data, this.list.placeholder.template)
-        : this.list.data
+      return this.listMixinData.map(item => !!data[item[uniqueKey]])
     },
     /**
      * @description 当前列表中是否存在占位数据
      */
     listMixinIsHasPlaceholder () {
-      return !!find(this.list.data, this.list.placeholder.template)
+      return !!find(this.listMixinData, this.list.placeholder.template)
     },
     /**
      * @description 是否可以继续加载
@@ -79,7 +97,7 @@ export default {
     listMixinCanLoadMore () {
       return this.list.status.isSearched &&
         this.list.page.total !== 0 &&
-        this.list.page.total !== this.list.data.length
+        this.list.page.total !== this.listMixinData.length
     },
     /**
      * @description 是否已经加载完所有的数据
@@ -87,7 +105,7 @@ export default {
     listMixinIsLoadedAll () {
       return this.list.status.isSearched &&
         this.list.page.total !== 0 &&
-        this.list.page.total === this.list.data.length
+        this.list.page.total === this.listMixinData.length
     },
     /**
      * @description 是否已经搜索过但是没有查找到数据

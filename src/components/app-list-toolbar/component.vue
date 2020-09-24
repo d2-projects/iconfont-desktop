@@ -10,8 +10,8 @@
   <div class="app-list-toolbar" flex="main:justify cross:center">
     <div>
       <v-checkbox
-        v-if="selectActive"
-        v-model="selectAll"
+        v-if="isSelectActive"
+        :value="isSelectedAll"
         label="全选"
         :ripple="false"
         hide-details/>
@@ -19,10 +19,10 @@
     <div>
       <v-btn
         color="primary"
-        :outlined="!selectActive"
+        :outlined="!isSelectActive"
         depressed
         @click="onClickActiveButton">
-        {{ selectActive ? '取消选择' : '选择'}}
+        {{ isSelectActive ? '取消选择' : '选择'}}
       </v-btn>
     </div>
   </div>
@@ -32,7 +32,10 @@
 export default {
   name: 'app-list-toolbar',
   props: {
-    selectActive: {
+    isSelectedAll: {
+      type: Boolean
+    },
+    isSelectActive: {
       type: Boolean
     }
   },
@@ -43,7 +46,7 @@ export default {
   },
   methods: {
     onClickActiveButton () {
-      this.$emit('select-active-change', !this.selectActive)
+      this.$emit('select-active-change', !this.isSelectActive)
     }
   }
 }

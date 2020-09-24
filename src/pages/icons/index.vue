@@ -141,7 +141,7 @@ export default {
         pageNo: this.list.page.current
       })
       const result = await this.listMininFetch(fetch)
-      this.list.data.push(...result.icons)
+      this.listMixinData.push(...result.icons)
       this.list.page.total = result.count
       this.list.page.current += 1
     }
