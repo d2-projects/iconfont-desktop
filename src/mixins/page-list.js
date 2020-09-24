@@ -44,31 +44,62 @@ export default {
     }
   },
   computed: {
+    /**
+     * @description 列表数据
+     */
+    listMixinData () {
+      return this.list.data
+    },
+    /**
+     * @description 当前列表数据 - 除去占位
+     */
+    listMixinDataWithOutPlaceholder () {
+      return this.listMixinIsHasPlaceholder
+        ? without(this.listMixinData, this.list.placeholder.template)
+        : this.listMixinData
+    },
+    /**
+     * @description 是否可以继续加载
+     */
     listMixinCanLoadMore () {
       return this.list.status.isSearched &&
         this.list.page.total !== 0 &&
-        this.list.page.total !== this.list.data.length
+        this.list.page.total !== this.listMixinData.length
     },
+    /**
+     * @description 是否已经加载完所有的数据
+     */
     listMixinIsLoadedAll () {
       return this.list.status.isSearched &&
         this.list.page.total !== 0 &&
-        this.list.page.total === this.list.data.length
+        this.list.page.total === this.listMixinData.length
     },
+    /**
+     * @description 是否已经搜索过但是没有查找到数据
+     */
     listMixinIsNoResult () {
       return this.list.status.isSearched &&
         this.list.page.total === 0
     },
+    /**
+     * @description 是否在当前可以发生查询动作
+     */
     listMixinCanDoLoad () {
       return (this.list.setting.searchWithoutKeywords || this.list.query.keyword) && !this.list.status.isSearching
     },
+    /**
+     * @description 是否当前可以自动加载
+     */
     listMixinCanAutoLoad () {
-      return this.list.autoLoad.count < this.list.autoLoad.max
+      return !this.list.status.isSearching &&
+        this.listMixinCanLoadMore &&
+        this.list.autoLoad.count < this.list.autoLoad.max
     },
+    /**
+     * @description 当前列表中是否存在占位数据
+     */
     listMixinIsHasPlaceholder () {
-      return !!find(this.list.data, this.list.placeholder.template)
-    },
-    listMixinDataWithOutPlaceholder () {
-      return without(this.list.data, this.list.placeholder.template)
+      return !!find(this.listMixinData, this.list.placeholder.template)
     }
   },
   beforeRouteLeave (to, from, next) {
@@ -84,11 +115,7 @@ export default {
       osInstance.scroll(0)
     },
     listMixinOnInCordonY () {
-      if (
-        !this.list.status.isSearching &&
-          this.listMixinCanLoadMore &&
-          this.listMixinCanAutoLoad
-      ) {
+      if (this.listMixinCanAutoLoad) {
         this.list.autoLoad.count += 1
         this.listMixinLoadMore()
       }
@@ -113,7 +140,7 @@ export default {
       }
     },
     listMixinAddPlaceholder () {
-      this.list.data.push(
+      this.listMixinData.push(
         ...fill(
           Array(this.list.page.size),
           this.list.placeholder.template

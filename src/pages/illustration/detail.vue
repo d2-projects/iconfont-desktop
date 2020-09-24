@@ -25,7 +25,6 @@
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-list-illustration
           :value="list.data"
-          :value-without-placeholder="listMixinDataWithOutPlaceholder"
           :select-active="list.select.active"
           @click-item="onClickListItem"/>
       </app-scroll-group>
