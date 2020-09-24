@@ -24,7 +24,7 @@
         <div slot="header" :style="{ height: ui.topbar.size + 'px' }"/>
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-list-illustration
-          :value="list.data"
+          :value="listMixinData"
           :select-active="list.select.active"
           @click-item="onClickListItem"/>
       </app-scroll-group>

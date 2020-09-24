@@ -35,7 +35,7 @@
             label="排序"
             @change="listMixinReload"/>
         </app-dict-select-chip-group>
-        <app-collection-list :value="list.data">
+        <app-collection-list :value="listMixinData">
           <template v-slot="{ collection }">
             <app-collection-mode-search-result :value="collection"/>
           </template>
