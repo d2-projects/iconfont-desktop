@@ -5,7 +5,8 @@
         {{ title }}
       </v-card-title>
       <v-divider/>
-      <div :style="contentStyle">
+      <app-assets-details-illustration v-if="isSingle" :value="items[0]"/>
+      <div v-else style="height: 400px;">
         <app-scroll-group>
           <section v-for="(item, index) of items" :key="generateUniqueKey(item)">
             <app-assets-details-illustration
