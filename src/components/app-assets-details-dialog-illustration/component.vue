@@ -1,15 +1,13 @@
 <template>
-  <v-dialog
-    :value="active"
-    width="600"
-    overlay-color="#000"
-    persistent>
+  <v-dialog v-bind="dialog" @input="onDialogInput">
     <v-card>
-      <v-card-title>Select Country</v-card-title>
+      <v-card-title>
+        {{ title }}
+      </v-card-title>
       <v-divider/>
-      <div style="height: 500px;">
+      <div :style="contentStyle">
         <app-scroll-group>
-          items
+          {{ items }}
         </app-scroll-group>
       </div>
       <v-divider/>
@@ -24,26 +22,18 @@
 <script>
 import bus from '@/bus.js'
 
+import mixinComponentAssetsDetailsDialog from '@/mixins/component-assets-details-dialog.js'
+
 export default {
-  name: 'app-assets-details-illustration',
-  data () {
-    return {
-      active: false
-    }
-  },
+  name: 'app-assets-details-dialog-illustration',
+  mixins: [
+    mixinComponentAssetsDetailsDialog
+  ],
   created () {
     bus.$on('preview-illustrations', items => {
-      console.log(items)
+      this.items = items
       this.open()
     })
-  },
-  methods: {
-    open () {
-      this.active = true
-    },
-    close () {
-      this.active = false
-    }
   }
 }
 </script>

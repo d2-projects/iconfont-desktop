@@ -6,7 +6,7 @@
     </v-main>
     <navigation/>
     <app-sys-loading/>
-    <app-assets-details-illustration/>
+    <app-assets-details-dialog-illustration/>
   </v-app>
 </template>
 

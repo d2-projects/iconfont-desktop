@@ -68,10 +68,10 @@
 </template>
 
 <script>
+import bus from '@/bus.js'
+
 import { fromPairs, get, omit } from 'lodash-es'
 import { mapState } from 'vuex'
-
-import bus from '@/bus.js'
 
 import mixinPageUI from '@/mixins/page-ui.js'
 import mixinPageList from '@/mixins/page-list.js'

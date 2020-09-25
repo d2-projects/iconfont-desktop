@@ -24,7 +24,7 @@
         outlined
         depressed
         @click="onClickSelected">
-        已选择 {{selectedCount}} 个项目
+        {{selectedCount}} 个项目
       </v-btn>
     </div>
     <div>
@@ -33,7 +33,7 @@
         :outlined="!isSelectActive"
         depressed
         @click="onClickActive">
-        {{ isSelectActive ? '取消选择' : '选择'}}
+        {{ isSelectActive ? '取消选择' : '多选'}}
       </v-btn>
     </div>
   </div>
