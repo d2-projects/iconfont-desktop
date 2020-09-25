@@ -14,7 +14,8 @@ export default {
         itemWidth: 500,
         itemHeight: 300,
         multipleItemShow: 1.5,
-        uniqueKey: 'id'
+        uniqueKey: 'id',
+        itemIdKey: 'id'
       },
       items: []
     }

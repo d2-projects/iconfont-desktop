@@ -313,4 +313,16 @@ export default class Iconfont {
   } = {}) {
     return this.request.post('api/user/delCollectionFavorite.json', { cid: id })
   }
+
+  /**
+   * @description [API] SVG 详情
+   */
+  async svgInfo ({ id, pid } = {}) {
+    return this.request.get('api/svg/svgInfo.json', {
+      params: {
+        id,
+        pid
+      }
+    })
+  }
 }

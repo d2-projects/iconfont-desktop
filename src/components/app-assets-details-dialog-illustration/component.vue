@@ -8,15 +8,17 @@
       <div :style="contentStyle">
         <app-scroll-group>
           <section v-for="(item, index) of items" :key="generateUniqueKey(item)">
-            <app-assets-details-illustration :value="item"/>
+            <app-assets-details-illustration
+              :value="item"
+              :id-key="setting.itemIdKey"/>
             <v-divider v-if="index !== count - 1"/>
           </section>
         </app-scroll-group>
       </div>
       <v-divider/>
       <v-card-actions>
-        <v-btn color="blue darken-1" text @click="close">Close</v-btn>
-        <v-btn color="blue darken-1" text @click="close">Save</v-btn>
+        <v-spacer/>
+        <v-btn color="blue darken-1" text @click="close">好</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
