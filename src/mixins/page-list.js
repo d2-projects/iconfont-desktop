@@ -1,4 +1,4 @@
-import { fill, find, without, fromPairs } from 'lodash-es'
+import { fill, find, without, fromPairs, isFunction } from 'lodash-es'
 
 export default {
   data () {
@@ -56,16 +56,34 @@ export default {
         : this.list.data
     },
     /**
+     * @description 列表数据 - 转对象
+     */
+    listMixinDataDict () {
+      return fromPairs(this.listMixinDataWithOutPlaceholder.map(item => [
+        item[this.list.setting.uniqueKey],
+        item
+      ]))
+    },
+    listMixinIsSelectedCount () {
+      return this.list.select.selectedIds.length
+    },
+    /**
      * @description 当前是否已经选中全部
      */
     listMixinIsSelectedAll () {
-      return this.list.select.selectedIds.length === this.list.data.length
+      return this.listMixinIsSelectedCount === this.list.data.length
+    },
+    /**
+     * @description 当前选中的列表项目 每一项的数据格式和原版一致
+     */
+    listMixinSelectedData () {
+      return this.list.select.selectedIds.map(id => this.listMixinDataDict[id])
     },
     /**
      * @description 返回和当前 list.data 数量一致的关于选中状态的数据
      * @example [true, false, false, true, ...]
      */
-    listMixinSelectedData () {
+    listMixinSelectedStatus () {
       const uniqueKey = this.list.setting.uniqueKey
       const data = Object.assign(
         fromPairs(this.listMixinDataWithOutPlaceholder.map(item => [item[uniqueKey], false])),
@@ -122,7 +140,6 @@ export default {
     next()
   },
   methods: {
-    listMixinOnClickListItem (item, index) {},
     listMixinTryToggleItemSelect (item, index) {
       if (this.list.select.active) {
         const id = item[this.list.setting.uniqueKey]
@@ -134,7 +151,9 @@ export default {
         }
         return
       }
-      this.listMixinOnClickListItem(item, index)
+      if (isFunction(this.onClickItem)) {
+        this.onClickItem(item, index)
+      }
     },
     listMixinOnSelectActiveChange (value) {
       if (!value) {

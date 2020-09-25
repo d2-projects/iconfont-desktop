@@ -25,7 +25,7 @@
         <div slot="footer" :style="{ height: ui.bottombar.size + 'px' }"/>
         <app-list-illustration
           :value="list.data"
-          :selected="listMixinSelectedData"
+          :selected="listMixinSelectedStatus"
           :unique-key="list.setting.uniqueKey"
           @click-item="listMixinTryToggleItemSelect"/>
       </app-scroll-group>
@@ -58,7 +58,9 @@
         <app-list-toolbar
           :is-selected-all="listMixinIsSelectedAll"
           :is-select-active="list.select.active"
+          :selected-count="listMixinIsSelectedCount"
           @select-all-change="listMixinOnSelectAllChange"
+          @click-selected="onClickSelected"
           @select-active-change="listMixinOnSelectActiveChange"/>
       </v-container>
     </div>
@@ -122,8 +124,14 @@ export default {
     /**
      * @description 列表中的某一项被点击 这个事件只应该在非多选模式时被触发
      */
-    listMixinOnClickListItem (item, index) {
+    onClickItem (item, index) {
       bus.$emit('preview-illustrations', [item])
+    },
+    /**
+     * @description 在多选模式时 触发了查看已选项目详情
+     */
+    onClickSelected () {
+      bus.$emit('preview-illustrations', this.listMixinSelectedData)
     }
   }
 }

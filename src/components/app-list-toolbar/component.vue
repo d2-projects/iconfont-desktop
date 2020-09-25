@@ -18,12 +18,21 @@
         readonly
         hide-details/>
     </div>
+    <div v-if="isSelectActive && selectedCount">
+      <v-btn
+        color="primary"
+        outlined
+        depressed
+        @click="onClickSelected">
+        已选择 {{selectedCount}} 个项目
+      </v-btn>
+    </div>
     <div>
       <v-btn
         color="primary"
         :outlined="!isSelectActive"
         depressed
-        @click="onClickActiveButton">
+        @click="onClickActive">
         {{ isSelectActive ? '取消选择' : '选择'}}
       </v-btn>
     </div>
@@ -39,11 +48,18 @@ export default {
     },
     isSelectActive: {
       type: Boolean
+    },
+    selectedCount: {
+      type: Number,
+      default: 0
     }
   },
   methods: {
-    onClickActiveButton () {
+    onClickActive () {
       this.$emit('select-active-change', !this.isSelectActive)
+    },
+    onClickSelected () {
+      this.$emit('click-selected')
     },
     onClickSelectAll (e) {
       this.$emit('select-all-change', !this.isSelectedAll)
