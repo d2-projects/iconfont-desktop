@@ -1,4 +1,5 @@
 import { get } from 'lodash-es'
+import shortid from 'shortid'
 
 export default {
   data () {
@@ -12,29 +13,36 @@ export default {
         typeName: '插画',
         itemWidth: 500,
         itemHeight: 300,
-        multipleItemShow: 1.5
+        multipleItemShow: 1.5,
+        uniqueKey: 'id'
       },
       items: []
     }
   },
   computed: {
     /**
+     * @description 状态 - 总数量
+     */
+    count () {
+      return this.items.length
+    },
+    /**
      * @description 状态 - 空
      */
     isEmpty () {
-      return this.items.length === 0
+      return this.count === 0
     },
     /**
      * @description 状态 - 只有一项数据
      */
     isSingle () {
-      return this.items.length === 1
+      return this.count === 1
     },
     /**
      * @description 状态 - 多项数据
      */
     isMultiple () {
-      return this.items.length > 1
+      return this.count > 1
     },
     /**
      * @description 主体区域样式
@@ -51,13 +59,19 @@ export default {
      */
     title () {
       const firstTitle = get(this.items, '[0].name', '')
-      const count = this.items.length
       if (this.isSingle) return `${this.setting.typeName} "${firstTitle}" 的详细信息`
-      if (this.isMultiple) return `"${firstTitle}" 等 ${count} 个${this.setting.typeName}`
+      if (this.isMultiple) return `"${firstTitle}" 等 ${this.count} 个${this.setting.typeName}`
       return firstTitle
     }
   },
   methods: {
+    /**
+     * @description 传入列表中的一个项目 返回可以用作唯一标记的值
+     * @param {Object} item 列表中的一个项目
+     */
+    generateUniqueKey (item) {
+      return get(item, this.setting.uniqueKey, shortid.generate())
+    },
     /**
      * @description 打开窗口
      */

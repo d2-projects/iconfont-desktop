@@ -7,7 +7,10 @@
       <v-divider/>
       <div :style="contentStyle">
         <app-scroll-group>
-          {{ items }}
+          <section v-for="(item, index) of items" :key="generateUniqueKey(item)">
+            <app-assets-details-illustration :value="item"/>
+            <v-divider v-if="index !== count - 1"/>
+          </section>
         </app-scroll-group>
       </div>
       <v-divider/>
