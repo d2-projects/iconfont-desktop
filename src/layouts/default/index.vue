@@ -6,7 +6,7 @@
     </v-main>
     <navigation/>
     <app-sys-loading/>
-    <app-assets-details-illustration ref="assets-details-illustration"/>
+    <app-assets-details-illustration/>
   </v-app>
 </template>
 
@@ -18,16 +18,6 @@ export default {
   components: {
     navigation,
     system
-  },
-  provide () {
-    return {
-      assetsDetailsIllustration: this.assetsDetailsIllustration
-    }
-  },
-  methods: {
-    assetsDetailsIllustration () {
-      console.log(this.$refs['assets-details-illustration'])
-    }
   }
 }
 </script>

@@ -69,6 +69,8 @@
 import { fromPairs, get, omit } from 'lodash-es'
 import { mapState } from 'vuex'
 
+import bus from '@/bus.js'
+
 import mixinPageUI from '@/mixins/page-ui.js'
 import mixinPageList from '@/mixins/page-list.js'
 
@@ -121,7 +123,7 @@ export default {
      * @description 列表中的某一项被点击 这个事件只应该在非多选模式时被触发
      */
     listMixinOnClickListItem (item, index) {
-      console.log(item, index)
+      bus.$emit('preview-illustrations', [item])
     }
   }
 }
