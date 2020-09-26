@@ -100,8 +100,24 @@ export default {
       const result = await this.sdk.svgInfo({ id: this.value[this.idKey] })
       this.info = result
     },
-    onClickDownloadSvg () {},
-    onClickDownloadPng () {},
+    async onClickDownloadSvg () {
+      this.$store.dispatch('download/taskCreat', {
+        url: 'https:' + this.fileSvg,
+        folder: await this.$store.dispatch('setting/get', 'download.illustration.folder'),
+        override: await this.$store.dispatch('setting/get', 'download.illustration.override'),
+        name: this.displayImageName,
+        autoStart: true
+      })
+    },
+    async onClickDownloadPng () {
+      this.$store.dispatch('download/taskCreat', {
+        url: 'https:' + this.filePng,
+        folder: await this.$store.dispatch('setting/get', 'download.illustration.folder'),
+        override: await this.$store.dispatch('setting/get', 'download.illustration.override'),
+        name: this.displayImageName,
+        autoStart: true
+      })
+    },
     async onClickCopySvg () {
       this.$clipboard.writeText(await this.sdk.getFile(this.fileSvg))
       this.$toasted.global.app_success({ message: '复制到剪贴板' })
