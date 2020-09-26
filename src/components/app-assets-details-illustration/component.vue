@@ -81,8 +81,7 @@ export default {
       return get(this.info, 'name', '') || get(this.value, 'name', '')
     },
     displayUpdatetime () {
-      const source = get(this.info, 'updated_at', '') || get(this.value, 'updated_at', '')
-      return dayjs(source).format('YYYY-MM-DD')
+      return dayjs(get(this.info, 'updated_at', '') || get(this.value, 'updated_at', '')).format('YYYY-MM-DD')
     },
     createrAvatar () {
       return get(this.info, 'creater.avatar', '')
