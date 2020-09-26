@@ -107,7 +107,7 @@ export default {
     ...fromPairs([
       ['collectionName', 'collection.name', ''],
       ['collectionCountIcons', 'collection.icons_count', 0],
-      ['creatorId', 'creator.id', ''],
+      ['creatorId', 'creator.id', 0],
       ['creatorNickname', 'creator.nickname', ''],
       ['creatorAvatar', 'creator.avatar', '']
     ].map(e => [e[0], function () { return get(this.detail, e[1], e[2]) }]))

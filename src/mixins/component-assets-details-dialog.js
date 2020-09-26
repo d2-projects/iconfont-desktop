@@ -2,6 +2,11 @@ import { get } from 'lodash-es'
 import shortid from 'shortid'
 
 export default {
+  provide () {
+    return {
+      assetsDetailsDialogClose: this.close
+    }
+  },
   data () {
     return {
       dialog: {

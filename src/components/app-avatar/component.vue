@@ -3,7 +3,7 @@
     :size="size"
     color="grey lighten-2"
     class="is-pointer"
-    @click="onClickAvatar">
+    @click="onClick">
     <v-img
       v-if="avatar"
       :src="avatar"/>
@@ -42,9 +42,11 @@ export default {
     }
   },
   methods: {
-    onClickAvatar () {
+    onClick () {
       if (this.userId) {
         this.$go.user.detail(this.userId)
+      } else {
+        this.$emit('click')
       }
     }
   }

@@ -15,8 +15,8 @@
         <app-avatar
           :avatar="createrAvatar"
           :name="createrNickname"
-          :user-id="createrId"
           :size="50"
+          @click="onAvatarClick"
           class="mr-4"/>
         <v-list-item-content>
           <v-list-item-title class="headline">{{ createrNickname }}</v-list-item-title>
@@ -53,6 +53,11 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'app-assets-details-illustration',
+  inject: {
+    assetsDetailsDialogClose: {
+      default: () => {}
+    }
+  },
   props: {
     value: {
       type: Object,
@@ -126,6 +131,10 @@ export default {
     async onClickCopySvg () {
       this.$clipboard.writeText(await this.sdk.getFile(this.fileSvg))
       this.$toasted.global.app_success({ message: '复制到剪贴板' })
+    },
+    onAvatarClick () {
+      this.assetsDetailsDialogClose()
+      this.$go.user.detail(this.createrId)
     }
   }
 }
