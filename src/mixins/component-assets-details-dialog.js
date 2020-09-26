@@ -70,6 +70,7 @@ export default {
      */
     close () {
       this.dialog.value = false
+      this.items = []
     },
     /**
      * @description 处理窗口关闭

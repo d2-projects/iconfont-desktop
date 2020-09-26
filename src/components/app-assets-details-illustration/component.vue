@@ -8,7 +8,7 @@
     class="app-assets-details-illustration px-5 py-2"
     flex="dir:left box:first">
     <div class="mr-5">
-      <v-img :aspect-ratio="1" :src="displayImageUrl" width="200px" contain/>
+      <v-img :aspect-ratio="1" :src="fileSvg" width="200px" contain/>
     </div>
     <v-card flat>
       <v-list-item>
@@ -72,9 +72,6 @@ export default {
     displayImageName () {
       return get(this.info, 'name', '') || get(this.value, 'name', '')
     },
-    displayImageUrl () {
-      return get(this.info, 'origin_file', '') || get(this.value, 'origin_file', '')
-    },
     displayUpdatetime () {
       const source = get(this.info, 'updated_at', '') || get(this.value, 'updated_at', '')
       return dayjs(source).format('YYYY-MM-DD')
@@ -88,8 +85,11 @@ export default {
     collections () {
       return get(this.info, 'collections', [])
     },
-    originFile () {
+    fileSvg () {
       return get(this.info, 'origin_file', '') || get(this.value, 'origin_file', '')
+    },
+    filePng () {
+      return get(this.info, 'file', '') || get(this.value, 'file', '')
     }
   },
   created () {
@@ -103,7 +103,8 @@ export default {
     onClickDownloadSvg () {},
     onClickDownloadPng () {},
     async onClickCopySvg () {
-      this.$clipboard.writeText(await this.sdk.getOriginFile(this.originFile))
+      this.$clipboard.writeText(await this.sdk.getFile(this.fileSvg))
+      this.$toasted.global.app_success({ message: '复制到剪贴板' })
     }
   }
 }
