@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     onClick (name) {
-      this.$router.replace({ name })
+      this.$router.push({ name })
     }
   }
 }

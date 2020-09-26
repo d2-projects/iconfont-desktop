@@ -12,7 +12,7 @@
     </div>
     <v-card flat>
       <v-list-item>
-        <v-list-item-avatar color="grey">
+        <v-list-item-avatar color="grey lighten-2">
           <v-img :src="createrAvatar"/>
         </v-list-item-avatar>
         <v-list-item-content>
@@ -97,8 +97,7 @@ export default {
   },
   methods: {
     async fetch () {
-      const result = await this.sdk.svgInfo({ id: this.value[this.idKey] })
-      this.info = result
+      this.info = await this.sdk.svgInfo({ id: this.value[this.idKey] })
     },
     async onClickDownloadSvg () {
       this.$store.dispatch('download/taskCreat', {

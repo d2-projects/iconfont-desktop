@@ -32,7 +32,7 @@ export default {
           ...this.$route.query
         }
       }
-      this.$router.replace(_route)
+      this.$router.push(_route)
     }
   }
 }

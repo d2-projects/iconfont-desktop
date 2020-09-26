@@ -4,7 +4,7 @@ import router from '@/router'
 Vue.prototype.$go = {
   user: {
     detail (id) {
-      router.replace({
+      router.push({
         name: 'user-detail',
         query: { id }
       })
@@ -12,7 +12,7 @@ Vue.prototype.$go = {
   },
   illustration: {
     detail (id) {
-      router.replace({
+      router.push({
         name: 'illustration-detail',
         query: { id }
       })
@@ -20,7 +20,7 @@ Vue.prototype.$go = {
   },
   collection: {
     detail (id) {
-      router.replace({
+      router.push({
         name: 'collection-detail',
         query: { id }
       })
@@ -28,7 +28,7 @@ Vue.prototype.$go = {
   },
   icons: {
     search (keyword) {
-      router.replace({
+      router.push({
         name: 'icons',
         query: { keyword }
       })
@@ -36,7 +36,7 @@ Vue.prototype.$go = {
   },
   setting: {
     account () {
-      router.replace({ name: 'setting-account' })
+      router.push({ name: 'setting-account' })
     }
   }
 }

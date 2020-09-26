@@ -9,7 +9,7 @@ export default {
   layout: 'init',
   async created () {
     await this.autoLogin()
-    this.$router.replace(this.$route.query.redirect || '/')
+    this.$router.push(this.$route.query.redirect || '/')
   },
   methods: {
     ...mapActions('sdk', [

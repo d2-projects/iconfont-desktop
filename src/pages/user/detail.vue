@@ -1,3 +1,11 @@
+<route>
+{
+  "meta": {
+    "navigation": true
+  }
+}
+</route>
+
 <style lang="scss">
 @include b(page-user-detail) {
   @extend .absolute-parent;
