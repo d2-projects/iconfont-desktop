@@ -35,9 +35,9 @@
         </p>
       </v-card-text>
       <v-card-actions>
-        <v-btn depressed>SVG 下载</v-btn>
-        <v-btn depressed>PNG 下载</v-btn>
-        <v-btn depressed>复制 SVG</v-btn>
+        <v-btn depressed @click="onClickDownloadSvg">SVG 下载</v-btn>
+        <v-btn depressed @click="onClickDownloadPng">PNG 下载</v-btn>
+        <v-btn depressed @click="onClickCopySvg">复制 SVG</v-btn>
       </v-card-actions>
     </v-card>
   </div>
@@ -87,6 +87,9 @@ export default {
     },
     collections () {
       return get(this.info, 'collections', [])
+    },
+    originFile () {
+      return get(this.info, 'origin_file', '') || get(this.value, 'origin_file', '')
     }
   },
   created () {
@@ -96,6 +99,11 @@ export default {
     async fetch () {
       const result = await this.sdk.svgInfo({ id: this.value[this.idKey] })
       this.info = result
+    },
+    onClickDownloadSvg () {},
+    onClickDownloadPng () {},
+    async onClickCopySvg () {
+      this.$clipboard.writeText(await this.sdk.getOriginFile(this.originFile))
     }
   }
 }

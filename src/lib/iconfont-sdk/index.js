@@ -325,4 +325,17 @@ export default class Iconfont {
       }
     })
   }
+
+  /**
+   * @description 请求文件
+   * @example getOriginFile('//iconfont.alicdn.com/s/1c5acdfe-9f9e-421d-aab4-0c9bcf7bd5cb_origin.svg')
+   */
+  async getOriginFile (url = '') {
+    try {
+      const result = await axios.get('https:' + url)
+      return result.data
+    } catch (error) {
+      return Promise.reject(error)
+    }
+  }
 }
