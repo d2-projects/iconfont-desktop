@@ -12,9 +12,12 @@
     </div>
     <v-card flat>
       <v-list-item>
-        <v-list-item-avatar color="grey lighten-2">
-          <v-img :src="createrAvatar"/>
-        </v-list-item-avatar>
+        <app-avatar
+          :avatar="createrAvatar"
+          :name="createrNickname"
+          :user-id="createrId"
+          :size="50"
+          class="mr-4"/>
         <v-list-item-content>
           <v-list-item-title class="headline">{{ createrNickname }}</v-list-item-title>
           <v-list-item-subtitle>更新日期：{{ displayUpdatetime }}</v-list-item-subtitle>
@@ -81,6 +84,9 @@ export default {
     },
     createrNickname () {
       return get(this.info, 'creater.nickname', '')
+    },
+    createrId () {
+      return get(this.info, 'creater.id', 0)
     },
     collections () {
       return get(this.info, 'collections', [])

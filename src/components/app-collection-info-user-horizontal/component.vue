@@ -13,14 +13,11 @@
   <span
     class="app-collection-info-name d-flex align-center flex-grow-1 is-pointer"
     @click="$go.user.detail(id)">
-    <v-avatar :size="size" color="grey lighten-2 is-pointer" class="mr-2">
-      <v-img v-if="avatar" :src="avatar"/>
-      <span
-        v-else-if="nickname"
-        class="grey--text text--lighten-5 font-weight-bold">
-        {{ nickname[0] }}
-      </span>
-    </v-avatar>
+    <app-avatar
+      class="mr-2"
+      :avatar="avatar"
+      :name="nickname"
+      :size="22"/>
     <div class="app-collection-info-name__main align-self-stretch flex-grow-1">
       <div class="app-collection-info-name__content is-nowrap">
         {{ nickname }}
@@ -38,10 +35,6 @@ export default {
     value: {
       type: Object,
       default: () => ({})
-    },
-    size: {
-      type: Number,
-      default: 22
     }
   },
   computed: {

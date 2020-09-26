@@ -3,14 +3,11 @@
     class="is-pointer"
     flex="dir:top cross:center"
     @click="$go.user.detail(id)">
-    <v-avatar :size="size" color="grey lighten-2 is-pointer" class="mb-2">
-      <v-img v-if="avatar" :src="avatar"/>
-      <span
-        v-else-if="nickname"
-        class="grey--text text--lighten-5 font-weight-bold">
-        {{ nickname[0] }}
-      </span>
-    </v-avatar>
+    <app-avatar
+      class="mb-2"
+      :avatar="avatar"
+      :name="nickname"
+      :size="36"/>
     <div class="text-subtitle-1">{{ nickname }}</div>
   </div>
 </template>
@@ -24,10 +21,6 @@ export default {
     value: {
       type: Object,
       default: () => ({})
-    },
-    size: {
-      type: Number,
-      default: 36
     }
   },
   computed: {

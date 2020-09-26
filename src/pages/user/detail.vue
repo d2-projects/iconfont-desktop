@@ -36,12 +36,11 @@
           :loading="false"
           transition="fade-transition">
           <div flex="cross:center">
-            <v-avatar :size="64" color="grey lighten-2" class="mr-4">
-              <v-img v-if="userAvatar" :src="userAvatar"/>
-              <span v-else-if="userNickname" class="grey--text text--lighten-5 text-h4 font-weight-bold">
-                {{ userNickname[0] }}
-              </span>
-            </v-avatar>
+            <app-avatar
+              :avatar="userAvatar"
+              :name="userNickname"
+              :size="64"
+              class="mr-4"/>
             <div class="mr-auto">
               <div class="text-h6 is-nowrap">{{ userNickname }}</div>
               <div class="text-subtitle-1 is-nowrap">{{ userBio }}</div>

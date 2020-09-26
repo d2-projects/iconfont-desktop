@@ -12,14 +12,11 @@
       class="app-user-card__header py-3"
       flex="cross:center"
       @click="$go.user.detail(id)">
-      <v-avatar color="grey lighten-2" class="is-pointer mr-4">
-        <v-img v-if="avatar" :src="avatar"/>
-        <span
-          v-else-if="nickname"
-          class="grey--text text--lighten-5 font-weight-bold">
-          {{ nickname[0] }}
-        </span>
-      </v-avatar>
+      <app-avatar
+        class="mr-4"
+        :avatar="avatar"
+        :name="nickname"
+        :size="30"/>
       <div>
         <div class="text-subtitle-1">{{ nickname }}</div>
         <div class="text-caption">{{ bio }}</div>
