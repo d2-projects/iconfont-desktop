@@ -6,6 +6,14 @@ export default {
     tasks: []
   },
   actions: {
+    async setting ({ dispatch }, name = '') {
+      return await dispatch('setting/get', name, { root: true })
+    },
+    async downloadIllustration ({ dispatch }, { url = '', name = '' } = {}) {
+      const folder = await dispatch('setting', 'download.illustration.folder')
+      const override = await dispatch('setting', 'download.illustration.override')
+      await dispatch('taskCreat', { url, name, folder, override })
+    },
     async taskCreat ({ commit }, payload) {
       commit('taskPush', new Downloader(payload))
     }

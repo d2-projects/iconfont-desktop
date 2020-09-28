@@ -11,7 +11,6 @@ export default class Downloader {
   // folder
   // fileName
   // override
-  // autoStart
   constructor (config) {
     // 配置项 用于恢复下载
     this.config = config
@@ -27,9 +26,7 @@ export default class Downloader {
     // 初始化下载器
     this.helper = await this.createHelper(this.config)
     // 自动开始任务
-    if (this.config.autoStart) {
-      this.start()
-    }
+    this.start()
   }
 
   supplementUrl (url) {

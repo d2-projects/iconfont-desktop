@@ -110,21 +110,15 @@ export default {
       this.info = await this.sdk.svgInfo({ id: this.value[this.idKey] })
     },
     async onClickDownloadSvg () {
-      this.$store.dispatch('download/taskCreat', {
+      this.$store.dispatch('download/downloadIllustration', {
         url: this.fileSvg,
-        folder: await this.$store.dispatch('setting/get', 'download.illustration.folder'),
-        override: await this.$store.dispatch('setting/get', 'download.illustration.override'),
-        name: this.displayImageName,
-        autoStart: true
+        name: this.displayImageName
       })
     },
     async onClickDownloadPng () {
-      this.$store.dispatch('download/taskCreat', {
+      this.$store.dispatch('download/downloadIllustration', {
         url: this.filePng,
-        folder: await this.$store.dispatch('setting/get', 'download.illustration.folder'),
-        override: await this.$store.dispatch('setting/get', 'download.illustration.override'),
-        name: this.displayImageName,
-        autoStart: true
+        name: this.displayImageName
       })
     },
     async onClickCopySvg () {
