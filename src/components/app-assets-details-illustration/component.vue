@@ -111,7 +111,7 @@ export default {
     },
     async onClickDownloadSvg () {
       this.$store.dispatch('download/taskCreat', {
-        url: 'https:' + this.fileSvg,
+        url: this.fileSvg,
         folder: await this.$store.dispatch('setting/get', 'download.illustration.folder'),
         override: await this.$store.dispatch('setting/get', 'download.illustration.override'),
         name: this.displayImageName,
@@ -120,7 +120,7 @@ export default {
     },
     async onClickDownloadPng () {
       this.$store.dispatch('download/taskCreat', {
-        url: 'https:' + this.filePng,
+        url: this.filePng,
         folder: await this.$store.dispatch('setting/get', 'download.illustration.folder'),
         override: await this.$store.dispatch('setting/get', 'download.illustration.override'),
         name: this.displayImageName,

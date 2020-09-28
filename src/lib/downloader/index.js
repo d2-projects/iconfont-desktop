@@ -32,18 +32,24 @@ export default class Downloader {
     }
   }
 
+  supplementUrl (url) {
+    if (/^https:/.test(url)) return url
+    return 'https:' + url
+  }
+
   async createHelper ({
     url = '',
     folder = '',
     name = '',
     override = false
   }) {
-    const ext = path.parse(url).ext
-    const nameFromUrl = path.parse(url).base
-    const helper = new DownloaderHelper(url, folder, {
-      fileName: name ? name + ext : nameFromUrl,
+    const urlSafe = this.supplementUrl(url)
+    const urlParsed = path.parse(urlSafe)
+    const helperOptions = {
+      fileName: name ? name + urlParsed.ext : urlParsed.base,
       override
-    })
+    }
+    const helper = new DownloaderHelper(urlSafe, folder, helperOptions)
     return helper
   }
 
