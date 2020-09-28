@@ -49,7 +49,7 @@
 <script>
 import dayjs from 'dayjs'
 import { get } from 'lodash-es'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'app-assets-details-illustration',
@@ -106,20 +106,32 @@ export default {
     this.fetch()
   },
   methods: {
+    ...mapActions('download', [
+      'downloadIllustrations'
+    ]),
     async fetch () {
       this.info = await this.sdk.svgInfo({ id: this.value[this.idKey] })
     },
     async onClickDownloadSvg () {
-      this.$store.dispatch('download/downloadIllustration', {
+      this.downloadIllustrations([{
         url: this.fileSvg,
         name: this.displayImageName
-      })
+      }, {
+        url: this.fileSvg,
+        name: this.displayImageName
+      }, {
+        url: this.fileSvg,
+        name: this.displayImageName
+      }, {
+        url: this.fileSvg,
+        name: this.displayImageName
+      }])
     },
     async onClickDownloadPng () {
-      this.$store.dispatch('download/downloadIllustration', {
+      this.downloadIllustrations([{
         url: this.filePng,
         name: this.displayImageName
-      })
+      }])
     },
     async onClickCopySvg () {
       this.$clipboard.writeText(await this.sdk.getFile(this.fileSvg))
