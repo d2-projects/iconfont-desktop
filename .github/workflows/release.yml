@@ -134,6 +134,8 @@ jobs:
 
       - name: Setup qshell
         uses: foxundermoon/setup-qshell@v1
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         with:
           qshell-version: '2.4.0'
 
