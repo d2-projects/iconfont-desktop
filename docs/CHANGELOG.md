@@ -2,6 +2,18 @@
 
 规范参考：[Conventional Commits](https://conventionalcommits.org)
 
+# [1.1.0](https://github.com/d2-projects/iconfont-desktop/compare/v1.0.0...v1.1.0) (2020-11-26)
+
+
+### 其他
+
+* Merge branch 'master' of https://github.com/d2-projects/iconfont-desktop ([c2727e6](https://github.com/d2-projects/iconfont-desktop/commit/c2727e6e5c3b3c047e81e6b7c0de66f9bcd68b2e))
+
+
+### 功能
+
+* 测试 ACTIONS_ALLOW_UNSECURE_COMMANDS 解决 `add-path` command is disabled ([1b56685](https://github.com/d2-projects/iconfont-desktop/commit/1b566854d90ae759b84d2beae8de1d53415de777))
+
 # 1.0.0 (2020-11-26)
 
 
