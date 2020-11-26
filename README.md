@@ -12,9 +12,9 @@
 
 例如
 
-原地址 **https://github.com**/d2-projects/iconfont-desktop/releases/download/v1.1.0/iconfont-desktop-1.1.0.dmg
+原地址 https://github.com/d2-projects/iconfont-desktop/releases/download/v1.1.0/iconfont-desktop-1.1.0.dmg
 
-修改为 **https://cdn.d2.pub/mirrors**/d2-projects/iconfont-desktop/releases/download/v1.1.0/iconfont-desktop-1.1.0.dmg
+修改为 https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.1.0/iconfont-desktop-1.1.0.dmg
 
 Assets 中的所有内容均可使用此规则加速下载
 
