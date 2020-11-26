@@ -4,7 +4,7 @@ import { createFolder } from '@/utils/file.js'
 
 // https://github.com/hgouveia/node-downloader-helper
 
-// const url = 'http://cdn.d2.pub/mirrors/d2-projects/electron-vue-template/releases/download/v1.25.0/electron-vue-template-portable-1.25.0.exe'
+// const url = 'http://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.25.0/iconfont-desktop-portable-1.25.0.exe'
 
 export default class Downloader {
   // url

@@ -1,0 +1,162 @@
+name: Release pipeline
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  check:
+    name: Code quality check
+    runs-on: ubuntu-latest
+    outputs:
+      semantic: ${{ toJSON(steps.semantic.outputs) }} # ! MUST BE STRING
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Install
+        uses: bahmutov/npm-install@v1
+
+      - name: Check lint
+        run: yarn lint:strict
+
+      - name: Semantic Release with dryRun
+        uses: cycjimmy/semantic-release-action@v2
+        id: semantic
+        with:
+          dry_run: true
+          extra_plugins: |
+            @semantic-release/changelog@3.0.6
+            @semantic-release/git@7.0.18
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build:
+    needs: check
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Install
+        uses: bahmutov/npm-install@v1
+
+      - name: Tricky version
+        if: fromJSON(needs.check.outputs.semantic).new_release_published == 'true'
+        run: |
+          npx npe version ${{ fromJSON(needs.check.outputs.semantic).new_release_version }}
+
+      - name: Build
+        run: yarn build -p never
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist_electron
+          path: dist_electron/?*.*
+
+  list:
+    needs: build
+    name: List build result
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dist_electron
+          path: dist_electron
+
+      - name: List dist folder
+        run: ls -al dist_electron
+
+  publish:
+    if: "! contains(github.event.head_commit.message, '[skip ci]')"
+    needs: build
+    name: Semantic release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dist_electron
+          path: dist_electron
+
+      - name: List dist folder
+        run: ls -al dist_electron
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          extra_plugins: |
+            @semantic-release/changelog@3.0.6
+            @semantic-release/git@7.0.18
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  run:
+    name: Upload CDN
+    needs: [check, build]
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ fromJSON(needs.check.outputs.semantic).new_release_version }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: dist_electron
+          path: dist_electron
+
+      - name: List dist folder
+        run: ls -al dist_electron
+
+      - name: Setup qshell
+        uses: foxundermoon/setup-qshell@v1
+        with:
+          qshell-version: '2.4.0'
+
+      - name: Test qshell
+        run: qshell version
+
+      - name: Login
+        run: qshell account ${{ secrets.AK }} ${{ secrets.SK }} GITHUB_ACTION
+
+      - name: Upload For Version Backup
+        run: |
+          qshell qupload2 \
+          --src-dir=$GITHUB_WORKSPACE/dist_electron \
+          --bucket=github-release-mirror \
+          --key-prefix=mirrors/$GITHUB_REPOSITORY/releases/download/v$VERSION/
+
+      # - name: Upload For Auto Update
+      #   run: |
+      #     qshell qupload2 \
+      #     --src-dir=$GITHUB_WORKSPACE/dist_electron \
+      #     --bucket=github-release-mirror \
+      #     --key-prefix=mirrors/$GITHUB_REPOSITORY/releases/latest/ \
+      #     --overwrite=true
+
+      - name: Send message
+        run: curl https://api.day.app/rwVK7e3nsZtopouwhRpVvM/artifact%20全部上传至七牛云/${GITHUB_REPOSITORY//\//:}
