@@ -2,6 +2,24 @@
 
 规范参考：[Conventional Commits](https://conventionalcommits.org)
 
+## [1.1.1](https://github.com/d2-projects/iconfont-desktop/compare/v1.1.0...v1.1.1) (2020-11-26)
+
+
+### 修复
+
+* :bug: 修复打包后插画无法加载的 bug ([792def6](https://github.com/d2-projects/iconfont-desktop/commit/792def6bb4f018ce3336366f09a7bb07f293a916))
+
+
+### 其他
+
+* Merge branch 'master' of https://github.com/d2-projects/iconfont-desktop ([913d4fc](https://github.com/d2-projects/iconfont-desktop/commit/913d4fc4645fe1741ea2bbbae91a0892ca9c7026))
+
+
+### 文档
+
+* :memo: update ([1723d97](https://github.com/d2-projects/iconfont-desktop/commit/1723d973012879708e74552c48ffc931704018e9))
+* :memo: update doc ([da2046b](https://github.com/d2-projects/iconfont-desktop/commit/da2046b76d1abbed5455f55accd368eea1514ede))
+
 # [1.1.0](https://github.com/d2-projects/iconfont-desktop/compare/v1.0.0...v1.1.0) (2020-11-26)
 
 
