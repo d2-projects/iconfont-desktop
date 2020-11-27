@@ -2,6 +2,30 @@
 
 规范参考：[Conventional Commits](https://conventionalcommits.org)
 
+# [1.3.0](https://github.com/d2-projects/iconfont-desktop/compare/v1.2.0...v1.3.0) (2020-11-27)
+
+
+### 修复
+
+* :bug: add global __static ([661eb04](https://github.com/d2-projects/iconfont-desktop/commit/661eb0427ea59c00f6f14fd9c14cd81f5a823626))
+* :bug: add lock ([3c7b53e](https://github.com/d2-projects/iconfont-desktop/commit/3c7b53ed74b8cb7cce097df45b70e0db03816e96))
+* :bug: remove lock ([509b17c](https://github.com/d2-projects/iconfont-desktop/commit/509b17c4da4ee26490a6918fad6359d740006f73))
+
+
+### 功能
+
+* :sparkles: add icon ([127f261](https://github.com/d2-projects/iconfont-desktop/commit/127f261cacb59cb64c9daaf2353f88cf9abdafcf))
+
+
+### 持续集成
+
+* :bug: version ([2b66d5a](https://github.com/d2-projects/iconfont-desktop/commit/2b66d5a50f1ac09adbf62dcfa771a34f380e3eab))
+
+
+### 文档
+
+* :memo: 1.3.0 ([a219bf2](https://github.com/d2-projects/iconfont-desktop/commit/a219bf279a74554456305ea2715a64b2757db567))
+
 # [1.2.0](https://github.com/d2-projects/iconfont-desktop/compare/v1.1.3...v1.2.0) (2020-11-27)
 
 
