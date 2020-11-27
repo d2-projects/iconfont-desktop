@@ -4,19 +4,19 @@
 
 ## 下载
 
-前往 [release](https://github.com/d2-projects/iconfont-desktop/releases)
+[windows](https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.1.1/iconfont-desktop-1.1.1.exe) | [macos](https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.1.1/iconfont-desktop-1.1.1.dmg)
 
-## 高速下载
+所有构建版本见 [release](https://github.com/d2-projects/iconfont-desktop/releases)
 
-将 [release](https://github.com/d2-projects/iconfont-desktop/releases) 页面提供的下载地址中 `https://github.com` 替换为 `https://cdn.d2.pub/mirrors`
+将 release 页面提供的下载地址中 `https://github.com` 替换为 `https://cdn.d2.pub/mirrors` 即可使用高速镜像下载
 
-例如
+例
 
-原地址 https://github.com/d2-projects/iconfont-desktop/releases/download/v1.1.0/iconfont-desktop-1.1.0.dmg
+原地址 https://github.com/d2-projects/iconfont-desktop/releases/download/v1.1.1/iconfont-desktop-1.1.1.dmg
 
-修改为 https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.1.0/iconfont-desktop-1.1.0.dmg
+修改为 https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.1.1/iconfont-desktop-1.1.1.dmg
 
-Assets 中的所有内容均可使用此规则加速下载
+> [release](https://github.com/d2-projects/iconfont-desktop/releases) 中的所有资源均可使用此规则加速下载
 
 ## 用户诉求
 
