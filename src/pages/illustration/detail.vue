@@ -48,7 +48,7 @@
           <div flex="cross:center">
             <app-avatar
               :user-id="creatorId"
-              :avatar="creatorAvatar"
+              :avatar="https(creatorAvatar)"
               :name="creatorNickname"
               :size="64"
               text-class="text-h4"
@@ -119,6 +119,10 @@ export default {
     this.listMixinLoad()
   },
   methods: {
+    https (url) {
+      if (/^https:/.test(url)) return url
+      return 'https:' + url
+    },
     async listMixinLoad () {
       this.listMixinAddPlaceholder()
       const fetch = this.sdk.collectionDetail({

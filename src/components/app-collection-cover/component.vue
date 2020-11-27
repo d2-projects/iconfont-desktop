@@ -15,7 +15,7 @@
         v-for="(item, itemIndex) of list"
         :key="itemIndex"
         cols="4">
-        <v-img :aspect-ratio="1" :src="item.file" contain/>
+        <v-img :aspect-ratio="1" :src="https(item.file)" contain/>
       </v-col>
     </v-row>
     <template v-else>
@@ -66,6 +66,10 @@ export default {
     }
   },
   methods: {
+    https (url) {
+      if (/^https:/.test(url)) return url
+      return 'https:' + url
+    },
     onClick () {
       if (this.illustration) this.$go.illustration.detail(this.id)
       else this.$go.collection.detail(this.id)
