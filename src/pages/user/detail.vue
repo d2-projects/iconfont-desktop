@@ -37,7 +37,7 @@
           transition="fade-transition">
           <div flex="cross:center">
             <app-avatar
-              :avatar="userAvatar | https"
+              :avatar="userAvatar"
               :name="userNickname"
               :size="64"
               class="mr-4"/>

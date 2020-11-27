@@ -13,7 +13,7 @@
     <v-card flat>
       <v-list-item>
         <app-avatar
-          :avatar="createrAvatar | https"
+          :avatar="createrAvatar"
           :name="createrNickname"
           :size="50"
           @click="onAvatarClick"

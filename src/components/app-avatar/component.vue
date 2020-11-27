@@ -6,7 +6,7 @@
     @click="onClick">
     <v-img
       v-if="avatar"
-      :src="avatar"/>
+      :src="avatar | https"/>
     <span
       v-else-if="name"
       class="grey--text text--lighten-5 font-weight-bold"

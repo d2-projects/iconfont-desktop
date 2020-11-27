@@ -48,7 +48,7 @@
           <div flex="cross:center">
             <app-avatar
               :user-id="creatorId"
-              :avatar="creatorAvatar | https"
+              :avatar="creatorAvatar"
               :name="creatorNickname"
               :size="64"
               text-class="text-h4"

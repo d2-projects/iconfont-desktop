@@ -15,7 +15,7 @@
     @click="$go.user.detail(id)">
     <app-avatar
       class="mr-2"
-      :avatar="avatar | https"
+      :avatar="avatar"
       :name="nickname"
       :size="22"/>
     <div class="app-collection-info-name__main align-self-stretch flex-grow-1">

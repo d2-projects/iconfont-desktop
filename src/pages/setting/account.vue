@@ -21,7 +21,7 @@
       <app-setting-list-item label="头像">
         <app-upload v-model="user.avatar">
           <template v-slot="{ src }">
-            <app-avatar :avatar="src | https" :size="100"/>
+            <app-avatar :avatar="src" :size="100"/>
           </template>
         </app-upload>
       </app-setting-list-item>

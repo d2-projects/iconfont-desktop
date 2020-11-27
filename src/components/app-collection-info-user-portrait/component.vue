@@ -5,7 +5,7 @@
     @click="$go.user.detail(id)">
     <app-avatar
       class="mb-2"
-      :avatar="avatar | https"
+      :avatar="avatar"
       :name="nickname"
       :size="36"/>
     <div class="text-subtitle-1">{{ nickname }}</div>
