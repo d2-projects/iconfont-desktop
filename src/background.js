@@ -1,5 +1,6 @@
 'use strict'
 
+import path from 'path'
 import { app, protocol, BrowserWindow, Menu } from 'electron'
 import {
   createProtocol,
@@ -33,6 +34,7 @@ function createWindow () {
   Menu.setApplicationMenu(null)
   // Create the browser window.
   win = new BrowserWindow({
+    icon: path.join(__static, 'icon.png'),
     title: 'Iconfont Desktop',
     width: 960,
     height: 720,

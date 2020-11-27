@@ -63,6 +63,9 @@ jobs:
         run: |
           npx npe version ${{ fromJSON(needs.check.outputs.semantic).new_release_version }}
 
+      - name: Generate Icons
+        run: yarn run electron:generate-icons
+
       - name: Build
         run: yarn build -p never
 

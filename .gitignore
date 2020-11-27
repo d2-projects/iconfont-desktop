@@ -2,6 +2,7 @@
 node_modules
 dist_electron
 /dist
+/build
 
 # local env files
 .env.local
