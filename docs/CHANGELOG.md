@@ -2,6 +2,30 @@
 
 规范参考：[Conventional Commits](https://conventionalcommits.org)
 
+# [1.2.0](https://github.com/d2-projects/iconfont-desktop/compare/v1.1.3...v1.2.0) (2020-11-27)
+
+
+### 修复
+
+* :bug: 文件上传组件回显修复 ([eff13d6](https://github.com/d2-projects/iconfont-desktop/commit/eff13d672db4e15ad54e7667ccb2aaf245a980bd))
+* :bug: 移除用户搜索时默认字符 ([70c5fb9](https://github.com/d2-projects/iconfont-desktop/commit/70c5fb951841a0f8a62993724485ac29bd238e61))
+
+
+### 其他
+
+* Merge branch 'master' of https://github.com/d2-projects/iconfont-desktop ([236be52](https://github.com/d2-projects/iconfont-desktop/commit/236be525aeb3eaa8d27b0a801a31806bae1ad02d))
+
+
+### 功能
+
+* :sparkles: 插画详情增加登录状态判断 因为接口在非登录时返回数据有误 ([70f972c](https://github.com/d2-projects/iconfont-desktop/commit/70f972cc20ceb5d5fd183625612e759866e58ea3))
+* 移除 Windows 平台的工具栏 ([9411783](https://github.com/d2-projects/iconfont-desktop/commit/9411783b03a0456f41d99e344f268d5e4cbb6a92))
+
+
+### 文档
+
+* :memo: 1.1.4 ([7442313](https://github.com/d2-projects/iconfont-desktop/commit/74423132204e4dd609936d346e6572d476a17928))
+
 ## [1.1.3](https://github.com/d2-projects/iconfont-desktop/compare/v1.1.2...v1.1.3) (2020-11-27)
 
 
