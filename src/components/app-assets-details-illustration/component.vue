@@ -8,7 +8,7 @@
     class="app-assets-details-illustration px-5 py-2"
     flex="dir:left box:first">
     <div class="mr-5">
-      <v-img :aspect-ratio="1" :src="fileSvg" width="200px" contain/>
+      <v-img :aspect-ratio="1" :src="fileSvg | https" width="200px" contain/>
     </div>
     <v-card flat>
       <v-list-item>
