@@ -13,7 +13,7 @@
     <v-card flat>
       <v-list-item>
         <app-avatar
-          :avatar="https(createrAvatar)"
+          :avatar="createrAvatar | https"
           :name="createrNickname"
           :size="50"
           @click="onAvatarClick"
@@ -109,10 +109,6 @@ export default {
     ...mapActions('download', [
       'downloadIllustrations'
     ]),
-    https (url) {
-      if (/^https:/.test(url)) return url
-      return 'https:' + url
-    },
     async fetch () {
       this.info = await this.sdk.svgInfo({ id: this.value[this.idKey] })
     },

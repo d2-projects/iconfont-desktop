@@ -38,7 +38,7 @@
           transition="fade-transition">
           <div flex="cross:center">
             <app-avatar
-              :avatar="https(creatorAvatar)"
+              :avatar="creatorAvatar | https"
               :name="creatorNickname"
               :user-id="creatorId"
               :size="64"
@@ -96,10 +96,6 @@ export default {
     this.listMixinLoad()
   },
   methods: {
-    https (url) {
-      if (/^https:/.test(url)) return url
-      return 'https:' + url
-    },
     async listMixinLoad () {
       this.listMixinAddPlaceholder()
       const fetch = this.sdk.collectionDetail({

@@ -2,7 +2,7 @@
   <app-list-item-content :selected="selected">
     <v-img
       :aspect-ratio="1"
-      :src="https(illustration.file)"
+      :src="illustration.file | https"
       class="ma-6"
       contain/>
   </app-list-item-content>
@@ -18,12 +18,6 @@ export default {
     },
     selected: {
       type: Boolean
-    }
-  },
-  methods: {
-    https (url) {
-      if (/^https:/.test(url)) return url
-      return 'https:' + url
     }
   }
 }

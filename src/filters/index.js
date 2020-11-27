@@ -8,3 +8,8 @@ Vue.filter('numberFormat', function (value) {
   }
   return value
 })
+
+Vue.filter('https', function (value) {
+  if (/^https:/.test(value)) return value
+  return 'https:' + value
+})

@@ -15,7 +15,7 @@
     @click="$go.user.detail(id)">
     <app-avatar
       class="mr-2"
-      :avatar="https(avatar)"
+      :avatar="avatar | https"
       :name="nickname"
       :size="22"/>
     <div class="app-collection-info-name__main align-self-stretch flex-grow-1">
@@ -43,12 +43,6 @@ export default {
       ['nickname', 'nickname', ''],
       ['id', 'id', 0]
     ].map(e => [e[0], function () { return get(this.value, e[1], e[2]) }]))
-  },
-  methods: {
-    https (url) {
-      if (/^https:/.test(url)) return url
-      return 'https:' + url
-    }
   }
 }
 </script>

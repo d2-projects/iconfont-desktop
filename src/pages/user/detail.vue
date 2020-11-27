@@ -37,7 +37,7 @@
           transition="fade-transition">
           <div flex="cross:center">
             <app-avatar
-              :avatar="https(userAvatar)"
+              :avatar="userAvatar | https"
               :name="userNickname"
               :size="64"
               class="mr-4"/>
@@ -106,10 +106,6 @@ export default {
     this.userDetailLoad()
   },
   methods: {
-    https (url) {
-      if (/^https:/.test(url)) return url
-      return 'https:' + url
-    },
     async userDetailLoad () {
       const result = await this.sdk.userDetail({
         id: this.$route.query.id
