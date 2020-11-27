@@ -2,6 +2,25 @@
 
 规范参考：[Conventional Commits](https://conventionalcommits.org)
 
+## [1.1.2](https://github.com/d2-projects/iconfont-desktop/compare/v1.1.1...v1.1.2) (2020-11-27)
+
+
+### 修复
+
+* :bug: 修复图标集和插画集详细信息页面用户头像不显示的问题和插画封面不显示问题 ([4be2645](https://github.com/d2-projects/iconfont-desktop/commit/4be2645a8288ee5612d2e6ad3f898278705188c7))
+* :bug: 修复用户头像不显示的问题 ([579979c](https://github.com/d2-projects/iconfont-desktop/commit/579979c55f3528d133b0bf7bf63d8f60066cf52a))
+
+
+### 文档
+
+* :memo: 1.1.2 ([57ea000](https://github.com/d2-projects/iconfont-desktop/commit/57ea000f93ac49f03418edfe12dddf4a7082e105))
+* :memo: update 1.1.1 download link ([9848944](https://github.com/d2-projects/iconfont-desktop/commit/984894476918dea7c0f61798b4a268d028abc454))
+
+
+### 重构
+
+* :art: https 过滤器 ([ec5ba45](https://github.com/d2-projects/iconfont-desktop/commit/ec5ba4582595d4f27b19da62b2d184fc182930e8))
+
 ## [1.1.1](https://github.com/d2-projects/iconfont-desktop/compare/v1.1.0...v1.1.1) (2020-11-26)
 
 
