@@ -21,7 +21,7 @@
       <app-setting-list-item label="头像">
         <app-upload v-model="user.avatar">
           <template v-slot="{ src }">
-            <app-avatar :avatar="src" :size="100"/>
+            <app-avatar :avatar="https(src)" :size="100"/>
           </template>
         </app-upload>
       </app-setting-list-item>
@@ -77,6 +77,10 @@ export default {
     ...mapActions('sdk', [
       'logout'
     ]),
+    https (url) {
+      if (/^https:/.test(url)) return url
+      return 'https:' + url
+    },
     async load () {
       if (this.isLogged) {
         const result = await this.sdk.userDetail()
