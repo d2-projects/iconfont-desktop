@@ -59,7 +59,7 @@ export default {
       list: {
         // 搜索条件
         query: {
-          keyword: 'hou'
+          keyword: ''
         },
         // 分页
         page: {
