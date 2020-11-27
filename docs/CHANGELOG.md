@@ -2,6 +2,23 @@
 
 规范参考：[Conventional Commits](https://conventionalcommits.org)
 
+## [1.1.3](https://github.com/d2-projects/iconfont-desktop/compare/v1.1.2...v1.1.3) (2020-11-27)
+
+
+### 修复
+
+* :bug: 解决插画详情不显示问题 ([4d5579e](https://github.com/d2-projects/iconfont-desktop/commit/4d5579e0beaeabd2eda1fc864175c24d2b09b1c2))
+
+
+### 文档
+
+* :memo: 1.1.3 ([d0062a6](https://github.com/d2-projects/iconfont-desktop/commit/d0062a6cb7535f8da34a6dba1643b1f9b714ece2))
+
+
+### 重构
+
+* :art: 用户头像组统一补充 https ([a3df7a0](https://github.com/d2-projects/iconfont-desktop/commit/a3df7a0fe21a7c23d5630c13603dce628d03ddec))
+
 ## [1.1.2](https://github.com/d2-projects/iconfont-desktop/compare/v1.1.1...v1.1.2) (2020-11-27)
 
 
