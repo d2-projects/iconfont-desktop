@@ -13,7 +13,7 @@
       <slot :src="value">
         <v-img
           class="is-rounded"
-          :src="value"
+          :src="value | https"
           max-width="200"
           max-height="200"
           contain/>

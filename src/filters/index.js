@@ -10,6 +10,6 @@ Vue.filter('numberFormat', function (value) {
 })
 
 Vue.filter('https', function (value) {
-  if (/^https:/.test(value)) return value
+  if (/^(http|https):/.test(value)) return value
   return 'https:' + value
 })
