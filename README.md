@@ -4,7 +4,7 @@
 
 ## 下载
 
-[windows](https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.4.0/iconfont-desktop-1.4.0.exe) | [macos](https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.4.0/iconfont-desktop-1.4.0.dmg)
+[windows](https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.5.0/iconfont-desktop-1.5.0.exe) | [macos](https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.5.0/iconfont-desktop-1.5.0.dmg)
 
 所有构建版本见 [release](https://github.com/d2-projects/iconfont-desktop/releases)
 
@@ -12,9 +12,9 @@
 
 例
 
-原地址 https://github.com/d2-projects/iconfont-desktop/releases/download/v1.4.0/iconfont-desktop-1.4.0.dmg
+原地址 https://github.com/d2-projects/iconfont-desktop/releases/download/v1.5.0/iconfont-desktop-1.5.0.dmg
 
-修改为 https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.4.0/iconfont-desktop-1.4.0.dmg
+修改为 https://cdn.d2.pub/mirrors/d2-projects/iconfont-desktop/releases/download/v1.5.0/iconfont-desktop-1.5.0.dmg
 
 > [release](https://github.com/d2-projects/iconfont-desktop/releases) 中的所有资源均可使用此规则加速下载
 
