@@ -2,6 +2,13 @@
 
 规范参考：[Conventional Commits](https://conventionalcommits.org)
 
+# [1.4.0](https://github.com/d2-projects/iconfont-desktop/compare/v1.3.0...v1.4.0) (2020-11-28)
+
+
+### 功能
+
+* :sparkles: new icon ([ac3773a](https://github.com/d2-projects/iconfont-desktop/commit/ac3773a035a5ced1f582f4cbd12f0edcfaa8900e))
+
 # [1.3.0](https://github.com/d2-projects/iconfont-desktop/compare/v1.2.0...v1.3.0) (2020-11-27)
 
 
