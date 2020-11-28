@@ -2,6 +2,13 @@
 
 规范参考：[Conventional Commits](https://conventionalcommits.org)
 
+## [1.5.1](https://github.com/d2-projects/iconfont-desktop/compare/v1.5.0...v1.5.1) (2020-11-28)
+
+
+### 修复
+
+* :lipstick: 图标调整 ([dfe63a1](https://github.com/d2-projects/iconfont-desktop/commit/dfe63a1270bf5c041f11606a5b95c803cde1a4d2))
+
 # [1.5.0](https://github.com/d2-projects/iconfont-desktop/compare/v1.4.0...v1.5.0) (2020-11-28)
 
 
