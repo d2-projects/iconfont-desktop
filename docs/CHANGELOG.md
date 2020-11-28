@@ -2,6 +2,18 @@
 
 规范参考：[Conventional Commits](https://conventionalcommits.org)
 
+# [1.5.0](https://github.com/d2-projects/iconfont-desktop/compare/v1.4.0...v1.5.0) (2020-11-28)
+
+
+### 功能
+
+* :sparkles: 调整图标大小 ([01cc208](https://github.com/d2-projects/iconfont-desktop/commit/01cc20898c2552901b4fdab1e9827d1e72f5219c))
+
+
+### 文档
+
+* :memo: 1.5.0 ([a12e4d4](https://github.com/d2-projects/iconfont-desktop/commit/a12e4d4625ecbd02258559a20c03819e9bf71f1a))
+
 # [1.4.0](https://github.com/d2-projects/iconfont-desktop/compare/v1.3.0...v1.4.0) (2020-11-28)
 
 
